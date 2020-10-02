@@ -31,7 +31,7 @@
     <AppXManifest Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\bin\x64\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-10-02T07:51:21.997</Modified>
+      <Modified>2020-10-02T11:19:23.620</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -463,7 +463,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\Debug\Excel.Interop.exe">
       <PackagePath>Excel.Interop\Excel.Interop.exe</PackagePath>
-      <Modified>2020-10-02T07:50:57.961</Modified>
+      <Modified>2020-10-02T11:19:07.586</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\Debug\Excel.Interop.exe.config">
       <PackagePath>Excel.Interop\Excel.Interop.exe.config</PackagePath>
@@ -471,7 +471,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MaintenanceToolECSBOX.exe">
       <PackagePath>entrypoint\MaintenanceToolECSBOX.exe</PackagePath>
-      <Modified>2020-10-02T07:51:16.671</Modified>
+      <Modified>2020-10-02T11:19:18.765</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -567,43 +567,43 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MaintenanceToolECSBOX.xr.xml">
       <PackagePath>MaintenanceToolECSBOX.xr.xml</PackagePath>
-      <Modified>2020-09-29T09:29:19.440</Modified>
+      <Modified>2020-10-02T09:36:50.522</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.218</Modified>
+      <Modified>2020-10-02T11:19:14.635</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\EventLoggerList.xbf">
       <PackagePath>EventLoggerList.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.175</Modified>
+      <Modified>2020-10-02T11:19:14.600</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\FlapperValveOffset.xbf">
       <PackagePath>FlapperValveOffset.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.200</Modified>
+      <Modified>2020-10-02T11:19:14.621</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.204</Modified>
+      <Modified>2020-10-02T11:19:14.624</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario1_ConnectDisconnect.xbf">
       <PackagePath>Scenario1_ConnectDisconnect.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.219</Modified>
+      <Modified>2020-10-02T11:19:14.637</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario2_ConfigureDevice.xbf">
       <PackagePath>Scenario2_ConfigureDevice.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.211</Modified>
+      <Modified>2020-10-02T11:19:14.629</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario3_ReadWrite.xbf">
       <PackagePath>Scenario3_ReadWrite.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.215</Modified>
+      <Modified>2020-10-02T11:19:14.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario4_Events.xbf">
       <PackagePath>Scenario4_Events.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.219</Modified>
+      <Modified>2020-10-02T11:19:14.637</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Styles\Styles.xbf">
       <PackagePath>Styles\Styles.xbf</PackagePath>
-      <Modified>2020-10-02T07:51:10.170</Modified>
+      <Modified>2020-10-02T11:19:14.597</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -611,7 +611,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Core\MaintenanceToolECSBOX.exe">
       <PackagePath>MaintenanceToolECSBOX.exe</PackagePath>
-      <Modified>2020-10-02T07:51:18.939</Modified>
+      <Modified>2020-10-02T11:19:20.520</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

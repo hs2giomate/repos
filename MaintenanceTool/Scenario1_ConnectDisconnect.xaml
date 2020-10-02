@@ -45,7 +45,7 @@
                             <ListBox.ItemTemplate>
                         <DataTemplate x:DataType="local:DeviceListEntry">
                             <!--TextBlock Text="{Binding InstanceId}"/-->
-                                <TextBlock Text="{x:Bind DeviceInformation.Name }"/>
+                                <TextBlock Text="{x:Bind DeviceDisplayName }"/>
                           </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

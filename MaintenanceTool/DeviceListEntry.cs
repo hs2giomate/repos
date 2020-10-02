@@ -43,6 +43,7 @@ namespace MaintenanceToolECSBOX
         {
             get
             {
+
                 return device;
             }
         }
@@ -52,6 +53,22 @@ namespace MaintenanceToolECSBOX
             get
             {
                 return deviceSelector;
+            }
+        }
+
+        public String DeviceDisplayName
+        {
+            get
+            {
+                if (DeviceInformation.Name.Contains("ASF"))
+                {
+                    return "ECS_BOX CDC_Serial_Interface";
+                }
+                else
+                {
+                    return DeviceInformation.Name;
+                }
+              
             }
         }
 
