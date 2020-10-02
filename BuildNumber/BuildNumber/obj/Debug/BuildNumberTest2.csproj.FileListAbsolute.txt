@@ -1,0 +1,7 @@
+C:\Users\GMateusDP\source\repos\BuildNumberTest2\BuildNumberTest2\obj\Debug\BuildNumberTest2.csprojAssemblyReference.cache
+C:\Users\GMateusDP\source\repos\BuildNumberTest2\BuildNumberTest2\obj\Debug\BuildNumberTest2.csproj.CoreCompileInputs.cache
+C:\Users\GMateusDP\source\repos\BuildNumberTest2\BuildNumberTest2\bin\Debug\BuildNumberTest2.exe.config
+C:\Users\GMateusDP\source\repos\BuildNumberTest2\BuildNumberTest2\bin\Debug\BuildNumberTest2.exe
+C:\Users\GMateusDP\source\repos\BuildNumberTest2\BuildNumberTest2\bin\Debug\BuildNumberTest2.pdb
+C:\Users\GMateusDP\source\repos\BuildNumberTest2\BuildNumberTest2\obj\Debug\BuildNumberTest2.exe
+C:\Users\GMateusDP\source\repos\BuildNumberTest2\BuildNumberTest2\obj\Debug\BuildNumberTest2.pdb

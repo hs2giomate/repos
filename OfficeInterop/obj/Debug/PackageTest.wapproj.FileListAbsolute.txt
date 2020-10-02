@@ -1,0 +1,2 @@
+C:\Users\GMateusDP\Documents\SandBox\PackageTest\obj\Debug\PackageTest.wapprojAssemblyReference.cache
+C:\Users\GMateusDP\Documents\SandBox\PackageTest\obj\Debug\PackageTest.wapproj.CoreCompileInputs.cache

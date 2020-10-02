@@ -1,0 +1,2 @@
+C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\ExcelOpener.csproj;x64
+C:\Users\GMateusDP\Source\Repos\OfficeInterop\PackageTest.wapproj;x64

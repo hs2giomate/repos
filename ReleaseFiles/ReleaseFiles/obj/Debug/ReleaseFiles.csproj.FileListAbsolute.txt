@@ -1,0 +1,7 @@
+C:\Users\GMateusDP\source\repos\ReleaseFiles\ReleaseFiles\obj\Debug\ReleaseFiles.csprojAssemblyReference.cache
+C:\Users\GMateusDP\source\repos\ReleaseFiles\ReleaseFiles\obj\Debug\ReleaseFiles.csproj.CoreCompileInputs.cache
+C:\Users\GMateusDP\source\repos\ReleaseFiles\ReleaseFiles\bin\Debug\ReleaseFiles.exe.config
+C:\Users\GMateusDP\source\repos\ReleaseFiles\ReleaseFiles\bin\Debug\ReleaseFiles.exe
+C:\Users\GMateusDP\source\repos\ReleaseFiles\ReleaseFiles\bin\Debug\ReleaseFiles.pdb
+C:\Users\GMateusDP\source\repos\ReleaseFiles\ReleaseFiles\obj\Debug\ReleaseFiles.exe
+C:\Users\GMateusDP\source\repos\ReleaseFiles\ReleaseFiles\obj\Debug\ReleaseFiles.pdb

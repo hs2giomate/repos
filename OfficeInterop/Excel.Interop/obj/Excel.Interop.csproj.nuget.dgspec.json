@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj",
+        "projectName": "Excel.Interop",
+        "projectPath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj",
+        "packagesPath": "C:\\Users\\GMateusDP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\GMateusDP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net461": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net461": {
+          "dependencies": {
+            "Microsoft.Windows.SDK.Contracts": {
+              "target": "Package",
+              "version": "[10.0.17134.1000-preview, )"
+            }
+          },
+          "imports": [
+            "uap10.0.17134"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

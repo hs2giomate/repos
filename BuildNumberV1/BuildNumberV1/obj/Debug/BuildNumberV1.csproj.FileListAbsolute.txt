@@ -1,0 +1,7 @@
+C:\Users\GMateusDP\source\repos\BuildNumberV1\BuildNumberV1\obj\Debug\BuildNumberV1.csprojAssemblyReference.cache
+C:\Users\GMateusDP\source\repos\BuildNumberV1\BuildNumberV1\obj\Debug\BuildNumberV1.csproj.CoreCompileInputs.cache
+C:\Users\GMateusDP\source\repos\BuildNumberV1\BuildNumberV1\bin\Debug\BuildNumberV1.exe.config
+C:\Users\GMateusDP\source\repos\BuildNumberV1\BuildNumberV1\bin\Debug\BuildNumberV1.exe
+C:\Users\GMateusDP\source\repos\BuildNumberV1\BuildNumberV1\bin\Debug\BuildNumberV1.pdb
+C:\Users\GMateusDP\source\repos\BuildNumberV1\BuildNumberV1\obj\Debug\BuildNumberV1.exe
+C:\Users\GMateusDP\source\repos\BuildNumberV1\BuildNumberV1\obj\Debug\BuildNumberV1.pdb

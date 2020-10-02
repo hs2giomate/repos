@@ -1,0 +1,102 @@
+﻿<Page
+    x:Class="MaintenanceToolECSBOX.EventLoggerList"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaintenanceToolECSBOX"
+    xmlns:data="using:EventLoggerManagment"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+    Loaded="Page_Loaded"
+     mc:Ignorable="d">
+    <Page.Resources>
+        <CollectionViewSource x:Name="ItemValuesSource"/>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock x:Name="Tittel" Text="Event Logger" TextWrapping="Wrap" Width="441" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center"/>
+            </StackPanel>
+
+
+            <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100">
+                <!-- Place scenario content here -->
+
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10,0,10,0" >
+                        <Grid x:Name="GridOperationButtons" Width="{Binding ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}"  >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                        
+                            <Button x:Name="StopReading" Content="STOP" Click="StopReading_Click" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16" Grid.ColumnSpan="1" />
+                            <TextBlock x:Name="StatusEventLogger" Text="Reading ..." TextAlignment="Center" FontSize="16" Grid.Column="1" />
+                            <Button x:Name="ExportExcel" Content="Export to Excel" FontSize="16" Click="ExportExcel_Click" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel>
+                        <Grid x:Name="GridEvenntListHeaders"  Margin="10" BorderBrush="White" BorderThickness="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="DateTimeTextTittel" Text="TIME" TextAlignment="Center" FontSize="16" Margin="10,10,10,10"  />
+                            <TextBlock x:Name="EventCodeTittel" Text="EVENT" TextAlignment="Center" FontSize="16" Margin="10" Grid.Column="1"  />
+                            <TextBlock x:Name="EventDescriptionTittel" Text="DESCRIPTION" TextAlignment="Center" FontSize="16" Margin="10" Grid.Column="2" Grid.ColumnSpan="2"  />
+                        </Grid>
+                        <ListView x:Name="BottomUpList" Margin="10" BorderBrush="White" BorderThickness="2" ItemsSource="{x:Bind listOfMessages}" ItemClick="BottomUpList_ItemClick" VerticalAlignment="Bottom" Height="{Binding ColumnDefinitions[2].ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}">
+                            <ListView.ItemTemplate >
+                                <DataTemplate x:Name="EventDataRowTemplate2" x:DataType="data:EventItemValues">
+                                    <Grid x:Name="GridEvenntListHeadersTemplate"  Margin="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock x:Name="DateTimeText"  TextAlignment="Center" FontSize="16" Margin="10" Width="{Binding ColumnDefinitions[0].ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}" Text="{x:Bind Datetime }" />
+                                        <TextBlock x:Name="EventCode" TextAlignment="Center" FontSize="16" Margin="10" Width="{Binding ColumnDefinitions[1].ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}" Grid.Column="1" Text="{x:Bind EventName}" />
+                                        <TextBlock x:Name="EventDescription" TextAlignment="Right" FontSize="16" Margin="10" Grid.Column="2" Grid.ColumnSpan="2" Text="{x:Bind Description}"  />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+
+                            <ListView.ItemsPanel>
+
+                                <ItemsPanelTemplate>
+                                    <!-- Setting VerticalAlignment="Bottom" causes the contents to be bottom-aligned,
+                         which is appropriate for a chat window but perhaps not for a logging window. -->
+                                    <ItemsStackPanel ItemsUpdatingScrollMode="KeepLastItemInView" VerticalAlignment="Bottom" Tapped="ItemsStackPanel_Tapped"/>
+
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+
+                        </ListView>
+
+                    </StackPanel>
+                    <!-- The height is artificially low so that scrolling occurs more quickly. -->
+                    <StackPanel Orientation="Horizontal" Margin="10,0,0,0" >
+                        <Button x:Name="DeleteItem" Content="Delete Log Message"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="16" Click="DeleteItem_Click" />
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+            <!-- Status Block for providing messages to the user.  Use the
+             NotifyUser() method to populate the message -->
+            <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,6 @@
+C:\Users\GMateusDP\source\repos\EventsExcelLogger\EventsExcelLogger.wapproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\EventLoggerManagment\EventLoggerManagment.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolECSBOX.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\MaintenanceToolProtocol.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\MaintenanceToolProtocol.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\ParameterTransferProtocol\ParameterTransferProtocol.csproj;x64

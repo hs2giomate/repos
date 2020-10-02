@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintenance_Tool_ECS_BOX", "Maintenance_Tool_ECS_BOX.csproj", "{52D93076-DECB-4246-A128-55AB1BA13C7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelDocument", "..\..\..\Documents\Windows-universal-samples\Samples\CustomSerialDeviceAccess\ExcelDocument\ExcelDocument.csproj", "{BB7AD727-A9B5-40D8-AC60-64FA4EF500C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52D93076-DECB-4246-A128-55AB1BA13C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52D93076-DECB-4246-A128-55AB1BA13C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52D93076-DECB-4246-A128-55AB1BA13C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52D93076-DECB-4246-A128-55AB1BA13C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB7AD727-A9B5-40D8-AC60-64FA4EF500C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB7AD727-A9B5-40D8-AC60-64FA4EF500C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB7AD727-A9B5-40D8-AC60-64FA4EF500C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB7AD727-A9B5-40D8-AC60-64FA4EF500C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC05E902-7357-4148-86C8-2FECAF2AD180}
+	EndGlobalSection
+EndGlobal
