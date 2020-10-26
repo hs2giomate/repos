@@ -35,15 +35,6 @@
       <RootMethod Name="GetLiveSetting" />
       <RootMethod Name="SetLiveSetting" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.LinearGradientBrush">
-      <RootProperty Name="EndPoint" />
-      <RootProperty Name="StartPoint" />
-      <RootProperty Name="GradientStops" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Media.GradientStop">
-      <RootProperty Name="Color" />
-      <RootProperty Name="Offset" />
-    </RootType>
     <RootType FullName="Windows.UI.Xaml.ScalarTransition" />
     <RootType FullName="RadialGauge.MainPage" />
   </Roots.RootTypes>

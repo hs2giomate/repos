@@ -12,13 +12,7 @@
 
     <Grid>
         <Button x:ConnectionId='2' Content="Button" Margin="1047,112,0,0" VerticalAlignment="Top" Height="70" Width="146"                     />
-        <controls:RadialGauge x:ConnectionId='3' x:Name="RadialGauge1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScaleTickBrush="#66B40E0E" ScaleBrush="#662DA820" LargeChange="1" Maximum="100" SmallChange="0.1" Value="1" AutomationProperties.LiveSetting="Polite" StepSize="1">
-            <controls:RadialGauge.TrailBrush>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF0000DC" Offset="0.008"/>
-                    <GradientStop Color="#FFEA0000" Offset="1"/>
-                </LinearGradientBrush>
-            </controls:RadialGauge.TrailBrush>
+        <controls:RadialGauge x:ConnectionId='3' x:Name="RadialGauge1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScaleTickBrush="#66B40E0E" ScaleBrush="#662DA820" LargeChange="1" Maximum="100" SmallChange="0.1" Value="1" AutomationProperties.LiveSetting="Polite" StepSize="1" TrailBrush="#FFB41010">
             <controls:RadialGauge.OpacityTransition>
                 <ScalarTransition/>
             </controls:RadialGauge.OpacityTransition>
