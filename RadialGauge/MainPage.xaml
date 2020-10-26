@@ -1,0 +1,22 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:RadialGauge"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    x:Class="RadialGauge.MainPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid>
+        <Button Content="Button" Margin="1047,112,0,0" VerticalAlignment="Top" Height="70" Width="146" Click="Button_Click"/>
+        <controls:RadialGauge x:Name="RadialGauge1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ScaleTickBrush="#66B40E0E" ScaleBrush="#662DA820" LargeChange="1" Maximum="100" SmallChange="0.1" Value="1" AutomationProperties.LiveSetting="Polite" StepSize="1" TrailBrush="#FFB41010">
+            <controls:RadialGauge.OpacityTransition>
+                <ScalarTransition/>
+            </controls:RadialGauge.OpacityTransition>
+        </controls:RadialGauge>
+
+    </Grid>
+</Page>

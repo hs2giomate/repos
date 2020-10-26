@@ -1,0 +1,1 @@
+C:\Users\GMateusDP\source\repos\RadialGauge\RadialGauge.csproj;x64
