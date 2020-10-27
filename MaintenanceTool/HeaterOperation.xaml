@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="MaintenanceToolECSBOX.HeaterOperation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaintenanceToolECSBOX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock x:Name="Tittel" Text="Heater Operation" TextWrapping="Wrap" Width="441" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center"/>
+            </StackPanel>
+
+
+            <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100">
+                <!-- Place scenario content here -->
+
+                <StackPanel x:Name="SingleHeaterOperationPanel">
+                   <StackPanel x:Name="EnableHeaterStack" >
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <ToggleSwitch x:Name="HeaterEnable" Header="Relay 1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                          </Grid>
+                    </StackPanel>
+                </StackPanel>
+
+            </ScrollViewer>
+
+            <!-- Status Block for providing messages to the user.  Use the
+             NotifyUser() method to populate the message -->
+            <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
+        </Grid>
+    </Grid>
+</Page>
