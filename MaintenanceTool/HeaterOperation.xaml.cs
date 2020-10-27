@@ -20,6 +20,9 @@ using Windows.UI.Xaml.Media;
 
 using ParameterTransferProtocol;
 using Windows.Storage.Streams;
+using System.Runtime.InteropServices;
+using System.Text;
+using MaintenanceToolProtocol;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -47,10 +50,12 @@ namespace MaintenanceToolECSBOX
         DataWriter DataWriteObject = null;
         private Boolean IsNavigatedAway;
         private static Byte[] received, toSend;
+        private static Byte heaterRelaysCommand,lastRelaysCommand;
         UserParameters parameters;
         ParametersMessage parametersMessage;
         private static AnimationSet faultDarkAnimation,faultLighAnimation;
         private Task blink;
+        private SingleTaskMessage heatersCommand;
         public HeaterOperation()
         {
             this.InitializeComponent();
@@ -58,6 +63,7 @@ namespace MaintenanceToolECSBOX
             faultDarkAnimation.Completed += FaultDarkAnimation_Completed;
             faultLighAnimation = Relay1FaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
             faultLighAnimation.Completed += FaultLighAnimation_Completed;
+            heaterRelaysCommand = 0;
         }
 
         private void FaultLighAnimation_Completed(object sender, AnimationSetCompletedEventArgs e)
@@ -132,9 +138,112 @@ namespace MaintenanceToolECSBOX
 
             CancelAllIoTasks();
         }
-        private void HeaterEnable_Toggled(object sender, RoutedEventArgs e)
+        private Boolean IsPerformingRead()
         {
-            UpdateRelayStatus();
+            return (IsReadTaskPending);
+        }
+        private async Task WriteAsync(CancellationToken cancellationToken)
+        {
+
+            Task<UInt32> storeAsyncTask;
+
+            if (heaterRelaysCommand != lastRelaysCommand)
+            {
+
+                heatersCommand.description = heaterRelaysCommand;
+                var n = Marshal.SizeOf(typeof(SingleTaskMessage));
+                toSend = new byte[n];
+                toSend.Initialize();
+                Protocol.Message.CreateEnableHeatersMessage(heaterRelaysCommand).CopyTo(toSend, 0);
+
+           //     ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);
+
+          //      Byte[] toSend2 = Encoding.ASCII.GetBytes("abcd<Gf");
+
+                DataWriteObject.WriteBytes(toSend);
+
+
+                // Don't start any IO if we canceled the task
+                lock (WriteCancelLock)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+
+                    // Cancellation Token will be used so we can stop the task operation explicitly
+                    // The completion function should still be called so that we can properly handle a canceled task
+                    storeAsyncTask = DataWriteObject.StoreAsync().AsTask(cancellationToken);
+                }
+
+                UInt32 bytesWritten = await storeAsyncTask;
+                rootPage.NotifyUser("Write completed - " + bytesWritten.ToString() + " bytes written", NotifyType.StatusMessage);
+            }
+            else
+            {
+                rootPage.NotifyUser("No input received to write", NotifyType.StatusMessage);
+            }
+
+        }
+        private Boolean IsPerformingWrite()
+        {
+            return (IsWriteTaskPending);
+        }
+        private async void HeaterEnable_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (RelayEnable1Toggle.IsOn)
+            {
+                
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x01);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfe);
+            }
+            if (heaterRelaysCommand!=lastRelaysCommand)
+            {
+                if (IsPerformingRead())
+                {
+                    CancelReadTask();
+                }
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
+                {
+                    try
+                    {
+                        rootPage.NotifyUser("Sendind Command...", NotifyType.StatusMessage);
+
+                        // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
+                        // update the button states until after the write completes.
+                        IsWriteTaskPending = true;
+                        DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                        //   UpdateWriteButtonStates();
+
+                        await WriteAsync(WriteCancellationTokenSource.Token);
+                    }
+                    catch (OperationCanceledException /*exception*/)
+                    {
+                        NotifyWriteTaskCanceled();
+                    }
+                    catch (Exception exception)
+                    {
+                        MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                        Debug.WriteLine(exception.Message.ToString());
+                    }
+                    finally
+                    {
+                        IsWriteTaskPending = false;
+                        DataWriteObject.DetachStream();
+                        DataWriteObject = null;
+
+                        //  UpdateWriteButtonStates();
+                    }
+                }
+                else
+                {
+                    Utilities.NotifyDeviceNotConnected();
+                }
+            }
+          //  UpdateRelayStatus();
+           
+
         }
         private void UpdateRelayStatus()
         {
@@ -267,6 +376,28 @@ namespace MaintenanceToolECSBOX
                     }
                 }
             }
+        }
+        private async void NotifyReadTaskCanceled()
+        {
+            await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+                new DispatchedHandler(() =>
+                {
+                    if (!IsNavigatedAway)
+                    {
+                        rootPage.NotifyUser("Read request has been cancelled", NotifyType.StatusMessage);
+                    }
+                }));
+        }
+        private async void NotifyWriteTaskCanceled()
+        {
+            await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,
+                new DispatchedHandler(() =>
+                {
+                    if (!IsNavigatedAway)
+                    {
+                        rootPage.NotifyUser("Write request has been cancelled", NotifyType.StatusMessage);
+                    }
+                }));
         }
         private void CancelAllIoTasks()
         {
