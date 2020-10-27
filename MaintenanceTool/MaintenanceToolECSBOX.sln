@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParameterTransferProtocol",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventLoggerManagment", "EventLoggerManagment\EventLoggerManagment.csproj", "{504526DE-28BB-4933-872E-B6AEAC08DF08}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Toolkit.Uwp.UI.Animations", "..\WindowsCommunityToolkit\Microsoft.Toolkit.Uwp.UI.Animations\Microsoft.Toolkit.Uwp.UI.Animations.csproj", "{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +115,26 @@ Global
 		{504526DE-28BB-4933-872E-B6AEAC08DF08}.Release|x64.Build.0 = Release|x64
 		{504526DE-28BB-4933-872E-B6AEAC08DF08}.Release|x86.ActiveCfg = Release|x86
 		{504526DE-28BB-4933-872E-B6AEAC08DF08}.Release|x86.Build.0 = Release|x86
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|ARM.Build.0 = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|x64.Build.0 = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|ARM.Build.0 = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|ARM64.Build.0 = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|x64.ActiveCfg = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|x64.Build.0 = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{A2FEC91E-A5F9-4E73-9F98-13B014257FFF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

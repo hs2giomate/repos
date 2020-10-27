@@ -5,8 +5,20 @@
     xmlns:local="using:MaintenanceToolECSBOX"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"  
+    xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <interactivity:Interaction.Behaviors>
+        <behaviors:Fade x:Name="FadeBehavior" 
+            Value="0.5" 
+            Duration="2500" 
+            Delay="250"
+            EasingType="Linear"
+            AutomaticallyStart="True"/>
+    </interactivity:Interaction.Behaviors>
+
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12,20,12,12">
@@ -23,17 +35,21 @@
             <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100">
                 <!-- Place scenario content here -->
 
-                <StackPanel x:Name="SingleHeaterOperationPanel">
+                <StackPanel x:Name="SingleHeaterOperationPanel" Margin="0,20,0,0">
                    <StackPanel x:Name="EnableHeaterStack" >
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
-
-                            <ToggleSwitch x:Name="HeaterEnable" Header="Relay 1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                          </Grid>
+                            <TextBlock x:Name="Relay1Name" Text="Relay 1" FontSize="14" IsHitTestVisible="False" TextAlignment="Center" />
+                            <ToggleSwitch x:Name="RelayEnable1Toggle" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="HeaterEnable_Toggled" Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+                            <TextBlock x:Name="Relay1StatusText" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
+                            <Border x:Name="Relay1StatusBorder" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
+                            <Ellipse x:Name="Relay1FaultSignal" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                        </Grid>
                     </StackPanel>
                 </StackPanel>
 
