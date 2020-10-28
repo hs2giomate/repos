@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "LlTlVbw8s/aOZdWZ6Cd+0lacF2TOWtdihnzIOrKQpVvOZxMn/051y2dB4t4JfK0F654WHbea93osTFgV731fgA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.Design\\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.Design.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\GMateusDP\\.nuget\\packages\\microsoft.build.tasks.git\\1.0.0\\microsoft.build.tasks.git.1.0.0.nupkg.sha512",
+    "C:\\Users\\GMateusDP\\.nuget\\packages\\microsoft.sourcelink.azurerepos.git\\1.0.0\\microsoft.sourcelink.azurerepos.git.1.0.0.nupkg.sha512",
+    "C:\\Users\\GMateusDP\\.nuget\\packages\\microsoft.sourcelink.common\\1.0.0\\microsoft.sourcelink.common.1.0.0.nupkg.sha512",
+    "C:\\Users\\GMateusDP\\.nuget\\packages\\microsoft.sourcelink.github\\1.0.0\\microsoft.sourcelink.github.1.0.0.nupkg.sha512",
+    "C:\\Users\\GMateusDP\\.nuget\\packages\\nerdbank.gitversioning\\3.1.91\\nerdbank.gitversioning.3.1.91.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,1362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Roots >
+  <Roots.Interfaces>
+    <RootInterface FullName="Windows.UI.Xaml.Data.IValueConverter" />
+  </Roots.Interfaces>
+  <Roots.PropertyPathNames>
+    <RootPropertyPathName Name="DeprecatedWarning" />
+    <RootPropertyPathName Name="RemoteSystems" />
+    <RootPropertyPathName Name="ModelDisplayName" />
+    <RootPropertyPathName Name="DisplayName" />
+    <RootPropertyPathName Name="Kind" />
+    <RootPropertyPathName Name="ActualWidth" />
+    <RootPropertyPathName Name="Name" />
+    <RootPropertyPathName Name="PropertyDescriptor" />
+    <RootPropertyPathName Name="Expando" />
+    <RootPropertyPathName Name="ThresholdDuration" />
+    <RootPropertyPathName Name="Value" />
+    <RootPropertyPathName Name="DwellRepeatDuration" />
+    <RootPropertyPathName Name="RepeatDelayDuration" />
+    <RootPropertyPathName Name="DwellDuration" />
+    <RootPropertyPathName Name="FixationDuration" />
+    <RootPropertyPathName Name="SkewX" />
+    <RootPropertyPathName Name="SkewY" />
+    <RootPropertyPathName Name="ScaleX" />
+    <RootPropertyPathName Name="ScaleY" />
+    <RootPropertyPathName Name="Angle" />
+    <RootPropertyPathName Name="MinHeight" />
+    <RootPropertyPathName Name="Title" />
+    <RootPropertyPathName Name="Color" />
+    <RootPropertyPathName Name="Item" />
+    <RootPropertyPathName Name="Index" />
+    <RootPropertyPathName Name="Thumbnail" />
+    <RootPropertyPathName Name="SampleCommand" />
+    <RootPropertyPathName Name="Code" />
+    <RootPropertyPathName Name="HasMoreItems" />
+    <RootPropertyPathName Name="IsLoading" />
+    <RootPropertyPathName Name="PictureUrl" />
+    <RootPropertyPathName Name="Duration" />
+    <RootPropertyPathName Name="Target" />
+    <RootPropertyPathName Name="ProfileImageUrl" />
+    <RootPropertyPathName Name="Source" />
+    <RootPropertyPathName Name="User" />
+    <RootPropertyPathName Name="ThumbnailImageUrl" />
+    <RootPropertyPathName Name="BadgeUpdateVersionRequired" />
+    <RootPropertyPathName Name="About" />
+    <RootPropertyPathName Name="Icon" />
+    <RootPropertyPathName Name="Key" />
+    <RootPropertyPathName Name="Visibility" />
+    <RootPropertyPathName Name="IsItemClickEnabled" />
+    <RootPropertyPathName Name="CompactPaneLength" />
+    <RootPropertyPathName Name="IsPaneOpen" />
+    <RootPropertyPathName Name="TemplateSettings" />
+    <RootPropertyPathName Name="LeftPaneVisibility" />
+    <RootPropertyPathName Name="TopPadding" />
+    <RootPropertyPathName Name="TopPaneVisibility" />
+    <RootPropertyPathName Name="OverflowButtonVisibility" />
+    <RootPropertyPathName Name="PaneToggleButtonVisibility" />
+    <RootPropertyPathName Name="BackButtonVisibility" />
+  </Roots.PropertyPathNames>
+  <Roots.RootTypes>
+    <RootType FullName="Windows.UI.Xaml.Application">
+      <RootProperty Name="RequiresPointerMode" />
+      <RootProperty Name="Resources" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.ResourceDictionary">
+      <RootProperty Name="MergedDictionaries" />
+      <RootProperty Name="Source" />
+      <RootProperty Name="ThemeDictionaries" />
+    </RootType>
+    <RootType FullName="Microsoft.UI.Xaml.Controls.XamlControlsResources" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Converters.BoolNegationConverter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Converters.EmptyStringToObjectConverter">
+      <RootProperty Name="EmptyValue" />
+      <RootProperty Name="NotEmptyValue" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Converters.BoolToVisibilityConverter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Controls.CodeRenderer">
+      <RootProperty Name="IsFocusEngagementEnabled" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Control">
+      <RootProperty Name="Template" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="UseSystemFocusVisuals" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="FontWeight" />
+      <RootMethod Name="GetIsTemplateFocusTarget" />
+      <RootMethod Name="SetIsTemplateFocusTarget" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Setter">
+      <RootProperty Name="Property" />
+      <RootProperty Name="Value" />
+      <RootProperty Name="Target" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
+      <RootProperty Name="TargetType" />
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Grid">
+      <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Opacity" />
+      <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="MaxWidth" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="CornerRadius" />
+      <RootProperty Name="Resources" />
+      <RootProperty Name="RenderTransform" />
+      <RootProperty Name="RenderTransformOrigin" />
+      <RootMethod Name="GetRowSpan" />
+      <RootMethod Name="SetRowSpan" />
+      <RootMethod Name="GetRow" />
+      <RootMethod Name="SetRow" />
+      <RootMethod Name="GetColumn" />
+      <RootMethod Name="SetColumn" />
+      <RootMethod Name="GetColumnSpan" />
+      <RootMethod Name="SetColumnSpan" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
+      <RootProperty Name="Height" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="HorizontalScrollMode" />
+      <RootProperty Name="HorizontalScrollBarVisibility" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="VerticalScrollBarVisibility" />
+      <RootProperty Name="VerticalScrollMode" />
+      <RootProperty Name="TabNavigation" />
+      <RootProperty Name="BringIntoViewOnFocusChange" />
+      <RootProperty Name="HorizontalSnapPointsAlignment" />
+      <RootProperty Name="HorizontalSnapPointsType" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Template" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="VerticalSnapPointsType" />
+      <RootProperty Name="ZoomMode" />
+      <RootMethod Name="GetZoomMode" />
+      <RootMethod Name="SetZoomMode" />
+      <RootMethod Name="GetHorizontalScrollMode" />
+      <RootMethod Name="SetHorizontalScrollMode" />
+      <RootMethod Name="GetHorizontalScrollBarVisibility" />
+      <RootMethod Name="SetHorizontalScrollBarVisibility" />
+      <RootMethod Name="GetVerticalScrollMode" />
+      <RootMethod Name="SetVerticalScrollMode" />
+      <RootMethod Name="GetVerticalScrollBarVisibility" />
+      <RootMethod Name="SetVerticalScrollBarVisibility" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.StackPanel">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Orientation" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Spacing" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="MaxWidth" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="MinWidth" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Button">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Flyout" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="Opacity" />
+      <RootProperty Name="Template" />
+      <RootProperty Name="UseSystemFocusVisuals" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="TabIndex" />
+      <RootEvent Name="Click" />
+      <RootEvent Name="Tapped" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RichTextBlock">
+      <RootProperty Name="Name" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Blocks" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.UserControl">
+      <RootProperty Name="Content" />
+      <RootEvent Name="DataContextChanged" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Controls.PropertyControl" />
+    <RootType FullName="Monaco.CodeEditor">
+      <RootProperty Name="CodeLanguage" />
+      <RootProperty Name="Text" />
+      <RootEvent Name="KeyDown" />
+      <RootEvent Name="Loading" />
+      <RootEvent Name="InternalException" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension">
+      <RootProperty Name="Mode" />
+      <RootProperty Name="FallbackValue" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Controls.XamlCodeEditor" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Page">
+      <RootProperty Name="Content" />
+      <RootProperty Name="Resources" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="DataContext" />
+      <RootEvent Name="SizeChanged" />
+      <RootEvent Name="Loaded" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.VisualStateManager">
+      <RootMethod Name="GetVisualStateGroups" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
+      <RootProperty Name="Width" />
+      <RootProperty Name="MinWidth" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Canvas">
+      <RootProperty Name="Background" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Children" />
+      <RootEvent Name="Tapped" />
+      <RootMethod Name="GetZIndex" />
+      <RootMethod Name="SetZIndex" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Border">
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Child" />
+      <RootProperty Name="CornerRadius" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Opacity" />
+      <RootEvent Name="Tapped" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.InAppNotification">
+      <RootProperty Name="Style" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="StackMode" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="ShowDismissButton" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressRing">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="IsActive" />
+      <RootProperty Name="Name" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.StaticResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Converter" />
+      <RootProperty Name="FallbackValue" />
+      <RootProperty Name="ElementName" />
+      <RootProperty Name="Path" />
+      <RootProperty Name="RelativeSource" />
+      <RootProperty Name="Mode" />
+      <RootProperty Name="ConverterParameter" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
+      <RootProperty Name="Text" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="TextLineBounds" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="IsHitTestVisible" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="Opacity" />
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="HorizontalTextAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Inlines" />
+      <RootProperty Name="TextAlignment" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="TextTrimming" />
+      <RootProperty Name="Name" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactivity.Interaction">
+      <RootMethod Name="GetBehaviors" />
+      <RootMethod Name="SetBehaviors" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Common.TextBlockHyperlinkBehavior">
+      <RootProperty Name="Foreground" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Pivot">
+      <RootProperty Name="Style" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="HeaderTemplate" />
+      <RootProperty Name="LeftHeader" />
+      <RootProperty Name="Items" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.GridSplitter">
+      <RootProperty Name="Width" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="GripperForeground" />
+      <RootProperty Name="ParentLevel" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarButton">
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Label" />
+      <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.PivotItem">
+      <RootProperty Name="Padding" />
+      <RootProperty Name="Header" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock">
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="CodeBackground" />
+      <RootProperty Name="QuoteBackground" />
+      <RootProperty Name="InlineCodeBackground" />
+      <RootProperty Name="LinkForeground" />
+      <RootProperty Name="SchemeList" />
+      <RootProperty Name="IsFocusEngagementEnabled" />
+      <RootProperty Name="ImageMaxWidth" />
+      <RootProperty Name="ImageMaxHeight" />
+      <RootEvent Name="ImageResolving" />
+      <RootEvent Name="LinkClicked" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ContentPresenter">
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="FontWeight" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="LineStackingStrategy" />
+      <RootProperty Name="TextLineBounds" />
+      <RootProperty Name="OpticalMarginAlignment" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="ContentTemplate" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="ContentTransitions" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="Padding" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="RenderTransformOrigin" />
+      <RootProperty Name="Background" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.DropShadowPanel">
+      <RootProperty Name="Color" />
+      <RootProperty Name="ShadowOpacity" />
+      <RootProperty Name="BlurRadius" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="OffsetY" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsControl">
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="ItemsPanel" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="Items" />
+      <RootProperty Name="ItemContainerStyle" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPanelTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Children" />
+      <RootProperty Name="Orientation" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.DataTemplate">
+      <RootProperty Name="Template" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.EventTriggerBehavior">
+      <RootProperty Name="EventName" />
+      <RootProperty Name="Actions" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.InvokeCommandAction">
+      <RootProperty Name="Command" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.FontIcon">
+      <RootProperty Name="FontFamily" />
+      <RootProperty Name="Glyph" />
+      <RootProperty Name="Foreground" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="MirroredWhenRightToLeft" />
+      <RootProperty Name="UseLayoutRounding" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
+      <RootMethod Name="GetToolTip" />
+      <RootMethod Name="SetToolTip" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AppBarSeparator">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Visibility" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="OffContent" />
+      <RootProperty Name="OnContent" />
+      <RootProperty Name="IsOn" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Header" />
+      <RootEvent Name="Toggled" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="Items" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="SelectedIndex" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Header" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="DisplayMemberPath" />
+      <RootProperty Name="SelectedValuePath" />
+      <RootProperty Name="Name" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBoxItem">
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.PathIcon">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Data" />
+      <RootProperty Name="RenderTransform" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.CompositeTransform">
+      <RootProperty Name="TranslateY" />
+      <RootProperty Name="TranslateX" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.VisualStateGroup">
+      <RootProperty Name="States" />
+      <RootProperty Name="Transitions" />
+      <RootEvent Name="CurrentStateChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.VisualState">
+      <RootProperty Name="StateTriggers" />
+      <RootProperty Name="Setters" />
+      <RootProperty Name="Storyboard" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.StateTrigger">
+      <RootProperty Name="IsActive" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.AdaptiveTrigger">
+      <RootProperty Name="MinWindowWidth" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SampleController" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Behaviors.AutoFocusBehavior" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.AutoFocusBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Enums.Animal" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Converters.AnimalToColorConverter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.EnumValuesExtension">
+      <RootProperty Name="Type" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Fill" />
+      <RootProperty Name="Stroke" />
+      <RootProperty Name="StrokeThickness" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Opacity" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.SolidColorBrush">
+      <RootProperty Name="Color" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.EnumValuesExtensionPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Behaviors.FocusBehavior">
+      <RootProperty Name="Targets" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Behaviors.FocusTarget">
+      <RootProperty Name="Control" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="ItemsSource" />
+      <RootProperty Name="SelectionMode" />
+      <RootProperty Name="GroupStyle" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="Header" />
+      <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="IsItemClickEnabled" />
+      <RootProperty Name="ItemTemplateSelector" />
+      <RootProperty Name="ItemsPanel" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.FocusBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.TilesBrush" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.TilesBrushPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.EyedropperPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.UIElementExtensions">
+      <RootMethod Name="GetClipToBounds" />
+      <RootMethod Name="SetClipToBounds" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ClipToBoundsPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.SymbolIcon">
+      <RootProperty Name="Symbol" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="RenderTransformOrigin" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="RenderTransform" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.ImageEx">
+      <RootProperty Name="EnableLazyLoading" />
+      <RootProperty Name="IsCacheEnabled" />
+      <RootProperty Name="Source" />
+      <RootEvent Name="ImageExOpened" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ImageExLazyLoadingControl" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CommandBar">
+      <RootProperty Name="PrimaryCommands" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.SwipeControl">
+      <RootProperty Name="LeftItems" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyout">
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.MenuFlyoutItem">
+      <RootProperty Name="Icon" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.BitmapIconExtension">
+      <RootProperty Name="Source" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.SwipeItems">
+      <RootProperty Name="Mode" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.SwipeItem">
+      <RootProperty Name="Text" />
+      <RootProperty Name="IconSource" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.BitmapIconSourceExtension">
+      <RootProperty Name="Source" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.SymbolIconSourceExtension">
+      <RootProperty Name="Symbol" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.FontIconSourceExtension">
+      <RootProperty Name="Glyph" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.SymbolIconExtension">
+      <RootProperty Name="Symbol" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.FontIconExtension">
+      <RootProperty Name="Glyph" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.IconExtensionsPage" />
+    <RootType FullName="Windows.UI.Xaml.FrameworkElement">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="FocusVisualMargin" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="MaxWidth" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="MaxHeight" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Data.CollectionViewSource">
+      <RootProperty Name="IsSourceGrouped" />
+      <RootProperty Name="Source" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.GroupStyle">
+      <RootProperty Name="HeaderTemplate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Header" />
+      <RootProperty Name="Text" />
+      <RootProperty Name="AcceptsReturn" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="TextWrapping" />
+      <RootEvent Name="TextChanged" />
+      <RootEvent Name="KeyDown" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ObservableGroupPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.OnDevicePage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.AcrylicBrushPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Image">
+      <RootProperty Name="Source" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Stretch" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="RenderTransform" />
+      <RootProperty Name="MaxWidth" />
+      <RootProperty Name="MaxHeight" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.PipelineBrush">
+      <RootProperty Name="Source" />
+      <RootProperty Name="Effects" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.AcrylicSourceExtension" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.SepiaEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.ShadeEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.BlendEffect">
+      <RootProperty Name="Source" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.TemperatureAndTintEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.TintEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.TileSourceExtension">
+      <RootProperty Name="Uri" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.SolidColorSourceExtension" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.HueRotationEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.InvertEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.LuminanceToAlphaEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.OpacityEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.SaturationEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.ImageSourceExtension">
+      <RootProperty Name="Uri" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.BlurEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.ExposureEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.GrayscaleEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.CrossFadeEffect" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.Effects.BackdropSourceExtension">
+      <RootProperty Name="BackgroundSource" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.PipelineBrushPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Converters.RemoteSystemKindToSymbolConverter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RemoteDeviceHelperPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ImageCropperPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.StaggeredLayout" />
+    <RootType FullName="Microsoft.UI.Xaml.Controls.ItemsRepeaterScrollHost">
+      <RootProperty Name="ScrollViewer" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Microsoft.UI.Xaml.Controls.ItemsRepeater">
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Layout" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.StaggeredLayoutPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Converters.EmptyObjectToObjectConverter">
+      <RootProperty Name="EmptyValue" />
+      <RootProperty Name="NotEmptyValue" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Graph.Controls.PeoplePicker" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.PeoplePickerPage" />
+    <RootType FullName="Microsoft.Toolkit.Graph.Controls.PersonView" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.PersonViewPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BackdropGammaTransferBrushPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropInvertBrush" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BackdropInvertBrushPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BackdropSaturationBrushPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BackdropSepiaBrushPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.CameraPreviewPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.CameraHelperPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.NameToColorConverter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBox" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.TokenizingTextBoxItem" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.TokenizingTextBoxPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.CompareStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.CompareStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.IsEqualStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.IsEqualStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.FullScreenModeStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.FullScreenModeStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.IsNullOrEmptyStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.IsNullOrEmptyStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.NetworkConnectionStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.NetworkConnectionStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.IsNotEqualStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.IsNotEqualStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.RegexStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RegexStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.UserHandPreferenceStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.UserHandPreferenceStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Triggers.UserInteractionModeStateTrigger" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.UserInteractionModeStateTriggerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.UniformGridPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.CarouselPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.AdvancedCollectionViewPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.RelativePanel">
+      <RootProperty Name="Children" />
+      <RootMethod Name="GetAlignLeftWithPanel" />
+      <RootMethod Name="SetAlignLeftWithPanel" />
+      <RootMethod Name="GetAlignRightWithPanel" />
+      <RootMethod Name="SetAlignRightWithPanel" />
+      <RootMethod Name="GetBelow" />
+      <RootMethod Name="SetBelow" />
+      <RootMethod Name="GetRightOf" />
+      <RootMethod Name="SetRightOf" />
+      <RootMethod Name="GetAlignLeftWith" />
+      <RootMethod Name="SetAlignLeftWith" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.Run">
+      <RootProperty Name="Text" />
+      <RootProperty Name="FontWeight" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BluetoothLEHelperPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Frame">
+      <RootEvent Name="Navigated" />
+      <RootEvent Name="Navigating" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Implicit">
+      <RootMethod Name="GetAnimations" />
+      <RootMethod Name="SetAnimations" />
+      <RootMethod Name="GetShowAnimations" />
+      <RootMethod Name="SetShowAnimations" />
+      <RootMethod Name="GetHideAnimations" />
+      <RootMethod Name="SetHideAnimations" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.OffsetAnimation">
+      <RootProperty Name="Duration" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ConnectedAnimationsPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Connected">
+      <RootMethod Name="GetKey" />
+      <RootMethod Name="SetKey" />
+      <RootMethod Name="GetListItemElementName" />
+      <RootMethod Name="SetListItemElementName" />
+      <RootMethod Name="GetListItemKey" />
+      <RootMethod Name="SetListItemKey" />
+      <RootMethod Name="GetAnchorElement" />
+      <RootMethod Name="SetAnchorElement" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ConnectedAnimations.Pages.FirstPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.GridView">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="SelectionMode" />
+      <RootProperty Name="IsItemClickEnabled" />
+      <RootProperty Name="ItemTemplate" />
+      <RootProperty Name="Name" />
+      <RootProperty Name="ItemsPanel" />
+      <RootProperty Name="ItemContainerStyle" />
+      <RootProperty Name="ItemContainerTransitions" />
+      <RootProperty Name="Transitions" />
+      <RootProperty Name="GroupStyle" />
+      <RootEvent Name="ItemClick" />
+      <RootEvent Name="ChoosingItemContainer" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ConnectedAnimations.Pages.SecondPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ConnectedAnimations.Pages.ThirdPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.DataGrid">
+      <RootProperty Name="Columns" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.DataGridTextColumn" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.DataGridComboBoxColumn" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.DataGridPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.DockPanel" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.DockPanelPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush">
+      <RootProperty Name="Amount" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BackdropBlurBrushPage" />
+    <RootType FullName="Microsoft.Toolkit.Graph.Providers.MockProviderBehavior">
+      <RootProperty Name="SignedIn" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Graph.Controls.LoginButton" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.LoginButtonPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.DeveloperTools.FocusTracker" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.FocusTrackerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.FrameworkElementExtensions">
+      <RootMethod Name="GetEnableActualSizeBinding" />
+      <RootMethod Name="SetEnableActualSizeBinding" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.FrameworkElementExtensionsPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.Input.GazeInteraction.GazeInput">
+      <RootMethod Name="GetInteraction" />
+      <RootMethod Name="SetInteraction" />
+      <RootMethod Name="GetIsCursorVisible" />
+      <RootMethod Name="SetIsCursorVisible" />
+      <RootMethod Name="GetCursorRadius" />
+      <RootMethod Name="SetCursorRadius" />
+      <RootMethod Name="GetIsSwitchEnabled" />
+      <RootMethod Name="SetIsSwitchEnabled" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Common.TimeSpanConverter" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ProgressBar">
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
+      <RootProperty Name="Background" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="Minimum" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.GazeInteractionPage" />
+    <RootType FullName="Windows.UI.Xaml.Data.RelativeSource" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.GazeTracingPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.HeaderedContentControl">
+      <RootProperty Name="Header" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.HeaderedContentControlPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.HeaderedItemsControl" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.HeaderedItemsControlPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ImageBlendBrushPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.VisualExtensions">
+      <RootMethod Name="GetCenterPoint" />
+      <RootMethod Name="SetCenterPoint" />
+      <RootMethod Name="GetOffset" />
+      <RootMethod Name="SetOffset" />
+      <RootMethod Name="GetOpacity" />
+      <RootMethod Name="SetOpacity" />
+      <RootMethod Name="GetRotationAngleInDegrees" />
+      <RootMethod Name="SetRotationAngleInDegrees" />
+      <RootMethod Name="GetScale" />
+      <RootMethod Name="SetScale" />
+      <RootMethod Name="GetNormalizedCenterPoint" />
+      <RootMethod Name="SetNormalizedCenterPoint" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.TranslationAnimation">
+      <RootProperty Name="From" />
+      <RootProperty Name="To" />
+      <RootProperty Name="Duration" />
+      <RootProperty Name="Delay" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.OpacityAnimation">
+      <RootProperty Name="To" />
+      <RootProperty Name="Duration" />
+      <RootProperty Name="From" />
+      <RootProperty Name="Delay" />
+      <RootProperty Name="SetInitialValueBeforeDelay" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.RotationAnimation" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.RotationInDegreesAnimation" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.ScalarAnimation" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.ScaleAnimation">
+      <RootProperty Name="From" />
+      <RootProperty Name="To" />
+      <RootProperty Name="Duration" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Vector2Animation">
+      <RootProperty Name="KeyFrames" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Vector3Animation" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Vector4Animation" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.KeyFrameCollection" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Vector2KeyFrame" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Vector3KeyFrame" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Vector4KeyFrame" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.ExpressionKeyFrame" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.ScalarKeyFrame" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ImplicitAnimationsPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.DismissCommand" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.InAppNotificationPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.LayoutTransformControl">
+      <RootProperty Name="Transform" />
+      <RootProperty Name="Child" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.TransformGroup">
+      <RootProperty Name="Children" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.RotateTransform">
+      <RootProperty Name="Angle" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.ScaleTransform">
+      <RootProperty Name="ScaleX" />
+      <RootProperty Name="ScaleY" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.SkewTransform">
+      <RootProperty Name="AngleX" />
+      <RootProperty Name="AngleY" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.LayoutTransformControlPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.InfiniteCanvasPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.MarkdownParserPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.Mouse">
+      <RootMethod Name="GetCursor" />
+      <RootMethod Name="SetCursor" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.MouseCursorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RadialGradientBrushPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CheckBox">
+      <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RemoteDevicePickerControlPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Common.DoubleTopThicknessConverter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.ScrollViewerExtensions">
+      <RootMethod Name="GetVerticalScrollBarMargin" />
+      <RootMethod Name="SetVerticalScrollBarMargin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Shapes.Polygon">
+      <RootProperty Name="Height" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Points" />
+      <RootProperty Name="Stroke" />
+      <RootProperty Name="Fill" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.LineBreak" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.ScrollHeader">
+      <RootProperty Name="Mode" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ListViewItem" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ScrollViewerExtensionsPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.StaggeredPanel" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.StaggeredPanelPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.StringExtensionsPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Converters.TypeToObjectConverter">
+      <RootProperty Name="Type" />
+      <RootProperty Name="TrueValue" />
+      <RootProperty Name="FalseValue" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Visibility" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar">
+      <RootProperty Name="Formatter" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.RichEditBox" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.TextToolbarSamples.SampleFormatter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.RichText.RichTextFormatter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.TextToolbarPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.ListViewExtensions">
+      <RootMethod Name="GetAlternateColor" />
+      <RootMethod Name="SetAlternateColor" />
+      <RootMethod Name="GetAlternateItemTemplate" />
+      <RootMethod Name="SetAlternateItemTemplate" />
+      <RootMethod Name="GetCommand" />
+      <RootMethod Name="SetCommand" />
+      <RootMethod Name="GetStretchItemContainerDirection" />
+      <RootMethod Name="SetStretchItemContainerDirection" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ListViewExtensionsPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Menu.Commands.NewProjectCommand" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Menu.Commands.NewFileCommand" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Menu.Commands.GenericCommand" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Converters.StringFormatConverter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.MenuPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.OrbitView">
+      <RootProperty Name="ItemsSource" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.OrbitViewDataItemCollection" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.OrbitViewDataItem" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.OrbitViewPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ThemeListenerPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.ApplicationViewExtensions">
+      <RootMethod Name="GetTitle" />
+      <RootMethod Name="SetTitle" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.TitleBarExtensions">
+      <RootMethod Name="GetBackgroundColor" />
+      <RootMethod Name="SetBackgroundColor" />
+      <RootMethod Name="GetForegroundColor" />
+      <RootMethod Name="SetForegroundColor" />
+      <RootMethod Name="GetButtonBackgroundColor" />
+      <RootMethod Name="SetButtonBackgroundColor" />
+      <RootMethod Name="GetButtonForegroundColor" />
+      <RootMethod Name="SetButtonForegroundColor" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ViewExtensionsPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.NetworkHelperPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.Expander">
+      <RootProperty Name="Header" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="IsExpanded" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BackgroundTaskHelperPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.DispatcherQueueHelperPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.BladeView">
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.BladeItem" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BladePage" />
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.DataTriggerBehavior" />
+    <RootType FullName="Microsoft.Xaml.Interactions.Media.PlaySoundAction" />
+    <RootType FullName="Microsoft.Xaml.Interactions.Media.ControlStoryboardAction" />
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.NavigateToPageAction" />
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.GoToStateAction" />
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.ChangePropertyAction" />
+    <RootType FullName="Microsoft.Xaml.Interactions.Core.CallMethodAction" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Blur">
+      <RootProperty Name="AutomaticallyStart" />
+      <RootProperty Name="Delay" />
+      <RootProperty Name="Value" />
+      <RootProperty Name="Duration" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.BlurBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.DeveloperTools.AlignmentGrid" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.AlignmentGridPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.MarkdownTextBlockPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ExpanderPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.HyperlinkButton">
+      <RootProperty Name="Content" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="NavigateUri" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootEvent Name="Click" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.MicrosoftTranslatorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Saturation" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.SaturationBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.TileControl">
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.FlipView">
+      <RootProperty Name="Items" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.TileControlPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.RadialProgressBar" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RadialProgressBarPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ScrollHeaderPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.DropShadowPanelPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.GridSplitterPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.FadeHeaderBehavior" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.FadeHeaderBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.IncrementalLoadingCollectionPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Light">
+      <RootProperty Name="Color" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.LightBehaviorPage" />
+    <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
+      <RootProperty Name="ImageSource" />
+      <RootProperty Name="Stretch" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.LinkedInPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.Loading" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.AdaptiveGridView" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.LoadingPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.MasterDetailsView">
+      <RootProperty Name="Visibility" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.MasterDetailsViewPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ImageCachePage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.PrintHelperPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.ReorderGridAnimation">
+      <RootMethod Name="GetDuration" />
+      <RootMethod Name="SetDuration" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ReorderGridPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.RotatorTile" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RotatorTilePage" />
+    <RootType FullName="NotificationsVisualizerLibrary.PreviewTile">
+      <RootProperty Name="IsAnimationEnabled" />
+      <RootProperty Name="TileSize" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.Paragraph">
+      <RootProperty Name="Inlines" />
+      <RootProperty Name="FontSize" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Documents.Hyperlink">
+      <RootProperty Name="NavigateUri" />
+      <RootProperty Name="Inlines" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.LiveTilePage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Offset" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.OffsetBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Fade" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.FadeBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ObjectStoragePage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.SurfaceDialTextbox">
+      <RootMethod Name="GetStepValue" />
+      <RootMethod Name="SetStepValue" />
+      <RootMethod Name="GetForceMenuItem" />
+      <RootMethod Name="SetForceMenuItem" />
+      <RootMethod Name="GetEnableHapticFeedback" />
+      <RootMethod Name="SetEnableHapticFeedback" />
+      <RootMethod Name="GetEnableMinMaxValue" />
+      <RootMethod Name="SetEnableMinMaxValue" />
+      <RootMethod Name="GetMinValue" />
+      <RootMethod Name="SetMinValue" />
+      <RootMethod Name="GetMaxValue" />
+      <RootMethod Name="SetMaxValue" />
+      <RootMethod Name="GetIcon" />
+      <RootMethod Name="SetIcon" />
+      <RootMethod Name="GetEnableTapToNextControl" />
+      <RootMethod Name="SetEnableTapToNextControl" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.SurfaceDialTextboxPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.SystemInformationPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.TextBoxMask">
+      <RootMethod Name="GetMask" />
+      <RootMethod Name="SetMask" />
+      <RootMethod Name="GetPlaceHolder" />
+      <RootMethod Name="SetPlaceHolder" />
+      <RootMethod Name="GetCustomMask" />
+      <RootMethod Name="SetCustomMask" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.TextBoxMaskPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Common.BoolStringConverter" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Extensions.TextBoxRegex">
+      <RootMethod Name="GetRegex" />
+      <RootMethod Name="SetRegex" />
+      <RootMethod Name="GetValidationMode" />
+      <RootMethod Name="SetValidationMode" />
+      <RootMethod Name="GetValidationType" />
+      <RootMethod Name="SetValidationType" />
+      <RootMethod Name="GetIsValid" />
+      <RootMethod Name="SetIsValid" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.TextBoxRegexPage" />
+    <RootType FullName="NotificationsVisualizerLibrary.PreviewToast">
+      <RootProperty Name="MaxWidth" />
+      <RootProperty Name="HorizontalAlignment" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ToastPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.Twitter_Service.TwitterTemplateSelector">
+      <RootProperty Name="TweetTemplate" />
+      <RootProperty Name="EventTemplate" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ListViewItemPresenter">
+      <RootProperty Name="PointerOverBackground" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.NullExtension" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.TwitterPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ImageExPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Behaviors.ViewportBehavior" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ViewportBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.VisualExtensionsPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.WeatherLiveTileAndToastPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.RadialGauge" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RadialGaugePage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.RangeSelector" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RangeSelectorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Rotate" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.RotateBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.Behaviors.Scale" />
+    <RootType FullName="Windows.UI.Xaml.Media.TranslateTransform" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ScaleBehaviorPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.WeiboPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Controls.WrapLayout" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.WrapLayoutPage" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.WrapPanelPage" />
+    <RootType FullName="Microsoft.UI.Xaml.Controls.NavigationView">
+      <RootProperty Name="Style" />
+      <RootProperty Name="PaneDisplayMode" />
+      <RootProperty Name="MenuItemTemplate" />
+      <RootProperty Name="SelectionFollowsFocus" />
+      <RootProperty Name="IsSettingsVisible" />
+      <RootProperty Name="PaneFooter" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="PaneToggleButtonStyle" />
+      <RootProperty Name="CompactPaneLength" />
+      <RootEvent Name="ItemInvoked" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.AutoSuggestBox">
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="QueryIcon" />
+      <RootEvent Name="TextChanged" />
+      <RootEvent Name="KeyDown" />
+      <RootEvent Name="QuerySubmitted" />
+    </RootType>
+    <RootType FullName="Microsoft.UI.Xaml.Controls.ParallaxView">
+      <RootProperty Name="VerticalShift" />
+      <RootProperty Name="Child" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Shell" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.UI.Animations.AnimationCollection" />
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.Pages.About" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Slider">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="StepFrequency" />
+    </RootType>
+    <RootType FullName="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.AdaptiveGridViewPage" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.PivotHeaderItem" />
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.TemplateBindingExtension" />
+    <RootType FullName="Windows.UI.Xaml.VisualTransition">
+      <RootProperty Name="From" />
+      <RootProperty Name="To" />
+      <RootProperty Name="GeneratedDuration" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.Storyboard">
+      <RootProperty Name="Children" />
+      <RootMethod Name="GetTargetName" />
+      <RootMethod Name="SetTargetName" />
+      <RootMethod Name="GetTargetProperty" />
+      <RootMethod Name="SetTargetProperty" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.ObjectAnimationUsingKeyFrames">
+      <RootProperty Name="KeyFrames" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.DiscreteObjectKeyFrame">
+      <RootProperty Name="KeyTime" />
+      <RootProperty Name="Value" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.DoubleAnimation">
+      <RootProperty Name="Duration" />
+      <RootProperty Name="To" />
+      <RootProperty Name="BeginTime" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.FlyoutPresenter" />
+    <RootType FullName="Windows.UI.Xaml.Controls.GridViewItem" />
+    <RootType FullName="Windows.UI.Xaml.UIElement">
+      <RootProperty Name="Transitions" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="RenderTransformOrigin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ToggleButton" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.ButtonBase" />
+    <RootType FullName="Windows.UI.Xaml.Controls.SplitView">
+      <RootProperty Name="Background" />
+      <RootProperty Name="CompactPaneLength" />
+      <RootProperty Name="DisplayMode" />
+      <RootProperty Name="IsPaneOpen" />
+      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="OpenPaneLength" />
+      <RootProperty Name="PaneBackground" />
+      <RootProperty Name="Pane" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ContentControl">
+      <RootProperty Name="IsTabStop" />
+      <RootProperty Name="VerticalContentAlignment" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="MinHeight" />
+      <RootProperty Name="Content" />
+      <RootProperty Name="ContentTemplate" />
+      <RootProperty Name="Style" />
+      <RootProperty Name="MinWidth" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="UseSystemFocusVisuals" />
+      <RootProperty Name="Clip" />
+    </RootType>
+    <RootType FullName="Microsoft.UI.Xaml.Controls.NavigationViewItem">
+      <RootProperty Name="Icon" />
+      <RootProperty Name="Style" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Automation.AutomationProperties">
+      <RootMethod Name="GetName" />
+      <RootMethod Name="SetName" />
+      <RootMethod Name="GetAccessibilityView" />
+      <RootMethod Name="SetAccessibilityView" />
+      <RootMethod Name="GetLandmarkType" />
+      <RootMethod Name="SetLandmarkType" />
+    </RootType>
+    <RootType FullName="Microsoft.UI.Xaml.Controls.StackLayout">
+      <RootProperty Name="Orientation" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Flyout">
+      <RootProperty Name="Placement" />
+      <RootProperty Name="FlyoutPresenterStyle" />
+      <RootProperty Name="Content" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.PivotPanel">
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Children" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPresenter">
+      <RootProperty Name="RenderTransform" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.RectangleGeometry" />
+    <RootType FullName="Windows.UI.Xaml.Controls.Primitives.PivotHeaderPanel">
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="RenderTransform" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollContentPresenter">
+      <RootProperty Name="ContentTemplate" />
+      <RootProperty Name="Margin" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.DoubleAnimationUsingKeyFrames">
+      <RootProperty Name="KeyFrames" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.EasingDoubleKeyFrame">
+      <RootProperty Name="KeyTime" />
+      <RootProperty Name="Value" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation" />
+    <RootType FullName="Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation" />
+    <RootType FullName="System.String" />
+    <RootType FullName="Windows.UI.Color" />
+  </Roots.RootTypes>
+</Roots>

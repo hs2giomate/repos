@@ -1,0 +1,243 @@
+﻿<Page x:Class="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.WeiboPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:weibo="using:Microsoft.Toolkit.Services.Weibo"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <DataTemplate x:Key="WeiboSchemaTemplate"
+                                                    >
+            <Border x:ConnectionId='3' Margin="12,0,12,12"
+                    Padding="12"
+                    Background="White"
+                    BorderBrush="{ThemeResource InfoArea-Titlebar}"
+                    BorderThickness="1"
+                    CornerRadius="4">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2"
+                               Width="50"
+                               Height="50"
+                               Margin="0,0,12,0"
+                               VerticalAlignment="Top"
+                               Source="{Binding User.ProfileImageUrl}"
+                               Stretch="Uniform" />
+                        <TextBlock x:ConnectionId='8' Grid.Column="1"
+                                   FontWeight="SemiBold"
+                                                             />
+                        <TextBlock x:ConnectionId='9' Grid.Row="1"
+                                   Grid.Column="1"
+                                   VerticalAlignment="Top"
+                                   FontWeight="Light"
+                                                                   />
+                        <Image Grid.RowSpan="2"
+                               Grid.Column="2"
+                               Width="24"
+                               Height="24"
+                               VerticalAlignment="Top"
+                               Source="/SamplePages/Weibo Service/WeiboLogo.png"
+                               Stretch="Uniform" />
+                    </Grid>
+                    <TextBlock x:ConnectionId='4' Grid.Row="1"
+                               FontWeight="SemiBold"
+                                                   
+                               TextTrimming="CharacterEllipsis"
+                               TextWrapping="WrapWholeWords" />
+
+                    <StackPanel Grid.Row="2"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <TextBlock x:ConnectionId='6' FontWeight="ExtraLight"
+                                                                />
+                        <TextBlock x:ConnectionId='7' Margin="4,0,0,0"
+                                   FontWeight="ExtraLight"
+                                                                  />
+                    </StackPanel>
+
+                    <Image x:ConnectionId='5' x:Name="ThumbImage"
+                           Grid.Row="3"
+                           x:Load="False"                                 
+                           Source="{Binding ThumbnailImageUrl}"
+                           MaxWidth="100" 
+                           MaxHeight="100"
+                           HorizontalAlignment="Left" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid MaxWidth="800"
+          Background="{StaticResource Brush-Grey-05}">
+        <Grid Margin="24"
+              Background="{StaticResource Brush-Grey-04}"
+              BorderBrush="#FFCCCCCC"
+              BorderThickness="1"
+              CornerRadius="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                <Image Width="100"
+                       Height="100"
+                       Margin="24"
+                       Source="WeiboLogo.png"
+                       Stretch="Uniform" />
+                <Border x:ConnectionId='25' x:Name="ProfileImage"
+                        Width="100"
+                        Height="100"
+                        CornerRadius="50"
+                        Visibility="Collapsed">
+                    <Border.Background>
+                        <ImageBrush ImageSource="{Binding ProfileImageUrl}"
+                                    Stretch="Uniform" />
+                    </Border.Background>
+                </Border>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--  Credentials area  -->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid Background="#FFCCCCCC">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button x:ConnectionId='24' x:Name="CredentialsBoxExpandButton"
+                                    VerticalAlignment="Stretch"
+                                                                              
+                                    Content=""
+                                    FontFamily="Segoe MDL2 Assets" />
+                            <TextBlock Grid.Column="1"
+                                       Margin="12,6"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource Brush-Grey-01}"
+                                       Text="Credentials" />
+                        </Grid>
+                        <StackPanel x:ConnectionId='19' x:Name="CredentialsBox"
+                                    Grid.Row="1"
+                                    Margin="24"
+                                    Orientation="Vertical">
+                            <HyperlinkButton Margin="0,0,0,15"
+                                             Content="Show me how to get these values" 
+                                             NavigateUri="https://docs.microsoft.com/windows/uwpcommunitytoolkit/services/Weibo/"/>
+                            <TextBox x:ConnectionId='20' x:Name="AppKey"
+                                     Margin="0,0,0,12"
+                                     Header="App Key:" />
+                            <TextBox x:ConnectionId='21' x:Name="AppSecret"
+                                     Margin="0,0,0,12"
+                                     Header="App Secret:" />
+                            <TextBox x:ConnectionId='22' x:Name="RedirectUri"
+                                     Margin="0,0,0,12"
+                                     Header="Redirect URI:" />
+                            <Button x:ConnectionId='23' x:Name="ConnectButton"
+                                    Margin="0,10,0,0"
+                                    VerticalAlignment="Bottom"
+                                                                 
+                                    Content="Connect" />
+                        </StackPanel>
+                    </Grid>
+                    <!--  Status area  -->
+                    <Grid x:ConnectionId='10' x:Name="ShareBox"
+                          Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Background="{ThemeResource InfoArea-Titlebar}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button x:ConnectionId='18' x:Name="StatusBoxExpandButton"
+                                    VerticalAlignment="Stretch"
+                                                                         
+                                    Content=""
+                                    FontFamily="Segoe MDL2 Assets" />
+                            <TextBlock Grid.Column="1"
+                                       Margin="12,6"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="{ThemeResource Brush-Grey-01}"
+                                       Text="Status" />
+                        </Grid>
+
+                        <StackPanel x:ConnectionId='14' x:Name="StatusPanel"
+                                    Grid.Row="1"
+                                    Margin="24">
+                            <TextBox x:ConnectionId='15' x:Name="StatusText"
+                                     Margin="0,0,0,12"
+                                     Header="Weibo status" />
+                            <TextBlock Margin="0,0,0,12"
+                                       VerticalAlignment="Top"
+                                       TextWrapping="Wrap"
+                                       Text="Due to the restriction by Weibo API, your status must include a url which starts with &quot;http&quot;/&quot;https&quot;.&#x0a;You should add the url domain as one of the security domain in application information settings of your Weibo app." />
+
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:ConnectionId='16' x:Name="ShareButton"
+                                        Margin="0,0,12,0"
+                                                                   
+                                        Content="Share" />
+                                <Button x:ConnectionId='17' x:Name="SharePictureButton"
+                                                                          
+                                        Content="Share with picture" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    
+                     <!--  Results area  -->
+                    <ListView x:ConnectionId='11' x:Name="ListView"
+                              Grid.Row="2"
+                              Margin="0,12,0,0"
+                              IsItemClickEnabled="False"
+                              SelectionMode="None" 
+                              ItemTemplate="{StaticResource WeiboSchemaTemplate}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" 
+                                        Value="Stretch" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <ListViewItemPresenter PointerOverBackground="{x:Null}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
+

@@ -1,0 +1,1 @@
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\UITests\UITests.App\AppPackages\UITests.App_1.0.0.0_x64_Debug_Test\UITests.App_1.0.0.0_x64_Debug.msix

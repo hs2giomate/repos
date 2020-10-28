@@ -1,0 +1,1817 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Toolkit.Uwp.UI.Controls.Markdown</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.CodeBlockResolvingEventArgs">
+            <summary>
+            Arguments for the <see cref="E:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBlockResolving"/> event when a Code Block is being rendered.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.CodeBlockResolvingEventArgs.CodeLanguage">
+            <summary>
+            Gets the language of the Code Block, as specified by ```{Language} on the first line of the block,
+            e.g. <para/>
+            ```C# <para/>
+            public void Method();<para/>
+            ```<para/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.CodeBlockResolvingEventArgs.Text">
+            <summary>
+            Gets the raw code block text
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.CodeBlockResolvingEventArgs.InlineCollection">
+            <summary>
+            Gets Collection to add formatted Text to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.CodeBlockResolvingEventArgs.Handled">
+            <summary>
+            Gets or sets a value indicating whether this event was handled successfully.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.ImageResolvingEventArgs">
+            <summary>
+            Arguments for the <see cref="E:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageResolving"/> event which is called when a url needs to be resolved to a <see cref="T:Windows.UI.Xaml.Media.ImageSource"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageResolvingEventArgs.Url">
+            <summary>
+            Gets the url of the image in the markdown document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageResolvingEventArgs.Tooltip">
+            <summary>
+            Gets the tooltip of the image in the markdown document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageResolvingEventArgs.Handled">
+            <summary>
+            Gets or sets a value indicating whether this event was handled successfully.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageResolvingEventArgs.Image">
+            <summary>
+            Gets or sets the image to display in the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageResolvingEventArgs.GetDeferral">
+            <summary>
+            Informs the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock"/> that the event handler might run asynchronously.
+            </summary>
+            <returns>Deferral</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.ImageResolvingEventArgs.WaitForDeferrals">
+            <summary>
+            Returns a <see cref="T:System.Threading.Tasks.Task"/> that completes when all <see cref="T:Windows.Foundation.Deferral"/>s have completed.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.LinkClickedEventArgs">
+            <summary>
+            Arguments for the OnLinkClicked event which is fired then the user presses a link.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.LinkClickedEventArgs.Link">
+            <summary>
+            Gets the link that was tapped.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownRenderedEventArgs">
+            <summary>
+            Arguments for the OnMarkdownRendered event which indicates when the markdown has been
+            rendered.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownRenderedEventArgs.Exception">
+            <summary>
+            Gets the exception if there was one. If the exception is null there was no error.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock">
+            <summary>
+            An efficient and extensible control that can parse and render markdown.
+            </summary>
+            <summary>
+            Measurement Properties for elements in the Markdown.
+            </summary>
+            <summary>
+            An efficient and extensible control that can parse and render markdown.
+            </summary>
+            <summary>
+            An efficient and extensible control that can parse and render markdown.
+            </summary>
+            <summary>
+            An efficient and extensible control that can parse and render markdown.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.OnApplyTemplate">
+            <inheritdoc />
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodePaddingProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodePadding"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeMarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeMargin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBorderThicknessProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBorderThickness"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageStretchProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageStretch"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBorderThicknessProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBorderThickness"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeMarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeMargin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodePaddingProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodePadding"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1FontSizeProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1FontSize"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1MarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1Margin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2FontSizeProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2FontSize"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2MarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2Margin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3FontSizeProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3FontSize"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3MarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3Margin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4FontSizeProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4FontSize"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4MarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4Margin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5FontSizeProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5FontSize"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5MarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5Margin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6MarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6Margin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6FontSizeProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6FontSize"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleMarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleMargin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleThicknessProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleThickness"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListMarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListMargin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListGutterWidthProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListGutterWidth"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListBulletSpacingProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListBulletSpacing"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ParagraphMarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ParagraphMargin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ParagraphLineHeightProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ParagraphLineHeight"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBorderThicknessProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBorderThickness"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteMarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteMargin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuotePaddingProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuotePadding"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.YamlBorderThicknessProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.YamlBorderThickness"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableBorderThicknessProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableBorderThickness"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableCellPaddingProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableCellPadding"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableMarginProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableMargin"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TextWrappingProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TextWrapping"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageMaxHeightProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageMaxHeight"/>
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageMaxWidthProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageMaxWidth"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageMaxWidth">
+            <summary>
+            Gets or sets the MaxWidth for images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageMaxHeight">
+            <summary>
+            Gets or sets the MaxHeight for images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageStretch">
+            <summary>
+            Gets or sets the stretch used for images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBorderThickness">
+            <summary>
+            Gets or sets the thickness of the border around code blocks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBorderThickness">
+            <summary>
+            Gets or sets the thickness of the border for inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodePadding">
+            <summary>
+            Gets or sets the space between the code border and the text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeMargin">
+            <summary>
+            Gets or sets the margin for inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeMargin">
+            <summary>
+            Gets or sets the space between the code border and the text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodePadding">
+            <summary>
+            Gets or sets space between the code border and the text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1FontSize">
+            <summary>
+            Gets or sets the font size for level 1 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1Margin">
+            <summary>
+            Gets or sets the margin for level 1 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2FontSize">
+            <summary>
+            Gets or sets the font size for level 2 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2Margin">
+            <summary>
+            Gets or sets the margin for level 2 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3FontSize">
+            <summary>
+            Gets or sets the font size for level 3 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3Margin">
+            <summary>
+            Gets or sets the margin for level 3 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4FontSize">
+            <summary>
+            Gets or sets the font size for level 4 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4Margin">
+            <summary>
+            Gets or sets the margin for level 4 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5FontSize">
+            <summary>
+            Gets or sets the font size for level 5 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5Margin">
+            <summary>
+            Gets or sets the margin for level 5 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6FontSize">
+            <summary>
+            Gets or sets the font size for level 6 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6Margin">
+            <summary>
+            Gets or sets the margin for level 6 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleMargin">
+            <summary>
+            Gets or sets the margin used for horizontal rules.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleThickness">
+            <summary>
+            Gets or sets the vertical thickness of the horizontal rule.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListMargin">
+            <summary>
+            Gets or sets the margin used by lists.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListGutterWidth">
+            <summary>
+            Gets or sets the width of the space used by list item bullets/numbers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ListBulletSpacing">
+            <summary>
+            Gets or sets the space between the list item bullets/numbers and the list item content.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ParagraphMargin">
+            <summary>
+            Gets or sets the margin used for paragraphs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ParagraphLineHeight">
+            <summary>
+            Gets or sets the line hegiht used for paragraphs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBorderThickness">
+            <summary>
+            Gets or sets the thickness of quote borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteMargin">
+            <summary>
+            Gets or sets the space outside of quote borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuotePadding">
+            <summary>
+            Gets or sets the space between the quote border and the text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.YamlBorderThickness">
+            <summary>
+            Gets or sets the thickness of any yaml header borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableBorderThickness">
+            <summary>
+            Gets or sets the thickness of any table borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableCellPadding">
+            <summary>
+            Gets or sets the padding inside each cell.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableMargin">
+            <summary>
+            Gets or sets the margin used by tables.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TextWrapping">
+            <summary>
+            Gets or sets the word wrapping behavior.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.OnPropertyChangedStatic(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Calls OnPropertyChanged.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.OnPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyProperty)">
+            <summary>
+            Fired when the value of a DependencyProperty is changed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Hyperlink_Click(Windows.UI.Xaml.Documents.Hyperlink,Windows.UI.Xaml.Documents.HyperlinkClickEventArgs)">
+            <summary>
+            Fired when a user taps one of the link elements
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.NewImagelink_Tapped(System.Object,Windows.UI.Xaml.Input.TappedRoutedEventArgs)">
+            <summary>
+            Fired when a user taps one of the image elements
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.MarkdownRendered">
+            <summary>
+            Fired when the text is done parsing and formatting. Fires each time the markdown is rendered.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.LinkClicked">
+            <summary>
+            Fired when a link element in the markdown was tapped.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageClicked">
+            <summary>
+            Fired when an image element in the markdown was tapped.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.ImageResolving">
+            <summary>
+            Fired when an image from the markdown document needs to be resolved.
+            The default implementation is basically <code>new BitmapImage(new Uri(e.Url));</code>.
+            <para/>You must set <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.ImageResolvingEventArgs.Handled"/> to true in order to process your changes.
+            </summary>
+        </member>
+        <member name="E:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBlockResolving">
+            <summary>
+            Fired when a Code Block is being Rendered.
+            The default implementation is to output the CodeBlock as Plain Text.
+            <para/>You must set <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.CodeBlockResolvingEventArgs.Handled"/> to true in order to process your changes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.SetRenderer``1">
+            <summary>
+            Sets the Markdown Renderer for Rendering the UI.
+            </summary>
+            <typeparam name="T">The Inherited Markdown Render</typeparam>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.RenderMarkdown">
+            <summary>
+            Called to preform a render of the current Markdown.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.RegisterNewHyperLink(Windows.UI.Xaml.Documents.Hyperlink,System.String)">
+            <summary>
+            Called when the render has a link we need to listen to.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.RegisterNewHyperLink(Windows.UI.Xaml.Controls.Image,System.String,System.Boolean)">
+            <summary>
+            Called when the render has a link we need to listen to.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Microsoft#Toolkit#Uwp#UI#Controls#Markdown#Render#IImageResolver#ResolveImageAsync(System.String,System.String)">
+            <summary>
+            Called when the renderer needs to display a image.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Microsoft#Toolkit#Uwp#UI#Controls#Markdown#Render#ICodeBlockResolver#ParseSyntax(Windows.UI.Xaml.Documents.InlineCollection,System.String,System.String)">
+            <summary>
+            Called when a Code Block is being rendered.
+            </summary>
+            <returns>Parsing was handled Successfully</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.LinkHandled(System.String,System.Boolean)">
+            <summary>
+            Called when a link needs to be handled
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeStylingProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeStyling"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.UseSyntaxHighlightingProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.UseSyntaxHighlighting"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.WrapCodeBlockProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.WrapCodeBlock"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TextProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Text"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBackgroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBackground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeForeground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBorderBrushProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBorderBrush"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.IsTextSelectionEnabledProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.IsTextSelectionEnabled"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.LinkForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.LinkForeground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBackgroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBackground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBorderBrushProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBorderBrush"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeForeground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeFontFamilyProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeFontFamily"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeFontFamilyProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeFontFamily"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.EmojiFontFamilyProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.EmojiFontFamily"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1FontWeightProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1FontWeight"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1ForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1Foreground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2FontWeightProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2FontWeight"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2ForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2Foreground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3FontWeightProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3FontWeight"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3ForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3Foreground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4FontWeightProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4FontWeight"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4ForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4Foreground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5FontWeightProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5FontWeight"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5ForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5Foreground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6FontWeightProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6FontWeight"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6ForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6Foreground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleBrushProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleBrush"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBackgroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBackground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBorderBrushProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBorderBrush"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteForegroundProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteForeground"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableBorderBrushProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableBorderBrush"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.YamlBorderBrushProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.YamlBorderBrush"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.UriPrefixProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.UriPrefix"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.SchemeListProperty">
+            <summary>
+            Gets the dependency property for <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.UriPrefix"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Text">
+            <summary>
+            Gets or sets the markdown text to display.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.UseSyntaxHighlighting">
+            <summary>
+            Gets or sets a value indicating whether to use Syntax Highlighting on Code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.WrapCodeBlock">
+            <summary>
+            Gets or sets a value indicating whether to Wrap the Code Block or use a Horizontal Scroll.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeStyling">
+            <summary>
+            Gets or sets the Default Code Styling for Code Blocks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.IsTextSelectionEnabled">
+            <summary>
+            Gets or sets a value indicating whether text selection is enabled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.LinkForeground">
+            <summary>
+            Gets or sets the brush used to render links.  If this is
+            <c>null</c>, then Foreground is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBackground">
+            <summary>
+            Gets or sets the brush used to fill the background of a code block.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeBorderBrush">
+            <summary>
+            Gets or sets the brush used to render the border fill of a code block.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeForeground">
+            <summary>
+            Gets or sets the brush used to render the text inside a code block.  If this is
+            <c>null</c>, then Foreground is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.CodeFontFamily">
+            <summary>
+            Gets or sets the font used to display code.  If this is <c>null</c>, then
+            <see cref="T:Windows.UI.Xaml.Media.FontFamily"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeFontFamily">
+            <summary>
+            Gets or sets the font used to display code.  If this is <c>null</c>, then
+            <see cref="T:Windows.UI.Xaml.Media.FontFamily"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBackground">
+            <summary>
+            Gets or sets the background brush for inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeForeground">
+            <summary>
+            Gets or sets the foreground brush for inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.InlineCodeBorderBrush">
+            <summary>
+            Gets or sets the border brush for inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.EmojiFontFamily">
+            <summary>
+            Gets or sets the font used to display emojis.  If this is <c>null</c>, then
+            Segoe UI Emoji font is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 1 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header1Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 1 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 2 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header2Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 2 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 3 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header3Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 3 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 4 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header4Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 4 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 5 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header5Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 5 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 6 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.Header6Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 6 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleBrush">
+            <summary>
+            Gets or sets the brush used to render a horizontal rule.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.HorizontalRuleBrush"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBackground">
+            <summary>
+            Gets or sets the brush used to fill the background of a quote block.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBorderBrush">
+            <summary>
+            Gets or sets the brush used to render a quote border.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteBorderBrush"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.QuoteForeground">
+            <summary>
+            Gets or sets the brush used to render the text inside a quote block.  If this is
+            <c>null</c>, then Foreground is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableBorderBrush">
+            <summary>
+            Gets or sets the brush used to render table borders.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableBorderBrush"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.YamlBorderBrush">
+            <summary>
+            Gets or sets the brush used to render yaml borders.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.TableBorderBrush"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.UriPrefix">
+            <summary>
+            Gets or sets the Prefix of Uri.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock.SchemeList">
+            <summary>
+            Gets or sets the SchemeList.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock._listeningHyperlinks">
+            <summary>
+            Holds a list of hyperlinks we are listening to.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock._rootElement">
+            <summary>
+            The root element for our rendering.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.ICodeBlockResolver">
+            <summary>
+            A Parser to parse code strings into Syntax Highlighted text.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.ICodeBlockResolver.ParseSyntax(Windows.UI.Xaml.Documents.InlineCollection,System.String,System.String)">
+            <summary>
+            Parses Code Block text into Rich text.
+            </summary>
+            <param name="inlineCollection">Block to add formatted Text to.</param>
+            <param name="text">The raw code block text</param>
+            <param name="codeLanguage">The language of the Code Block, as specified by ```{Language} on the first line of the block,
+            e.g. <para/>
+            ```C# <para/>
+            public void Method();<para/>
+            ```<para/>
+            </param>
+            <returns>Parsing was handled Successfully</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.IImageResolver">
+            <summary>
+            An interface used to resolve images in the markdown.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.IImageResolver.ResolveImageAsync(System.String,System.String)">
+            <summary>
+            Resolves an Image from a Url.
+            </summary>
+            <param name="url">Url to Resolve.</param>
+            <param name="tooltip">Tooltip for Image.</param>
+            <returns>Image</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.ILinkRegister">
+            <summary>
+            An interface used to handle links in the markdown.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.ILinkRegister.RegisterNewHyperLink(Windows.UI.Xaml.Documents.Hyperlink,System.String)">
+            <summary>
+            Registers a Hyperlink with a LinkUrl.
+            </summary>
+            <param name="newHyperlink">Hyperlink to Register.</param>
+            <param name="linkUrl">Url to Register.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.ILinkRegister.RegisterNewHyperLink(Windows.UI.Xaml.Controls.Image,System.String,System.Boolean)">
+            <summary>
+            Registers a Hyperlink with a LinkUrl.
+            </summary>
+            <param name="newImagelink">ImageLink to Register.</param>
+            <param name="linkUrl">Url to Register.</param>
+            <param name="isHyperLink">Is Image an IsHyperlink.</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.InlineRenderContext">
+            <summary>
+            The Context of the Current Document Rendering.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.InlineRenderContext.WithinItalics">
+            <summary>
+            Gets or sets a value indicating whether the Current Element is being rendered inside an Italics Run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.InlineRenderContext.WithinBold">
+            <summary>
+            Gets or sets a value indicating whether the Current Element is being rendered inside a Bold Run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.InlineRenderContext.WithinHyperlink">
+            <summary>
+            Gets or sets a value indicating whether the Current Element is being rendered inside a Link.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.InlineRenderContext.InlineCollection">
+            <summary>
+            Gets or sets the list to add to.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer">
+            <summary>
+            Block UI Methods for UWP UI Creation.
+            </summary>
+            <summary>
+            Generates Framework Elements for the UWP Markdown Textblock.
+            </summary>
+            <summary>
+            Measurement Properties for elements in the Markdown.
+            </summary>
+            <summary>
+            Inline UI Methods for UWP UI Creation.
+            </summary>
+            <summary>
+            Properties for the UWP Markdown Renderer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderBlocks(System.Collections.Generic.IEnumerable{Microsoft.Toolkit.Parsers.Markdown.Blocks.MarkdownBlock},Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a list of block elements.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderParagraph(Microsoft.Toolkit.Parsers.Markdown.Blocks.ParagraphBlock,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a paragraph element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderYamlHeader(Microsoft.Toolkit.Parsers.Markdown.Blocks.YamlHeaderBlock,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a yaml header element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderHeader(Microsoft.Toolkit.Parsers.Markdown.Blocks.HeaderBlock,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a header element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderListElement(Microsoft.Toolkit.Parsers.Markdown.Blocks.ListBlock,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a list element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderHorizontalRule(Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a horizontal rule element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderQuote(Microsoft.Toolkit.Parsers.Markdown.Blocks.QuoteBlock,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a quote element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderCode(Microsoft.Toolkit.Parsers.Markdown.Blocks.CodeBlock,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a code element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderTable(Microsoft.Toolkit.Parsers.Markdown.Blocks.TableBlock,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a table element.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.#ctor(Microsoft.Toolkit.Parsers.Markdown.MarkdownDocument,Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.ILinkRegister,Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.IImageResolver,Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.ICodeBlockResolver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer"/> class.
+            </summary>
+            <param name="document">The Document to Render.</param>
+            <param name="linkRegister">The LinkRegister, <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock"/> will use itself.</param>
+            <param name="imageResolver">The Image Resolver, <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock"/> will use itself.</param>
+            <param name="codeBlockResolver">The Code Block Resolver, <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.MarkdownTextBlock"/> will use itself.</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Render">
+            <summary>
+            Called externally to render markdown to a text block.
+            </summary>
+            <returns> A XAML UI element. </returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CreateOrReuseRichTextBlock(Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Creates a new RichTextBlock, if the last element of the provided collection isn't already a RichTextBlock.
+            </summary>
+            <returns>The rich text block</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CreateTextBlock(Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.RenderContext)">
+            <summary>
+            Creates a new TextBlock, with default settings.
+            </summary>
+            <returns>The created TextBlock</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.AlterChildRuns(Windows.UI.Xaml.Documents.Span,System.Action{Windows.UI.Xaml.Documents.Span,Windows.UI.Xaml.Documents.Run})">
+            <summary>
+            Performs an action against any runs that occur within the given span.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.AllTextIsSuperscript(Microsoft.Toolkit.Parsers.Markdown.Inlines.IInlineContainer,System.Int32)">
+            <summary>
+            Checks if all text elements inside the given container are superscript.
+            </summary>
+            <returns> <c>true</c> if all text is superscript (level 1); <c>false</c> otherwise. </returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RemoveSuperscriptRuns(Microsoft.Toolkit.Parsers.Markdown.Inlines.IInlineContainer,System.Boolean)">
+            <summary>
+            Removes all superscript elements from the given container.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Padding">
+            <summary>
+            Gets or sets the distance between the border and its child object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.BorderThickness">
+            <summary>
+            Gets or sets the border thickness of a control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CodeBorderThickness">
+            <summary>
+            Gets or sets the thickness of the border around code blocks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.InlineCodeBorderThickness">
+            <summary>
+            Gets or sets the thickness of the border around inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CodeMargin">
+            <summary>
+            Gets or sets the space outside of code blocks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CodePadding">
+            <summary>
+            Gets or sets the space between the code border and the text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.InlineCodePadding">
+            <summary>
+            Gets or sets the space between the code border and the text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.InlineCodeMargin">
+            <summary>
+            Gets or sets the margin of inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header1FontSize">
+            <summary>
+            Gets or sets the font size for level 1 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header1Margin">
+            <summary>
+            Gets or sets the margin for level 1 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header2FontSize">
+            <summary>
+            Gets or sets the font size for level 2 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header2Margin">
+            <summary>
+            Gets or sets the margin for level 2 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header3FontSize">
+            <summary>
+            Gets or sets the font size for level 3 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header3Margin">
+            <summary>
+            Gets or sets the margin for level 3 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header4FontSize">
+            <summary>
+            Gets or sets the font size for level 4 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header4Margin">
+            <summary>
+            Gets or sets the margin for level 4 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header5FontSize">
+            <summary>
+            Gets or sets the font size for level 5 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header5Margin">
+            <summary>
+            Gets or sets the margin for level 5 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header6FontSize">
+            <summary>
+            Gets or sets the font size for level 6 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header6Margin">
+            <summary>
+            Gets or sets the margin for level 6 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.HorizontalRuleMargin">
+            <summary>
+            Gets or sets the margin used for horizontal rules.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.HorizontalRuleThickness">
+            <summary>
+            Gets or sets the vertical thickness of the horizontal rule.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ListMargin">
+            <summary>
+            Gets or sets the margin used by lists.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ListGutterWidth">
+            <summary>
+            Gets or sets the width of the space used by list item bullets/numbers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ListBulletSpacing">
+            <summary>
+            Gets or sets the space between the list item bullets/numbers and the list item content.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ParagraphMargin">
+            <summary>
+            Gets or sets the margin used for paragraphs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ParagraphLineHeight">
+            <summary>
+            Gets or sets the line height used for paragraphs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.QuoteBorderThickness">
+            <summary>
+            Gets or sets the thickness of quote borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.QuoteMargin">
+            <summary>
+            Gets or sets the space outside of quote borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.QuotePadding">
+            <summary>
+            Gets or sets the space between the quote border and the text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.TableBorderThickness">
+            <summary>
+            Gets or sets the thickness of any table borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.YamlBorderThickness">
+            <summary>
+            Gets or sets the thickness of any yaml header borders.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.TableCellPadding">
+            <summary>
+            Gets or sets the padding inside each cell.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.TableMargin">
+            <summary>
+            Gets or sets the margin used by tables.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FontSize">
+            <summary>
+            Gets or sets the size of the text in this control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CharacterSpacing">
+            <summary>
+            Gets or sets the uniform spacing between characters, in units of 1/1000 of an em.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.TextWrapping">
+            <summary>
+            Gets or sets the word wrapping behavior.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FontStretch">
+            <summary>
+            Gets or sets the degree to which a font is condensed or expanded on the screen.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ImageStretch">
+            <summary>
+            Gets or sets the stretch used for images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ImageMaxHeight">
+            <summary>
+            Gets or sets the MaxHeight for images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ImageMaxWidth">
+            <summary>
+            Gets or sets the MaxWidth for images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.WrapCodeBlock">
+            <summary>
+            Gets or sets a value indicating whether to wrap text in the Code Block, or use Horizontal Scroll.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderEmoji(Microsoft.Toolkit.Parsers.Markdown.Inlines.EmojiInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders emoji element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderTextRun(Microsoft.Toolkit.Parsers.Markdown.Inlines.TextRunInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a text run element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderBoldRun(Microsoft.Toolkit.Parsers.Markdown.Inlines.BoldTextInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a bold run element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderMarkdownLink(Microsoft.Toolkit.Parsers.Markdown.Inlines.MarkdownLinkInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a link element
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderHyperlink(Microsoft.Toolkit.Parsers.Markdown.Inlines.HyperlinkInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a raw link element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderImage(Microsoft.Toolkit.Parsers.Markdown.Inlines.ImageInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders an image element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderItalicRun(Microsoft.Toolkit.Parsers.Markdown.Inlines.ItalicTextInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a text run element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderStrikethroughRun(Microsoft.Toolkit.Parsers.Markdown.Inlines.StrikethroughTextInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a strikethrough element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderSuperscriptRun(Microsoft.Toolkit.Parsers.Markdown.Inlines.SuperscriptTextInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a superscript element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderSubscriptRun(Microsoft.Toolkit.Parsers.Markdown.Inlines.SubscriptTextInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a subscript element.
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RenderCodeRun(Microsoft.Toolkit.Parsers.Markdown.Inlines.CodeInline,Microsoft.Toolkit.Parsers.Markdown.Render.IRenderContext)">
+            <summary>
+            Renders a code element
+            </summary>
+            <param name="element"> The parsed inline element to render. </param>
+            <param name="context"> Persistent state. </param>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.pointerWheelChanged">
+            <summary>
+            Super Hack to retain inertia and passing the Scroll data onto the Parent ScrollViewer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.RootElement">
+            <summary>
+            Gets or sets the Root Framework Element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.LinkRegister">
+            <summary>
+            Gets the interface that is used to register hyperlinks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.ImageResolver">
+            <summary>
+            Gets the interface that is used to resolve images.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CodeBlockResolver">
+            <summary>
+            Gets the Parser to parse code strings into Syntax Highlighted text.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.DefaultEmojiFont">
+            <summary>
+            Gets the Default Emoji Font.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Background">
+            <summary>
+            Gets or sets a brush that provides the background of the control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.BorderBrush">
+            <summary>
+            Gets or sets a brush that describes the border fill of a control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FlowDirection">
+            <summary>
+            Gets or sets the <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FlowDirection"/> of the markdown.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FontFamily">
+            <summary>
+            Gets or sets the font used to display text in the control.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FontStyle">
+            <summary>
+            Gets or sets the style in which the text is rendered.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FontWeight">
+            <summary>
+            Gets or sets the thickness of the specified font.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Foreground">
+            <summary>
+            Gets or sets a brush that describes the foreground color.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.IsTextSelectionEnabled">
+            <summary>
+            Gets or sets a value indicating whether text selection is enabled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CodeBackground">
+            <summary>
+            Gets or sets the brush used to fill the background of a code block.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.InlineCodeBackground">
+            <summary>
+            Gets or sets the brush used to fill the background of inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.InlineCodeForeground">
+            <summary>
+            Gets or sets the brush used to fill the foreground of inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.InlineCodeBorderBrush">
+            <summary>
+            Gets or sets the brush used to fill the border of inline code.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CodeBorderBrush">
+            <summary>
+            Gets or sets the brush used to render the border fill of a code block.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CodeForeground">
+            <summary>
+            Gets or sets the brush used to render the text inside a code block.  If this is
+            <c>null</c>, then <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Foreground"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.CodeFontFamily">
+            <summary>
+            Gets or sets the font used to display code.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FontFamily"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.InlineCodeFontFamily">
+            <summary>
+            Gets or sets the font used to display code.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.FontFamily"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.EmojiFontFamily">
+            <summary>
+            Gets or sets the font used to display emojis.  If this is <c>null</c>, then
+            Segoe UI Emoji font is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header1FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 1 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header1Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 1 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header2FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 2 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header2Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 2 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header3FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 3 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header3Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 3 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header4FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 4 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header4Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 4 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header5FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 5 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header5Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 5 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header6FontWeight">
+            <summary>
+            Gets or sets the font weight to use for level 6 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Header6Foreground">
+            <summary>
+            Gets or sets the foreground brush for level 6 headers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.HorizontalRuleBrush">
+            <summary>
+            Gets or sets the brush used to render a horizontal rule.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Foreground"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.QuoteBackground">
+            <summary>
+            Gets or sets the brush used to fill the background of a quote block.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.QuoteBorderBrush">
+            <summary>
+            Gets or sets the brush used to render a quote border.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Foreground"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.QuoteForeground">
+            <summary>
+            Gets or sets the brush used to render the text inside a quote block.  If this is
+            <c>null</c>, then <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Foreground"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.TableBorderBrush">
+            <summary>
+            Gets or sets the brush used to render table borders.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Foreground"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.YamlBorderBrush">
+            <summary>
+            Gets or sets the brush used to render table borders.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Foreground"/> is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.LinkForeground">
+            <summary>
+            Gets or sets the brush used to render links.  If this is <c>null</c>, then
+            <see cref="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownRenderer.Foreground"/> is used.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.MarkdownTable">
+            <summary>
+            A custom panel control that arranges elements similar to how an HTML table would.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.RenderContext">
+            <summary>
+            The Context of the Current Position
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.RenderContext.Foreground">
+            <summary>
+            Gets or sets the Foreground of the Current Context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.RenderContext.TrimLeadingWhitespace">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.RenderContext.Parent">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.RenderContext.OverrideForeground">
+            <summary>
+            Gets or sets a value indicating whether to override the Foreground Property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.RenderContext.Clone">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.RenderContextIncorrectException">
+            <summary>
+            An Exception that occurs when the Render Context is Incorrect.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.UIElementCollectionRenderContext">
+            <summary>
+            The Context of the Current Document Rendering.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Render.UIElementCollectionRenderContext.BlockUIElementCollection">
+            <summary>
+            Gets or sets the list to add to.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions">
+            <summary>
+            Default button Actions for MarkDown Formatter
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions.#ctor(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions"/> class.
+            </summary>
+            <param name="formatter">The Formatter to use</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions.FormatBold(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions.FormatItalics(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions.FormatStrikethrough(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions.FormatLink(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton,System.String,System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions.FormatList(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions.FormatOrderedList(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownButtonActions.Formatter">
+            <summary>
+            Gets the Formatter used
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter">
+            <summary>
+            Formatter implementation for MarkDown
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.SetModel(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbar)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.StyleHeader(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Invoked the flyout to style a header
+            </summary>
+            <param name="button">The button pressed</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.FormatCode(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Formats a string as code
+            </summary>
+            <param name="button">Button invoking the action</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.FormatQuote(Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton)">
+            <summary>
+            Formats a string as quote
+            </summary>
+            <param name="button">Button invoking the actions</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.SetSelection(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Applies formatting to Selected Text, or Removes formatting if already applied.
+            </summary>
+            <param name="start">Formatting in front of Text</param>
+            <param name="end">Formatting at end of Text</param>
+            <param name="reversible">Is the Text reversible?</param>
+            <param name="contents">Text to insert between Start and End (Overwrites Current Text)</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.DetermineSimpleReverse(System.String,System.String)">
+            <summary>
+            Determines if formatting is to be reversed
+            </summary>
+            <param name="start">Formatting in front of Text</param>
+            <param name="end">Formatting at end of Text</param>
+            <returns>True if formatting is reversing, otherwise false</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.DetermineSimpleInlineReverse(System.String,System.String)">
+            <summary>
+            Determines if formatting is to be reversed, when the formatting is located inside the Selectors.
+            </summary>
+            <param name="start">Formatting in front of Text</param>
+            <param name="end">Formatting at end of Text</param>
+            <returns>True if formatting is reversing, otherwise false</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.SetList(System.Func{System.String},Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarButtons.ToolbarButton,System.Boolean)">
+            <summary>
+             This function will either add List Characters to lines of text, or Remove List Characters from Lines of Text, if already applied.
+            </summary>
+            <param name="listChar">A function for generating a List Character, use ListLineIterator to generate a Numbered Style List, or return a string Result, e.g. () => "- "</param>
+            <param name="button">Button that activated the Set List</param>
+            <param name="wrapNewLines">Adds New Lines to Start and End of Selected Text</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.DetermineListReverse(System.Func{System.String},System.Boolean)">
+            <summary>
+            Determines whether a List already has the formatting applied.
+            </summary>
+            <param name="listChar">Function to generate the List Character</param>
+            <param name="wrapNewLines">Adds New Lines to Start and End of Selected Text</param>
+            <returns>True if List formatting is reversing, otherwise false</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.DetermineInlineWrapListReverse(System.Func{System.String})">
+            <summary>
+            Determines if a reverse is requested, if the list characters are inside the Selection.
+            </summary>
+            <param name="listChar">List character generating function</param>
+            <returns>Is it reversing?</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.Text">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.DefaultButtons">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.ListLineIterator">
+            <summary>
+            Gets the value of the Line Number Iterator. Use this for generating Numbered Lists.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.ReachedEndLine">
+            <summary>
+            Gets a value indicating whether gets whether it is the last line of the list.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Controls.TextToolbarFormats.MarkDown.MarkDownFormatter.NewLineChars">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Controls.Microsoft_Toolkit_Uwp_UI_Controls_Markdown_XamlTypeInfo.XamlMetaDataProvider">
+            <summary>
+            Main class for providing metadata for the app or library
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Microsoft_Toolkit_Uwp_UI_Controls_Markdown_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Microsoft_Toolkit_Uwp_UI_Controls_Markdown_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Controls.Microsoft_Toolkit_Uwp_UI_Controls_Markdown_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+    </members>
+</doc>

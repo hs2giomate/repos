@@ -1,0 +1,293 @@
+﻿<Page x:ConnectionId='1' x:Class="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.SystemInformationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:Microsoft.Toolkit.Uwp.SampleApp.SamplePages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+    <Grid>
+        <ScrollViewer HorizontalScrollMode="Disabled"
+                      VerticalScrollBarVisibility="Auto"
+                      VerticalScrollMode="Auto">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <StackPanel x:ConnectionId='2' x:Name="Stack0"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Application name:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='41' Margin="20,0"
+                               FontSize="18"
+                                                              
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='3' x:Name="Stack1"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Application version:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='40' Margin="20,0"
+                               FontSize="18"
+                                                                 
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='4' x:Name="Stack2"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="User's culture:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='39' Margin="20,0"
+                               FontSize="18"
+                                                      
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='5' x:Name="Stack3"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Operating system:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='38' Margin="20,0"
+                               FontSize="18"
+                                                              
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='6' x:Name="Stack4"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Operating system architecture:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='37' Margin="20,0"
+                               FontSize="18"
+                                                                          
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='7' x:Name="Stack5"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Operating system version:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='36' Margin="20,0"
+                               FontSize="18"
+                                                                     
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='8' x:Name="Stack6"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Device family:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='35' Margin="20,0"
+                               FontSize="18"
+                                                           
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='9' x:Name="Stack7"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Device model:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='34' Margin="20,0"
+                               FontSize="18"
+                                                          
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='10' x:Name="Stack8"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Device manufacturer:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='33' Margin="20,0"
+                               FontSize="18"
+                                                                 
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='11' x:Name="Stack9"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Available memory (MB):"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='32' Margin="20,0"
+                               FontSize="18"
+                                                              
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='12' x:Name="Stack10"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Is first use:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='31' Margin="20,0"
+                               FontSize="18"
+                                                         
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='13' x:Name="Stack11"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Is app updated:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='30' Margin="20,0"
+                               FontSize="18"
+                                                           
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='14' x:Name="Stack12"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="First version installed:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='29' Margin="20,0"
+                               FontSize="18"
+                                                                    
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='15' x:Name="Stack13"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="First use time:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='28' Margin="20,0"
+                               FontSize="18"
+                                                           
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='16' x:Name="Stack14"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Launch time:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='27' Margin="20,0"
+                               FontSize="18"
+                                                         
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='17' x:Name="Stack15"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Last launch time:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='26' Margin="20,0"
+                               FontSize="18"
+                                                             
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='18' x:Name="Stack16"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Last reset time:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='25' Margin="20,0"
+                               FontSize="18"
+                                                                         
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='19' x:Name="Stack17"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Current launch count:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='24' Margin="20,0"
+                               FontSize="18"
+                                                                       
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='20' x:Name="Stack18"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="Total launch count:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='23' Margin="20,0"
+                               FontSize="18"
+                                                               
+                               TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel x:ConnectionId='21' x:Name="Stack19"
+                            Margin="10"
+                            Orientation="Horizontal">
+                    <TextBlock FontSize="18"
+                               FontWeight="Bold"
+                               Text="App uptime:"
+                               TextWrapping="Wrap" />
+                    <TextBlock x:ConnectionId='22' Margin="20,0"
+                               FontSize="18"
+                                                        
+                               TextWrapping="Wrap" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:ConnectionId='42' x:Name="Full">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:ConnectionId='43' x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="Stack0.Orientation" Value="Vertical" />
+                        <Setter Target="Stack1.Orientation" Value="Vertical" />
+                        <Setter Target="Stack2.Orientation" Value="Vertical" />
+                        <Setter Target="Stack3.Orientation" Value="Vertical" />
+                        <Setter Target="Stack4.Orientation" Value="Vertical" />
+                        <Setter Target="Stack5.Orientation" Value="Vertical" />
+                        <Setter Target="Stack6.Orientation" Value="Vertical" />
+                        <Setter Target="Stack7.Orientation" Value="Vertical" />
+                        <Setter Target="Stack8.Orientation" Value="Vertical" />
+                        <Setter Target="Stack9.Orientation" Value="Vertical" />
+                        <Setter Target="Stack10.Orientation" Value="Vertical" />
+                        <Setter Target="Stack11.Orientation" Value="Vertical" />
+                        <Setter Target="Stack12.Orientation" Value="Vertical" />
+                        <Setter Target="Stack13.Orientation" Value="Vertical" />
+                        <Setter Target="Stack14.Orientation" Value="Vertical" />
+                        <Setter Target="Stack15.Orientation" Value="Vertical" />
+                        <Setter Target="Stack16.Orientation" Value="Vertical" />
+                        <Setter Target="Stack17.Orientation" Value="Vertical" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>
+
