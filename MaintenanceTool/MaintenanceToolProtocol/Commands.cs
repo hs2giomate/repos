@@ -70,6 +70,7 @@ namespace MaintenanceToolProtocol
         public const Byte write = 0x06;
         public const char ReadParameters = 'H';
         public const char WriteParameters = 'G';
+        public const char EnableHeaters = 'T';
         public const char Command = '>';
         public const char KeepConnected= '=';
         public const UInt32 Magic = 0x64636261;

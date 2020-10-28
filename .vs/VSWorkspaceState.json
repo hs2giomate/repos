@@ -4,11 +4,11 @@
     "\\BuildNumberV1",
     "\\BuildNumberV1\\BuildNumberV1",
     "\\BuildNumberV1\\BuildNumberV1\\Properties",
-    "\\MaintenanceTool",
+    "\\RadialGauge",
     "\\ReleaseFiles",
     "\\ReleaseFiles\\ReleaseFiles",
     "\\ReleaseFiles\\ReleaseFiles\\Properties"
   ],
-  "SelectedNode": "\\BuildNumberV1\\BuildNumberV1.sln",
+  "SelectedNode": "\\RadialGauge\\RadialGauge.sln",
   "PreviewInSolutionExplorer": false
 }
