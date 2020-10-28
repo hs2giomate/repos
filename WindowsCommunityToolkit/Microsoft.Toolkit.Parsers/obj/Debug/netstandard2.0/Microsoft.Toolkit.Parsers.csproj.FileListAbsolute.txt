@@ -1,0 +1,16 @@
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\bin\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.deps.json
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\bin\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.dll
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\bin\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.pdb
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\bin\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.xml
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\bin\Debug\netstandard2.0\Microsoft.Toolkit.dll
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\bin\Debug\netstandard2.0\Microsoft.Toolkit.pdb
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\bin\Debug\netstandard2.0\Microsoft.Toolkit.xml
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.csprojAssemblyReference.cache
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.AssemblyInfoInputs.cache
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.AssemblyInfo.cs
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.csproj.CoreCompileInputs.cache
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.sourcelink.json
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.csproj.CopyComplete
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.dll
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.xml
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Parsers\obj\Debug\netstandard2.0\Microsoft.Toolkit.Parsers.pdb

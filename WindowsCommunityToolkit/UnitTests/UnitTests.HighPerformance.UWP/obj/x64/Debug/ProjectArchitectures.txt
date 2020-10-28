@@ -1,0 +1,1 @@
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\UnitTests\UnitTests.HighPerformance.UWP\UnitTests.HighPerformance.UWP.csproj;x64

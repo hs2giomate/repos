@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Microsoft.Toolkit.Graph.Controls" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Microsoft.Toolkit.Graph.Controls">
+				<NamedResource name="Microsoft.Toolkit.Graph.Controls.xr.xml" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Microsoft.Toolkit.Graph.Controls.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Graph.Controls\Microsoft.Toolkit.Graph.Controls.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Assets">
+					<NamedResource name="person.png" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Assets/person.png">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Graph.Controls\Assets\person.png</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Controls">
+					<ResourceMapSubtree name="LoginButton">
+						<NamedResource name="LoginButton.xaml" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Controls/LoginButton/LoginButton.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Graph.Controls\Controls\LoginButton\LoginButton.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="LoginButton.xbf" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Controls/LoginButton/LoginButton.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="PeoplePicker">
+						<NamedResource name="PeoplePicker.xaml" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Controls/PeoplePicker/PeoplePicker.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Graph.Controls\Controls\PeoplePicker\PeoplePicker.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="PeoplePicker.xbf" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Controls/PeoplePicker/PeoplePicker.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="PersonView">
+						<NamedResource name="PersonView.xaml" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Controls/PersonView/PersonView.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Graph.Controls\Controls\PersonView\PersonView.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="PersonView.xbf" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Controls/PersonView/PersonView.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xaml" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Themes/Generic.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Graph.Controls\Themes\Generic.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Generic.xbf" uri="ms-resource://Microsoft.Toolkit.Graph.Controls/Files/Microsoft.Toolkit.Graph.Controls/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Monaco" version="1.0" primary="true">
+		<Qualifiers>
+			<Language>ST</Language>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Monaco">
+				<NamedResource name="MonacoEditor.html" uri="ms-resource://Monaco/Files/Monaco/MonacoEditor.html">
+					<Candidate type="Path">
+						<Value>Monaco\MonacoEditor.html</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="MonacoEditorComponent.xr.xml" uri="ms-resource://Monaco/Files/Monaco/MonacoEditorComponent.xr.xml">
+					<Candidate type="Path">
+						<Value>Monaco\MonacoEditorComponent.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="monaco-editor">
+					<NamedResource name="CHANGELOG.md" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/CHANGELOG.md">
+						<Candidate type="Path">
+							<Value>Monaco\monaco-editor\CHANGELOG.md</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="LICENSE" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/LICENSE">
+						<Candidate type="Path">
+							<Value>Monaco\monaco-editor\LICENSE</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="monaco.d.ts" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/monaco.d.ts">
+						<Candidate type="Path">
+							<Value>Monaco\monaco-editor\monaco.d.ts</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="package.json" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/package.json">
+						<Candidate type="Path">
+							<Value>Monaco\monaco-editor\package.json</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="README.md" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/README.md">
+						<Candidate type="Path">
+							<Value>Monaco\monaco-editor\README.md</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ThirdPartyNotices.txt" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/ThirdPartyNotices.txt">
+						<Candidate type="Path">
+							<Value>Monaco\monaco-editor\ThirdPartyNotices.txt</Value>
+						</Candidate>
+					</NamedResource>
+					<ResourceMapSubtree name="min">
+						<ResourceMapSubtree name="vs">
+							<NamedResource name="loader.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/loader.js">
+								<Candidate type="Path">
+									<Value>Monaco\monaco-editor\min\vs\loader.js</Value>
+								</Candidate>
+							</NamedResource>
+							<ResourceMapSubtree name="base">
+								<ResourceMapSubtree name="worker">
+									<NamedResource name="workerMain.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/base/worker/workerMain.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\base\worker\workerMain.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+							</ResourceMapSubtree>
+							<ResourceMapSubtree name="basic-languages">
+								<NamedResource name="st.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/st.js">
+									<Candidate qualifiers="Language-ST" type="Path">
+										<Value>Monaco\monaco-editor\min\vs\basic-languages\st\st.js</Value>
+									</Candidate>
+								</NamedResource>
+								<ResourceMapSubtree name="bat">
+									<NamedResource name="bat.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/bat/bat.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\bat\bat.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="coffee">
+									<NamedResource name="coffee.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/coffee/coffee.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\coffee\coffee.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="cpp">
+									<NamedResource name="cpp.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/cpp/cpp.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\cpp\cpp.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="csharp">
+									<NamedResource name="csharp.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/csharp/csharp.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\csharp\csharp.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="csp">
+									<NamedResource name="csp.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/csp/csp.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\csp\csp.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="css">
+									<NamedResource name="css.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/css/css.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\css\css.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="dockerfile">
+									<NamedResource name="dockerfile.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/dockerfile/dockerfile.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\dockerfile\dockerfile.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="fsharp">
+									<NamedResource name="fsharp.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/fsharp/fsharp.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\fsharp\fsharp.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="go">
+									<NamedResource name="go.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/go/go.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\go\go.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="handlebars">
+									<NamedResource name="handlebars.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/handlebars/handlebars.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\handlebars\handlebars.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="html">
+									<NamedResource name="html.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/html/html.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\html\html.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="ini">
+									<NamedResource name="ini.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/ini/ini.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\ini\ini.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="java">
+									<NamedResource name="java.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/java/java.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\java\java.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="less">
+									<NamedResource name="less.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/less/less.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\less\less.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="lua">
+									<NamedResource name="lua.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/lua/lua.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\lua\lua.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="markdown">
+									<NamedResource name="markdown.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/markdown/markdown.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\markdown\markdown.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="msdax">
+									<NamedResource name="msdax.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/msdax/msdax.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\msdax\msdax.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="mysql">
+									<NamedResource name="mysql.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/mysql/mysql.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\mysql\mysql.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="objective-c">
+									<NamedResource name="objective-c.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/objective-c/objective-c.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\objective-c\objective-c.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="pgsql">
+									<NamedResource name="pgsql.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/pgsql/pgsql.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\pgsql\pgsql.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="php">
+									<NamedResource name="php.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/php/php.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\php\php.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="postiats">
+									<NamedResource name="postiats.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/postiats/postiats.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\postiats\postiats.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="powershell">
+									<NamedResource name="powershell.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/powershell/powershell.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\powershell\powershell.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="pug">
+									<NamedResource name="pug.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/pug/pug.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\pug\pug.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="python">
+									<NamedResource name="python.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/python/python.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\python\python.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="r">
+									<NamedResource name="r.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/r/r.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\r\r.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="razor">
+									<NamedResource name="razor.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/razor/razor.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\razor\razor.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="redis">
+									<NamedResource name="redis.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/redis/redis.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\redis\redis.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="redshift">
+									<NamedResource name="redshift.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/redshift/redshift.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\redshift\redshift.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="ruby">
+									<NamedResource name="ruby.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/ruby/ruby.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\ruby\ruby.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="rust">
+									<NamedResource name="rust.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/rust/rust.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\rust\rust.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="sb">
+									<NamedResource name="sb.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/sb/sb.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\sb\sb.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="scss">
+									<NamedResource name="scss.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/scss/scss.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\scss\scss.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="solidity">
+									<NamedResource name="solidity.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/solidity/solidity.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\solidity\solidity.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="sql">
+									<NamedResource name="sql.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/sql/sql.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\sql\sql.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="swift">
+									<NamedResource name="swift.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/swift/swift.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\swift\swift.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="vb">
+									<NamedResource name="vb.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/vb/vb.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\vb\vb.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="xml">
+									<NamedResource name="xml.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/xml/xml.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\xml\xml.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="yaml">
+									<NamedResource name="yaml.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/basic-languages/yaml/yaml.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\basic-languages\yaml\yaml.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+							</ResourceMapSubtree>
+							<ResourceMapSubtree name="editor">
+								<NamedResource name="editor.main.css" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.css">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.css</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.de.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.de.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.de.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.es.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.es.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.es.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.fr.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.fr.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.fr.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.it.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.it.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.it.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.ja.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.ja.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.ja.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.ko.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.ko.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.ko.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.ru.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.ru.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.ru.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.zh-cn.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.zh-cn.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.zh-cn.js</Value>
+									</Candidate>
+								</NamedResource>
+								<NamedResource name="editor.main.nls.zh-tw.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/editor.main.nls.zh-tw.js">
+									<Candidate type="Path">
+										<Value>Monaco\monaco-editor\min\vs\editor\editor.main.nls.zh-tw.js</Value>
+									</Candidate>
+								</NamedResource>
+								<ResourceMapSubtree name="contrib">
+									<ResourceMapSubtree name="suggest">
+										<ResourceMapSubtree name="media">
+											<NamedResource name="String_16x.svg" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/contrib/suggest/media/String_16x.svg">
+												<Candidate type="Path">
+													<Value>Monaco\monaco-editor\min\vs\editor\contrib\suggest\media\String_16x.svg</Value>
+												</Candidate>
+											</NamedResource>
+											<NamedResource name="String_inverse_16x.svg" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/contrib/suggest/media/String_inverse_16x.svg">
+												<Candidate type="Path">
+													<Value>Monaco\monaco-editor\min\vs\editor\contrib\suggest\media\String_inverse_16x.svg</Value>
+												</Candidate>
+											</NamedResource>
+										</ResourceMapSubtree>
+									</ResourceMapSubtree>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="standalone">
+									<ResourceMapSubtree name="browser">
+										<ResourceMapSubtree name="quickOpen">
+											<NamedResource name="symbol-sprite.svg" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/editor/standalone/browser/quickOpen/symbol-sprite.svg">
+												<Candidate type="Path">
+													<Value>Monaco\monaco-editor\min\vs\editor\standalone\browser\quickOpen\symbol-sprite.svg</Value>
+												</Candidate>
+											</NamedResource>
+										</ResourceMapSubtree>
+									</ResourceMapSubtree>
+								</ResourceMapSubtree>
+							</ResourceMapSubtree>
+							<ResourceMapSubtree name="language">
+								<ResourceMapSubtree name="css">
+									<NamedResource name="cssMode.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/css/cssMode.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\language\css\cssMode.js</Value>
+										</Candidate>
+									</NamedResource>
+									<NamedResource name="cssWorker.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/css/cssWorker.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\language\css\cssWorker.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="html">
+									<NamedResource name="htmlMode.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/html/htmlMode.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\language\html\htmlMode.js</Value>
+										</Candidate>
+									</NamedResource>
+									<NamedResource name="htmlWorker.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/html/htmlWorker.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\language\html\htmlWorker.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="json">
+									<NamedResource name="jsonMode.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/json/jsonMode.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\language\json\jsonMode.js</Value>
+										</Candidate>
+									</NamedResource>
+									<NamedResource name="jsonWorker.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/json/jsonWorker.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\language\json\jsonWorker.js</Value>
+										</Candidate>
+									</NamedResource>
+								</ResourceMapSubtree>
+								<ResourceMapSubtree name="typescript">
+									<NamedResource name="tsMode.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/typescript/tsMode.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\language\typescript\tsMode.js</Value>
+										</Candidate>
+									</NamedResource>
+									<NamedResource name="tsWorker.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/typescript/tsWorker.js">
+										<Candidate type="Path">
+											<Value>Monaco\monaco-editor\min\vs\language\typescript\tsWorker.js</Value>
+										</Candidate>
+									</NamedResource>
+									<ResourceMapSubtree name="lib">
+										<NamedResource name="typescriptServices.js" uri="ms-resource://Monaco/Files/Monaco/monaco-editor/min/vs/language/typescript/lib/typescriptServices.js">
+											<Candidate type="Path">
+												<Value>Monaco\monaco-editor\min\vs\language\typescript\lib\typescriptServices.js</Value>
+											</Candidate>
+										</NamedResource>
+									</ResourceMapSubtree>
+								</ResourceMapSubtree>
+							</ResourceMapSubtree>
+						</ResourceMapSubtree>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xbf" uri="ms-resource://Monaco/Files/Monaco/Themes/Generic.xbf">
+						<Candidate type="Path">
+							<Value>Monaco\Themes\Generic.xbf</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

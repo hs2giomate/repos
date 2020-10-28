@@ -1,0 +1,2191 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Toolkit.Uwp.UI.Media</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush">
+            <summary>
+            A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> that implements an acrylic effect with customizable parameters
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.blurAmountSetter">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1"/> instance in use to set the blur amount
+            </summary>
+            <remarks>This is only set when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BackgroundSource"/> is <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.Backdrop"/></remarks>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.tintColorSetter">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1"/> instance in use to set the tint color
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.tintOpacitySetter">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1"/> instance in use to set the tint mix amount
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BackgroundSource">
+            <summary>
+            Gets or sets the background source mode for the effect (the default is <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.Backdrop"/>).
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BackgroundSourceProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BackgroundSource"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.OnSourcePropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BackgroundSource"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BackgroundSourceProperty"/></param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BlurAmount">
+            <summary>
+            Gets or sets the blur amount for the effect (must be a positive value)
+            </summary>
+            <remarks>This property is ignored when the active mode is <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.HostBackdrop"/></remarks>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BlurAmountProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BlurAmount"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.OnBlurAmountPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BackgroundSource"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.BackgroundSourceProperty"/></param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintColor">
+            <summary>
+            Gets or sets the tint for the effect
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintColorProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintColor"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.OnTintColorPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintColor"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintColorProperty"/></param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintOpacity">
+            <summary>
+            Gets or sets the tint opacity factor for the effect (default is 0.5, must be in the [0, 1] range)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintOpacityProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintOpacity"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.OnTintOpacityPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintOpacity"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TintOpacityProperty"/></param>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TextureUri">
+            <summary>
+            Gets or sets the <see cref="T:System.Uri"/> for the texture to use
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TextureUriProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TextureUri"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.OnTextureUriPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TextureUri"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.TextureUriProperty"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush.OnBrushRequested">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush"/> is a <see cref="T:Windows.UI.Xaml.Media.Brush"/> that blurs whatever is behind it in the application.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush.amountSetter">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1"/> instance currently in use
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush.Amount">
+            <summary>
+            Gets or sets the amount of gaussian blur to apply to the background.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush.AmountProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush.Amount"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush.OnAmountChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush.Amount"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush.AmountProperty"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropBlurBrush.OnBrushRequested">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush">
+            <summary>
+            A brush which alters the colors of whatever is behind it in the application by applying a per-channel gamma transfer function.  See https://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_GammaTransferEffect.htm.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaAmplitude">
+            <summary>
+            Gets or sets the amount of scale to apply to the alpha chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaAmplitudeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaAmplitude"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaDisable">
+            <summary>
+            Gets or sets a value indicating whether to disable alpha transfer.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaDisableProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaDisable"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaExponent">
+            <summary>
+            Gets or sets the amount of scale to apply to the alpha chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaExponentProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaExponent"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaOffset">
+            <summary>
+            Gets or sets the amount of scale to apply to the alpha chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaOffsetProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.AlphaOffset"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueAmplitude">
+            <summary>
+            Gets or sets the amount of scale to apply to the Blue chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueAmplitudeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueAmplitude"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueDisable">
+            <summary>
+            Gets or sets a value indicating whether to disable Blue transfer.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueDisableProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueDisable"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueExponent">
+            <summary>
+            Gets or sets the amount of scale to apply to the Blue chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueExponentProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueExponent"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueOffset">
+            <summary>
+            Gets or sets the amount of scale to apply to the Blue chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueOffsetProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.BlueOffset"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenAmplitude">
+            <summary>
+            Gets or sets the amount of scale to apply to the Green chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenAmplitudeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenAmplitude"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenDisable">
+            <summary>
+            Gets or sets a value indicating whether to disable Green transfer.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenDisableProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenDisable"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenExponent">
+            <summary>
+            Gets or sets the amount of scale to apply to the Green chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenExponentProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenExponent"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenOffset">
+            <summary>
+            Gets or sets the amount of scale to apply to the Green chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenOffsetProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.GreenOffset"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedAmplitude">
+            <summary>
+            Gets or sets the amount of scale to apply to the Red chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedAmplitudeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedAmplitude"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedDisable">
+            <summary>
+            Gets or sets a value indicating whether to disable Red transfer.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedDisableProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedDisable"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedExponent">
+            <summary>
+            Gets or sets the amount of scale to apply to the Red chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedExponentProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedExponent"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedOffset">
+            <summary>
+            Gets or sets the amount of scale to apply to the Red chennel.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedOffsetProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.RedOffset"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.OnConnected">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropGammaTransferBrush.OnDisconnected">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropInvertBrush">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropInvertBrush"/> is a <see cref="T:Windows.UI.Xaml.Media.Brush"/> which inverts whatever is behind it in the application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropInvertBrush.OnBrushRequested">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush">
+            <summary>
+            Brush which applies a SaturationEffect to the Backdrop. http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_SaturationEffect.htm
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush.setter">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1"/> instance currently in use
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush.Saturation">
+            <summary>
+            Gets or sets the amount of gaussian blur to apply to the background.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush.SaturationProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush.Saturation"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush.OnSaturationChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush.Saturation"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush.SaturationProperty"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropSaturationBrush.OnBrushRequested">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush">
+            <summary>
+            Brush which applies a SepiaEffect to the Backdrop. http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_SepiaEffect.htm
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush.setter">
+            <summary>
+            The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1"/> instance currently in use
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush.Intensity">
+            <summary>
+            Gets or sets the amount of gaussian blur to apply to the background.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush.IntensityProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush.Intensity"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush.OnIntensityChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush.Intensity"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush.IntensityProperty"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.BackdropSepiaBrush.OnBrushRequested">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase">
+            <summary>
+            A custom <see cref="T:Windows.UI.Xaml.Media.XamlCompositionBrushBase"/> <see langword="class"/> that's ready to be used with a custom <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase.connectedMutex">
+            <summary>
+            The initialization <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex"/> instance
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase.OnBrushRequested">
+            <summary>
+            A method that builds and returns the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline to use in the current instance.<para/>
+            This method can also be used to store any needed <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1"/> or <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation`1"/> instances in local fields, for later use (they will need to be called upon <see cref="P:Windows.UI.Xaml.Media.XamlCompositionBrushBase.CompositionBrush"/>).
+            </summary>
+            <returns>A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to create the brush to display</returns>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase.IsEnabled">
+            <summary>
+            Gets or sets a value indicating whether the current brush is using the provided pipeline, or the fallback color
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase.OnConnected">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase.OnDisconnected">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase.OnEnabledToggled(System.Boolean)">
+            <summary>
+            Updates the <see cref="P:Windows.UI.Xaml.Media.XamlCompositionBrushBase.CompositionBrush"/> property depending on the input value
+            </summary>
+            <param name="value">The new value being set to the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase.IsEnabled"/> property</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.CanvasBrushBase">
+            <summary>
+            Helper Brush class to interop with Win2D Canvas calls.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.CanvasBrushBase.SurfaceWidth">
+            <summary>
+            Gets or sets the internal surface render width.  Modify during construction.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.CanvasBrushBase.SurfaceHeight">
+            <summary>
+            Gets or sets the internal surface render height.  Modify during construction.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.CanvasBrushBase.OnDraw(Microsoft.Graphics.Canvas.CanvasDevice,Microsoft.Graphics.Canvas.CanvasDrawingSession,System.Numerics.Vector2)">
+            <summary>
+            Implemented by parent class and called when canvas is being constructed for brush.
+            </summary>
+            <param name="device">Canvas device.</param>
+            <param name="session">Canvas drawing session.</param>
+            <param name="size">Size of surface to draw on.</param>
+            <returns>True if drawing was completed and the brush is ready, otherwise return False to not create brush yet.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.CanvasBrushBase.OnConnected">
+            <summary>
+            Initializes the Composition Brush.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.CanvasBrushBase.OnDisconnected">
+            <summary>
+            Deconstructs the Composition Brush.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush">
+            <summary>
+            Brush which blends a <see cref="T:Windows.UI.Xaml.Media.Imaging.BitmapImage"/> to the Backdrop in a given mode. See http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_BlendEffect.htm.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.Source">
+            <summary>
+            Gets or sets the <see cref="T:Windows.UI.Xaml.Media.Imaging.BitmapImage"/> source of the image to composite.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.SourceProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.Source"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.Stretch">
+            <summary>
+            Gets or sets how to stretch the image within the brush.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.StretchProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.Stretch"/> dependency property.
+            Requires 16299 or higher for modes other than None.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.Mode">
+            <summary>
+            Gets or sets how to blend the image with the backdrop.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.ModeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.Mode"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.OnConnected">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendBrush.OnDisconnected">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.PipelineBrush">
+            <summary>
+            A <see cref="T:Windows.UI.Xaml.Media.Brush"/> that renders a customizable Composition/Win2D effects pipeline
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.PipelineBrush.Source">
+            <summary>
+            Gets or sets the source for the current pipeline (defaults to a <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.BackdropSourceExtension"/> with <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.Backdrop"/> source).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.PipelineBrush.Effects">
+            <summary>
+            Gets or sets the collection of effects to use in the current pipeline
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.PipelineBrush.OnBrushRequested">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush">
+            <summary>
+            RadialGradientBrush - This GradientBrush defines its Gradient as an interpolation
+            within an Ellipse.
+            </summary>
+            <summary>
+            Properties for the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.#ctor(Windows.UI.Color,Windows.UI.Color)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush"/> class
+            with two colors specified for GradientStops at
+            offsets 0.0 and 1.0.
+            </summary>
+            <param name="startColor"> The Color at offset 0.0. </param>
+            <param name="endColor"> The Color at offset 1.0. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.#ctor(Windows.UI.Xaml.Media.GradientStopCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush"/> class with GradientStops set to the passed-in collection.
+            </summary>
+            <param name="gradientStopCollection"> GradientStopCollection to set on this brush. </param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.OnDraw(Microsoft.Graphics.Canvas.CanvasDevice,Microsoft.Graphics.Canvas.CanvasDrawingSession,System.Numerics.Vector2)">
+            <inheritdoc/>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.AlphaMode">
+            <summary>
+            Gets or sets a <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.AlphaMode"/> enumeration that specifies the way in which an alpha channel affects color channels.  The default is <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.AlphaMode.Straight"/> for compatibility with WPF.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.AlphaModeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.AlphaMode"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.ColorInterpolationMode">
+            <summary>
+            Gets or sets a <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.ColorInterpolationMode"/> enumeration that specifies how the gradient's colors are interpolated.  The default is <see cref="F:Windows.UI.Xaml.Media.ColorInterpolationMode.SRgbLinearInterpolation"/>.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.ColorInterpolationModeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.ColorInterpolationMode"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.GradientStops">
+            <summary>
+            Gets or sets the brush's gradient stops.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.GradientStopsProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.GradientStops"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.Center">
+            <summary>
+            Gets or sets the center of the outermost circle of the radial gradient.  The default is 0.5,0.5.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.CenterProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.Center"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.GradientOrigin">
+            <summary>
+            Gets or sets the location of the two-dimensional focal point that defines the beginning of the gradient.  The default is 0.5,0.5.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.GradientOriginProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.GradientOrigin"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.RadiusX">
+            <summary>
+            Gets or sets the horizontal radius of the outermost circle of the radial gradient.  The default is 0.5.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.RadiusXProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.RadiusX"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.RadiusY">
+            <summary>
+            Gets or sets the vertical radius of the outermost circle of the radial gradient.  The default is 0.5.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.RadiusYProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.RadiusX"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.SpreadMethod">
+            <summary>
+            Gets or sets the type of spread method that specifies how to draw a gradient that starts or ends inside the bounds of the object to be painted.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.SpreadMethodProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush.SpreadMethod"/> dependency property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrushInterop">
+            <summary>
+            Interop Helpers between WPF and Win2D used by the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrush"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrushInterop.ToCanvasColorSpace(Windows.UI.Xaml.Media.ColorInterpolationMode)">
+            <summary>
+            Converts a WPF <see cref="T:Windows.UI.Xaml.Media.ColorInterpolationMode"/> to a Win2D <see cref="T:Microsoft.Graphics.Canvas.CanvasColorSpace"/>.
+            https://msdn.microsoft.com/en-us/library/system.windows.media.colorinterpolationmode(v=vs.110).aspx
+            http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_CanvasColorSpace.htm
+            </summary>
+            <param name="colorspace"><see cref="T:Windows.UI.Xaml.Media.ColorInterpolationMode"/> mode.</param>
+            <returns><see cref="T:Microsoft.Graphics.Canvas.CanvasColorSpace"/> space.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrushInterop.ToEdgeBehavior(Windows.UI.Xaml.Media.GradientSpreadMethod)">
+            <summary>
+            Converts a WPF <see cref="T:Windows.UI.Xaml.Media.GradientSpreadMethod"/> to a Win2D <see cref="T:Microsoft.Graphics.Canvas.CanvasEdgeBehavior"/>.
+            https://msdn.microsoft.com/en-us/library/system.windows.media.gradientspreadmethod(v=vs.110).aspx
+            http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_CanvasEdgeBehavior.htm
+            </summary>
+            <param name="method"><see cref="T:Windows.UI.Xaml.Media.GradientSpreadMethod"/> method.</param>
+            <returns><see cref="T:Microsoft.Graphics.Canvas.CanvasEdgeBehavior"/> behavior.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrushInterop.ToRect(System.Numerics.Vector2)">
+            <summary>
+            Returns a new <see cref="M:Windows.Foundation.Rect.#ctor(System.Double,System.Double,System.Double,System.Double)"/> representing the size of the <see cref="T:System.Numerics.Vector2"/>.
+            </summary>
+            <param name="vector"><see cref="T:System.Numerics.Vector2"/> vector representing object size for Rectangle.</param>
+            <returns><see cref="M:Windows.Foundation.Rect.#ctor(System.Double,System.Double,System.Double,System.Double)"/> value.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrushInterop.ToVector2(Windows.Foundation.Size)">
+            <summary>
+            Returns a new <see cref="T:System.Numerics.Vector2"/> representing the <see cref="M:Windows.Foundation.Size.#ctor(System.Double,System.Double)"/>.
+            </summary>
+            <param name="size"><see cref="M:Windows.Foundation.Size.#ctor(System.Double,System.Double)"/> value.</param>
+            <returns><see cref="T:System.Numerics.Vector2"/> value.</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.RadialGradientBrushInterop.ToWin2DGradientStops(Windows.UI.Xaml.Media.GradientStopCollection)">
+            <summary>
+            Converts a <see cref="T:Windows.UI.Xaml.Media.GradientStopCollection"/> to an array of <see cref="T:Microsoft.Graphics.Canvas.Brushes.CanvasGradientStop"/>.
+            </summary>
+            <param name="stops"><see cref="T:Windows.UI.Xaml.Media.GradientStopCollection"/> collection of gradient stops.</param>
+            <returns>New array of <see cref="T:Microsoft.Graphics.Canvas.Brushes.CanvasGradientStop"/> stops.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush">
+            <summary>
+            A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> that displays a tiled image
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.TextureUri">
+            <summary>
+            Gets or sets the <see cref="T:System.Uri"/> to the texture to use
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.TextureUriProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.TextureUri"/> dependency property.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.DpiMode">
+            <summary>
+            Gets or sets the DPI mode used to render the texture (the default is <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.DpiMode.DisplayDpiWith96AsLowerBound"/>)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.DpiModeProperty">
+            <summary>
+            Identifies the <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.DpiMode"/> dependency property.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.OnDependencyPropertyChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Updates the UI when either <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.TextureUri"/> or <see cref="P:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.DpiMode"/> changes
+            </summary>
+            <param name="d">The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush"/> instance</param>
+            <param name="e">The <see cref="T:Windows.UI.Xaml.DependencyPropertyChangedEventArgs"/> instance for <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.TextureUriProperty"/> or <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.DpiModeProperty"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.TilesBrush.OnBrushRequested">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.XamlEffectSetter`1">
+            <summary>
+            A <see langword="delegate"/> that represents a custom effect setter that can be applied to a <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> instance
+            </summary>
+            <typeparam name="T">The type of property value to set</typeparam>
+            <param name="value">The effect target value</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.XamlEffectAnimation`1">
+            <summary>
+            A <see langword="delegate"/> that represents a custom effect animation that can be applied to a <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> instance
+            </summary>
+            <typeparam name="T">The type of property value to animate</typeparam>
+            <param name="value">The animation target value</param>
+            <param name="duration">The animation duration</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that completes when the target animation completes</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush">
+            <summary>
+            A simple <see langword="class"/> that can be used to quickly create XAML brushes from arbitrary <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipelines
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush.Pipeline">
+            <summary>
+            Gets the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline for the current instance
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush.#ctor(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> class.
+            </summary>
+            <param name="pipeline">The <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to create the effect</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush.Bind``1(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{``0},Microsoft.Toolkit.Uwp.UI.Media.XamlEffectSetter{``0}@)">
+            <summary>
+            Binds an <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1"/> to the composition brush in the current instance
+            </summary>
+            <typeparam name="T">The type of property value to set</typeparam>
+            <param name="setter">The input setter</param>
+            <param name="bound">The resulting setter</param>
+            <returns>The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> instance</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush.Bind``1(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{``0},Microsoft.Toolkit.Uwp.UI.Media.XamlEffectAnimation{``0}@)">
+            <summary>
+            Binds an <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation`1"/> to the composition brush in the current instance
+            </summary>
+            <typeparam name="T">The type of property value to animate</typeparam>
+            <param name="animation">The input animation</param>
+            <param name="bound">The resulting animation</param>
+            <returns>The current <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> instance</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush.OnBrushRequested">
+            <inheritdoc cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionEffectBrushBase"/>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush.Clone">
+            <summary>
+            Clones the current instance by rebuilding the source <see cref="T:Windows.UI.Xaml.Media.Brush"/>. Use this method to reuse the same effects pipeline on a different <see cref="T:Windows.UI.Core.CoreDispatcher"/>
+            </summary>
+            <returns>A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> instance using the current effects pipeline</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.ImageSourceBaseExtension">
+            <summary>
+            An image based effect that loads an image at the specified location
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.ImageSourceBaseExtension.Uri">
+            <summary>
+            Gets or sets the <see cref="T:System.Uri"/> for the image to load
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.ImageSourceBaseExtension.DpiMode">
+            <summary>
+            Gets or sets the DPI mode used to render the image (the default is <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.DpiMode.DisplayDpiWith96AsLowerBound"/>)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.ImageSourceBaseExtension.CacheMode">
+            <summary>
+            Gets or sets the cache mode to use when loading the image (the default is <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.CacheMode.Default"/>)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlendEffect">
+            <summary>
+            A blend effect that merges the current builder with an input one
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.BlendEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlendEffect.Source">
+            <summary>
+            Gets or sets the input to merge with the current instance (defaults to a <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.BackdropSourceExtension"/> with <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.Backdrop"/> source).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlendEffect.Effects">
+            <summary>
+            Gets or sets the effects to apply to the input to merge with the current instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlendEffect.Mode">
+            <summary>
+            Gets or sets the blending mode to use (the default mode is <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendMode.Multiply"/>)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlendEffect.Placement">
+            <summary>
+            Gets or sets the placement of the input builder with respect to the current one (the default is <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.Placement.Foreground"/>)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlendEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlurEffect">
+            <summary>
+            A gaussian blur effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.GaussianBlurEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlurEffect.Amount">
+            <summary>
+            Gets or sets the blur amount for the effect (must be a positive value)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.BlurEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.CrossFadeEffect">
+            <summary>
+            A blend effect that merges the current builder with an input one
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.CrossFadeEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.CrossFadeEffect.Source">
+            <summary>
+            Gets or sets the input to merge with the current instance (defaults to a <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.BackdropSourceExtension"/> with <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.Backdrop"/> source).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.CrossFadeEffect.Effects">
+            <summary>
+            Gets or sets the effects to apply to the input to merge with the current instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.CrossFadeEffect.Factor">
+            <summary>
+            Gets or sets the The cross fade factor to blend the input effects (default to 0.5, should be in the [0, 1] range)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.CrossFadeEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.ExposureEffect">
+            <summary>
+            An exposure effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.ExposureEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.ExposureEffect.Amount">
+            <summary>
+            Gets or sets the amount of exposure to apply to the background (defaults to 0, should be in the [-2, 2] range).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.ExposureEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.AcrylicSourceExtension">
+            <summary>
+            A custom acrylic effect that can be inserted into a pipeline
+            </summary>
+            <remarks>This effect mirrors the look of the default <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.AcrylicBrush"/> implementation</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.AcrylicSourceExtension.BackgroundSource">
+            <summary>
+            Gets or sets the background source mode for the effect (the default is <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.Backdrop"/>).
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.AcrylicSourceExtension.BlurAmount">
+            <summary>
+            Gets or sets the blur amount for the effect (must be a positive value)
+            </summary>
+            <remarks>This property is ignored when the active mode is <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.HostBackdrop"/></remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.AcrylicSourceExtension.TintColor">
+            <summary>
+            Gets or sets the tint for the effect
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.AcrylicSourceExtension.TintOpacity">
+            <summary>
+            Gets or sets the color for the tint effect (default is 0.5, must be in the [0, 1] range)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.AcrylicSourceExtension.TextureUri">
+            <summary>
+            Gets or sets the <see cref="T:System.Uri"/> to the texture to use
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.AcrylicSourceExtension.ProvideValue">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.BackdropSourceExtension">
+            <summary>
+            A backdrop effect that can sample from a specified source
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.BackdropSourceExtension.BackgroundSource">
+            <summary>
+            Gets or sets the background source mode for the effect (the default is <see cref="F:Windows.UI.Xaml.Media.AcrylicBackgroundSource.Backdrop"/>).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.BackdropSourceExtension.ProvideValue">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.ImageSourceExtension">
+            <summary>
+            An image effect, which displays an image loaded as a Win2D surface
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.ImageSourceExtension.ProvideValue">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.SolidColorSourceExtension">
+            <summary>
+            An effect that renders a standard 8bit SDR color on the available surface
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.SolidColorSourceExtension.Color">
+            <summary>
+            Gets or sets the color to display
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.SolidColorSourceExtension.ProvideValue">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.TileSourceExtension">
+            <summary>
+            An effect that loads an image and replicates it to cover all the available surface area
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.BorderEffect"/> effect</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.TileSourceExtension.ProvideValue">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.GrayscaleEffect">
+            <summary>
+            A grayscale effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.GrayscaleEffect"/> effect</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.GrayscaleEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.HueRotationEffect">
+            <summary>
+            A hue rotation effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.HueRotationEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.HueRotationEffect.Angle">
+            <summary>
+            Gets or sets the angle to rotate the hue, in radians
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.HueRotationEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.IPipelineEffect">
+            <summary>
+            The base <see langword="interface"/> for all the builder effects to be used in a <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.PipelineBrush"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.IPipelineEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <summary>
+            Appends the current effect to the input <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance.
+            </summary>
+            <param name="builder">The source <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to add the effect to.</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> with the new effects added to it.</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.InvertEffect">
+            <summary>
+            An color inversion effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.InvertEffect"/> effect</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.InvertEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.LuminanceToAlphaEffect">
+            <summary>
+            A luminance to alpha effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.LuminanceToAlphaEffect"/> effect</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.LuminanceToAlphaEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.OpacityEffect">
+            <summary>
+            An opacity effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.OpacityEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.OpacityEffect.Value">
+            <summary>
+            Gets or sets the opacity value to apply to the background (defaults to 1, should be in the [0, 1] range).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.OpacityEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.SaturationEffect">
+            <summary>
+            A saturation effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.SaturationEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.SaturationEffect.Value">
+            <summary>
+            Gets or sets the saturation amount to apply to the background (defaults to 1, should be in the [0, 1] range).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.SaturationEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.SepiaEffect">
+            <summary>
+            A sepia effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.SepiaEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.SepiaEffect.Intensity">
+            <summary>
+            Gets or sets the intensity of the effect (defaults to 0.5, should be in the [0, 1] range).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.SepiaEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.ShadeEffect">
+            <summary>
+            An effect that overlays a color layer over the current builder, with a specified intensity
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.ShadeEffect.Color">
+            <summary>
+            Gets or sets the color to use
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.ShadeEffect.Intensity">
+            <summary>
+            Gets or sets the intensity of the color layer (default to 0.5, should be in the [0, 1] range)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.ShadeEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.TemperatureAndTintEffect">
+            <summary>
+            A temperature and tint effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.TemperatureAndTintEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.TemperatureAndTintEffect.Temperature">
+            <summary>
+            Gets or sets the value of the temperature for the current effect (defaults to 0, should be in the [-1, 1] range)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.TemperatureAndTintEffect.Tint">
+            <summary>
+            Gets or sets the value of the tint for the current effect (defaults to 0, should be in the [-1, 1] range)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.TemperatureAndTintEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Effects.TintEffect">
+            <summary>
+            A tint effect
+            </summary>
+            <remarks>This effect maps to the Win2D <see cref="T:Microsoft.Graphics.Canvas.Effects.TintEffect"/> effect</remarks>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Effects.TintEffect.Color">
+            <summary>
+            Gets or sets the int color to use
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Effects.TintEffect.AppendToPipeline(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.AlphaMode">
+            <summary>
+            Specifies the way in which an alpha channel affects color channels.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AlphaMode.Premultiplied">
+            <summary>
+            Provides better transparent effects without a white bloom.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.AlphaMode.Straight">
+            <summary>
+            WPF default handling of alpha channel during transparent blending.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.CacheMode">
+            <summary>
+            Indicates the cache mode to use when loading a Win2D image
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.CacheMode.Default">
+            <summary>
+            The default behavior, the cache is enabled
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.CacheMode.Overwrite">
+            <summary>
+            Reload the target image and overwrite the cached entry, if it exists
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.CacheMode.Disabled">
+            <summary>
+            The cache is disabled and new images are always reloaded
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.DpiMode">
+            <summary>
+            Indicates the DPI mode to use to load an image
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.DpiMode.UseSourceDpi">
+            <summary>
+            Uses the original DPI settings of the loaded image
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.DpiMode.Default96Dpi">
+            <summary>
+            Uses the default value of 96 DPI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.DpiMode.DisplayDpi">
+            <summary>
+            Overrides the image DPI settings with the current screen DPI value
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.DpiMode.DisplayDpiWith96AsLowerBound">
+            <summary>
+            Overrides the image DPI settings with the current screen DPI value and ensures the resulting value is at least 96
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendMode">
+            <summary>
+            Blend mode to use when compositing effects.
+            See http://microsoft.github.io/Win2D/html/T_Microsoft_Graphics_Canvas_Effects_BlendEffectMode.htm for details.
+            Dissolve is not supported.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendMode.Hue">
+            <summary>
+            Hue blend mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendMode.Saturation">
+            <summary>
+            Saturation blend mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendMode.Color">
+            <summary>
+            Color blend mode.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.ImageBlendMode.Luminosity">
+            <summary>
+            Luminosity blend mode.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Placement">
+            <summary>
+            An <see langword="enum"/> used to modify the default placement of the input <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance in a blend operation
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Placement.Foreground">
+            <summary>
+            The instance used to call the blend method is placed on top of the other
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Placement.Background">
+            <summary>
+            The instance used to call the blend method is placed behind the other
+            </summary>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.GenericExtensions">
+            <summary>
+            An extension <see langword="class"/> for the <see cref="N:System.Collections.Generic"/> <see langword="namespace"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.GenericExtensions.Merge``2(System.Collections.Generic.IReadOnlyDictionary{``0,``1},System.Collections.Generic.IReadOnlyDictionary{``0,``1})">
+            <summary>
+            Merges the two input <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> instances and makes sure no duplicate keys are present
+            </summary>
+            <typeparam name="TKey">The type of keys in the input dictionaries</typeparam>
+            <typeparam name="TValue">The type of values in the input dictionaries</typeparam>
+            <param name="a">The first <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> to merge</param>
+            <param name="b">The second <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> to merge</param>
+            <returns>An <see cref="T:System.Collections.Generic.IReadOnlyDictionary`2"/> instance with elements from both <paramref name="a"/> and <paramref name="b"/></returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.GenericExtensions.Merge``1(System.Collections.Generic.IReadOnlyCollection{``0},System.Collections.Generic.IReadOnlyCollection{``0})">
+            <summary>
+            Merges the two input <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"/> instances and makes sure no duplicate items are present
+            </summary>
+            <typeparam name="T">The type of elements in the input collections</typeparam>
+            <param name="a">The first <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"/> to merge</param>
+            <param name="b">The second <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"/> to merge</param>
+            <returns>An <see cref="T:System.Collections.Generic.IReadOnlyCollection`1"/> instance with elements from both <paramref name="a"/> and <paramref name="b"/></returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex">
+            <summary>
+            An <see langword="async"/> <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex"/> implementation that can be easily used inside a <see langword="using"/> block
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex.semaphore">
+            <summary>
+            The underlying <see cref="T:System.Threading.SemaphoreSlim"/> instance in use
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex.LockAsync">
+            <summary>
+            Acquires a lock for the current instance, that is automatically released outside the <see langword="using"/> block
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that returns an <see cref="T:System.IDisposable"/> instance to release the lock</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex.Lock">
+            <summary>
+            Private class that implements the automatic release of the semaphore
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex.Lock.semaphore">
+            <summary>
+            The <see cref="T:System.Threading.SemaphoreSlim"/> instance of the parent class
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex.Lock.#ctor(System.Threading.SemaphoreSlim)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex.Lock"/> class.
+            </summary>
+            <param name="semaphore">The <see cref="T:System.Threading.SemaphoreSlim"/> instance of the parent class</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.AsyncMutex.Lock.System#IDisposable#Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.GuidExtensions">
+            <summary>
+            An extension <see langword="class"/> for the <see cref="T:System.Guid"/> type
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.GuidExtensions.ToUppercaseAsciiLetters(System.Guid)">
+            <summary>
+            Returns a <see cref="T:System.String"/> representation of a <see cref="T:System.Guid"/> only made of uppercase letters
+            </summary>
+            <param name="guid">The input <see cref="T:System.Guid"/> to process</param>
+            <returns>A <see cref="T:System.String"/> representation of <paramref name="guid"/> only made up of letters in the [A-Z] range</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.UriExtensions">
+            <summary>
+            An extension <see langword="class"/> for the <see cref="T:System.Uri"/> type
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.UriExtensions.ToAppxUri(System.Uri)">
+            <summary>
+            Returns an <see cref="T:System.Uri"/> that starts with the ms-appx:// prefix
+            </summary>
+            <param name="uri">The input <see cref="T:System.Uri"/> to process</param>
+            <returns>A <see cref="T:System.Uri"/> equivalent to the first but relative to ms-appx://</returns>
+            <remarks>This is needed because the XAML converter doesn't use the ms-appx:// prefix</remarks>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.UriExtensions.ToAppxUri(System.String)">
+            <summary>
+            Returns an <see cref="T:System.Uri"/> that starts with the ms-appx:// prefix
+            </summary>
+            <param name="path">The input relative path to convert</param>
+            <returns>A <see cref="T:System.Uri"/> with <paramref name="path"/> relative to ms-appx://</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Extensions.CompositionObjectExtensions">
+            <summary>
+            An extension <see langword="class"/> for the <see cref="T:Windows.UI.Composition.CompositionObject"/> type
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.CompositionObjectExtensions.BindSize(Windows.UI.Composition.CompositionObject,Windows.UI.Xaml.UIElement)">
+            <summary>
+            Starts an <see cref="T:Windows.UI.Composition.ExpressionAnimation"/> to keep the size of the source <see cref="T:Windows.UI.Composition.CompositionObject"/> in sync with the target <see cref="T:Windows.UI.Xaml.UIElement"/>
+            </summary>
+            <param name="source">The <see cref="T:Windows.UI.Composition.CompositionObject"/> to start the animation on</param>
+            <param name="target">The target <see cref="T:Windows.UI.Xaml.UIElement"/> to read the size updates from</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Extensions.CompositionObjectExtensions.StartAnimationAsync``1(Windows.UI.Composition.CompositionObject,System.String,``0,System.TimeSpan)">
+            <summary>
+            Starts an animation on the given property of a <see cref="T:Windows.UI.Composition.CompositionObject"/>
+            </summary>
+            <typeparam name="T">The type of the property to animate</typeparam>
+            <param name="target">The target <see cref="T:Windows.UI.Composition.CompositionObject"/></param>
+            <param name="property">The name of the property to animate</param>
+            <param name="value">The final value of the property</param>
+            <param name="duration">The animation duration</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that completes when the created animation completes</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.Cache.CompositionObjectCache`2">
+            <summary>
+            A <see langword="class"/> used to cache reusable <see cref="T:Windows.UI.Composition.CompositionObject"/> instances with an associated key
+            </summary>
+            <typeparam name="TKey">The type of key to classify the items in the cache</typeparam>
+            <typeparam name="TValue">The type of items stored in the cache</typeparam>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.Cache.CompositionObjectCache`2.cache">
+            <summary>
+            The cache of weak references of type <typeparamref name="TValue"/> to <typeparamref name="TKey"/> instances, to avoid memory leaks
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.Cache.CompositionObjectCache`2.TryGetValue(Windows.UI.Composition.Compositor,`0,`1@)">
+            <summary>
+            Tries to retrieve a valid instance from the cache, and uses the provided factory if an existing item is not found
+            </summary>
+            <param name="compositor">The current <see cref="T:Windows.UI.Composition.Compositor"/> instance to get the value for</param>
+            <param name="key">The key to look for</param>
+            <param name="result">The resulting value, if existing</param>
+            <returns><see langword="true"/> if the target value has been found, <see langword="false"/> otherwise</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.Cache.CompositionObjectCache`2.AddOrUpdate(Windows.UI.Composition.Compositor,`0,`1)">
+            <summary>
+            Adds or updates a value with the specified key to the cache
+            </summary>
+            <param name="compositor">The current <see cref="T:Windows.UI.Composition.Compositor"/> instance to get the value for</param>
+            <param name="key">The key of the item to add</param>
+            <param name="value">The value to add</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.Cache.CompositionObjectCache`1">
+            <summary>
+            A <see langword="class"/> used to cache reusable <see cref="T:Windows.UI.Composition.CompositionObject"/> instances in each UI thread
+            </summary>
+            <typeparam name="T">The type of instances to cache</typeparam>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.Cache.CompositionObjectCache`1.cache">
+            <summary>
+            The cache of weak references of type <typeparamref name="T"/>, to avoid memory leaks
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.Cache.CompositionObjectCache`1.GetValue(Windows.UI.Composition.Compositor,System.Func{Windows.UI.Composition.Compositor,`0})">
+            <summary>
+            Tries to retrieve a valid <typeparamref name="T"/> instance from the cache, and uses the provided factory if an existing item is not found
+            </summary>
+            <param name="compositor">The current <see cref="T:Windows.UI.Composition.Compositor"/> instance to get the value for</param>
+            <param name="producer">A <see cref="T:System.Func`1"/> instance used to produce a <typeparamref name="T"/> instance</param>
+            <returns>A <typeparamref name="T"/> instance that is linked to <paramref name="compositor"/></returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader">
+            <summary>
+            A <see langword="class"/> that can load and draw images and other objects to Win2D surfaces and brushes
+            </summary>
+            <summary>
+            A <see langword="class"/> that can load and draw images and other objects to Win2D surfaces and brushes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.Win2DMutex">
+            <summary>
+            Synchronization mutex to access the cache and load Win2D images concurrently
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.Cache">
+            <summary>
+            Gets the local cache mapping for previously loaded Win2D images
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.LoadImageAsync(System.Uri,Microsoft.Toolkit.Uwp.UI.Media.DpiMode,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Loads a <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance with the target image from the shared <see cref="T:Microsoft.Graphics.Canvas.CanvasDevice"/> instance
+            </summary>
+            <param name="uri">The path to the image to load</param>
+            <param name="dpiMode">Indicates the desired DPI mode to use when loading the image</param>
+            <param name="cacheMode">Indicates the cache option to use to load the image</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that returns the loaded <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.LoadSurfaceBrushAsync(Microsoft.Graphics.Canvas.CanvasDevice,Windows.UI.Composition.Compositor,System.Uri,Microsoft.Toolkit.Uwp.UI.Media.DpiMode)">
+            <summary>
+            Loads a <see cref="T:Windows.UI.Composition.CompositionBrush"/> from the input <see cref="T:System.Uri"/>, and prepares it to be used in a tile effect
+            </summary>
+            <param name="canvasDevice">The device to use to process the Win2D image</param>
+            <param name="compositor">The compositor instance to use to create the final brush</param>
+            <param name="uri">The path to the image to load</param>
+            <param name="dpiMode">Indicates the desired DPI mode to use when loading the image</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that returns the loaded <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance</returns>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.Instances">
+            <summary>
+            The cache of <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader"/> instances currently available
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.GetInstance">
+            <summary>
+            Gets a <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader"/> instance for the <see cref="T:Windows.UI.Composition.Compositor"/> of the current window
+            </summary>
+            <returns>A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader"/> instance to use in the current window</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.GetInstance(Windows.UI.Composition.Compositor)">
+            <summary>
+            Gets a <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader"/> instance for a given <see cref="T:Windows.UI.Composition.Compositor"/>
+            </summary>
+            <param name="compositor">The input <see cref="T:Windows.UI.Composition.Compositor"/> object to use</param>
+            <returns>A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader"/> instance associated with <paramref name="compositor"/></returns>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.compositor">
+            <summary>
+            The <see cref="T:Windows.UI.Composition.Compositor"/> instance in use.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.canvasDevice">
+            <summary>
+            The <see cref="T:Microsoft.Graphics.Canvas.CanvasDevice"/> instance in use.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.compositionDevice">
+            <summary>
+            The <see cref="T:Windows.UI.Composition.CompositionGraphicsDevice"/> instance to determine which GPU is handling the request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.#ctor(Windows.UI.Composition.Compositor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader"/> class.
+            </summary>
+            <param name="compositor">The <see cref="T:Windows.UI.Composition.Compositor"/> instance to use</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.InitializeDevices">
+            <summary>
+            Reloads the <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.canvasDevice"/> and <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.compositionDevice"/> fields.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.CanvasDevice_DeviceLost(Microsoft.Graphics.Canvas.CanvasDevice,System.Object)">
+            <summary>
+            Invokes <see cref="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.InitializeDevices"/> when the current <see cref="T:Microsoft.Graphics.Canvas.CanvasDevice"/> is lost.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.CompositionDevice_RenderingDeviceReplaced(Windows.UI.Composition.CompositionGraphicsDevice,Windows.UI.Composition.RenderingDeviceReplacedEventArgs)">
+            <summary>
+            Invokes <see cref="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.InitializeDevices"/> when the current <see cref="T:Windows.UI.Composition.CompositionGraphicsDevice"/> changes rendering device.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.LoadFromUri(System.Uri)">
+            <summary>
+            Loads an image from the URI.
+            </summary>
+            <param name="uri">The URI.</param>
+            <returns><see cref="T:Windows.UI.Composition.CompositionDrawingSurface"/></returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.LoadFromUri(System.Uri,Windows.Foundation.Size)">
+            <summary>
+            Loads an image from URI with a specified size.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="sizeTarget">The size target.</param>
+            <returns><see cref="T:Windows.UI.Composition.CompositionDrawingSurface"/></returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.LoadText(System.String,Windows.Foundation.Size,Microsoft.Graphics.Canvas.Text.CanvasTextFormat,Windows.UI.Color,Windows.UI.Color)">
+            <summary>
+            Loads the text on to a <see cref="T:Windows.UI.Composition.CompositionDrawingSurface"/>.
+            </summary>
+            <param name="text">The text.</param>
+            <param name="sizeTarget">The size target.</param>
+            <param name="textFormat">The text format.</param>
+            <param name="textColor">Color of the text.</param>
+            <param name="bgColor">Color of the bg.</param>
+            <returns><see cref="T:Windows.UI.Composition.CompositionDrawingSurface"/></returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Helpers.SurfaceLoader.LoadFromUri(System.Uri,Windows.Foundation.Size,Microsoft.Toolkit.Uwp.UI.Media.Helpers.LoadTimeEffectHandler)">
+            <summary>
+            Loads an image from URI, with a specified size.
+            </summary>
+            <param name="uri">The URI.</param>
+            <param name="sizeTarget">The size target.</param>
+            <param name="loadEffectHandler">The load effect handler callback.</param>
+            <returns><see cref="T:Windows.UI.Composition.CompositionDrawingSurface"/></returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Helpers.LoadTimeEffectHandler">
+            <summary>
+            A delegate for load time effects.
+            </summary>
+            <param name="bitmap">The bitmap.</param>
+            <param name="device">The device.</param>
+            <param name="sizeTarget">The size target.</param>
+            <returns>A CompositeDrawingSurface</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider">
+            <summary>
+            A simple container <see langword="class"/> used to store info on a custom composition effect to create
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider.Name">
+            <summary>
+            Gets the name of the target <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider.Initializer">
+            <summary>
+            Gets the stored effect initializer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider.#ctor(System.String,System.Func{System.Threading.Tasks.ValueTask{Windows.UI.Composition.CompositionBrush}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider"/> class.
+            </summary>
+            <param name="name">The name of the target <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/></param>
+            <param name="initializer">The stored effect initializer</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider.New(System.String,Windows.UI.Composition.CompositionBrush)">
+            <summary>
+            Creates a new instance with the info on a given <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/> to initialize
+            </summary>
+            <param name="name">The target effect name</param>
+            <param name="brush">A <see cref="T:Windows.UI.Composition.CompositionBrush"/> to use to initialize the effect</param>
+            <returns>A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider"/> instance with the input initializer</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider.New(System.String,System.Func{Windows.UI.Composition.CompositionBrush})">
+            <summary>
+            Creates a new instance with the info on a given <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/> to initialize
+            </summary>
+            <param name="name">The target effect name</param>
+            <param name="factory">A <see cref="T:System.Func`1"/> instance that will produce the <see cref="T:Windows.UI.Composition.CompositionBrush"/> to use to initialize the effect</param>
+            <returns>A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider"/> instance with the input initializer</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider.New(System.String,System.Func{System.Threading.Tasks.Task{Windows.UI.Composition.CompositionBrush}})">
+            <summary>
+            Creates a new instance with the info on a given <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/> to initialize
+            </summary>
+            <param name="name">The target effect name</param>
+            <param name="factory">An asynchronous <see cref="T:System.Func`1"/> instance that will produce the <see cref="T:Windows.UI.Composition.CompositionBrush"/> to use to initialize the effect</param>
+            <returns>A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider"/> instance with the input initializer</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter`1">
+            <summary>
+            A <see langword="delegate"/> that represents a custom effect property setter that can be applied to a <see cref="T:Windows.UI.Composition.CompositionBrush"/>
+            </summary>
+            <typeparam name="T">The type of property value to set</typeparam>
+            <param name="brush">The target <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance to target</param>
+            <param name="value">The property value to set</param>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation`1">
+            <summary>
+            A <see langword="delegate"/> that represents a custom effect property animation that can be applied to a <see cref="T:Windows.UI.Composition.CompositionBrush"/>
+            </summary>
+            <typeparam name="T">The type of property value to animate</typeparam>
+            <param name="brush">The target <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance to use to start the animation</param>
+            <param name="value">The animation target value</param>
+            <param name="duration">The animation duration</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that completes when the target animation completes</returns>
+        </member>
+        <member name="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder">
+            <summary>
+            A <see langword="class"/> that allows to build custom effects pipelines and create <see cref="T:Windows.UI.Composition.CompositionBrush"/> instances from them
+            </summary>
+            <summary>
+            A <see langword="class"/> that allows to build custom effects pipelines and create <see cref="T:Windows.UI.Composition.CompositionBrush"/> instances from them
+            </summary>
+            <summary>
+            A <see langword="class"/> that allows to build custom effects pipelines and create <see cref="T:Windows.UI.Composition.CompositionBrush"/> instances from them
+            </summary>
+            <summary>
+            A <see langword="class"/> that allows to build custom effects pipelines and create <see cref="T:Windows.UI.Composition.CompositionBrush"/> instances from them
+            </summary>
+            <summary>
+            A <see langword="class"/> that allows to build custom effects pipelines and create <see cref="T:Windows.UI.Composition.CompositionBrush"/> instances from them
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.sourceProducer">
+            <summary>
+            The <see cref="T:System.Func`1"/> instance used to produce the output <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> for this pipeline
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.animationProperties">
+            <summary>
+            The collection of animation properties present in the current pipeline
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.lazyParameters">
+            <summary>
+            The collection of info on the parameters that need to be initialized after creating the final <see cref="T:Windows.UI.Composition.CompositionBrush"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.#ctor(System.Func{System.Threading.Tasks.ValueTask{Windows.UI.Composition.CompositionBrush}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> class.
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> instance that will return the initial <see cref="T:Windows.UI.Composition.CompositionBrush"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.#ctor(System.Func{System.Threading.Tasks.ValueTask{Windows.Graphics.Effects.IGraphicsEffectSource}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> class.
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> instance that will return the initial <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/></param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.#ctor(System.Func{System.Threading.Tasks.ValueTask{Windows.Graphics.Effects.IGraphicsEffectSource}},System.Collections.Generic.IReadOnlyCollection{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> class.
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> instance that will produce the new <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> to add to the pipeline</param>
+            <param name="animations">The collection of animation properties for the new effect</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.#ctor(System.Func{System.Threading.Tasks.ValueTask{Windows.Graphics.Effects.IGraphicsEffectSource}},System.Collections.Generic.IReadOnlyCollection{System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Func{System.Threading.Tasks.ValueTask{Windows.UI.Composition.CompositionBrush}}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> class.
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> instance that will produce the new <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> to add to the pipeline</param>
+            <param name="animations">The collection of animation properties for the new effect</param>
+            <param name="lazy">The collection of <see cref="T:Windows.UI.Composition.CompositionBrush"/> instances that needs to be initialized for the new effect</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.#ctor(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,System.Func{System.Threading.Tasks.ValueTask{Windows.Graphics.Effects.IGraphicsEffectSource}},System.Collections.Generic.IReadOnlyCollection{System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Func{System.Threading.Tasks.ValueTask{Windows.UI.Composition.CompositionBrush}}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> class.
+            </summary>
+            <param name="source">The source pipeline to attach the new effect to</param>
+            <param name="factory">A <see cref="T:System.Func`1"/> instance that will produce the new <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> to add to the pipeline</param>
+            <param name="animations">The collection of animation properties for the new effect</param>
+            <param name="lazy">The collection of <see cref="T:Windows.UI.Composition.CompositionBrush"/> instances that needs to be initialized for the new effect</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.#ctor(System.Func{System.Threading.Tasks.ValueTask{Windows.Graphics.Effects.IGraphicsEffectSource}},Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,System.Collections.Generic.IReadOnlyCollection{System.String},System.Collections.Generic.IReadOnlyDictionary{System.String,System.Func{System.Threading.Tasks.ValueTask{Windows.UI.Composition.CompositionBrush}}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> class.
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> instance that will produce the new <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> to add to the pipeline</param>
+            <param name="a">The first pipeline to merge</param>
+            <param name="b">The second pipeline to merge</param>
+            <param name="animations">The collection of animation properties for the new effect</param>
+            <param name="lazy">The collection of <see cref="T:Windows.UI.Composition.CompositionBrush"/> instances that needs to be initialized for the new effect</param>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.BuildAsync">
+            <summary>
+            Builds a <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance from the current effects pipeline
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that returns the final <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance to use</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.AttachAsync(Windows.UI.Xaml.UIElement,Windows.UI.Xaml.UIElement)">
+            <summary>
+            Builds the current pipeline and creates a <see cref="T:Windows.UI.Composition.SpriteVisual"/> that is applied to the input <see cref="T:Windows.UI.Xaml.UIElement"/>
+            </summary>
+            <param name="target">The target <see cref="T:Windows.UI.Xaml.UIElement"/> to apply the brush to</param>
+            <param name="reference">An optional <see cref="T:Windows.UI.Xaml.UIElement"/> to use to bind the size of the created brush</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that returns the final <see cref="T:Windows.UI.Composition.SpriteVisual"/> instance to use</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.AsBrush">
+            <summary>
+            Creates a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> from the current effects pipeline
+            </summary>
+            <returns>A <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.XamlCompositionBrush"/> instance ready to be displayed</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Blur(System.Single,Microsoft.Graphics.Canvas.Effects.EffectBorderMode,Microsoft.Graphics.Canvas.Effects.EffectOptimization)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.GaussianBlurEffect"/> to the current pipeline
+            </summary>
+            <param name="blur">The blur amount to apply</param>
+            <param name="mode">The <see cref="T:Microsoft.Graphics.Canvas.Effects.EffectBorderMode"/> parameter for the effect, defaults to <see cref="F:Microsoft.Graphics.Canvas.Effects.EffectBorderMode.Hard"/></param>
+            <param name="optimization">The <see cref="T:Microsoft.Graphics.Canvas.Effects.EffectOptimization"/> parameter to use, defaults to <see cref="F:Microsoft.Graphics.Canvas.Effects.EffectOptimization.Balanced"/></param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Blur(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@,Microsoft.Graphics.Canvas.Effects.EffectBorderMode,Microsoft.Graphics.Canvas.Effects.EffectOptimization)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.GaussianBlurEffect"/> to the current pipeline
+            </summary>
+            <param name="blur">The initial blur amount</param>
+            <param name="setter">The optional blur setter for the effect</param>
+            <param name="mode">The <see cref="T:Microsoft.Graphics.Canvas.Effects.EffectBorderMode"/> parameter for the effect, defaults to <see cref="F:Microsoft.Graphics.Canvas.Effects.EffectBorderMode.Hard"/></param>
+            <param name="optimization">The <see cref="T:Microsoft.Graphics.Canvas.Effects.EffectOptimization"/> parameter to use, defaults to <see cref="F:Microsoft.Graphics.Canvas.Effects.EffectOptimization.Balanced"/></param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Blur(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@,Microsoft.Graphics.Canvas.Effects.EffectBorderMode,Microsoft.Graphics.Canvas.Effects.EffectOptimization)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.GaussianBlurEffect"/> to the current pipeline
+            </summary>
+            <param name="blur">The initial blur amount</param>
+            <param name="animation">The optional blur animation for the effect</param>
+            <param name="mode">The <see cref="T:Microsoft.Graphics.Canvas.Effects.EffectBorderMode"/> parameter for the effect, defaults to <see cref="F:Microsoft.Graphics.Canvas.Effects.EffectBorderMode.Hard"/></param>
+            <param name="optimization">The <see cref="T:Microsoft.Graphics.Canvas.Effects.EffectOptimization"/> parameter to use, defaults to <see cref="F:Microsoft.Graphics.Canvas.Effects.EffectOptimization.Balanced"/></param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Saturation(System.Single)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.SaturationEffect"/> to the current pipeline
+            </summary>
+            <param name="saturation">The saturation amount for the new effect (should be in the [0, 1] range)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Saturation(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.SaturationEffect"/> to the current pipeline
+            </summary>
+            <param name="saturation">The initial saturation amount for the new effect (should be in the [0, 1] range)</param>
+            <param name="setter">The optional saturation setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Saturation(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.SaturationEffect"/> to the current pipeline
+            </summary>
+            <param name="saturation">The initial saturation amount for the new effect (should be in the [0, 1] range)</param>
+            <param name="animation">The optional saturation animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Sepia(System.Single)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.SepiaEffect"/> to the current pipeline
+            </summary>
+            <param name="intensity">The sepia effect intensity for the new effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Sepia(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.SepiaEffect"/> to the current pipeline
+            </summary>
+            <param name="intensity">The sepia effect intensity for the new effect</param>
+            <param name="setter">The optional sepia intensity setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Sepia(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.SepiaEffect"/> to the current pipeline
+            </summary>
+            <param name="intensity">The sepia effect intensity for the new effect</param>
+            <param name="animation">The sepia intensity animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Opacity(System.Single)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.OpacityEffect"/> to the current pipeline
+            </summary>
+            <param name="opacity">The opacity value to apply to the pipeline</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Opacity(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.OpacityEffect"/> to the current pipeline
+            </summary>
+            <param name="opacity">The opacity value to apply to the pipeline</param>
+            <param name="setter">The optional opacity setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Opacity(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@)">
+            <summary>
+            Adds a new <see cref="T:Microsoft.Graphics.Canvas.Effects.OpacityEffect"/> to the current pipeline
+            </summary>
+            <param name="opacity">The opacity value to apply to the pipeline</param>
+            <param name="animation">The optional opacity animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Exposure(System.Single)">
+            <summary>
+            Applies an exposure effect on the current pipeline
+            </summary>
+            <param name="amount">The amount of exposure to apply over the current effect (should be in the [-2, 2] range)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Exposure(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@)">
+            <summary>
+            Applies an exposure effect on the current pipeline
+            </summary>
+            <param name="amount">The initial exposure of tint to apply over the current effect (should be in the [-2, 2] range)</param>
+            <param name="setter">The optional amount setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Exposure(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@)">
+            <summary>
+            Applies an exposure effect on the current pipeline
+            </summary>
+            <param name="amount">The initial exposure of tint to apply over the current effect (should be in the [-2, 2] range)</param>
+            <param name="animation">The optional amount animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.HueRotation(System.Single)">
+            <summary>
+            Applies a hue rotation effect on the current pipeline
+            </summary>
+            <param name="angle">The angle to rotate the hue, in radians</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.HueRotation(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@)">
+            <summary>
+            Applies a hue rotation effect on the current pipeline
+            </summary>
+            <param name="angle">The angle to rotate the hue, in radians</param>
+            <param name="setter">The optional rotation angle setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.HueRotation(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@)">
+            <summary>
+            Applies a hue rotation effect on the current pipeline
+            </summary>
+            <param name="angle">The angle to rotate the hue, in radians</param>
+            <param name="animation">The optional rotation angle animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Tint(Windows.UI.Color)">
+            <summary>
+            Applies a tint effect on the current pipeline
+            </summary>
+            <param name="color">The color to use</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Tint(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{Windows.UI.Color}@)">
+            <summary>
+            Applies a tint effect on the current pipeline
+            </summary>
+            <param name="color">The color to use</param>
+            <param name="setter">The optional color setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Tint(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{Windows.UI.Color}@)">
+            <summary>
+            Applies a tint effect on the current pipeline
+            </summary>
+            <param name="color">The color to use</param>
+            <param name="animation">The optional color animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.TemperatureAndTint(System.Single,System.Single)">
+            <summary>
+            Applies a temperature and tint effect on the current pipeline
+            </summary>
+            <param name="temperature">The temperature value to use (should be in the [-1, 1] range)</param>
+            <param name="tint">The tint value to use (should be in the [-1, 1] range)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.TemperatureAndTint(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@)">
+            <summary>
+            Applies a temperature and tint effect on the current pipeline
+            </summary>
+            <param name="temperature">The temperature value to use (should be in the [-1, 1] range)</param>
+            <param name="temperatureSetter">The optional temperature setter for the effect</param>
+            <param name="tint">The tint value to use (should be in the [-1, 1] range)</param>
+            <param name="tintSetter">The optional tint setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.TemperatureAndTint(System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@)">
+            <summary>
+            Applies a temperature and tint effect on the current pipeline
+            </summary>
+            <param name="temperature">The temperature value to use (should be in the [-1, 1] range)</param>
+            <param name="temperatureAnimation">The optional temperature animation for the effect</param>
+            <param name="tint">The tint value to use (should be in the [-1, 1] range)</param>
+            <param name="tintAnimation">The optional tint animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Shade(Windows.UI.Color,System.Single)">
+            <summary>
+            Applies a shade effect on the current pipeline
+            </summary>
+            <param name="color">The color to use</param>
+            <param name="mix">The amount of mix to apply over the current effect (must be in the [0, 1] range)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Shade(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{Windows.UI.Color}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@)">
+            <summary>
+            Applies a shade effect on the current pipeline
+            </summary>
+            <param name="color">The color to use</param>
+            <param name="colorSetter">The optional color setter for the effect</param>
+            <param name="mix">The initial amount of mix to apply over the current effect (must be in the [0, 1] range)</param>
+            <param name="mixSetter">The optional mix setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Shade(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{Windows.UI.Color}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@)">
+            <summary>
+            Applies a shade effect on the current pipeline
+            </summary>
+            <param name="color">The color to use</param>
+            <param name="colorAnimation">The optional color animation for the effect</param>
+            <param name="mix">The initial amount of mix to apply over the current effect (must be in the [0, 1] range)</param>
+            <param name="mixAnimation">The optional mix animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.LuminanceToAlpha">
+            <summary>
+            Applies a luminance to alpha effect on the current pipeline
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Invert">
+            <summary>
+            Applies an invert effect on the current pipeline
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Grayscale">
+            <summary>
+            Applies a grayscale on the current pipeline
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Effect(System.Func{Windows.Graphics.Effects.IGraphicsEffectSource,Windows.Graphics.Effects.IGraphicsEffectSource},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider})">
+            <summary>
+            Applies a custom effect to the current pipeline
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`2"/> that takes the current <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance and produces a new effect to display</param>
+            <param name="animations">The list of optional animatable properties in the returned effect</param>
+            <param name="initializers">The list of source parameters that require deferred initialization (see <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/> for more info)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Effect(System.Func{Windows.Graphics.Effects.IGraphicsEffectSource,System.Threading.Tasks.Task{Windows.Graphics.Effects.IGraphicsEffectSource}},System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider})">
+            <summary>
+            Applies a custom effect to the current pipeline
+            </summary>
+            <param name="factory">An asynchronous <see cref="T:System.Func`2"/> that takes the current <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance and produces a new effect to display</param>
+            <param name="animations">The list of optional animatable properties in the returned effect</param>
+            <param name="initializers">The list of source parameters that require deferred initialization (see <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/> for more info)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.BackdropBrushCache">
+            <summary>
+            The cache manager for backdrop brushes
+            </summary>
+        </member>
+        <member name="F:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.HostBackdropBrushCache">
+            <summary>
+            The cache manager for host backdrop brushes
+            </summary>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromBackdrop">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the <see cref="T:Windows.UI.Composition.CompositionBrush"/> returned by <see cref="M:Windows.UI.Composition.Compositor.CreateBackdropBrush"/>
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromHostBackdrop">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the <see cref="T:Windows.UI.Composition.CompositionBrush"/> returned by <see cref="M:Windows.UI.Composition.Compositor.CreateHostBackdropBrush"/>
+            </summary>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromColor(Windows.UI.Color)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a solid <see cref="T:Windows.UI.Composition.CompositionBrush"/> with the specified color
+            </summary>
+            <param name="color">The desired color for the initial <see cref="T:Windows.UI.Composition.CompositionBrush"/></param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromColor(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{Windows.UI.Color}@)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a solid <see cref="T:Windows.UI.Composition.CompositionBrush"/> with the specified color
+            </summary>
+            <param name="color">The desired color for the initial <see cref="T:Windows.UI.Composition.CompositionBrush"/></param>
+            <param name="setter">The optional color setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromColor(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{Windows.UI.Color}@)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a solid <see cref="T:Windows.UI.Composition.CompositionBrush"/> with the specified color
+            </summary>
+            <param name="color">The desired color for the initial <see cref="T:Windows.UI.Composition.CompositionBrush"/></param>
+            <param name="animation">The optional color animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromHdrColor(System.Numerics.Vector4)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a solid <see cref="T:Windows.UI.Composition.CompositionBrush"/> with the specified color
+            </summary>
+            <param name="color">The desired color for the initial <see cref="T:Windows.UI.Composition.CompositionBrush"/></param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromHdrColor(System.Numerics.Vector4,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Numerics.Vector4}@)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a solid <see cref="T:Windows.UI.Composition.CompositionBrush"/> with the specified color
+            </summary>
+            <param name="color">The desired color for the initial <see cref="T:Windows.UI.Composition.CompositionBrush"/></param>
+            <param name="setter">The optional color setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromHdrColor(System.Numerics.Vector4,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Numerics.Vector4}@)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a solid <see cref="T:Windows.UI.Composition.CompositionBrush"/> with the specified color
+            </summary>
+            <param name="color">The desired color for the initial <see cref="T:Windows.UI.Composition.CompositionBrush"/></param>
+            <param name="animation">The optional color animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromBrush(Windows.UI.Composition.CompositionBrush)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the input <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance
+            </summary>
+            <param name="brush">A <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance to start the pipeline</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromBrush(System.Func{Windows.UI.Composition.CompositionBrush})">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the input <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> that synchronously returns a <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance to start the pipeline</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromBrush(System.Func{System.Threading.Tasks.Task{Windows.UI.Composition.CompositionBrush}})">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the input <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> that asynchronously returns a <see cref="T:Windows.UI.Composition.CompositionBrush"/> instance to start the pipeline</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromEffect(Windows.Graphics.Effects.IGraphicsEffectSource)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the input <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance
+            </summary>
+            <param name="effect">A <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance to start the pipeline</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromEffect(System.Func{Windows.Graphics.Effects.IGraphicsEffectSource})">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the input <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> that synchronously returns a <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance to start the pipeline</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromEffect(System.Func{System.Threading.Tasks.Task{Windows.Graphics.Effects.IGraphicsEffectSource}})">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the input <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance
+            </summary>
+            <param name="factory">A <see cref="T:System.Func`1"/> that asynchronously returns a <see cref="T:Windows.Graphics.Effects.IGraphicsEffectSource"/> instance to start the pipeline</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromImage(System.String,Microsoft.Toolkit.Uwp.UI.Media.DpiMode,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a Win2D image
+            </summary>
+            <param name="relativePath">The relative path for the image to load (eg. "/Assets/image.png")</param>
+            <param name="dpiMode">Indicates the desired DPI mode to use when loading the image</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromImage(System.Uri,Microsoft.Toolkit.Uwp.UI.Media.DpiMode,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a Win2D image
+            </summary>
+            <param name="uri">The path for the image to load</param>
+            <param name="dpiMode">Indicates the desired DPI mode to use when loading the image</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromTiles(System.String,Microsoft.Toolkit.Uwp.UI.Media.DpiMode,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a Win2D image tiled to cover the available space
+            </summary>
+            <param name="relativePath">The relative path for the image to load (eg. "/Assets/image.png")</param>
+            <param name="dpiMode">Indicates the desired DPI mode to use when loading the image</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromTiles(System.Uri,Microsoft.Toolkit.Uwp.UI.Media.DpiMode,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from a Win2D image tiled to cover the available space
+            </summary>
+            <param name="uri">The path for the image to load</param>
+            <param name="dpiMode">Indicates the desired DPI mode to use when loading the image</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromUIElement(Windows.UI.Xaml.UIElement)">
+            <summary>
+            Starts a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> pipeline from the <see cref="T:Windows.UI.Composition.CompositionBrush"/> returned by <see cref="M:Windows.UI.Composition.Compositor.CreateBackdropBrush"/> on the input <see cref="T:Windows.UI.Xaml.UIElement"/>
+            </summary>
+            <param name="element">The source <see cref="T:Windows.UI.Xaml.UIElement"/> to use to create the pipeline</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Blend(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,Microsoft.Graphics.Canvas.Effects.BlendEffectMode,Microsoft.Toolkit.Uwp.UI.Media.Placement)">
+            <summary>
+            Blends two pipelines using a <see cref="T:Microsoft.Graphics.Canvas.Effects.BlendEffect"/> instance with the specified mode
+            </summary>
+            <param name="pipeline">The second <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to blend</param>
+            <param name="mode">The desired <see cref="T:Microsoft.Graphics.Canvas.Effects.BlendEffectMode"/> to use to blend the input pipelines</param>
+            <param name="placement">The placemeht to use with the two input pipelines (the default is <see cref="F:Microsoft.Toolkit.Uwp.UI.Media.Placement.Foreground"/>)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.CrossFade(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,System.Single)">
+            <summary>
+            Cross fades two pipelines using an <see cref="T:Microsoft.Graphics.Canvas.Effects.CrossFadeEffect"/> instance
+            </summary>
+            <param name="pipeline">The second <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to cross fade</param>
+            <param name="factor">The cross fade factor to blend the input effects (default is 0.5, must be in the [0, 1] range)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.CrossFade(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@)">
+            <summary>
+            Cross fades two pipelines using an <see cref="T:Microsoft.Graphics.Canvas.Effects.CrossFadeEffect"/> instance
+            </summary>
+            <param name="pipeline">The second <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to cross fade</param>
+            <param name="factor">The cross fade factor to blend the input effects (should be in the [0, 1] range)</param>
+            <param name="setter">The optional blur setter for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.CrossFade(Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@)">
+            <summary>
+            Cross fades two pipelines using an <see cref="T:Microsoft.Graphics.Canvas.Effects.CrossFadeEffect"/> instance
+            </summary>
+            <param name="pipeline">The second <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to cross fade</param>
+            <param name="factor">The cross fade factor to blend the input effects (should be in the [0, 1] range)</param>
+            <param name="animation">The optional blur animation for the effect</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Merge(System.Func{Windows.Graphics.Effects.IGraphicsEffectSource,Windows.Graphics.Effects.IGraphicsEffectSource,Windows.Graphics.Effects.IGraphicsEffectSource},Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider})">
+            <summary>
+            Blends two pipelines using the provided <see cref="T:System.Func`3"/> to do so
+            </summary>
+            <param name="factory">The blend function to use</param>
+            <param name="background">The background pipeline to blend with the current instance</param>
+            <param name="animations">The list of optional animatable properties in the returned effect</param>
+            <param name="initializers">The list of source parameters that require deferred initialization (see <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/> for more info)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.Merge(System.Func{Windows.Graphics.Effects.IGraphicsEffectSource,Windows.Graphics.Effects.IGraphicsEffectSource,System.Threading.Tasks.Task{Windows.Graphics.Effects.IGraphicsEffectSource}},Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{Microsoft.Toolkit.Uwp.UI.Media.Pipelines.BrushProvider})">
+            <summary>
+            Blends two pipelines using the provided asynchronous <see cref="T:System.Func`3"/> to do so
+            </summary>
+            <param name="factory">The asynchronous blend function to use</param>
+            <param name="background">The background pipeline to blend with the current instance</param>
+            <param name="animations">The list of optional animatable properties in the returned effect</param>
+            <param name="initializers">The list of source parameters that require deferred initialization (see <see cref="T:Windows.UI.Composition.CompositionEffectSourceParameter"/> for more info)</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromHostBackdropAcrylic(Windows.UI.Color,System.Single,System.Uri,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Returns a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance that implements the host backdrop acrylic effect
+            </summary>
+            <param name="tintColor">The tint color to use</param>
+            <param name="tintOpacity">The amount of tint to apply over the current effect</param>
+            <param name="noiseUri">The <see cref="T:System.Uri"/> for the noise texture to load for the acrylic effect</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromHostBackdropAcrylic(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{Windows.UI.Color}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@,System.Uri,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Returns a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance that implements the host backdrop acrylic effect
+            </summary>
+            <param name="tintColor">The tint color to use</param>
+            <param name="tintColorSetter">The optional tint color setter for the effect</param>
+            <param name="tintOpacity">The amount of tint to apply over the current effect</param>
+            <param name="tintOpacitySetter">The optional tint mix setter for the effect</param>
+            <param name="noiseUri">The <see cref="T:System.Uri"/> for the noise texture to load for the acrylic effect</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromHostBackdropAcrylic(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{Windows.UI.Color}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@,System.Uri,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Returns a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance that implements the host backdrop acrylic effect
+            </summary>
+            <param name="tintColor">The tint color to use</param>
+            <param name="tintColorAnimation">The optional tint color animation for the effect</param>
+            <param name="tintOpacity">The amount of tint to apply over the current effect</param>
+            <param name="tintOpacityAnimation">The optional tint mix animation for the effect</param>
+            <param name="noiseUri">The <see cref="T:System.Uri"/> for the noise texture to load for the acrylic effect</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromBackdropAcrylic(Windows.UI.Color,System.Single,System.Single,System.Uri,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Returns a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance that implements the in-app backdrop acrylic effect
+            </summary>
+            <param name="tintColor">The tint color to use</param>
+            <param name="tintOpacity">The amount of tint to apply over the current effect (must be in the [0, 1] range)</param>
+            <param name="blurAmount">The amount of blur to apply to the acrylic brush</param>
+            <param name="noiseUri">The <see cref="T:System.Uri"/> for the noise texture to load for the acrylic effect</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromBackdropAcrylic(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{Windows.UI.Color}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectSetter{System.Single}@,System.Uri,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Returns a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance that implements the in-app backdrop acrylic effect
+            </summary>
+            <param name="tintColor">The tint color to use</param>
+            <param name="tintColorSetter">The optional tint color setter for the effect</param>
+            <param name="tintOpacity">The amount of tint to apply over the current effect</param>
+            <param name="tintOpacitySetter">The optional tint mix setter for the effect</param>
+            <param name="blurAmount">The amount of blur to apply to the acrylic brush</param>
+            <param name="blurAmountSetter">The optional blur setter for the effect</param>
+            <param name="noiseUri">The <see cref="T:System.Uri"/> for the noise texture to load for the acrylic effect</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+        <member name="M:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder.FromBackdropAcrylic(Windows.UI.Color,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{Windows.UI.Color}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@,System.Single,Microsoft.Toolkit.Uwp.UI.Media.Pipelines.EffectAnimation{System.Single}@,System.Uri,Microsoft.Toolkit.Uwp.UI.Media.CacheMode)">
+            <summary>
+            Returns a new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance that implements the in-app backdrop acrylic effect
+            </summary>
+            <param name="tintColor">The tint color to use</param>
+            <param name="tintAnimation">The optional tint color animation for the effect</param>
+            <param name="tintOpacity">The amount of tint to apply over the current effect</param>
+            <param name="tintOpacityAnimation">The optional tint mix animation for the effect</param>
+            <param name="blurAmount">The amount of blur to apply to the acrylic brush</param>
+            <param name="blurAmountAnimation">The optional blur animation for the effect</param>
+            <param name="noiseUri">The <see cref="T:System.Uri"/> for the noise texture to load for the acrylic effect</param>
+            <param name="cacheMode">The cache mode to use to load the image</param>
+            <returns>A new <see cref="T:Microsoft.Toolkit.Uwp.UI.Media.Pipelines.PipelineBuilder"/> instance to use to keep adding new effects</returns>
+        </member>
+    </members>
+</doc>

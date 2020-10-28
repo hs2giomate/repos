@@ -1,0 +1,1 @@
+C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\UnitTests\UnitTests.Notifications.UWP\UnitTests.Notifications.UWP.csproj;x64

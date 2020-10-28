@@ -1,0 +1,52 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ConnectedAnimations.Pages.SecondPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Microsoft.Toolkit.Uwp.SampleApp.SamplePages.ConnectedAnimations.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
+    xmlns:data="using:Microsoft.Toolkit.Uwp.SampleApp.Data"
+    mc:Ignorable="d">
+
+    <Grid Padding="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+
+            <Border x:ConnectionId='7' x:Name="HeroElement"
+                    Height="300"
+                    Width="300"
+                    Background="Purple"
+                    animations:Connected.Key="item"></Border>
+
+            <StackPanel x:ConnectionId='8' x:Name="HeroDetailsElement" Margin="20,0" VerticalAlignment="Bottom" MaxWidth="500"                                                          >
+                <TextBlock Text="Header" FontSize="50"></TextBlock>
+                <TextBlock TextWrapping="WrapWholeWords">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eleifend ex sit amet blandit lobortis. Curabitur ut diam fringilla, interdum massa sit amet, facilisis erat. Donec vulputate sed ex vel pellentesque. In sodales odio non felis interdum viverra. Morbi in mi mollis, ullamcorper nibh sit amet, sagittis ex. Maecenas dapibus commodo venenatis. Donec at egestas est.</TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+        <GridView x:ConnectionId='2' x:Name="listView"
+                  Margin="0, 40, 0, 0"
+                  SelectionMode="None"
+                  Grid.Row="1"
+                                                
+                  IsItemClickEnabled="True"
+                  animations:Connected.ListItemElementName="ItemThumbnail"
+                  animations:Connected.ListItemKey="listItem">
+            <GridView.ItemTemplate>
+                <DataTemplate                                >
+                    <Grid x:ConnectionId='4' Height="200" Width="200">
+                        <Image x:ConnectionId='5' x:Name="ItemThumbnail"                             Stretch="UniformToFill"/>
+                        <Border Background="#99FFFFFF" VerticalAlignment="Bottom" Padding="5">
+                            <TextBlock x:ConnectionId='6'                       FontSize="14"/>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </Grid>
+</Page>
+
