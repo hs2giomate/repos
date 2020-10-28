@@ -47,6 +47,7 @@ namespace MaintenanceToolProtocol
             order.command = Commands.KeepConnected;
             datagram.order = order;
             buffer.Initialize();
+
             Buffer.BlockCopy(datagram.GetOrderArrayBytes(), 0, buffer, 0, buffer.Length);
             return buffer;
 
