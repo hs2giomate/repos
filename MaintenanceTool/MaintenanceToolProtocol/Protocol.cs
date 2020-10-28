@@ -19,6 +19,7 @@ namespace MaintenanceToolProtocol
     public class Protocol
     {
         private static Protocol handler;
+        private int sizeStruct;
         private SingleTaskMessage singleTaskMessage;
         public Byte[] buffer;
         public Protocol()
@@ -58,7 +59,7 @@ namespace MaintenanceToolProtocol
             buffer = new Byte[size];
             CommandHeader datagram = new CommandHeader();
             SingleTaskCommand order = datagram.order;
-            order.task = Commands.WriteParameters;
+            order.task = Commands.EnableHeaters;
             datagram.order = order;
             SingleTaskMessage m;
             m.header = order;
@@ -68,14 +69,30 @@ namespace MaintenanceToolProtocol
             return buffer;
 
         }
+        public Byte[] CreateHeatersStatusRequestMessage()
+        {
+            sizeStruct = Marshal.SizeOf(singleTaskMessage);
+            buffer = new Byte[sizeStruct];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.ReadStatusHeaters;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = 0;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, sizeStruct);
+            return buffer;
+
+        }
         public Byte[] GetSingleTaskCommandArrayBytes(SingleTaskMessage pm)
         {
-            var size = Marshal.SizeOf(singleTaskMessage);
-            Byte[] locabBuffer = new Byte[size];
-            locabBuffer.Initialize();
+          //  var size = Marshal.SizeOf(singleTaskMessage);
+            Byte[] locabBuffer = new Byte[sizeStruct];
+          //  locabBuffer.Initialize();
 
             singleTaskMessage = pm;
-            IntPtr pnt = Marshal.AllocHGlobal(size);
+            IntPtr pnt = Marshal.AllocHGlobal(sizeStruct);
 
             try
             {
@@ -90,7 +107,7 @@ namespace MaintenanceToolProtocol
                 // Point in unmanaged memory.
                 // anotherOrder = (SingleTaskCommand)Marshal.PtrToStructure(pnt, typeof(SingleTaskCommand));
 
-                Marshal.Copy(pnt, locabBuffer, 0, size);
+                Marshal.Copy(pnt, locabBuffer, 0, sizeStruct);
             }
             finally
             {

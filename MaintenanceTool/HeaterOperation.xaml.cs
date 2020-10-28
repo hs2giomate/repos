@@ -23,6 +23,8 @@ using Windows.Storage.Streams;
 using System.Runtime.InteropServices;
 using System.Text;
 using MaintenanceToolProtocol;
+using System.Timers;
+using System.Runtime.CompilerServices;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -35,6 +37,7 @@ namespace MaintenanceToolECSBOX
 
     {
         private MainPage rootPage = MainPage.Current;
+        private static HeaterOperation handler;
         // Track Read Operation
         private CancellationTokenSource ReadCancellationTokenSource;
         private Object ReadCancelLock = new Object();
@@ -42,7 +45,7 @@ namespace MaintenanceToolECSBOX
         private Boolean IsReadTaskPending;
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
-        public Byte Offset { get; set; }
+        public Byte RelaysStatus { get; set; }
 
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
@@ -56,16 +59,34 @@ namespace MaintenanceToolECSBOX
         private static AnimationSet faultDarkAnimation,faultLighAnimation;
         private Task blink;
         private SingleTaskMessage heatersCommand;
+        private static System.Timers.Timer aTimer = null;
         public HeaterOperation()
         {
             this.InitializeComponent();
+            handler = this;
             faultDarkAnimation = Relay1FaultSignal.Fade(value: 0.25f, duration: 1000, delay: 25, easingType: EasingType.Sine);
             faultDarkAnimation.Completed += FaultDarkAnimation_Completed;
             faultLighAnimation = Relay1FaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
             faultLighAnimation.Completed += FaultLighAnimation_Completed;
             heaterRelaysCommand = 0;
         }
+        public void StartStatusCheckTimer()
+        {
+            // Create a timer and set a two second interval.
+            aTimer = new System.Timers.Timer();
+            aTimer.Interval = 1000;
 
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += OnTimedEvent;
+
+            // Have the timer fire repeated events (true is the default)
+            aTimer.AutoReset = true;
+
+            // Start the timer
+            aTimer.Enabled = true;
+
+
+        }
         private void FaultLighAnimation_Completed(object sender, AnimationSetCompletedEventArgs e)
         {
             if (!RelayEnable1Toggle.IsOn)
@@ -74,6 +95,21 @@ namespace MaintenanceToolECSBOX
                 blink = faultDarkAnimation.StartAsync();
             }
             //  throw new NotImplementedException();
+        }
+        private static async void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            // Debug.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
+            //  MaintenanceToolHandler.Current.SendAliveMessage();
+          await handler.UpdateDataRelayStatus();
+           
+
+        }
+        public  async Task UpdateDataRelayStatus()
+        {
+            await RequestRelayStatus();
+            await ReadRelaysStatus();
+
+
         }
 
         private void FaultDarkAnimation_Completed(object sender, AnimationSetCompletedEventArgs e)
@@ -127,6 +163,7 @@ namespace MaintenanceToolECSBOX
                 ResetWriteCancellationTokenSource();
 
                 UpdateRelayStatus();
+                StartStatusCheckTimer();
 
                 // InitialOffsetRead();
 
@@ -135,14 +172,139 @@ namespace MaintenanceToolECSBOX
         protected override void OnNavigatedFrom(NavigationEventArgs eventArgs)
         {
             IsNavigatedAway = true;
-
+            if (aTimer != null)
+            {
+                    aTimer.Stop();
+                     aTimer.Dispose();
+            }
             CancelAllIoTasks();
         }
         private Boolean IsPerformingRead()
         {
             return (IsReadTaskPending);
         }
-        private async Task WriteAsync(CancellationToken cancellationToken)
+        private async Task RequestRelayStatus()
+        {
+            if (IsPerformingRead())
+            {
+                CancelReadTask();
+            }
+            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            {
+                try
+                {
+                    rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
+
+                    // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
+                    // update the button states until after the write completes.
+                    IsWriteTaskPending = true;
+                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                    //UpdateWriteButtonStates();
+
+                    await SendrequestStatusAsync(WriteCancellationTokenSource.Token);
+                }
+                catch (OperationCanceledException /*exception*/)
+                {
+                    NotifyWriteTaskCanceled();
+                }
+                catch (Exception exception)
+                {
+                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                    Debug.WriteLine(exception.Message.ToString());
+                }
+                finally
+                {
+                    IsWriteTaskPending = false;
+                    DataWriteObject.DetachStream();
+                    DataWriteObject = null;
+
+                   // UpdateWriteButtonStates();
+                }
+            }
+            else
+            {
+                Utilities.NotifyDeviceNotConnected();
+            }
+        }
+
+        private async Task ReadRelaysStatus()
+        {
+            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            {
+                try
+                {
+                    rootPage.NotifyUser("Reading Parameters...", NotifyType.StatusMessage);
+
+                    // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
+                    // update the button states until after the read completes.
+                    IsReadTaskPending = true;
+                    DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
+                   // UpdateReadButtonStates();
+
+                    await ReadStatusAsync(ReadCancellationTokenSource.Token);
+                }
+                catch (OperationCanceledException /*exception*/)
+                {
+                    NotifyReadTaskCanceled();
+                    Debug.WriteLine("ReadOperation cancelled");
+                }
+                catch (Exception exception)
+                {
+                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                    Debug.WriteLine(exception.Message.ToString());
+                }
+                finally
+                {
+                    IsReadTaskPending = false;
+                    DataReaderObject.DetachStream();
+                    DataReaderObject = null;
+
+                   // UpdateReadButtonStates();
+                    // UpdateAllToggleBits();
+                }
+            }
+            else
+            {
+                Utilities.NotifyDeviceNotConnected();
+            }
+
+        }
+        private async Task ReadStatusAsync(CancellationToken cancellationToken)
+        {
+
+            Task<UInt32> loadAsyncTask;
+
+            uint ReadBufferLength = 64;
+
+            // Don't start any IO if we canceled the task
+            lock (ReadCancelLock)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+
+                // Cancellation Token will be used so we can stop the task operation explicitly
+                // The completion function should still be called so that we can properly handle a canceled task
+                DataReaderObject.InputStreamOptions = InputStreamOptions.Partial;
+                loadAsyncTask = DataReaderObject.LoadAsync(ReadBufferLength).AsTask(cancellationToken);
+            }
+
+            UInt32 bytesRead = await loadAsyncTask;
+            Debug.WriteLine(string.Concat("bytes Read", bytesRead.ToString()));
+            if (bytesRead > 0)
+            {
+                received = new byte[ReadBufferLength];
+
+                DataReaderObject.ReadBytes(received);
+                Debug.WriteLine(string.Concat("Bytes received: ", received.ToString()));
+             //   ParametersStruct receivedParameters = new ParametersStruct();
+             //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
+                RelaysStatus = received[6];
+              //  ReadOffsetValueText.Text = String.Concat(ConvertOffsetToAngle(Offset).ToString("N0"), " °");
+                ReadBytesCounter += bytesRead;
+
+            }
+            rootPage.NotifyUser("Read completed - " + bytesRead.ToString() + " bytes were read", NotifyType.StatusMessage);
+        }
+        private async Task WriteRelaEnablesAsync(CancellationToken cancellationToken)
         {
 
             Task<UInt32> storeAsyncTask;
@@ -182,6 +344,40 @@ namespace MaintenanceToolECSBOX
             }
 
         }
+        private async Task SendrequestStatusAsync(CancellationToken cancellationToken)
+        {
+
+            Task<UInt32> storeAsyncTask;
+
+        
+             
+                var n = Marshal.SizeOf(typeof(SingleTaskMessage));
+                toSend = new byte[n];
+                toSend.Initialize();
+                Protocol.Message.CreateHeatersStatusRequestMessage().CopyTo(toSend, 0);
+
+                //     ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);
+
+                //      Byte[] toSend2 = Encoding.ASCII.GetBytes("abcd<Gf");
+
+                DataWriteObject.WriteBytes(toSend);
+
+
+                // Don't start any IO if we canceled the task
+                lock (WriteCancelLock)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+
+                    // Cancellation Token will be used so we can stop the task operation explicitly
+                    // The completion function should still be called so that we can properly handle a canceled task
+                    storeAsyncTask = DataWriteObject.StoreAsync().AsTask(cancellationToken);
+                }
+
+                UInt32 bytesWritten = await storeAsyncTask;
+                rootPage.NotifyUser("Request Completed - " + bytesWritten.ToString() + " bytes written", NotifyType.StatusMessage);
+    
+
+        }
         private Boolean IsPerformingWrite()
         {
             return (IsWriteTaskPending);
@@ -216,7 +412,7 @@ namespace MaintenanceToolECSBOX
                         DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
                         //   UpdateWriteButtonStates();
 
-                        await WriteAsync(WriteCancellationTokenSource.Token);
+                        await WriteRelaEnablesAsync(WriteCancellationTokenSource.Token);
                     }
                     catch (OperationCanceledException /*exception*/)
                     {
@@ -247,51 +443,60 @@ namespace MaintenanceToolECSBOX
         }
         private void UpdateRelayStatus()
         {
-            UpdateFaultStatusSignal();
+            UpdateFaultStatus1Signal();
             UpdateRelayStatusText();
         }
         private void UpdateRelayStatusText()
         {
-            if (RelayEnable1Toggle.IsOn)
-            {
-                Relay1StatusText.Text = "Heating";
-            }
-            else
+            if ((RelaysStatus &  ((Byte)0x01))==0)
             {
                 Relay1StatusText.Text = "Fault";
             }
-
-        }
-        private async void UpdateFaultStatusSignal()
-        {
-            if (RelayEnable1Toggle.IsOn)
+            else 
             {
-                
-                Relay1FaultSignal.Fade().Stop();
-                if (blink!=null)
+                if (RelayEnable1Toggle.IsOn)
                 {
-                    await blink;
+                    Relay1StatusText.Text = "Heating";
                 }
-           
-                Relay1StatusBorder.Visibility = Visibility.Visible;
-                Relay1FaultSignal.Visibility = Visibility.Collapsed;
+                else
+                {
+                    Relay1StatusText.Text = "Off";
+                }
             }
-            else
+     
+        }
+        private async void UpdateFaultStatus1Signal()
+        {
+            if ((RelaysStatus & ((Byte)0x01)) == 0)
             {
                 Relay1StatusBorder.Visibility = Visibility.Collapsed;
                 Relay1FaultSignal.Visibility = Visibility.Visible;
                 blink = faultDarkAnimation.StartAsync();
-
             }
-        }
-
-        private static void OnCompletedAnimation(AnimationSetCompletedEventArgs e)
-        {
-            if (true)
+            else
             {
+                Relay1FaultSignal.Fade().Stop();
+                if (blink != null)
+                {
+                    await blink;
+                }
+                if (RelayEnable1Toggle.IsOn)
+                {
+                    Relay1StatusBorder.Visibility = Visibility.Visible;
+                    Relay1FaultSignal.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    Relay1StatusBorder.Visibility = Visibility.Collapsed;
+                    Relay1FaultSignal.Visibility = Visibility.Collapsed;
 
+                }
             }
+
+    
         }
+
+    
         private void ResetReadCancellationTokenSource()
         {
             // Create a new cancellation token source so that can cancel all the tokens again
