@@ -54,6 +54,7 @@ namespace MaintenanceToolECSBOX
         public ObservableCollection<TextBlock> listOfTextBlocks;
         public ObservableCollection<Border> listOfBorders;
         public ObservableCollection<Windows.UI.Xaml.Shapes.Ellipse> listOfEllipses;
+        public ObservableCollection<AnimationSet> listOfDarkAnimations,listOfLightAnimations;
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
         private Boolean IsWriteTaskPending;
@@ -73,10 +74,7 @@ namespace MaintenanceToolECSBOX
         {
             this.InitializeComponent();
             handler = this;
-            faultDarkAnimation = Relay1FaultSignal.Fade(value: 0.25f, duration: 1000, delay: 25, easingType: EasingType.Sine);
-            faultDarkAnimation.Completed += FaultDarkAnimation_Completed;
-            faultLighAnimation = Relay1FaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
-            faultLighAnimation.Completed += FaultLighAnimation_Completed;
+     
             heaterRelaysCommand = 0;
             sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
             listOfToggles=new ObservableCollection<ToggleSwitch>();
@@ -91,14 +89,25 @@ namespace MaintenanceToolECSBOX
             listOfTextBlocks.Add(Relay4StatusText);
             listOfBorders= new ObservableCollection<Border>();
             listOfBorders.Add(Relay1StatusBorder);
-            listOfBorders.Add(Relay1StatusBorder);
-            listOfBorders.Add(Relay1StatusBorder);
-            listOfBorders.Add(Relay1StatusBorder);
+            listOfBorders.Add(Relay2StatusBorder);
+            listOfBorders.Add(Relay3StatusBorder);
+            listOfBorders.Add(Relay4StatusBorder);
             listOfEllipses = new ObservableCollection<Ellipse>();
             listOfEllipses.Add(Relay1FaultSignal);
             listOfEllipses.Add(Relay2FaultSignal);
             listOfEllipses.Add(Relay3FaultSignal);
             listOfEllipses.Add(Relay4FaultSignal);
+            listOfDarkAnimations = new ObservableCollection<AnimationSet>();
+            listOfLightAnimations = new ObservableCollection<AnimationSet>();
+            for (int i = 0; i < 4; i++)
+            {
+                listOfDarkAnimations.Add( listOfEllipses[i].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+                listOfLightAnimations.Add( listOfEllipses[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+            }
+            listOfDarkAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+             listOfLightAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+            listOfDarkAnimations[4].Completed += FaultDarkAnimation_Completed;
+            listOfLightAnimations[4].Completed += FaultLighAnimation_Completed;
         }
         protected override void OnNavigatedTo(NavigationEventArgs eventArgs)
         {
@@ -128,7 +137,10 @@ namespace MaintenanceToolECSBOX
 
                 UpdateRelayStatus();
                 StartStatusCheckTimer();
-                blink = faultDarkAnimation.StartAsync();
+                for (int i = 0; i < 5; i++)
+                {
+                    blink = listOfDarkAnimations[i].StartAsync();
+                }
                 // InitialOffsetRead();
 
             }
@@ -153,9 +165,12 @@ namespace MaintenanceToolECSBOX
         }
         private void FaultLighAnimation_Completed(object sender, AnimationSetCompletedEventArgs e)
         {
-       
+            for (int i = 0; i < 5; i++)
+            {
+              blink=  listOfDarkAnimations[i].StartAsync();
+            }
 
-                blink = faultDarkAnimation.StartAsync();
+              
           
             //  throw new NotImplementedException();
         }
@@ -163,8 +178,11 @@ namespace MaintenanceToolECSBOX
         {
 
 
-                blink = faultLighAnimation.StartAsync();
-          
+            for (int i = 0; i < 5; i++)
+            {
+              blink=  listOfLightAnimations[i].StartAsync();
+            }
+
             // throw new NotImplementedException();
         }
         private static async void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
@@ -269,7 +287,7 @@ namespace MaintenanceToolECSBOX
             {
                 try
                 {
-                    rootPage.NotifyUser("Reading Parameters...", NotifyType.StatusMessage);
+                    rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
 
                     // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
                     // update the button states until after the read completes.
@@ -324,7 +342,7 @@ namespace MaintenanceToolECSBOX
             }
 
             UInt32 bytesRead = await loadAsyncTask;
-            Debug.WriteLine(string.Concat("bytes Read", bytesRead.ToString()));
+          //  Debug.WriteLine(string.Concat("bytes Read", bytesRead.ToString()));
             if (bytesRead > 0)
             {
                 received = new byte[ReadBufferLength];
@@ -334,10 +352,11 @@ namespace MaintenanceToolECSBOX
 
                 if (magicHeader.Equals(Commands.reverseMagic))
                 {
-                    Debug.WriteLine(string.Concat("Bytes received: ", received.ToString()));
+                  
                     //   ParametersStruct receivedParameters = new ParametersStruct();
                     //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
                     RelaysStatus = received[6];
+                    Debug.WriteLine(string.Concat("Status received: ", RelaysStatus.ToString()));
                     //  ReadOffsetValueText.Text = String.Concat(ConvertOffsetToAngle(Offset).ToString("N0"), " °");
                     ReadBytesCounter += bytesRead;
                 }
@@ -491,12 +510,12 @@ namespace MaintenanceToolECSBOX
         }
         private async void UpdateRelayStatus()
         {
-            UpdateFaultStatus1Signal();
-          await  UpdateRelayStatusText();
-        }
-        private async Task UpdateRelayStatusText()
-        {
             await UpdateToggles();
+         await   UpdateFaultStatus1Signal();
+            UpdateRelayStatusText();
+        }
+        private  void UpdateRelayStatusText()
+        {
             for (int i = 0; i < 4; i++)
             {
                 if ((RelaysStatus &  (Byte)(0x10>>i))==0)
@@ -539,7 +558,7 @@ namespace MaintenanceToolECSBOX
                    }
                }));
         }
-        private async void UpdateFaultStatus1Signal()
+        private async Task UpdateFaultStatus1Signal()
         {
             for (int i = 0; i < 4; i++)
             {
