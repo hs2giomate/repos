@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/asEp4yURJPv55jQLwj4X+kX/FHemalDzSZT284Z5gJU5Bhh216IzvFFjoFsttHzw+Hf8eY1h6Mpkl2Etg2KDQ==",
+  "dgSpecHash": "KCU63cB34qHB3TXbaQtl/4cUjR+NFZdTZN/JI3kRCPAO2NkWg8higKHT6H8qmgtD5g3cyvJD1dtFJYX9pKKb+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj",
+  "projectFilePath": "C:\\Users\\GMateusDP\\Source\\Repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GMateusDP\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\GMateusDP\\.nuget\\packages\\microsoft.build.tasks.git\\1.0.0\\microsoft.build.tasks.git.1.0.0.nupkg.sha512",

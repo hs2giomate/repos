@@ -60,6 +60,7 @@ namespace MaintenanceToolECSBOX
         private Task blink;
         private SingleTaskMessage heatersCommand;
         private static System.Timers.Timer aTimer = null;
+        private int sizeofStrucut;
         public HeaterOperation()
         {
             this.InitializeComponent();
@@ -69,6 +70,7 @@ namespace MaintenanceToolECSBOX
             faultLighAnimation = Relay1FaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
             faultLighAnimation.Completed += FaultLighAnimation_Completed;
             heaterRelaysCommand = 0;
+            sizeofStrucut = Marshal.SizeOf(typeof(SingleTaskMessage));
         }
         public void StartStatusCheckTimer()
         {
@@ -351,9 +353,9 @@ namespace MaintenanceToolECSBOX
 
         
              
-                var n = Marshal.SizeOf(typeof(SingleTaskMessage));
-                toSend = new byte[n];
-                toSend.Initialize();
+               
+                toSend = new byte[sizeofStrucut];
+              //  toSend.Initialize();
                 Protocol.Message.CreateHeatersStatusRequestMessage().CopyTo(toSend, 0);
 
                 //     ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);

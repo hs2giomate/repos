@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj": {}
+    "C:\\Users\\GMateusDP\\Source\\Repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj": {
+    "C:\\Users\\GMateusDP\\Source\\Repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj",
+        "projectUniqueName": "C:\\Users\\GMateusDP\\Source\\Repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj",
         "projectName": "Microsoft.Toolkit.Uwp.UI.Animations",
-        "projectPath": "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj",
+        "projectPath": "C:\\Users\\GMateusDP\\Source\\Repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj",
         "packagesPath": "C:\\Users\\GMateusDP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\obj\\",
+        "outputPath": "C:\\Users\\GMateusDP\\Source\\Repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI.Animations\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -19,7 +19,6 @@
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\NuGet.Config",
           "C:\\Users\\GMateusDP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -29,15 +28,13 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://dotnet.myget.org/F/uwpcommunitytoolkit/api/v3/index.json": {},
-          "https://pkgs.dev.azure.com/ms/microsoft-ui-xaml/_packaging/MUX-Shared/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "uap10.0.17763": {
             "projectReferences": {
-              "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI\\Microsoft.Toolkit.Uwp.UI.csproj": {
-                "projectPath": "C:\\Users\\GMateusDP\\source\\repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI\\Microsoft.Toolkit.Uwp.UI.csproj"
+              "C:\\Users\\GMateusDP\\Source\\Repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI\\Microsoft.Toolkit.Uwp.UI.csproj": {
+                "projectPath": "C:\\Users\\GMateusDP\\Source\\Repos\\WindowsCommunityToolkit\\Microsoft.Toolkit.Uwp.UI\\Microsoft.Toolkit.Uwp.UI.csproj"
               }
             }
           }
