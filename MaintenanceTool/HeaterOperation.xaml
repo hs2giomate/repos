@@ -36,20 +36,81 @@
                 <!-- Place scenario content here -->
 
                 <StackPanel x:Name="SingleHeaterOperationPanel" Margin="0,20,0,0">
-                   <StackPanel x:Name="EnableHeaterStack" >
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock x:Name="Relay1Name" Text="Relay 1" FontSize="14" IsHitTestVisible="False" TextAlignment="Center" />
-                            <ToggleSwitch x:Name="RelayEnable1Toggle" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="HeaterEnable_Toggled" Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
-                            <TextBlock x:Name="Relay1StatusText" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
-                            <Border x:Name="Relay1StatusBorder" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
-                            <Ellipse x:Name="Relay1FaultSignal" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
-                        </Grid>
+                   <StackPanel x:Name="EnableHeaterStack" Orientation="Vertical" >
+                       <StackPanel x:Name="SingleRelayStackPanel" Orientation="Vertical" Margin="0,10,0,0" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="Relay1Name" Text="Relay 1" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
+                                <ToggleSwitch x:Name="Relay1EnableToggle" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="Relay1EnableToggle_Toggled" Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+                                <TextBlock x:Name="Relay1StatusText" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
+                                <Border x:Name="Relay1StatusBorder" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
+                                <Ellipse x:Name="Relay1FaultSignal" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel x:Name="SingleRelayStackPanel_Copy" Orientation="Vertical" Margin="0,10,0,0" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="Relay1Name1" Text="Relay 2" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
+                                <ToggleSwitch x:Name="Relay2EnableToggle" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="Relay2Enable1Toggle_Toggled" Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+                                <TextBlock x:Name="Relay2StatusText" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
+                                <Border x:Name="Relay2StatusBorder" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
+                                <Ellipse x:Name="Relay2FaultSignal" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel x:Name="SingleRelayStackPanel_Copy1" Orientation="Vertical" Margin="0,10,0,0" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="Relay1Name2" Text="Relay 3" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
+                                <ToggleSwitch x:Name="Relay3EnableToggle" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="Relay3HeaterEnable_Toggled" Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+                                <TextBlock x:Name="Relay3StatusText" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
+                                <Border x:Name="Relay3StatusBorder" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
+                                <Ellipse x:Name="Relay3FaultSignal" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel x:Name="SingleRelayStackPanel_Copy2" Orientation="Vertical" Margin="0,10,0,0" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="Relay1Name3" Text="Relay 4" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
+                                <ToggleSwitch x:Name="Relay4EnableToggle" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="Relay4Enable1Toggle_Toggled" Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+                                <TextBlock x:Name="Relay4StatusText" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
+                                <Border x:Name="Relay4StatusBorder" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
+                                <Ellipse x:Name="Relay4FaultSignal" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel x:Name="SingleRelayStackPanel_Copy3" Orientation="Vertical" Margin="0,10,0,0" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                   
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="Relay1Name4" Text=" Overall Temperature" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
+                                 <TextBlock x:Name="OvertemperautureText" Grid.Column="1" Grid.ColumnSpan="2" Text="Disabled" />
+                               
+                                <Ellipse x:Name="OverTemperatureFaultSignal" Fill="#FFE80E0E" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                            </Grid>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
 

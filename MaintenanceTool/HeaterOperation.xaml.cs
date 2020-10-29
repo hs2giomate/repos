@@ -11,12 +11,15 @@ using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Shapes;
 using Microsoft.Toolkit.Uwp.UI.Animations;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 using ParameterTransferProtocol;
 using Windows.Storage.Streams;
@@ -42,11 +45,15 @@ namespace MaintenanceToolECSBOX
         private CancellationTokenSource ReadCancellationTokenSource;
         private Object ReadCancelLock = new Object();
 
-        private Boolean IsReadTaskPending, isToggleON;
+        private Boolean IsReadTaskPending;
+        private Boolean[] isToggleON=new Boolean[4];
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
         public Byte RelaysStatus = 0xff;
-
+        public ObservableCollection<ToggleSwitch> listOfToggles;
+        public ObservableCollection<TextBlock> listOfTextBlocks;
+        public ObservableCollection<Border> listOfBorders;
+        public ObservableCollection<Windows.UI.Xaml.Shapes.Ellipse> listOfEllipses;
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
         private Boolean IsWriteTaskPending;
@@ -72,6 +79,59 @@ namespace MaintenanceToolECSBOX
             faultLighAnimation.Completed += FaultLighAnimation_Completed;
             heaterRelaysCommand = 0;
             sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
+            listOfToggles=new ObservableCollection<ToggleSwitch>();
+            listOfToggles.Add(Relay1EnableToggle);
+            listOfToggles.Add(Relay2EnableToggle);
+            listOfToggles.Add(Relay3EnableToggle);
+            listOfToggles.Add(Relay4EnableToggle);
+            listOfTextBlocks = new ObservableCollection<TextBlock>();
+            listOfTextBlocks.Add(Relay1StatusText);
+            listOfTextBlocks.Add(Relay2StatusText);
+            listOfTextBlocks.Add(Relay3StatusText);
+            listOfTextBlocks.Add(Relay4StatusText);
+            listOfBorders= new ObservableCollection<Border>();
+            listOfBorders.Add(Relay1StatusBorder);
+            listOfBorders.Add(Relay1StatusBorder);
+            listOfBorders.Add(Relay1StatusBorder);
+            listOfBorders.Add(Relay1StatusBorder);
+            listOfEllipses = new ObservableCollection<Ellipse>();
+            listOfEllipses.Add(Relay1FaultSignal);
+            listOfEllipses.Add(Relay2FaultSignal);
+            listOfEllipses.Add(Relay3FaultSignal);
+            listOfEllipses.Add(Relay4FaultSignal);
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs eventArgs)
+        {
+
+            IsNavigatedAway = false;
+            if (EventHandlerForDevice.Current.Device == null)
+            {
+                // ScrollerToggleBits.Visibility = Visibility.Collapsed;
+                MainPage.Current.NotifyUser("Device is not connected", NotifyType.ErrorMessage);
+            }
+            else
+            {
+                if (EventHandlerForDevice.Current.Device.PortName != "")
+                {
+                    MainPage.Current.NotifyUser("Connected to " + EventHandlerForDevice.Current.Device.PortName,
+                                                NotifyType.StatusMessage);
+                }
+
+                // So we can reset future tasks
+                if (!EventHandlerForDevice.Current.configurationUpdated)
+                {
+                    //  EventHandlerForDevice.Current.SetDeaultParameters();
+                }
+
+                ResetReadCancellationTokenSource();
+                ResetWriteCancellationTokenSource();
+
+                UpdateRelayStatus();
+                StartStatusCheckTimer();
+                blink = faultDarkAnimation.StartAsync();
+                // InitialOffsetRead();
+
+            }
         }
         public void StartStatusCheckTimer()
         {
@@ -93,12 +153,19 @@ namespace MaintenanceToolECSBOX
         }
         private void FaultLighAnimation_Completed(object sender, AnimationSetCompletedEventArgs e)
         {
-            if (!RelayEnable1Toggle.IsOn)
-            {
+       
 
                 blink = faultDarkAnimation.StartAsync();
-            }
+          
             //  throw new NotImplementedException();
+        }
+        private void FaultDarkAnimation_Completed(object sender, AnimationSetCompletedEventArgs e)
+        {
+
+
+                blink = faultLighAnimation.StartAsync();
+          
+            // throw new NotImplementedException();
         }
         private static async void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
@@ -121,15 +188,7 @@ namespace MaintenanceToolECSBOX
 
         }
 
-        private void FaultDarkAnimation_Completed(object sender, AnimationSetCompletedEventArgs e)
-        {
-            if (!RelayEnable1Toggle.IsOn)
-            {
-
-                blink = faultLighAnimation.StartAsync();
-            }
-           // throw new NotImplementedException();
-        }
+    
 
         public void Dispose()
         {
@@ -145,39 +204,7 @@ namespace MaintenanceToolECSBOX
                 WriteCancellationTokenSource = null;
             }
         }
-        protected override void OnNavigatedTo(NavigationEventArgs eventArgs)
-        {
 
-            IsNavigatedAway = false;
-            if (EventHandlerForDevice.Current.Device == null)
-            {
-               // ScrollerToggleBits.Visibility = Visibility.Collapsed;
-                MainPage.Current.NotifyUser("Device is not connected", NotifyType.ErrorMessage);
-            }
-            else
-            {
-                if (EventHandlerForDevice.Current.Device.PortName != "")
-                {
-                    MainPage.Current.NotifyUser("Connected to " + EventHandlerForDevice.Current.Device.PortName,
-                                                NotifyType.StatusMessage);
-                }
-
-                // So we can reset future tasks
-                if (!EventHandlerForDevice.Current.configurationUpdated)
-                {
-                    //  EventHandlerForDevice.Current.SetDeaultParameters();
-                }
-
-                ResetReadCancellationTokenSource();
-                ResetWriteCancellationTokenSource();
-
-                UpdateRelayStatus();
-                StartStatusCheckTimer();
-
-                // InitialOffsetRead();
-
-            }
-        }
         protected override void OnNavigatedFrom(NavigationEventArgs eventArgs)
         {
             IsNavigatedAway = true;
@@ -400,7 +427,7 @@ namespace MaintenanceToolECSBOX
         private async void HeaterEnable_Toggled(object sender, RoutedEventArgs e)
         {
             lastRelaysCommand = heaterRelaysCommand;
-            if (RelayEnable1Toggle.IsOn)
+            if (Relay1EnableToggle.IsOn)
             {
                 
                 heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x01);
@@ -409,8 +436,17 @@ namespace MaintenanceToolECSBOX
             {
                 heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfe);
             }
-            if (heaterRelaysCommand!=lastRelaysCommand)
+            if (heaterRelaysCommand != lastRelaysCommand)
             {
+                await WriteAsyncHeatersEnables();
+            }
+          //  UpdateRelayStatus();
+           
+
+        }
+        private async Task WriteAsyncHeatersEnables()
+        {
+            
                 if (IsPerformingRead())
                 {
                     CancelReadTask();
@@ -451,10 +487,7 @@ namespace MaintenanceToolECSBOX
                 {
                     Utilities.NotifyDeviceNotConnected();
                 }
-            }
-          //  UpdateRelayStatus();
-           
-
+            
         }
         private async void UpdateRelayStatus()
         {
@@ -463,56 +496,93 @@ namespace MaintenanceToolECSBOX
         }
         private async Task UpdateRelayStatusText()
         {
-            if ((RelaysStatus &  ((Byte)0x01))==0)
+            await UpdateToggles();
+            for (int i = 0; i < 4; i++)
             {
-                Relay1StatusText.Text = "Fault";
-            }
-            else 
-            {
-                await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-                new DispatchedHandler(() => {  isToggleON = RelayEnable1Toggle.IsOn; }));
-                if (isToggleON)
+                if ((RelaysStatus &  (Byte)(0x10>>i))==0)
                 {
-                    Relay1StatusText.Text = "Heating";
+                    listOfTextBlocks[i].Text = "Fault";
                 }
-                else
+                else 
                 {
-                    Relay1StatusText.Text = "Off";
+        
+                    if (isToggleON[i])
+                    {
+                        listOfTextBlocks[i].Text = "Heating";
+                    }
+                    else
+                    {
+                        listOfTextBlocks[i].Text = "Off";
+                    }
                 }
+       
             }
-     
-        }
-        private async void UpdateFaultStatus1Signal()
-        {
-            if ((RelaysStatus & ((Byte)0x01)) == 0)
+            if ((RelaysStatus & (Byte)(0x01)) == 0)
             {
-                Relay1StatusBorder.Visibility = Visibility.Collapsed;
-                Relay1FaultSignal.Visibility = Visibility.Visible;
-                blink = faultDarkAnimation.StartAsync();
+                OvertemperautureText.Text = "Fault";
             }
             else
             {
-                await StopFadingRelay1();
-                if (blink != null)
+
+                OvertemperautureText.Text = "OK";
+            }
+
+
+        }
+        private async Task UpdateToggles()
+        {
+            await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+               new DispatchedHandler(() => {
+                   for (int i = 0; i < 4; i++)
+                   {
+                       isToggleON[i] = listOfToggles[i].IsOn;
+                   }
+               }));
+        }
+        private async void UpdateFaultStatus1Signal()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if ((RelaysStatus & (Byte)(0x10>>i)) == 0)
                 {
-                    await blink;
-                }
-                await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-                  new DispatchedHandler(() => { isToggleON = RelayEnable1Toggle.IsOn; }));
-                if (isToggleON)
-                {
-                    Relay1StatusBorder.Visibility = Visibility.Visible;
-                    Relay1FaultSignal.Visibility = Visibility.Collapsed;
+                    listOfBorders[i].Visibility = Visibility.Collapsed;
+                    listOfEllipses[i].Visibility = Visibility.Visible;
+                  //  blink = faultDarkAnimation.StartAsync();
                 }
                 else
                 {
-                    Relay1StatusBorder.Visibility = Visibility.Collapsed;
-                    Relay1FaultSignal.Visibility = Visibility.Collapsed;
+                  //  await StopFadingRelay1();
+                    if (blink != null)
+                    {
+                        await blink;
+                    }
+            
 
+                    if (isToggleON[i])
+                    {
+                        listOfBorders[i].Visibility = Visibility.Visible;
+                        listOfEllipses[i].Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        listOfBorders[i].Visibility = Visibility.Collapsed;
+                        listOfEllipses[i].Visibility = Visibility.Collapsed;
+
+                    }
                 }
+
+            }
+            if ((RelaysStatus & (Byte)(0x01)) == 0)
+            {
+                OverTemperatureFaultSignal.Visibility = Visibility.Visible;
+            }
+            else
+            {
+
+                OverTemperatureFaultSignal.Visibility = Visibility.Collapsed;
             }
 
-    
+
         }
 
         private async Task StopFadingRelay1()
@@ -596,6 +666,80 @@ namespace MaintenanceToolECSBOX
                         ResetReadCancellationTokenSource();
                     }
                 }
+            }
+        }
+
+        private  async void Relay1EnableToggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (Relay1EnableToggle.IsOn)
+            {
+
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x01);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfe);
+            }
+            if (heaterRelaysCommand != lastRelaysCommand)
+            {
+                await WriteAsyncHeatersEnables();
+            }
+        }
+
+        private async void Relay2Enable1Toggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (Relay2EnableToggle.IsOn)
+            {
+
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x02);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfd);
+            }
+            if (heaterRelaysCommand != lastRelaysCommand)
+            {
+                await WriteAsyncHeatersEnables();
+            }
+        }
+
+
+
+        private async void Relay3HeaterEnable_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (Relay3EnableToggle.IsOn)
+            {
+
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x04);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfb);
+            }
+            if (heaterRelaysCommand != lastRelaysCommand)
+            {
+                await WriteAsyncHeatersEnables();
+            }
+        }
+
+        private async void Relay4Enable1Toggle_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (Relay4EnableToggle.IsOn)
+            {
+
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x08);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xf7);
+            }
+            if (heaterRelaysCommand != lastRelaysCommand)
+            {
+                await WriteAsyncHeatersEnables();
             }
         }
 
