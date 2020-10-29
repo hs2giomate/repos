@@ -26,6 +26,7 @@ namespace MaintenanceToolProtocol
         {
             handler = this;
            buffer= new Byte[Constants.BufferSize];
+            sizeStruct = Marshal.SizeOf(singleTaskMessage);
         }
 
         public static Protocol Message
@@ -71,7 +72,7 @@ namespace MaintenanceToolProtocol
         }
         public Byte[] CreateHeatersStatusRequestMessage()
         {
-            sizeStruct = Marshal.SizeOf(singleTaskMessage);
+           
             buffer = new Byte[sizeStruct];
             CommandHeader datagram = new CommandHeader();
             SingleTaskCommand order = datagram.order;

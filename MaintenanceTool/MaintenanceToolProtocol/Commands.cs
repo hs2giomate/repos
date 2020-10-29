@@ -75,5 +75,6 @@ namespace MaintenanceToolProtocol
         public const char Command = '>';
         public const char KeepConnected= '=';
         public const UInt32 Magic = 0x64636261;
+        public const UInt32 reverseMagic = 0x61626364;
     }
 }

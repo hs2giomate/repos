@@ -42,10 +42,10 @@ namespace MaintenanceToolECSBOX
         private CancellationTokenSource ReadCancellationTokenSource;
         private Object ReadCancelLock = new Object();
 
-        private Boolean IsReadTaskPending;
+        private Boolean IsReadTaskPending, isToggleON;
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
-        public Byte RelaysStatus { get; set; }
+        public Byte RelaysStatus = 0xff;
 
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
@@ -60,7 +60,8 @@ namespace MaintenanceToolECSBOX
         private Task blink;
         private SingleTaskMessage heatersCommand;
         private static System.Timers.Timer aTimer = null;
-        private int sizeofStrucut;
+        private int sizeofStruct;
+        private UInt32 magicHeader;
         public HeaterOperation()
         {
             this.InitializeComponent();
@@ -70,7 +71,7 @@ namespace MaintenanceToolECSBOX
             faultLighAnimation = Relay1FaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
             faultLighAnimation.Completed += FaultLighAnimation_Completed;
             heaterRelaysCommand = 0;
-            sizeofStrucut = Marshal.SizeOf(typeof(SingleTaskMessage));
+            sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
         }
         public void StartStatusCheckTimer()
         {
@@ -82,10 +83,11 @@ namespace MaintenanceToolECSBOX
             aTimer.Elapsed += OnTimedEvent;
 
             // Have the timer fire repeated events (true is the default)
-            aTimer.AutoReset = true;
+            aTimer.AutoReset = false;
 
             // Start the timer
             aTimer.Enabled = true;
+           
 
 
         }
@@ -102,14 +104,19 @@ namespace MaintenanceToolECSBOX
         {
             // Debug.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
             //  MaintenanceToolHandler.Current.SendAliveMessage();
-          await handler.UpdateDataRelayStatus();
            
-
+            await handler.UpdateDataRelayStatus();
+            await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+             new DispatchedHandler(() => { handler.UpdateRelayStatus(); }));
+           
+            aTimer.Start();
         }
         public  async Task UpdateDataRelayStatus()
         {
             await RequestRelayStatus();
             await ReadRelaysStatus();
+            
+            
 
 
         }
@@ -296,12 +303,18 @@ namespace MaintenanceToolECSBOX
                 received = new byte[ReadBufferLength];
 
                 DataReaderObject.ReadBytes(received);
-                Debug.WriteLine(string.Concat("Bytes received: ", received.ToString()));
-             //   ParametersStruct receivedParameters = new ParametersStruct();
-             //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
-                RelaysStatus = received[6];
-              //  ReadOffsetValueText.Text = String.Concat(ConvertOffsetToAngle(Offset).ToString("N0"), " °");
-                ReadBytesCounter += bytesRead;
+                magicHeader = BitConverter.ToUInt32(received, 0);
+
+                if (magicHeader.Equals(Commands.reverseMagic))
+                {
+                    Debug.WriteLine(string.Concat("Bytes received: ", received.ToString()));
+                    //   ParametersStruct receivedParameters = new ParametersStruct();
+                    //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
+                    RelaysStatus = received[6];
+                    //  ReadOffsetValueText.Text = String.Concat(ConvertOffsetToAngle(Offset).ToString("N0"), " °");
+                    ReadBytesCounter += bytesRead;
+                }
+              
 
             }
             rootPage.NotifyUser("Read completed - " + bytesRead.ToString() + " bytes were read", NotifyType.StatusMessage);
@@ -354,7 +367,7 @@ namespace MaintenanceToolECSBOX
         
              
                
-                toSend = new byte[sizeofStrucut];
+                toSend = new byte[sizeofStruct];
               //  toSend.Initialize();
                 Protocol.Message.CreateHeatersStatusRequestMessage().CopyTo(toSend, 0);
 
@@ -443,12 +456,12 @@ namespace MaintenanceToolECSBOX
            
 
         }
-        private void UpdateRelayStatus()
+        private async void UpdateRelayStatus()
         {
             UpdateFaultStatus1Signal();
-            UpdateRelayStatusText();
+          await  UpdateRelayStatusText();
         }
-        private void UpdateRelayStatusText()
+        private async Task UpdateRelayStatusText()
         {
             if ((RelaysStatus &  ((Byte)0x01))==0)
             {
@@ -456,7 +469,9 @@ namespace MaintenanceToolECSBOX
             }
             else 
             {
-                if (RelayEnable1Toggle.IsOn)
+                await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+                new DispatchedHandler(() => {  isToggleON = RelayEnable1Toggle.IsOn; }));
+                if (isToggleON)
                 {
                     Relay1StatusText.Text = "Heating";
                 }
@@ -477,12 +492,14 @@ namespace MaintenanceToolECSBOX
             }
             else
             {
-                Relay1FaultSignal.Fade().Stop();
+                await StopFadingRelay1();
                 if (blink != null)
                 {
                     await blink;
                 }
-                if (RelayEnable1Toggle.IsOn)
+                await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+                  new DispatchedHandler(() => { isToggleON = RelayEnable1Toggle.IsOn; }));
+                if (isToggleON)
                 {
                     Relay1StatusBorder.Visibility = Visibility.Visible;
                     Relay1FaultSignal.Visibility = Visibility.Collapsed;
@@ -498,7 +515,21 @@ namespace MaintenanceToolECSBOX
     
         }
 
-    
+        private async Task StopFadingRelay1()
+        {
+            // Setting the dispatcher priority to high allows the UI to handle disabling of all the buttons
+            // before any of the IO completion callbacks get a chance to modify the UI; that way this method
+            // will never get the opportunity to overwrite UI changes made by IO callbacks
+            await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+                new DispatchedHandler(() =>
+                {
+                    Relay1FaultSignal.Fade().Stop();
+              
+
+                  
+                }));
+        }
+
         private void ResetReadCancellationTokenSource()
         {
             // Create a new cancellation token source so that can cancel all the tokens again
