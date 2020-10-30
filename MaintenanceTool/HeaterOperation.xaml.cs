@@ -64,8 +64,7 @@ namespace MaintenanceToolECSBOX
         private static Byte heaterRelaysCommand,lastRelaysCommand;
         UserParameters parameters;
         ParametersMessage parametersMessage;
-        private static AnimationSet faultDarkAnimation,faultLighAnimation;
-        private Task blink;
+          private Task blink;
         private SingleTaskMessage heatersCommand;
         private static System.Timers.Timer aTimer = null;
         private int sizeofStruct;

@@ -70,6 +70,38 @@ namespace MaintenanceToolProtocol
             return buffer;
 
         }
+        public Byte[] CreateSetpointFansMessage(Byte p)
+        {
+            var size = Marshal.SizeOf(singleTaskMessage);
+            buffer = new Byte[size];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.SetpointFans;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = p;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, size);
+            return buffer;
+
+        }
+        public Byte[] CreateEnableFansMessage(Byte p)
+        {
+            var size = Marshal.SizeOf(singleTaskMessage);
+            buffer = new Byte[size];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.EnableFans;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = p;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, size);
+            return buffer;
+
+        }
         public Byte[] CreateHeatersStatusRequestMessage()
         {
            
