@@ -511,39 +511,44 @@ namespace MaintenanceToolECSBOX
         private async void UpdateRelayStatus()
         {
             await UpdateToggles();
-         await   UpdateFaultStatus1Signal();
+         await   UpdateFaultStatusSignal();
             UpdateRelayStatusText();
         }
         private  void UpdateRelayStatusText()
         {
-            for (int i = 0; i < 4; i++)
-            {
-                if ((RelaysStatus &  (Byte)(0x10>>i))==0)
-                {
-                    listOfTextBlocks[i].Text = "Fault";
-                }
-                else 
-                {
-        
-                    if (isToggleON[i])
-                    {
-                        listOfTextBlocks[i].Text = "Heating";
-                    }
-                    else
-                    {
-                        listOfTextBlocks[i].Text = "Off";
-                    }
-                }
-       
-            }
+            
             if ((RelaysStatus & (Byte)(0x01)) == 0)
             {
                 OvertemperautureText.Text = "Fault";
+                for (int i = 0; i < 4; i++)
+                {
+                    listOfTextBlocks[i].Text = "Off";
+                }
             }
             else
             {
 
                 OvertemperautureText.Text = "OK";
+                for (int i = 0; i < 4; i++)
+                {
+                    if ((RelaysStatus & (Byte)(0x10 >> i)) == 0)
+                    {
+                        listOfTextBlocks[i].Text = "Fault";
+                    }
+                    else
+                    {
+
+                        if (isToggleON[i])
+                        {
+                            listOfTextBlocks[i].Text = "Heating";
+                        }
+                        else
+                        {
+                            listOfTextBlocks[i].Text = "Off";
+                        }
+                    }
+
+                }
             }
 
 
@@ -558,47 +563,52 @@ namespace MaintenanceToolECSBOX
                    }
                }));
         }
-        private async Task UpdateFaultStatus1Signal()
+        private async Task UpdateFaultStatusSignal()
         {
-            for (int i = 0; i < 4; i++)
-            {
-                if ((RelaysStatus & (Byte)(0x10>>i)) == 0)
-                {
-                    listOfBorders[i].Visibility = Visibility.Collapsed;
-                    listOfEllipses[i].Visibility = Visibility.Visible;
-                  //  blink = faultDarkAnimation.StartAsync();
-                }
-                else
-                {
-                  //  await StopFadingRelay1();
-                    if (blink != null)
-                    {
-                        await blink;
-                    }
             
-
-                    if (isToggleON[i])
-                    {
-                        listOfBorders[i].Visibility = Visibility.Visible;
-                        listOfEllipses[i].Visibility = Visibility.Collapsed;
-                    }
-                    else
-                    {
-                        listOfBorders[i].Visibility = Visibility.Collapsed;
-                        listOfEllipses[i].Visibility = Visibility.Collapsed;
-
-                    }
-                }
-
-            }
             if ((RelaysStatus & (Byte)(0x01)) == 0)
             {
                 OverTemperatureFaultSignal.Visibility = Visibility.Visible;
+                for (int i = 0; i < 4; i++)
+                {
+                    listOfBorders[i].Visibility = Visibility.Collapsed;
+                }
             }
             else
             {
 
                 OverTemperatureFaultSignal.Visibility = Visibility.Collapsed;
+                for (int i = 0; i < 4; i++)
+                {
+                    if ((RelaysStatus & (Byte)(0x10 >> i)) == 0)
+                    {
+                        listOfBorders[i].Visibility = Visibility.Collapsed;
+                        listOfEllipses[i].Visibility = Visibility.Visible;
+                        //  blink = faultDarkAnimation.StartAsync();
+                    }
+                    else
+                    {
+                        //  await StopFadingRelay1();
+                        if (blink != null)
+                        {
+                            await blink;
+                        }
+
+
+                        if (isToggleON[i])
+                        {
+                            listOfBorders[i].Visibility = Visibility.Visible;
+                            listOfEllipses[i].Visibility = Visibility.Collapsed;
+                        }
+                        else
+                        {
+                            listOfBorders[i].Visibility = Visibility.Collapsed;
+                            listOfEllipses[i].Visibility = Visibility.Collapsed;
+
+                        }
+                    }
+
+                }
             }
 
 
