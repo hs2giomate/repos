@@ -91,11 +91,32 @@ namespace MaintenanceToolECSBOX
 
                 ResetReadCancellationTokenSource();
                 ResetWriteCancellationTokenSource();
-              //  SetPointFan1.IsInteractive = true;
-               // SetPointFan1.ManipulationMode=System.
+                //  SetPointFan1.IsInteractive = true;
+              //  SetPointFan1.PointerReleased += SetPointFan1_PointerReleased;
+                SetPointFan1.Tapped += SetPointFan1_Tapped;
+                SetPointFan1.Opacity = 0.2;
                 // InitialOffsetRead();
 
             }
+        }
+
+        private async void SetPointFan1_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            //  throw new NotImplementedException();
+            await WritePWMValue();
+        }
+
+     
+
+        protected override void OnNavigatedFrom(NavigationEventArgs eventArgs)
+        {
+            IsNavigatedAway = true;
+            if (refreshValueTimer != null)
+            {
+                refreshValueTimer.Stop();
+                refreshValueTimer.Dispose();
+            }
+            CancelAllIoTasks();
         }
         public void Dispose()
         {
@@ -214,8 +235,8 @@ namespace MaintenanceToolECSBOX
             }
             else
             {
-                SetPointFan1.Opacity = 0.5;
-                fanEnabled = (Byte)(lastFansEnabled & 0xfd);
+                SetPointFan1.Opacity = 0.4;
+                fanEnabled = (Byte)(lastFansEnabled & 0xfe);
             }
             if (fanEnabled!=lastFansEnabled)
             {
@@ -228,14 +249,23 @@ namespace MaintenanceToolECSBOX
             return (IsReadTaskPending);
         }
 
-        private async void SetPointFan1_ManipulationCompleted_1(object sender, ManipulationCompletedRoutedEventArgs e)
+        private async void SetPointFan1_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            await WritePWMValue();
+        }
+        private async Task WritePWMValue()
         {
             lasPWMValue = fanPWMValue;
             fanPWMValue = (byte)SetPointFan1.Value;
             if (fanPWMValue != lasPWMValue)
             {
-              await   WriteAsyncFan();
+                await WriteAsyncFan();
             }
+        }
+
+        private void SetPointFan1_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+
         }
 
         private async Task WriteAsyncFan()
@@ -261,12 +291,14 @@ namespace MaintenanceToolECSBOX
                     if (fanEnabled!=lastFansEnabled)
                     {
                         Protocol.Message.CreateEnableFansMessage(fanEnabled).CopyTo(toSend, 0);
+                        lastFansEnabled = fanEnabled;
                     }
                     else
                     {
                         if (fanPWMValue != lasPWMValue)
                         {
                             Protocol.Message.CreateSetpointFansMessage(fanPWMValue).CopyTo(toSend, 0);
+                            lasPWMValue = fanPWMValue;
                         }
                     }
                 
