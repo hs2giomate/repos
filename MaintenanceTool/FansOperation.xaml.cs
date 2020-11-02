@@ -255,7 +255,7 @@ namespace MaintenanceToolECSBOX
         private async Task WritePWMValue()
         {
             lasPWMValue = fanPWMValue;
-            fanPWMValue = (byte)SetPointFan1.Value;
+            fanPWMValue = (byte)(SetPointFan1.Value*255/14000);
             if (fanPWMValue != lasPWMValue)
             {
                 await WriteAsyncFan();

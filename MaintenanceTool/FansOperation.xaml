@@ -26,7 +26,7 @@
                         <StackPanel x:Name="SingleFanStackPanel" Orientation="Vertical" Margin="0,10,0,0" >
                             <TextBlock x:Name="FanTitel" Text="Evaporator Fan 1" TextAlignment="Center" />
                             <ToggleSwitch x:Name="EnableFan1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Toggled="EnableFan1_Toggled" />
-                            <my:RadialGauge x:Name="SetPointFan1" NeedleBrush="#FF33D11A" TickBrush="#FFB7B3E2" TrailBrush="#FF1A92BF" Maximum="255" ScaleBrush="#66175B95" ScaleWidth="29" StepSize="1" Unit="PWM" LargeChange="8" TickSpacing="16" AllowDrop="True" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="SetPointFan1_ManipulationCompleted" ValueChanged="SetPointFan1_ValueChanged"  />
+                            <my:RadialGauge x:Name="SetPointFan1" NeedleBrush="#FF33D11A" TickBrush="#FFB7B3E2" TrailBrush="#FF1A92BF" Maximum="14000" ScaleBrush="#66175B95" ScaleWidth="29" StepSize="14" Unit="RPM" LargeChange="140" TickSpacing="1400" AllowDrop="True" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="SetPointFan1_ManipulationCompleted" ValueChanged="SetPointFan1_ValueChanged" SmallChange="14"  />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
