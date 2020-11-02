@@ -159,8 +159,7 @@ namespace MaintenanceToolECSBOX
           //  await handler.UpdateDataRelayStatus();
         //    await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
         //     new DispatchedHandler(() => { handler.UpdateRelayStatus(); }));
-
-            refreshValueTimer.Start();
+                    refreshValueTimer.Start();
         }
         private void CancelWriteTask()
         {
