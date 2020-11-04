@@ -103,12 +103,26 @@ namespace MaintenanceToolProtocol
 
         }
         public Byte[] CreateHeatersStatusRequestMessage()
-        {
-           
+        {           
             buffer = new Byte[sizeStruct];
             CommandHeader datagram = new CommandHeader();
             SingleTaskCommand order = datagram.order;
             order.task = Commands.ReadStatusHeaters;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = 0;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, sizeStruct);
+            return buffer;
+
+        }
+        public Byte[] CreateTemperatureRequestMessage()
+        {
+            buffer = new Byte[sizeStruct];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.ReadTemperatures;
             datagram.order = order;
             SingleTaskMessage m;
             m.header = order;

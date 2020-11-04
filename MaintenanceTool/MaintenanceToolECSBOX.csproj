@@ -149,6 +149,9 @@
     <Compile Include="Scenario2_ConfigureDevice.xaml.cs" />
     <Compile Include="Scenario3_ReadWrite.xaml.cs" />
     <Compile Include="Scenario4_Events.xaml.cs" />
+    <Compile Include="TemperatureSensors.xaml.cs">
+      <DependentUpon>TemperatureSensors.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +221,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemperatureSensors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

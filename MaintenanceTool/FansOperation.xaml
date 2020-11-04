@@ -34,5 +34,5 @@
             </ScrollViewer>
             <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
         </Grid>
-        </Grid>
+     </Grid>
 </Page>

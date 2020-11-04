@@ -100,15 +100,7 @@ namespace MaintenanceToolECSBOX
             }
         }
 
-        private async void SetPointFan1_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            //  throw new NotImplementedException();
-            await WritePWMValue();
-        }
-
-     
-
-        protected override void OnNavigatedFrom(NavigationEventArgs eventArgs)
+          protected override void OnNavigatedFrom(NavigationEventArgs eventArgs)
         {
             IsNavigatedAway = true;
             if (refreshValueTimer != null)
@@ -132,7 +124,11 @@ namespace MaintenanceToolECSBOX
                 WriteCancellationTokenSource = null;
             }
         }
-
+        private async void SetPointFan1_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            //  throw new NotImplementedException();
+            await WritePWMValue();
+        }
         public void StartStatusCheckTimer()
         {
             // Create a timer and set a two second interval.
@@ -147,7 +143,6 @@ namespace MaintenanceToolECSBOX
 
             // Start the timer
             refreshValueTimer.Enabled = true;
-
 
 
         }

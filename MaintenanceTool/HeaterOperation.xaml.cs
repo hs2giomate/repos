@@ -198,9 +198,7 @@ namespace MaintenanceToolECSBOX
         public  async Task UpdateDataRelayStatus()
         {
             await RequestRelayStatus();
-            await ReadRelaysStatus();
-            
-            
+            await ReadRelaysStatus();    
 
 
         }

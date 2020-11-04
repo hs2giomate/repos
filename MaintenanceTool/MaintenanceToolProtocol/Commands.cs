@@ -74,6 +74,7 @@ namespace MaintenanceToolProtocol
         public const char ReadStatusHeaters = 'J';
         public const char EnableFans = 'K';
         public const char SetpointFans = 'L';
+        public const char ReadTemperatures = 'M';
         public const char Command = '>';
         public const char KeepConnected= '=';
         public const UInt32 Magic = 0x64636261;
