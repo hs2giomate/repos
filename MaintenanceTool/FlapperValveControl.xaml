@@ -1,0 +1,70 @@
+﻿<Page xmlns:my="using:Microsoft.Toolkit.Uwp.UI.Controls" 
+    x:Class="MaintenanceToolECSBOX.FlapperValveControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaintenanceToolECSBOX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock x:Name="Tittel" Text="Single Flapper Control" TextWrapping="Wrap" Width="441" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center"/>
+            </StackPanel>
+            <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100">
+                <!-- Place scenario content here -->
+
+                <StackPanel x:Name="FansPanel" Margin="0,20,0,0">
+                    <StackPanel x:Name="FansOperationStack" Orientation="Horizontal" >
+                        <StackPanel x:Name="SingleFanStackPanel" Orientation="Vertical" Margin="0,10,0,0" RequestedTheme="Default" >
+                            <TextBlock x:Name="FanTitel" Text="Flapper  Position" TextAlignment="Center" FontSize="16" />
+                            <StackPanel Orientation="Horizontal" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="dummy1" Visibility="Visible" Opacity="0" />
+                                    <TextBlock Text="dummy2" Grid.Column="1" Opacity="0" Width="{Binding ActualWidth, ElementName=FanTitel, Mode=OneWay}" />
+                                    <ToggleSwitch x:Name="EnableValve" HorizontalAlignment="Right" VerticalAlignment="Stretch" Toggled="EnableValve_Toggled"  Grid.Column="2" />
+
+                                </Grid>
+                            </StackPanel>
+                            
+                            <my:RadialGauge x:Name="position" Maximum="90" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="position_ManipulationCompleted"  ValueChanged="position_ValueChanged"  MaxAngle="90" MinAngle="0" RenderTransformOrigin="0.5,0.5" Margin="0,50,40,0" FontSize="12" IsRightTapEnabled="False" IsDoubleTapEnabled="False">
+                                <my:RadialGauge.RenderTransform>
+                                    <CompositeTransform TranslateX="-100" TranslateY="50" ScaleX="2" ScaleY="2"/>
+                                </my:RadialGauge.RenderTransform>
+
+                            </my:RadialGauge>
+                            <StackPanel Orientation="Horizontal" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock x:Name="Tremperaturelabel1" Text="Status" TextAlignment="Left" Grid.ColumnSpan="1" FontSize="14" />
+                                    <TextBlock x:Name="TremperatureNumber" Text="Connected" TextAlignment="Center" FontSize="14" Grid.Column="1" Width="{Binding ActualWidth, ElementName=FanTitel, Mode=OneWay}" />
+                                    <TextBlock x:Name="TemperatureValue1" Text="Off" TextAlignment="Right" Grid.Column="2" Grid.RowSpan="1" FocusVisualPrimaryBrush="#FFC11414" FontSize="14" />
+
+                                </Grid>
+                            </StackPanel>
+                    </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+            </ScrollViewer>
+            <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
+        </Grid>
+        <my:RadialGauge HorizontalAlignment="Left" Height="0" Margin="724,1114,0,0" VerticalAlignment="Top" Width="0"/>
+    </Grid>
+</Page>

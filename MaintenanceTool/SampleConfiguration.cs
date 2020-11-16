@@ -27,6 +27,7 @@ namespace MaintenanceToolECSBOX
             new Scenario() { Title="Read/Write", ClassType=typeof(Scenario3_ReadWrite)},
             new Scenario() { Title="USB Serial Events", ClassType=typeof(Scenario4_Events)},
             new Scenario() { Title="Flapper Valve Offset", ClassType=typeof(FlapperValveOffset)},
+            new Scenario() { Title="Flapper Valve Command", ClassType=typeof(FlapperValveControl)},
             new Scenario() { Title="Events Logger", ClassType=typeof(EventLoggerList)},
             new Scenario() { Title="Heater Operation", ClassType=typeof(HeaterOperation)},
             new Scenario() { Title="Fans Operation", ClassType=typeof(FansOperation)},

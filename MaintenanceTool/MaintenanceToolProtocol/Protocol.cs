@@ -102,6 +102,39 @@ namespace MaintenanceToolProtocol
             return buffer;
 
         }
+        public Byte[] CreateCommandFlapperValveMessage(Byte p)
+        {
+            var size = Marshal.SizeOf(singleTaskMessage);
+            buffer = new Byte[size];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.CommandFlapperValve;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = p;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, size);
+            return buffer;
+
+        }
+        public Byte[] CreateSetpointtFlapperValveMessage(Byte p)
+        {
+
+            var size = Marshal.SizeOf(singleTaskMessage);
+            buffer = new Byte[size];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.SetPointFlapperValve;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = p;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, size);
+            return buffer;
+
+        }
         public Byte[] CreateHeatersStatusRequestMessage()
         {           
             buffer = new Byte[sizeStruct];
@@ -123,6 +156,21 @@ namespace MaintenanceToolProtocol
             CommandHeader datagram = new CommandHeader();
             SingleTaskCommand order = datagram.order;
             order.task = Commands.ReadTemperatures;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = 0;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, sizeStruct);
+            return buffer;
+
+        }
+        public Byte[] CreateValvePositionRequestMessage()
+        {
+            buffer = new Byte[sizeStruct];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.ReadValvePosition;
             datagram.order = order;
             SingleTaskMessage m;
             m.header = order;

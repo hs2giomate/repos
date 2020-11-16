@@ -135,6 +135,9 @@
     <Compile Include="FansOperation.xaml.cs">
       <DependentUpon>FansOperation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlapperValveControl.xaml.cs">
+      <DependentUpon>FlapperValveControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FlapperValveOffset.xaml.cs" />
     <Compile Include="HeaterOperation.xaml.cs">
       <DependentUpon>HeaterOperation.xaml</DependentUpon>
@@ -189,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FansOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FlapperValveControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
