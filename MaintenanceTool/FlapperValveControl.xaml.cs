@@ -103,7 +103,9 @@ namespace MaintenanceToolECSBOX
 
                 ResetReadCancellationTokenSource();
                 ResetWriteCancellationTokenSource();
+                UpdateDataPosition();
                 StartStatusCheckTimer();
+               
             }
         }
 
@@ -336,14 +338,14 @@ namespace MaintenanceToolECSBOX
            // EnableValve.IsEnabled = false;
             if (EnableValve.IsOn)
             {
-                position.IsInteractive = false;
+               // position.IsInteractive = false;
             }
             await RequestPositionValve();
-            await ReadPositionValve();
+            await ReadValveData();
           //  EnableValve.IsEnabled = true;
             if (EnableValve.IsOn)
             {
-                position.IsInteractive = true;
+              //  position.IsInteractive = true;
             }
             
             
@@ -424,7 +426,7 @@ namespace MaintenanceToolECSBOX
 
 
         }
-        private async Task ReadPositionValve()
+        private async Task ReadValveData()
         {
             if (EventHandlerForDevice.Current.IsDeviceConnected)
             {
@@ -535,14 +537,11 @@ namespace MaintenanceToolECSBOX
 
         
                 lastPosition = currentPosition;
-                currentPosition = received[6];
-                //if (lastPosition != currentPosition)
-               // {
-                    position.Value = currentPosition * 90 / 255;
-                    AngleFlapper.Text = position.Value.ToString();
-              //  }
-
-     
+                currentPosition = received[21];
+                position.Value = currentPosition * 90 / 255;
+                AngleFlapper.Text = position.Value.ToString();
+                LimitSwitchBorder1.Visibility = received[8]>0? Visibility.Visible: Visibility.Collapsed;
+                PressedLabel1.Visibility= received[8] > 0 ? Visibility.Visible : Visibility.Collapsed;
 
 
             }

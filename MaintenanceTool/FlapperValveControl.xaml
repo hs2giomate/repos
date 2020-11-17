@@ -24,41 +24,60 @@
                 <StackPanel x:Name="FansPanel" Margin="0,20,0,0">
                     <StackPanel x:Name="FansOperationStack" Orientation="Horizontal" >
                         <StackPanel x:Name="SingleFanStackPanel" Orientation="Vertical" Margin="0,10,0,0" RequestedTheme="Default" >
-                            <TextBlock FontSize="16" Text="Flapper Valve Position" />
+                            <TextBlock FontSize="16" Text="Flapper Valve Position" TextAlignment="Center" />
                             <StackPanel Orientation="Horizontal" >
-                                <Grid>
+                                <Grid Margin="0,10,0,0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="6*"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="dummy1" Visibility="Visible" Opacity="0" />
-                                    <TextBlock Text="dummy2" Grid.Column="1" Opacity="0" Width="{Binding ActualWidth, ElementName=AngleFlapper, Mode=OneWay}" />
-                                    <ToggleSwitch x:Name="EnableValve" HorizontalAlignment="Right" VerticalAlignment="Stretch" Toggled="EnableValve_Toggled"  Grid.Column="2" />
+                                    <TextBlock x:Name="dummytexteblock1" Text="12345678" Visibility="Visible" Opacity="0" />
+                                    <TextBlock x:Name="dummytextbox2" Text="1234567890" Grid.Column="1" Opacity="0" Width="{Binding ActualWidth, ElementName=dummytexteblock1, Mode=OneWay}" />
+                                    <ToggleSwitch x:Name="EnableValve" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="EnableValve_Toggled"  Grid.Column="2" />
 
                                 </Grid>
                             </StackPanel>
 
-                            <my:RadialGauge x:Name="position" Maximum="90" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="position_ManipulationCompleted"  MaxAngle="90" MinAngle="0" RenderTransformOrigin="0.5,0.5" Margin="0,50,40,0" FontSize="12" IsRightTapEnabled="False" IsDoubleTapEnabled="False" NeedleBrush="#FF2B51B6" LargeChange="56" Value="45" AllowDrop="True" Unit="°">
+                            <my:RadialGauge x:Name="position" Maximum="90" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="position_ManipulationCompleted"  MaxAngle="90" MinAngle="0" RenderTransformOrigin="0.5,0.5" Margin="0,70,40,0" FontSize="12" IsRightTapEnabled="False" IsDoubleTapEnabled="False" NeedleBrush="#FF2B51B6" LargeChange="90" Value="45" AllowDrop="True" StepSize="1">
                                 <my:RadialGauge.RenderTransform>
-                                    <CompositeTransform TranslateX="-100" TranslateY="50" ScaleX="2" ScaleY="2"/>
+                                    <CompositeTransform TranslateX="-70" TranslateY="50" ScaleX="2" ScaleY="2"/>
                                 </my:RadialGauge.RenderTransform>
 
                             </my:RadialGauge>
-                            <TextBlock x:Name="AngleFlapper" Text="45" TextAlignment="Center" FontSize="16" Margin="0,0,0,10" />
-
                             <StackPanel Orientation="Horizontal" >
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="4*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="6*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock x:Name="Tremperaturelabel1" Text="Status" TextAlignment="Left" Grid.ColumnSpan="1" FontSize="14" />
-                                    <TextBlock x:Name="TremperatureNumber" Text="Connected" TextAlignment="Center" FontSize="14" Grid.Column="1" Width="{Binding ActualWidth, ElementName=AngleFlapper, Mode=OneWay}" />
-                                    <TextBlock x:Name="TemperatureValue1" Text="Off" TextAlignment="Right" Grid.Column="2" Grid.RowSpan="1" FocusVisualPrimaryBrush="#FFC11414" FontSize="14" />
+                                <StackPanel >
+                                    <Grid Margin="0,10,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock x:Name="dummy3" Text="1234567890123456789" TextAlignment="Center" FontSize="16" Margin="0,0,0,10" Opacity="0" />
+                                        <TextBlock x:Name="AngleFlapper" Text="45" TextAlignment="Center" FontSize="18" Margin="0,0,0,10" Grid.Column="1" />
+                                        <TextBlock x:Name="AngleFlapperUnit" Text="°" TextAlignment="Center" FontSize="18" Margin="0,0,0,10" Grid.Column="2" />
+                                    </Grid>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel x:Name="LimitSwitchPanel" Orientation="Horizontal" Canvas.ZIndex="1" >
+                                <StackPanel >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock x:Name="Tremperaturelabel1" Text="Limit Switch   " TextAlignment="Center" Grid.ColumnSpan="1" FontSize="14" />
+                                        <TextBlock x:Name="switchNumber" Text="    1    " TextAlignment="Center" FontSize="14" Grid.Column="1"  />
+                                        <TextBlock x:Name="PressedLabel1" Text="   Pressed   " TextAlignment="Center" FontSize="14" Grid.Column="2"  />
+                                        <TextBlock x:Name="dummy" Text="123456789" TextAlignment="Center" FontSize="14" Grid.Column="3" Opacity="0" AllowDrop="True"  />
+                                        <Border x:Name="LimitSwitchBorder1" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="{Binding ActualWidth, ElementName=switchNumber, Mode=OneWay}" />
 
-                                </Grid>
+
+                                    </Grid>
+                                </StackPanel>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

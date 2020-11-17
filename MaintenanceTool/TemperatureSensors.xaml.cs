@@ -109,6 +109,7 @@ namespace MaintenanceToolECSBOX
 
                 ResetReadCancellationTokenSource();
                 ResetWriteCancellationTokenSource();
+
                 StartStatusCheckTimer();
             }
         }
