@@ -542,7 +542,7 @@ namespace MaintenanceToolECSBOX
                 AngleFlapper.Text = position.Value.ToString();
                 LimitSwitchBorder1.Visibility = received[8]>0? Visibility.Visible: Visibility.Collapsed;
                 PressedLabel1.Visibility= received[8] > 0 ? Visibility.Visible : Visibility.Collapsed;
-
+                position.Opacity = received[23] > 0 ? 0.4 : 1;
 
             }
         }
