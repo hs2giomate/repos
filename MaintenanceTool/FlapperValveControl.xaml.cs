@@ -67,12 +67,14 @@ namespace MaintenanceToolECSBOX
             received = new byte[readBufferLength];
             position.IsInteractive = false;
             position.Tapped += Position_Tapped;
+            position.Opacity = 0.2;
+            
 
         }
 
         private async void Position_Tapped(object sender, TappedRoutedEventArgs e)
         {
-           await WriteSetpointValue();
+          // await WriteSetpointValue();
            // throw new NotImplementedException();
         }
 
@@ -216,11 +218,7 @@ namespace MaintenanceToolECSBOX
 
 
      
-
-        private void position_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-
-        }
+             
 
         private async void position_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
@@ -233,15 +231,19 @@ namespace MaintenanceToolECSBOX
             {
                 lastSetpoint = currentSetpoint;
                 currentSetpoint = (byte)(position.Value * 255 / 90);
-                if (lastSetpoint != currentSetpoint)
+               // position.Value = lastPosition;
+                if (currentPosition != currentSetpoint)
                 {
+                   
+
                     position.IsInteractive = false;
                     await WriteAsyncValveData();
+               //     await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+                //       new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
                     position.IsInteractive = true;
                 }
             }
-            await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-            new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
+            
 
         }
         private async Task WriteAsyncValveData()
@@ -271,7 +273,7 @@ namespace MaintenanceToolECSBOX
                     }
                     else if(EnableValve.IsOn)
                     {
-                        if (currentSetpoint != lastSetpoint)
+                        if (currentSetpoint != currentPosition)
                         {
                             Protocol.Message.CreateSetpointtFlapperValveMessage(currentSetpoint).CopyTo(toSend, 0);
                             currentSetpoint = lastSetpoint;
@@ -331,8 +333,20 @@ namespace MaintenanceToolECSBOX
         }
         public async void UpdateDataPosition()
         {
+           // EnableValve.IsEnabled = false;
+            if (EnableValve.IsOn)
+            {
+                position.IsInteractive = false;
+            }
             await RequestPositionValve();
             await ReadPositionValve();
+          //  EnableValve.IsEnabled = true;
+            if (EnableValve.IsOn)
+            {
+                position.IsInteractive = true;
+            }
+            
+            
             GetLastPosition();
 
 
@@ -461,6 +475,7 @@ namespace MaintenanceToolECSBOX
                 position.Opacity = 1;
                 commandValve = (Byte)(lastCommand | 0x01);
                 position.IsInteractive = true;
+                position.AllowDrop = true;
 
 
             }
@@ -469,12 +484,15 @@ namespace MaintenanceToolECSBOX
                 position.Opacity = 0.4;
                 commandValve = (Byte)(lastCommand & 0xfe);
                 position.IsInteractive = false;
+                position.AllowDrop = false;
             }
             if (commandValve != lastCommand)
             {
+              //  EnableValve.IsEnabled = false;
                 await WriteAsyncValveData();
                 await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
                   new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
+              //  EnableValve.IsEnabled = true;
 
             }
         }
@@ -518,10 +536,11 @@ namespace MaintenanceToolECSBOX
         
                 lastPosition = currentPosition;
                 currentPosition = received[6];
-                if (lastPosition != currentPosition)
-                {
+                //if (lastPosition != currentPosition)
+               // {
                     position.Value = currentPosition * 90 / 255;
-                }
+                    AngleFlapper.Text = position.Value.ToString();
+              //  }
 
      
 
