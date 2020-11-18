@@ -47,7 +47,7 @@ namespace MaintenanceToolECSBOX
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
         private Object WriteCancelLock = new Object();
-        private Boolean IsWriteTaskPending;
+        private Boolean IsWriteTaskPending,manipulating;
         DataWriter DataWriteObject = null;
         private Boolean IsNavigatedAway;
         private static Byte[] received, toSend;
@@ -67,13 +67,36 @@ namespace MaintenanceToolECSBOX
             received = new byte[readBufferLength];
             position.IsInteractive = false;
             position.Tapped += Position_Tapped;
+            position.ManipulationStarted += Position_ManipulationStarted;
+            EnableValve.ManipulationStarted += EnableValve_ManipulationStarted;
+            EnableValve.ManipulationCompleted += EnableValve_ManipulationCompleted;
             position.Opacity = 0.2;
             
 
         }
 
-        private async void Position_Tapped(object sender, TappedRoutedEventArgs e)
+        private void EnableValve_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
+            manipulating = false;
+           // throw new NotImplementedException();
+        }
+
+        private void EnableValve_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            manipulating = true;
+           // throw new NotImplementedException();
+        }
+
+        private void Position_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            manipulating = true;
+            //throw new NotImplementedException();
+        }
+
+        private  void Position_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            
+            Debug.WriteLine(position.Value);
           // await WriteSetpointValue();
            // throw new NotImplementedException();
         }
@@ -137,7 +160,7 @@ namespace MaintenanceToolECSBOX
         {
             // Create a timer and set a two second interval.
             refreshValueTimer = new System.Timers.Timer();
-            refreshValueTimer.Interval = 1000;
+            refreshValueTimer.Interval = 2000;
 
             // Hook up the Elapsed event for the timer. 
             refreshValueTimer.Elapsed += OnTimedEvent;
@@ -225,6 +248,7 @@ namespace MaintenanceToolECSBOX
         private async void position_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
             await WriteSetpointValue();
+            manipulating = false;
         }
 
         private async Task WriteSetpointValue()
@@ -335,21 +359,25 @@ namespace MaintenanceToolECSBOX
         }
         public async void UpdateDataPosition()
         {
+            if (!manipulating)
+            {
+                if (EnableValve.IsOn)
+                {
+                    // position.IsInteractive = false;
+                }
+                await RequestPositionValve();
+                await ReadValveData();
+                //  EnableValve.IsEnabled = true;
+                if (EnableValve.IsOn)
+                {
+                    //  position.IsInteractive = true;
+                }
+
+
+                GetLastPosition();
+            }
            // EnableValve.IsEnabled = false;
-            if (EnableValve.IsOn)
-            {
-               // position.IsInteractive = false;
-            }
-            await RequestPositionValve();
-            await ReadValveData();
-          //  EnableValve.IsEnabled = true;
-            if (EnableValve.IsOn)
-            {
-              //  position.IsInteractive = true;
-            }
-            
-            
-            GetLastPosition();
+           
 
 
         }
@@ -362,6 +390,7 @@ namespace MaintenanceToolECSBOX
             if (IsPerformingRead())
             {
                 CancelReadTask();
+               // while (IsPerformingRead()) ;
             }
             if (EventHandlerForDevice.Current.IsDeviceConnected)
             {
@@ -474,26 +503,22 @@ namespace MaintenanceToolECSBOX
             lastCommand = commandValve;
             if (EnableValve.IsOn)
             {
-                position.Opacity = 1;
+                
                 commandValve = (Byte)(lastCommand | 0x01);
-                position.IsInteractive = true;
-                position.AllowDrop = true;
-
-
+              
             }
             else
             {
-                position.Opacity = 0.4;
+               
                 commandValve = (Byte)(lastCommand & 0xfe);
-                position.IsInteractive = false;
-                position.AllowDrop = false;
+              
             }
             if (commandValve != lastCommand)
             {
               //  EnableValve.IsEnabled = false;
                 await WriteAsyncValveData();
-                await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-                  new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
+            //    await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+             //     new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
               //  EnableValve.IsEnabled = true;
 
             }
@@ -527,7 +552,7 @@ namespace MaintenanceToolECSBOX
 
 
             }
-            rootPage.NotifyUser("Temperatures values were read", NotifyType.StatusMessage);
+            rootPage.NotifyUser("Flapper Valve data was read", NotifyType.StatusMessage);
         }
         private void GetLastPosition()
         {
@@ -537,12 +562,29 @@ namespace MaintenanceToolECSBOX
 
         
                 lastPosition = currentPosition;
-                currentPosition = received[21];
+                currentPosition = received[20];
                 position.Value = currentPosition * 90 / 255;
-                AngleFlapper.Text = position.Value.ToString();
+                AngleFlapper.Text = (90-currentPosition*90/255).ToString("N0"); 
                 LimitSwitchBorder1.Visibility = received[8]>0? Visibility.Visible: Visibility.Collapsed;
-                PressedLabel1.Visibility= received[8] > 0 ? Visibility.Visible : Visibility.Collapsed;
-                position.Opacity = received[23] > 0 ? 0.4 : 1;
+                PressedLabel1.Visibility= received[8] < 1 ? Visibility.Visible : Visibility.Collapsed;
+                if (received[23]>0)
+                {
+                    position.Opacity =  1;
+                    position.IsInteractive = true;
+                  //  position.AllowDrop = true;
+                }
+                else
+                {
+                    position.Opacity = 0.4;
+                    position.IsInteractive = false;
+                //    position.AllowDrop = false;
+                    if (EnableValve.IsOn)
+                    {
+                        EnableValve.IsOn = false;
+                    }
+                    
+                }
+                
 
             }
         }

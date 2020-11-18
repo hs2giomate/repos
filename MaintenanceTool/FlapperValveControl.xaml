@@ -15,16 +15,16 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackPanel Margin="0,0,0,10">
-                <TextBlock x:Name="Tittel" Text="Single Flapper Control" TextWrapping="Wrap" Width="441" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center"/>
+            <StackPanel Margin="0,0,0,8">
+                <TextBlock x:Name="Tittel" Text="Single Flapper Control" TextWrapping="Wrap" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center" FontSize="22"/>
             </StackPanel>
             <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100">
                 <!-- Place scenario content here -->
 
                 <StackPanel x:Name="FansPanel" Margin="0,20,0,0">
                     <StackPanel x:Name="FansOperationStack" Orientation="Horizontal" >
-                        <StackPanel x:Name="SingleFanStackPanel" Orientation="Vertical" Margin="0,10,0,0" RequestedTheme="Default" >
-                            <TextBlock FontSize="16" Text="Flapper Valve Position" TextAlignment="Center" />
+                        <StackPanel x:Name="SingleFanStackPanel" Orientation="Vertical" Margin="0,8,0,0" RequestedTheme="Default" >
+                            <TextBlock FontSize="14" Text="Flapper Valve Position" TextAlignment="Center" />
                             <StackPanel Orientation="Horizontal" >
                                 <Grid Margin="0,10,0,0">
                                     <Grid.ColumnDefinitions>
@@ -39,15 +39,15 @@
                                 </Grid>
                             </StackPanel>
 
-                            <my:RadialGauge x:Name="position" Maximum="90" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="position_ManipulationCompleted"  MaxAngle="90" MinAngle="0" RenderTransformOrigin="0.5,0.5" Margin="0,70,40,0" FontSize="12" IsRightTapEnabled="False" IsDoubleTapEnabled="False" NeedleBrush="#FF2B51B6" LargeChange="90" Value="45" AllowDrop="True" StepSize="1">
+                            <my:RadialGauge x:Name="position" Maximum="90" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="position_ManipulationCompleted"  MaxAngle="90" MinAngle="0" RenderTransformOrigin="0.5,0.5" Margin="0,50,40,0" FontSize="12" IsRightTapEnabled="False" IsDoubleTapEnabled="False" NeedleBrush="#FF2B51B6" LargeChange="90" Value="45" AllowDrop="True" StepSize="1" IsHoldingEnabled="False">
                                 <my:RadialGauge.RenderTransform>
                                     <CompositeTransform TranslateX="-70" TranslateY="50" ScaleX="2" ScaleY="2"/>
                                 </my:RadialGauge.RenderTransform>
 
                             </my:RadialGauge>
-                            <StackPanel Orientation="Horizontal" >
+                            <StackPanel Orientation="Horizontal" Canvas.ZIndex="0" >
                                 <StackPanel >
-                                    <Grid Margin="0,10,0,0">
+                                    <Grid Margin="0,-20,0,0">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="3*"/>
                                             <ColumnDefinition Width="*"/>
