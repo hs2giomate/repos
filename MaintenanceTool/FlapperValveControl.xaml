@@ -45,7 +45,7 @@
                                 </my:RadialGauge.RenderTransform>
 
                             </my:RadialGauge>
-                            <StackPanel Orientation="Horizontal" Canvas.ZIndex="0" >
+                            <StackPanel Orientation="Vertical" Canvas.ZIndex="0" >
                                 <StackPanel >
                                     <Grid Margin="0,-20,0,0">
                                         <Grid.ColumnDefinitions>
@@ -59,24 +59,66 @@
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel x:Name="LimitSwitchPanel" Orientation="Horizontal" Canvas.ZIndex="1" >
-                                <StackPanel >
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="4*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="2*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock x:Name="Tremperaturelabel1" Text="Limit Switch   " TextAlignment="Center" Grid.ColumnSpan="1" FontSize="14" />
-                                        <TextBlock x:Name="switchNumber" Text="    1    " TextAlignment="Center" FontSize="14" Grid.Column="1"  />
-                                        <TextBlock x:Name="PressedLabel1" Text="   Pressed   " TextAlignment="Center" FontSize="14" Grid.Column="2"  />
-                                        <TextBlock x:Name="dummy" Text="123456789" TextAlignment="Center" FontSize="14" Grid.Column="3" Opacity="0" AllowDrop="True"  />
-                                        <Border x:Name="LimitSwitchBorder1" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="{Binding ActualWidth, ElementName=switchNumber, Mode=OneWay}" />
+                            <StackPanel x:Name="panel_switches" >
+                                <StackPanel x:Name="LimitSwitchPanel1" Orientation="Horizontal" Canvas.ZIndex="1" >
+                                    <StackPanel >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="4*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>   
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="Tremperaturelabel1" Text="Fresh Air" TextAlignment="Left" Grid.ColumnSpan="1" FontSize="14" Width="{Binding ActualWidth, ElementName=Tremperaturelabel3, Mode=OneWay}" />
+                                            <TextBlock x:Name="switchNumber1" Text="    1    " TextAlignment="Center" FontSize="14" Grid.Column="1"  />
+                                            <TextBlock x:Name="PressedLabel1" Text="   Pressed   " TextAlignment="Center" FontSize="14" Grid.Column="2"  />
+                                            <TextBlock x:Name="dummy" Text="123456789" TextAlignment="Center" FontSize="14" Grid.Column="3" Opacity="0" AllowDrop="True"  />
+                                            <Border x:Name="LimitSwitchBorder1" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="{Binding ActualWidth, ElementName=switchNumber1, Mode=OneWay}" />
 
 
-                                    </Grid>
+                                        </Grid>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="LimitSwitchPanel1_Copy" Orientation="Horizontal" Canvas.ZIndex="1" >
+                                    <StackPanel >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="4*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="Tremperaturelabel2" Text="Recirculation" TextAlignment="Left" Grid.ColumnSpan="1" FontSize="14" Width="{Binding ActualWidth, ElementName=Tremperaturelabel3, Mode=OneWay}" />
+                                            <TextBlock x:Name="switchNumber2" Text="    2    " TextAlignment="Center" FontSize="14" Grid.Column="1"  />
+                                            <TextBlock x:Name="PressedLabel2" Text="   Pressed   " TextAlignment="Center" FontSize="14" Grid.Column="2"  />
+                                            <TextBlock x:Name="dummy1" Text="123456789" TextAlignment="Center" FontSize="14" Grid.Column="3" Opacity="0" AllowDrop="True" Width="{Binding ActualWidth, ElementName=dummy, Mode=OneWay}"  />
+                                            <Border x:Name="LimitSwitchBorder2" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="{Binding ActualWidth, ElementName=switchNumber1, Mode=OneWay}" />
+
+
+                                        </Grid>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="LimitSwitchPanel1_Copy1" Orientation="Horizontal" Canvas.ZIndex="1" >
+                                    <StackPanel >
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="4*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="Tremperaturelabel3" Text="Minimun Fresh Air" TextAlignment="Left" Grid.ColumnSpan="1" FontSize="14" />
+                                            <TextBlock x:Name="switchNumber3" Text="    3    " TextAlignment="Center" FontSize="14" Grid.Column="1"  />
+                                            <TextBlock x:Name="PressedLabel3" Text="   Pressed   " TextAlignment="Center" FontSize="14" Grid.Column="2"  />
+                                            <TextBlock x:Name="dummy2" Text="123456789" TextAlignment="Center" FontSize="14" Grid.Column="3" Opacity="0" AllowDrop="True"  />
+                                            <Border x:Name="LimitSwitchBorder3" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="{Binding ActualWidth, ElementName=switchNumber1, Mode=OneWay}" />
+
+
+                                        </Grid>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>

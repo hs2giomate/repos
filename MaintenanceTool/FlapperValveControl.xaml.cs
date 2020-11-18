@@ -566,10 +566,12 @@ namespace MaintenanceToolECSBOX
                 position.Value = currentPosition * 90 / 255;
                 AngleFlapper.Text = (90-currentPosition*90/255).ToString("N0"); 
                 LimitSwitchBorder1.Visibility = received[8]>0? Visibility.Visible: Visibility.Collapsed;
+                LimitSwitchBorder2.Visibility = received[9] > 0 ? Visibility.Visible : Visibility.Collapsed;
+                LimitSwitchBorder3.Visibility = received[10] > 0 ? Visibility.Visible : Visibility.Collapsed;
                 PressedLabel1.Visibility= received[8] < 1 ? Visibility.Visible : Visibility.Collapsed;
                 if (received[23]>0)
                 {
-                    position.Opacity =  1;
+                    position.Opacity = received[22] > 0 ? 0.4: 1;
                     position.IsInteractive = true;
                   //  position.AllowDrop = true;
                 }
