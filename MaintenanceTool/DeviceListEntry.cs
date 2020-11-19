@@ -30,6 +30,7 @@ namespace MaintenanceToolECSBOX
     {
         private DeviceInformation device;
         private String deviceSelector;
+        public bool ecsBoxDetected=false;
 
         public String InstanceId
         {
@@ -62,7 +63,9 @@ namespace MaintenanceToolECSBOX
             {
                 if (DeviceInformation.Name.Contains("ASF"))
                 {
+                    ecsBoxDetected = true;
                     return "ECS_BOX CDC_Serial_Interface";
+                   
                 }
                 else
                 {

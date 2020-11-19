@@ -36,7 +36,6 @@ namespace MaintenanceToolECSBOX
     {
         private static TemperatureSensors handler;
         private MainPage rootPage = MainPage.Current;
-
         // Track Read Operation
         private CancellationTokenSource ReadCancellationTokenSource, WriteCancellationTokenSource;
         private Object ReadCancelLock = new Object();

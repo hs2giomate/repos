@@ -40,7 +40,7 @@ namespace MaintenanceToolECSBOX
     {
         private const String ButtonNameDisconnectFromDevice = "Disconnect from device";
         private const String ButtonNameDisableReconnectToDevice = "Do not automatically reconnect to device that was just closed";
-
+        private static Scenario1_ConnectDisconnect handler;
         // Pointer back to the main page
         private MainPage rootPage = MainPage.Current;
 
@@ -56,6 +56,8 @@ namespace MaintenanceToolECSBOX
 
         // Has all the devices enumerated by the device watcher?
         private Boolean isAllDevicesEnumerated;
+        private static System.Timers.Timer refreshValueTimer = null;
+        private DeviceListEntry ECS_BOX = null;
 
         public Scenario1_ConnectDisconnect()
         {
@@ -68,6 +70,7 @@ namespace MaintenanceToolECSBOX
             watchersSuspended = false;
 
             isAllDevicesEnumerated = false;
+            handler = this;
         }
 
         /// <summary>
@@ -102,8 +105,36 @@ namespace MaintenanceToolECSBOX
             // Initialize the desired device watchers so that we can watch for when devices are connected/removed
             InitializeDeviceWatchers();
             StartDeviceWatchers();
-
+            StartStatusCheckTimer();
             DeviceListSource.Source = listOfDevices;
+        }
+        public void StartStatusCheckTimer()
+        {
+            // Create a timer and set a two second interval.
+            refreshValueTimer = new System.Timers.Timer();
+            refreshValueTimer.Interval = 2000;
+
+            // Hook up the Elapsed event for the timer. 
+            refreshValueTimer.Elapsed += OnTimedEvent;
+
+            // Have the timer fire repeated events (true is the default)
+            refreshValueTimer.AutoReset = false;
+
+            // Start the timer
+            refreshValueTimer.Enabled = true;
+
+
+        }
+        private static async void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        {
+            // Debug.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
+            //  MaintenanceToolHandler.Current.SendAliveMessage();
+            if (handler.ECS_BOX!=null)
+            {
+                handler.Connect_ECS_BOX();
+            }
+                      
+            refreshValueTimer.Start();
         }
 
         /// <summary>
@@ -118,6 +149,11 @@ namespace MaintenanceToolECSBOX
             // We no longer care about the device being connected
             EventHandlerForDevice.Current.OnDeviceConnected = null;
             EventHandlerForDevice.Current.OnDeviceClose = null;
+            if (refreshValueTimer != null)
+            {
+                refreshValueTimer.Stop();
+                refreshValueTimer.Dispose();
+            }
         }
 
         private async void ConnectToDevice_Click(Object sender, RoutedEventArgs eventArgs)
@@ -151,6 +187,30 @@ namespace MaintenanceToolECSBOX
                     }
                     
                 }
+            }
+        }
+        private async void Connect_ECS_BOX()
+        {
+            if (ECS_BOX != null)
+            {
+                // Create an EventHandlerForDevice to watch for the device we are connecting to
+                EventHandlerForDevice.CreateNewEventHandlerForDevice();
+
+                // Get notified when the device was successfully connected to or about to be closed
+                EventHandlerForDevice.Current.OnDeviceConnected = this.OnDeviceConnected;
+                EventHandlerForDevice.Current.OnDeviceClose = this.OnDeviceClosing;
+
+                // It is important that the FromIdAsync call is made on the UI thread because the consent prompt, when present,
+                // can only be displayed on the UI thread. Since this method is invoked by the UI, we are already in the UI thread.
+                Boolean openSuccess = await EventHandlerForDevice.Current.OpenDeviceAsync(ECS_BOX.DeviceInformation, ECS_BOX.DeviceSelector);
+
+                // Disable connect button if we connected to the device
+                UpdateConnectDisconnectButtonsAndList(!openSuccess);
+                if (openSuccess)
+                {
+                    EventHandlerForDevice.Current.SetDeafultParameters();
+                }
+
             }
         }
 
@@ -305,6 +365,10 @@ namespace MaintenanceToolECSBOX
 
                 // Add the new element to the end of the list of devices
                 listOfDevices.Add(match);
+                if (match.ecsBoxDetected)
+                {
+                    ECS_BOX = match;
+                }
             }
         }
 
