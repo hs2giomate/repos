@@ -57,6 +57,8 @@ namespace MaintenanceToolECSBOX
         private int sizeofStruct;
         private uint readBufferLength;
         private UInt32 magicHeader;
+        private static AnimationSet NBC_Mode_Dark,NBC_Mode_Light;
+        private bool nbcMode=false;
         public FlapperValveControl()
         {
             this.InitializeComponent();
@@ -71,8 +73,40 @@ namespace MaintenanceToolECSBOX
             EnableValve.ManipulationStarted += EnableValve_ManipulationStarted;
             EnableValve.ManipulationCompleted += EnableValve_ManipulationCompleted;
             position.Opacity = 0.2;
-            
+          ///  NBC_Mode_Dark = new AnimationSet(position);
+            NBC_Mode_Dark = position.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine);
+         //   NBC_Mode_Light = new AnimationSet(position);
+            NBC_Mode_Light = position.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
+            NBC_Mode_Dark.Completed += NBC_Mode_Dark_Completed;
+            NBC_Mode_Light.Completed += NBC_Mode_Light_Completed;
+        }
 
+        private void NBC_Mode_Light_Completed(object sender, AnimationSetCompletedEventArgs e)
+        {
+            if (nbcMode)
+            {
+                NBC_Mode_Dark.StartAsync();
+            }
+            else
+            {
+                NBC_Mode_Dark.Stop();
+            }
+
+            //throw new NotImplementedException();
+        }
+
+        private void NBC_Mode_Dark_Completed(object sender, AnimationSetCompletedEventArgs e)
+        {
+            if (nbcMode)
+            {
+                NBC_Mode_Light.StartAsync();
+            }
+            else
+            {
+                NBC_Mode_Light.Stop();
+            }
+            // throw new NotImplementedException();
+            
         }
 
         private void EnableValve_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
@@ -569,23 +603,47 @@ namespace MaintenanceToolECSBOX
                 LimitSwitchBorder2.Visibility = received[9] > 0 ? Visibility.Visible : Visibility.Collapsed;
                 LimitSwitchBorder3.Visibility = received[10] > 0 ? Visibility.Visible : Visibility.Collapsed;
                 PressedLabel1.Visibility= received[8] < 1 ? Visibility.Visible : Visibility.Collapsed;
-                if (received[23]>0)
+                if (received[24]>0)
                 {
-                    position.Opacity = received[22] > 0 ? 0.4: 1;
-                    position.IsInteractive = true;
-                  //  position.AllowDrop = true;
+                    position.IsInteractive = false;
+                    if (!nbcMode)
+                    {
+                        NBC_Mode_Dark.StartAsync();
+                    }
+                    nbcMode = true;
+
+                    
+                   // EnableValve.IsOn = false;
+                    EnableValve.IsEnabled = false;
+
+                    
                 }
                 else
                 {
-                    position.Opacity = 0.4;
-                    position.IsInteractive = false;
-                //    position.AllowDrop = false;
-                    if (EnableValve.IsOn)
+                    nbcMode = false;
+                    if (!EnableValve.IsEnabled)
                     {
-                        EnableValve.IsOn = false;
+                        EnableValve.IsEnabled = true;
                     }
-                    
+                    if (received[23] > 0)
+                    {
+                        position.Opacity = received[22] > 0 ? 0.4 : 1;
+                        position.IsInteractive = true;
+                        //  position.AllowDrop = true;
+                    }
+                    else
+                    {
+                        position.Opacity = 0.4;
+                        position.IsInteractive = false;
+                        //    position.AllowDrop = false;
+                        if (EnableValve.IsOn)
+                        {
+                            EnableValve.IsOn = false;
+                        }
+
+                    }
                 }
+                
                 
 
             }

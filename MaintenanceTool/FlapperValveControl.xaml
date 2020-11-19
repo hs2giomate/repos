@@ -45,7 +45,7 @@
                                 </my:RadialGauge.RenderTransform>
 
                             </my:RadialGauge>
-                            <StackPanel Orientation="Vertical" Canvas.ZIndex="0" >
+                            <StackPanel Orientation="Vertical" Canvas.ZIndex="0" Margin="0,-10,0,0" >
                                 <StackPanel >
                                     <Grid Margin="0,-20,0,0">
                                         <Grid.ColumnDefinitions>
@@ -54,8 +54,8 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock x:Name="dummy3" Text="1234567890123456789" TextAlignment="Center" FontSize="16" Margin="0,0,0,10" Opacity="0" />
-                                        <TextBlock x:Name="AngleFlapper" Text="45" TextAlignment="Center" FontSize="18" Margin="0,0,0,10" Grid.Column="1" />
-                                        <TextBlock x:Name="AngleFlapperUnit" Text="°" TextAlignment="Center" FontSize="18" Margin="0,0,0,10" Grid.Column="2" />
+                                        <TextBlock x:Name="AngleFlapper" Text="45" TextAlignment="Right" FontSize="18" Margin="0,0,0,10" Grid.Column="1" />
+                                        <TextBlock x:Name="AngleFlapperUnit" Text="°" TextAlignment="Left" FontSize="18" Margin="0,0,0,10" Grid.Column="2" />
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
@@ -126,8 +126,8 @@
                 </StackPanel>
 
             </ScrollViewer>
-            <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
+            <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12,0,12,0" Visibility="Collapsed"/>
         </Grid>
-        <my:RadialGauge HorizontalAlignment="Left" Height="0" Margin="724,1114,0,0" VerticalAlignment="Top" Width="0"/>
+        <!--my:RadialGauge HorizontalAlignment="Left" Height="0" Margin="724,1114,0,0" VerticalAlignment="Top" Width="0"-->
     </Grid>
 </Page>
