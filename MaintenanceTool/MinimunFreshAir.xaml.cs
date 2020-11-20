@@ -496,7 +496,11 @@ namespace MaintenanceToolECSBOX
         }
         public async Task<Byte> GetminimunValidAirPosition()
         {
-            await ReadStoredValues();
+            ResetReadCancellationTokenSource();
+            ResetWriteCancellationTokenSource();
+            await GetStoredOffsetValue();
+            DecodeInputValues();
+            
             return minimunValid;
 
         }

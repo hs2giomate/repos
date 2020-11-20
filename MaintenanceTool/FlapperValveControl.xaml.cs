@@ -60,7 +60,7 @@ namespace MaintenanceToolECSBOX
         private static AnimationSet NBC_Mode_Dark,NBC_Mode_Light;
         private bool nbcMode=false;
         private MinimunFreshAir minimunValues;
-        private Byte minimunAirPosition;
+        private Byte minimunAirPosition,lastMinimum;
         private const Byte minimunFailValue = 20;
         public FlapperValveControl()
         {
@@ -83,7 +83,8 @@ namespace MaintenanceToolECSBOX
             NBC_Mode_Dark.Completed += NBC_Mode_Dark_Completed;
             NBC_Mode_Light.Completed += NBC_Mode_Light_Completed;
             minimunValues = new MinimunFreshAir();
-
+            minimunAirPosition = minimunFailValue;
+    
         }
 
         private void NBC_Mode_Light_Completed(object sender, AnimationSetCompletedEventArgs e)
@@ -166,18 +167,9 @@ namespace MaintenanceToolECSBOX
                 ResetReadCancellationTokenSource();
                 ResetWriteCancellationTokenSource();
                 UpdateDataPosition();
-              await   minimunValues.GetminimunValidAirPosition();
-                minimunAirPosition = minimunValues.minimunValid;
-                if (minimunAirPosition<minimunFailValue)
-                {
-                    MinimumPositionGauge.MinAngle = minimunFailValue * 90 / 255;
-                    MinimumPositionGauge.Minimum = minimunFailValue * 90 / 255;
-                }
-                else
-                {
-                    MinimumPositionGauge.MinAngle = minimunAirPosition * 90 / 255;
-                    MinimumPositionGauge.Minimum = minimunAirPosition * 90 / 255;
-                }
+                
+               
+           
               
                 StartStatusCheckTimer();
                
@@ -193,6 +185,30 @@ namespace MaintenanceToolECSBOX
                 refreshValueTimer.Dispose();
             }
             CancelAllIoTasks();
+        }
+        private async Task UpdateMinimunValues()
+        {
+            await minimunValues.GetminimunValidAirPosition();
+           
+            minimunAirPosition = (byte)(minimunValues.minimunValid);
+         
+            if (minimunAirPosition < minimunFailValue)
+            {
+                MinimumPositionGauge.MinAngle = 90 - minimunFailValue * 90 / 255;
+                MinimumPositionGauge.Minimum = 90 - minimunFailValue * 90 / 255;
+
+            }
+            else
+            {
+                if (minimunAirPosition != lastMinimum)
+                {
+                    lastMinimum = minimunAirPosition;
+                    MinimumPositionGauge.MinAngle = 90 - minimunAirPosition * 90 / 255;
+                    MinimumPositionGauge.Minimum = 90 - minimunAirPosition * 90 / 255;
+                    MinimumPositionGauge.Value = 90 - minimunAirPosition * 90 / 255;
+                }
+                
+            }
         }
         public void Dispose()
         {
@@ -232,7 +248,8 @@ namespace MaintenanceToolECSBOX
 
 
             await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-             new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
+             new DispatchedHandler(() => {
+                 handler.UpdateDataPosition(); }));
             refreshValueTimer.Start();
         }
         private async void NotifyReadCancelingTask()
@@ -425,11 +442,12 @@ namespace MaintenanceToolECSBOX
                     //  position.IsInteractive = true;
                 }
 
-
+                await UpdateMinimunValues();
                 GetLastPosition();
             }
-           // EnableValve.IsEnabled = false;
-           
+            
+            // EnableValve.IsEnabled = false;
+
 
 
         }
