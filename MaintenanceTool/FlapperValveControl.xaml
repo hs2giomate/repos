@@ -7,6 +7,41 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        
+       
+        <SolidColorBrush x:Key="RadialGaugeNeedleBrush" Color="{ThemeResource SystemChromeHighColor}"/>
+        <SolidColorBrush x:Key="RadialGaugeTrailBrush" Color="{ThemeResource SystemChromeHighColor}"/>
+        <SolidColorBrush x:Key="RadialGaugeScaleBrush" Color="{ThemeResource SystemBaseMediumLowColor}"/>
+        <SolidColorBrush x:Key="RadialGaugeScaleTickBrush" Color="{ThemeResource SystemBaseMediumLowColor}"/>
+        <SolidColorBrush x:Key="RadialGaugeTickBrush" Color="{ThemeResource SystemBaseHighColor}"/>
+        <SolidColorBrush x:Key="RadialGaugeForeground" Color="{ThemeResource SystemBaseHighColor}"/>
+        <Style x:Key="FlapperValveGauge" TargetType="my:RadialGauge">
+            <Setter Property="NeedleBrush" Value="{ThemeResource RadialGaugeNeedleBrush}"/>
+            <Setter Property="TrailBrush" Value="{ThemeResource RadialGaugeTrailBrush}"/>
+            <Setter Property="ScaleBrush" Value="{ThemeResource RadialGaugeScaleBrush}"/>
+            <Setter Property="ScaleTickBrush" Value="{ThemeResource RadialGaugeScaleTickBrush}"/>
+            <Setter Property="TickBrush" Value="{ThemeResource RadialGaugeTickBrush}"/>
+            <Setter Property="Foreground" Value="{ThemeResource RadialGaugeForeground}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="my:RadialGauge">
+                        <Viewbox>
+                            <Grid x:Name="PART_Container" Background="Transparent" Height="200" Width="200">
+                                <Path x:Name="PART_Scale" StrokeThickness="{TemplateBinding ScaleWidth}" Stroke="{TemplateBinding ScaleBrush}"/>
+                                <Path x:Name="PART_Trail" StrokeThickness="{TemplateBinding ScaleWidth}" Stroke="{TemplateBinding TrailBrush}"/>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                    <TextBlock x:Name="PART_ValueText" FontWeight="SemiBold" Foreground="{TemplateBinding Foreground}" FontSize="20" Margin="0,0,0,2" TextAlignment="Center" Opacity="0"/>
+                                    <TextBlock Foreground="{TemplateBinding Foreground}" FontSize="16" Margin="0" Text="{TemplateBinding Unit}" TextAlignment="Center" Opacity="0"/>
+                                </StackPanel>
+                            </Grid>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12,20,12,12">
@@ -38,13 +73,21 @@
 
                                 </Grid>
                             </StackPanel>
+                            <Grid >
+                                <my:RadialGauge Style="{StaticResource FlapperValveGauge}"  x:Name="position" Maximum="90" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="position_ManipulationCompleted"  MaxAngle="90" MinAngle="0" FontSize="12" IsRightTapEnabled="False" IsDoubleTapEnabled="False" NeedleBrush="#FF2B51B6" LargeChange="90" Value="45" AllowDrop="True" StepSize="1" IsHoldingEnabled="False" IsTapEnabled="False" Margin="0,0,0,50">
+                                    <my:RadialGauge.RenderTransform>
+                                        <CompositeTransform TranslateX="-237"  ScaleX="2" ScaleY="2"/>
+                                    </my:RadialGauge.RenderTransform>
 
-                            <my:RadialGauge x:Name="position" Maximum="90" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="position_ManipulationCompleted"  MaxAngle="90" MinAngle="0" RenderTransformOrigin="0.5,0.5" Margin="0,50,40,0" FontSize="12" IsRightTapEnabled="False" IsDoubleTapEnabled="False" NeedleBrush="#FF2B51B6" LargeChange="90" Value="45" AllowDrop="True" StepSize="1" IsHoldingEnabled="False">
-                                <my:RadialGauge.RenderTransform>
-                                    <CompositeTransform TranslateX="-70" TranslateY="50" ScaleX="2" ScaleY="2"/>
-                                </my:RadialGauge.RenderTransform>
+                                </my:RadialGauge>
+                                <my:RadialGauge Style="{StaticResource FlapperValveGauge}"  x:Name="MinimumPositionGauge" Maximum="90" ManipulationMode="System"   MaxAngle="90" MinAngle="45"   FontSize="12" IsRightTapEnabled="False" IsDoubleTapEnabled="False" NeedleBrush="#FF9F15D3" LargeChange="90" Value="90" StepSize="1" IsHoldingEnabled="False" IsTapEnabled="False" TrailBrush="{x:Null}" IsTabStop="False" IsHitTestVisible="False" IsEnabled="False" Margin="0,0,0,50" NeedleWidth="1" TickBrush="#FFD81515" Foreground="#FFDA1010" Minimum="45" FocusVisualPrimaryBrush="{x:Null}" Canvas.ZIndex="1" ScaleBrush="#66F00F0F">
+                                    <my:RadialGauge.RenderTransform>
+                                        <CompositeTransform TranslateX="-237"  ScaleX="2" ScaleY="2"/>
+                                    </my:RadialGauge.RenderTransform>
 
-                            </my:RadialGauge>
+                                </my:RadialGauge>
+
+                            </Grid>
                             <StackPanel Orientation="Vertical" Canvas.ZIndex="0" Margin="0,-10,0,0" >
                                 <StackPanel >
                                     <Grid Margin="0,-20,0,0">
@@ -121,6 +164,7 @@
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
+                      
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

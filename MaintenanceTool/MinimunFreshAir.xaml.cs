@@ -41,7 +41,7 @@ namespace MaintenanceToolECSBOX
         private Boolean IsReadTaskPending;
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
-        public Byte minimumAir, standAloneMinimumAir;
+        public Byte minimumAir, standAloneMinimumAir,minimunValid;
 
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
@@ -491,7 +491,14 @@ namespace MaintenanceToolECSBOX
             {
                 minimumAir = received[6];
                 standAloneMinimumAir = received[7];
+                minimunValid= received[8];
             }
+        }
+        public async Task<Byte> GetminimunValidAirPosition()
+        {
+            await ReadStoredValues();
+            return minimunValid;
+
         }
 
         private int ConvertOffsetToAngle(Byte o)

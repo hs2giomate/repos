@@ -59,6 +59,9 @@ namespace MaintenanceToolECSBOX
         private UInt32 magicHeader;
         private static AnimationSet NBC_Mode_Dark,NBC_Mode_Light;
         private bool nbcMode=false;
+        private MinimunFreshAir minimunValues;
+        private Byte minimunAirPosition;
+        private const Byte minimunFailValue = 20;
         public FlapperValveControl()
         {
             this.InitializeComponent();
@@ -79,6 +82,8 @@ namespace MaintenanceToolECSBOX
             NBC_Mode_Light = position.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
             NBC_Mode_Dark.Completed += NBC_Mode_Dark_Completed;
             NBC_Mode_Light.Completed += NBC_Mode_Light_Completed;
+            minimunValues = new MinimunFreshAir();
+
         }
 
         private void NBC_Mode_Light_Completed(object sender, AnimationSetCompletedEventArgs e)
@@ -135,7 +140,7 @@ namespace MaintenanceToolECSBOX
            // throw new NotImplementedException();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs eventArgs)
+        protected override async void OnNavigatedTo(NavigationEventArgs eventArgs)
         {
 
             IsNavigatedAway = false;
@@ -161,6 +166,19 @@ namespace MaintenanceToolECSBOX
                 ResetReadCancellationTokenSource();
                 ResetWriteCancellationTokenSource();
                 UpdateDataPosition();
+              await   minimunValues.GetminimunValidAirPosition();
+                minimunAirPosition = minimunValues.minimunValid;
+                if (minimunAirPosition<minimunFailValue)
+                {
+                    MinimumPositionGauge.MinAngle = minimunFailValue * 90 / 255;
+                    MinimumPositionGauge.Minimum = minimunFailValue * 90 / 255;
+                }
+                else
+                {
+                    MinimumPositionGauge.MinAngle = minimunAirPosition * 90 / 255;
+                    MinimumPositionGauge.Minimum = minimunAirPosition * 90 / 255;
+                }
+              
                 StartStatusCheckTimer();
                
             }
