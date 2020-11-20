@@ -53,12 +53,15 @@ namespace MaintenanceToolECSBOX
         ParametersMessage parametersMessage;
         private UInt32 magicHeader;
         private uint readBufferLength = 64;
+        private int toSendSize;
         public MinimunFreshAir()
         {
             this.InitializeComponent();
             handler = this;
-            parameters.flapperValveOffset = minimumAir;
+            parameters.minimumPosition = minimumAir;
             received = new byte[readBufferLength];
+            toSendSize = Marshal.SizeOf(typeof(ParametersMessage));
+            toSend = new byte[toSendSize];
         }
         public void Dispose()
         {
@@ -328,7 +331,14 @@ namespace MaintenanceToolECSBOX
                     // update the button states until after the write completes.
                     IsWriteTaskPending = true;
                     DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    UpdateWriteButtonStates();
+                    //UpdateWriteButtonStates();
+                    parameters.minimumPosition = minimumAir;
+                    parameters.minimumStandAlonePosition = standAloneMinimumAir;
+
+                    toSend.Initialize();
+
+                    ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);
+
 
                     await WriteAsync(WriteCancellationTokenSource.Token);
                 }
@@ -347,7 +357,7 @@ namespace MaintenanceToolECSBOX
                     DataWriteObject.DetachStream();
                     DataWriteObject = null;
 
-                    UpdateWriteButtonStates();
+                   // UpdateWriteButtonStates();
                 }
                 SetEnalbeWriteRead(true);
             }
@@ -399,7 +409,7 @@ namespace MaintenanceToolECSBOX
                     DataWriteObject.DetachStream();
                     DataWriteObject = null;
 
-                    UpdateWriteButtonStates();
+                   // UpdateWriteButtonStates();
                 }
             }
             else
@@ -498,13 +508,7 @@ namespace MaintenanceToolECSBOX
             if (minimumAir > 0)
             {
 
-                parameters.flapperValveOffset = minimumAir;
-                var n = Marshal.SizeOf(typeof(ParametersMessage));
-                toSend = new byte[n];
-                toSend.Initialize();
-
-                ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);
-
+               
                 DataWriteObject.WriteBytes(toSend);
 
 
@@ -646,6 +650,7 @@ namespace MaintenanceToolECSBOX
         {
             SetEnalbeWriteRead(false);
             await GetStoredOffsetValue();
+            DecodeInputValues();
             UpdateAllToggleBits();
             SetEnalbeWriteRead(true);
         }
@@ -739,7 +744,7 @@ namespace MaintenanceToolECSBOX
 
         private void FVToggleSwitchBit14_Toggled(object sender, RoutedEventArgs e)
         {
-            if (FVToggleSwitchBit4.IsOn)
+            if (FVToggleSwitchBit14.IsOn)
             {
                 standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x04);
                 FVToggleBitValue14.Text = "1";
@@ -766,7 +771,7 @@ namespace MaintenanceToolECSBOX
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0x7F);
+                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0xF7);
                 FVToggleBitValue13.Text = "0";
             }
             UpdateStandAloneSetValue();

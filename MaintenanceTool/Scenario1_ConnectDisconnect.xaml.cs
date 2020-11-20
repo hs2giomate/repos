@@ -12,6 +12,8 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using System.Diagnostics;
+using System.Threading;
 using System;
 using System.IO;
 using System.Collections.Generic;
@@ -57,7 +59,7 @@ namespace MaintenanceToolECSBOX
         // Has all the devices enumerated by the device watcher?
         private Boolean isAllDevicesEnumerated;
         private static System.Timers.Timer refreshValueTimer = null;
-        private DeviceListEntry ECS_BOX = null;
+        private  static DeviceListEntry ECS_BOX = null;
 
         public Scenario1_ConnectDisconnect()
         {
@@ -112,7 +114,7 @@ namespace MaintenanceToolECSBOX
         {
             // Create a timer and set a two second interval.
             refreshValueTimer = new System.Timers.Timer();
-            refreshValueTimer.Interval = 2000;
+            refreshValueTimer.Interval = 5000;
 
             // Hook up the Elapsed event for the timer. 
             refreshValueTimer.Elapsed += OnTimedEvent;
@@ -125,13 +127,13 @@ namespace MaintenanceToolECSBOX
 
 
         }
-        private static async void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        private static  void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             // Debug.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
             //  MaintenanceToolHandler.Current.SendAliveMessage();
-            if (handler.ECS_BOX!=null)
+            if (ECS_BOX!=null)
             {
-                handler.Connect_ECS_BOX();
+              //  handler.Connect_ECS_BOX();
             }
                       
             refreshValueTimer.Start();
@@ -365,10 +367,7 @@ namespace MaintenanceToolECSBOX
 
                 // Add the new element to the end of the list of devices
                 listOfDevices.Add(match);
-                if (match.ecsBoxDetected)
-                {
-                    ECS_BOX = match;
-                }
+               
             }
         }
 
@@ -472,6 +471,11 @@ namespace MaintenanceToolECSBOX
 
                     AddDeviceToList(deviceInformation, mapDeviceWatchersToDeviceSelector[sender]);
                 }));
+            if (FindDevice(deviceInformation.Id).ecsBoxDetected)
+            {
+              //  ECS_BOX = FindDevice(deviceInformation.Id);
+              //  Connect_ECS_BOX();
+            }
         }
 
         /// <summary>

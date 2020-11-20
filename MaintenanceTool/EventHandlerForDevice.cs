@@ -598,6 +598,7 @@ namespace MaintenanceToolECSBOX
             eventHandlerForDevice.Device.IsRequestToSendEnabled = DeviceConfiguration.IsRequestToSendEnabled_true;
             //eventHandlerForDevice.Device.ReadTimeout = new System.TimeSpan(49, 17, 2, 47, 295);
             eventHandlerForDevice.Device.ReadTimeout = new System.TimeSpan(0,0,0,300);
+            eventHandlerForDevice.Device.WriteTimeout = new System.TimeSpan(0, 0, 0, 200);
         }
 
     }

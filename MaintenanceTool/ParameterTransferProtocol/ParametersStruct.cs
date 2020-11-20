@@ -14,7 +14,8 @@ namespace ParameterTransferProtocol
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct UserParameters
     {
-        public Byte flapperValveOffset;
+        public Byte minimumPosition;
+        public Byte minimumStandAlonePosition;
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ParametersMessage
