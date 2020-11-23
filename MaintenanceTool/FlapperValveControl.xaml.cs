@@ -513,6 +513,7 @@ namespace MaintenanceToolECSBOX
             // Don't start any IO if we canceled the task
             lock (WriteCancelLock)
             {
+
                 cancellationToken.ThrowIfCancellationRequested();
 
                 // Cancellation Token will be used so we can stop the task operation explicitly
