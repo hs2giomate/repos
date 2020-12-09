@@ -78,6 +78,7 @@ namespace MaintenanceToolProtocol
         public const char ReadValvePosition = 'N';
         public const char CommandFlapperValve = 'O';
         public const char SetPointFlapperValve = 'P';
+        public const char ReadFansStatus = 'Q';
         public const char Command = '>';
         public const char KeepConnected= '=';
         public const UInt32 Magic = 0x64636261;

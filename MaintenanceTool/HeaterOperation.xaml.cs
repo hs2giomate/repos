@@ -62,18 +62,19 @@ namespace MaintenanceToolECSBOX
         private Boolean IsNavigatedAway;
         private static Byte[] received, toSend;
         private static Byte heaterRelaysCommand,lastRelaysCommand;
-        UserParameters parameters;
-        ParametersMessage parametersMessage;
-          private Task blink;
+        private uint readBufferLength;
+        private Task blink;
         private SingleTaskMessage heatersCommand;
         private static System.Timers.Timer aTimer = null;
         private int sizeofStruct;
-        private UInt32 magicHeader;
+        private UInt32 magicHeader = 0;
+        private bool readingStatus=false;
         public HeaterOperation()
         {
             this.InitializeComponent();
             handler = this;
-     
+            readBufferLength = 64;
+            received = new byte[readBufferLength];
             heaterRelaysCommand = 0;
             sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
             listOfToggles=new ObservableCollection<ToggleSwitch>();
@@ -107,8 +108,12 @@ namespace MaintenanceToolECSBOX
              listOfLightAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
             listOfDarkAnimations[4].Completed += FaultDarkAnimation_Completed;
             listOfLightAnimations[4].Completed += FaultLighAnimation_Completed;
+            for (int i = 0; i < 5; i++)
+            {
+                blink = listOfDarkAnimations[i].StartAsync();
+            }
         }
-        protected override void OnNavigatedTo(NavigationEventArgs eventArgs)
+        protected  override void OnNavigatedTo(NavigationEventArgs eventArgs)
         {
 
             IsNavigatedAway = false;
@@ -133,13 +138,10 @@ namespace MaintenanceToolECSBOX
 
                 ResetReadCancellationTokenSource();
                 ResetWriteCancellationTokenSource();
-
-                UpdateRelayStatus();
-                StartStatusCheckTimer();
-                for (int i = 0; i < 5; i++)
-                {
-                    blink = listOfDarkAnimations[i].StartAsync();
-                }
+                magicHeader = 0;
+                UpdateDataRelayStatus();
+                 StartStatusCheckTimer();
+               
                 // InitialOffsetRead();
 
             }
@@ -148,7 +150,7 @@ namespace MaintenanceToolECSBOX
         {
             // Create a timer and set a two second interval.
             aTimer = new System.Timers.Timer();
-            aTimer.Interval = 1000;
+            aTimer.Interval = 3000;
 
             // Hook up the Elapsed event for the timer. 
             aTimer.Elapsed += OnTimedEvent;
@@ -189,18 +191,33 @@ namespace MaintenanceToolECSBOX
             // Debug.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
             //  MaintenanceToolHandler.Current.SendAliveMessage();
            
-            await handler.UpdateDataRelayStatus();
-            await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-             new DispatchedHandler(() => { handler.UpdateRelayStatus(); }));
            
+           
+
+                //   ParametersStruct receivedParameters = new ParametersStruct();
+                //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
+               
+                //  Debug.WriteLine(string.Concat("Status received: ", RelaysStatus.ToString()));
+                //  ReadOffsetValueText.Text = String.Concat(ConvertOffsetToAngle(Offset).ToString("N0"), " °");
+                await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+              new DispatchedHandler(() => {
+                  handler.UpdateDataRelayStatus();
+                  }));
+
+            
+
             aTimer.Start();
         }
-        public  async Task UpdateDataRelayStatus()
+        public  async void UpdateDataRelayStatus()
         {
+            readingStatus = true;
             await RequestRelayStatus();
-            await ReadRelaysStatus();    
-
-
+            await ReadRelaysStatus();
+            if (magicHeader.Equals(Commands.reverseMagic))
+            {
+              await  UpdateViewRelayStatus();
+            }
+            readingStatus = false;
         }
 
     
@@ -325,7 +342,7 @@ namespace MaintenanceToolECSBOX
 
             Task<UInt32> loadAsyncTask;
 
-            uint ReadBufferLength = 64;
+           
 
             // Don't start any IO if we canceled the task
             lock (ReadCancelLock)
@@ -335,32 +352,22 @@ namespace MaintenanceToolECSBOX
                 // Cancellation Token will be used so we can stop the task operation explicitly
                 // The completion function should still be called so that we can properly handle a canceled task
                 DataReaderObject.InputStreamOptions = InputStreamOptions.Partial;
-                loadAsyncTask = DataReaderObject.LoadAsync(ReadBufferLength).AsTask(cancellationToken);
+                loadAsyncTask = DataReaderObject.LoadAsync(readBufferLength).AsTask(cancellationToken);
             }
 
             UInt32 bytesRead = await loadAsyncTask;
           //  Debug.WriteLine(string.Concat("bytes Read", bytesRead.ToString()));
             if (bytesRead > 0)
             {
-                received = new byte[ReadBufferLength];
+                
 
                 DataReaderObject.ReadBytes(received);
                 magicHeader = BitConverter.ToUInt32(received, 0);
 
-                if (magicHeader.Equals(Commands.reverseMagic))
-                {
-                  
-                    //   ParametersStruct receivedParameters = new ParametersStruct();
-                    //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
-                    RelaysStatus = received[6];
-                    Debug.WriteLine(string.Concat("Status received: ", RelaysStatus.ToString()));
-                    //  ReadOffsetValueText.Text = String.Concat(ConvertOffsetToAngle(Offset).ToString("N0"), " °");
-                    ReadBytesCounter += bytesRead;
-                }
-              
+                         
 
             }
-            rootPage.NotifyUser("Read completed - " + bytesRead.ToString() + " bytes were read", NotifyType.StatusMessage);
+            rootPage.NotifyUser("Read Heater Status completed ", NotifyType.StatusMessage);
         }
         private async Task WriteRelaEnablesAsync(CancellationToken cancellationToken)
         {
@@ -505,11 +512,22 @@ namespace MaintenanceToolECSBOX
                 }
             
         }
-        private async void UpdateRelayStatus()
+        private async Task UpdateViewRelayStatus()
         {
-            await UpdateToggles();
-         await   UpdateFaultStatusSignal();
-            UpdateRelayStatusText();
+            if (magicHeader.Equals(Commands.reverseMagic))
+            {
+
+                //   ParametersStruct receivedParameters = new ParametersStruct();
+                //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
+                RelaysStatus = received[6];
+                await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+               new DispatchedHandler(async () => {
+                       UpdateToggles();
+                   await   UpdateFaultStatusSignal();
+                      UpdateRelayStatusText();
+               }));
+            }
+         
         }
         private  void UpdateRelayStatusText()
         {
@@ -550,15 +568,22 @@ namespace MaintenanceToolECSBOX
 
 
         }
-        private async Task UpdateToggles()
+        private   void UpdateToggles()
         {
-            await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-               new DispatchedHandler(() => {
+            
                    for (int i = 0; i < 4; i++)
                    {
+                       if ((received[7]&(0x01<<i))>0)
+                       {
+                           listOfToggles[i].IsOn=false;
+                       }
+                       else
+                       {
+                           listOfToggles[i].IsOn = true;
+                       }
                        isToggleON[i] = listOfToggles[i].IsOn;
                    }
-               }));
+              
         }
         private async Task UpdateFaultStatusSignal()
         {
@@ -707,10 +732,14 @@ namespace MaintenanceToolECSBOX
             {
                 heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfe);
             }
-            if (heaterRelaysCommand != lastRelaysCommand)
+            if (!readingStatus)
             {
-                await WriteAsyncHeatersEnables();
+                if (heaterRelaysCommand != lastRelaysCommand)
+                {
+                    await WriteAsyncHeatersEnables();
+                }
             }
+           
         }
 
         private async void Relay2Enable1Toggle_Toggled(object sender, RoutedEventArgs e)
@@ -725,9 +754,12 @@ namespace MaintenanceToolECSBOX
             {
                 heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfd);
             }
-            if (heaterRelaysCommand != lastRelaysCommand)
+            if (!readingStatus)
             {
-                await WriteAsyncHeatersEnables();
+                if (heaterRelaysCommand != lastRelaysCommand)
+                {
+                    await WriteAsyncHeatersEnables();
+                }
             }
         }
 
@@ -745,9 +777,12 @@ namespace MaintenanceToolECSBOX
             {
                 heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfb);
             }
-            if (heaterRelaysCommand != lastRelaysCommand)
+            if (!readingStatus)
             {
-                await WriteAsyncHeatersEnables();
+                if (heaterRelaysCommand != lastRelaysCommand)
+                {
+                    await WriteAsyncHeatersEnables();
+                }
             }
         }
 
@@ -763,9 +798,12 @@ namespace MaintenanceToolECSBOX
             {
                 heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xf7);
             }
-            if (heaterRelaysCommand != lastRelaysCommand)
+            if (!readingStatus)
             {
-                await WriteAsyncHeatersEnables();
+                if (heaterRelaysCommand != lastRelaysCommand)
+                {
+                    await WriteAsyncHeatersEnables();
+                }
             }
         }
 

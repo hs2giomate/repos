@@ -228,7 +228,7 @@ namespace MaintenanceToolECSBOX
         {
             // Create a timer and set a two second interval.
             refreshValueTimer = new System.Timers.Timer();
-            refreshValueTimer.Interval = 2000;
+            refreshValueTimer.Interval = 3000;
 
             // Hook up the Elapsed event for the timer. 
             refreshValueTimer.Elapsed += OnTimedEvent;

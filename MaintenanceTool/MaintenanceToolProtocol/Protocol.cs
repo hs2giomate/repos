@@ -180,6 +180,21 @@ namespace MaintenanceToolProtocol
             return buffer;
 
         }
+        public Byte[] CreateFansStatusRequestMessage()
+        {
+            buffer = new Byte[sizeStruct];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.ReadFansStatus;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = 0;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, sizeStruct);
+            return buffer;
+
+        }
         public Byte[] GetSingleTaskCommandArrayBytes(SingleTaskMessage pm)
         {
           //  var size = Marshal.SizeOf(singleTaskMessage);
