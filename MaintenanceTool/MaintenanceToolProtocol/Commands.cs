@@ -84,4 +84,6 @@ namespace MaintenanceToolProtocol
         public const UInt32 Magic = 0x64636261;
         public const UInt32 reverseMagic = 0x61626364;
     }
+
+
 }

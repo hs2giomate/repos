@@ -123,6 +123,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Buffer64BytesHandler.cs" />
     <Compile Include="Commands.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Maintenance_Tool.cs" />

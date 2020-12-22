@@ -16,11 +16,14 @@ namespace MaintenanceToolProtocol
         public SingleTaskCommand header;
         public Byte description;
     }
+   
+
     public class Protocol
     {
         private static Protocol handler;
         private int sizeStruct;
         private SingleTaskMessage singleTaskMessage;
+        private Full64BufferMessage message64;
         public Byte[] buffer;
         public Protocol()
         {
@@ -102,36 +105,43 @@ namespace MaintenanceToolProtocol
             return buffer;
 
         }
-        public Byte[] CreateCommandFlapperValveMessage(Byte p)
+        public Byte[] CreateCommandFlapperValveMessage(Byte[] p)
         {
-            var size = Marshal.SizeOf(singleTaskMessage);
-            buffer = new Byte[size];
-            CommandHeader datagram = new CommandHeader();
-            SingleTaskCommand order = datagram.order;
-            order.task = Commands.CommandFlapperValve;
-            datagram.order = order;
-            SingleTaskMessage m;
-            m.header = order;
-            m.description = p;
+           // var size = Marshal.SizeOf(singleTaskMessage);
+            buffer = new Byte[64];
             buffer.Initialize();
-            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, size);
+            //  Buffer64BytesHandler datagram = new CommandHeader();
+            //    SingleTaskCommand order = datagram.order;
+
+            //  order.task = Commands.CommandFlapperValve;
+
+            message64 = Buffer64BytesHandler.Message64;
+            message64.header.task= Commands.CommandFlapperValve;
+            Buffer.BlockCopy(p, 0, message64.content, 0,58);
+         //   datagram.order = order;
+       //     SingleTaskMessage m;
+      //      m.header = order;
+        //    m.description = p;
+           
+            Buffer.BlockCopy(GetFullBufferCommandArrayBytes(message64), 0, buffer, 0, 64);
             return buffer;
 
         }
-        public Byte[] CreateSetpointtFlapperValveMessage(Byte p)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public Byte[] CreateSetpointtFlapperValveMessage(Byte[] p)
         {
 
-            var size = Marshal.SizeOf(singleTaskMessage);
-            buffer = new Byte[size];
-            CommandHeader datagram = new CommandHeader();
-            SingleTaskCommand order = datagram.order;
-            order.task = Commands.SetPointFlapperValve;
-            datagram.order = order;
-            SingleTaskMessage m;
-            m.header = order;
-            m.description = p;
+            buffer = new Byte[64];
             buffer.Initialize();
-            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, size);
+            message64 = Buffer64BytesHandler.Message64;
+            message64.header.task = Commands.SetPointFlapperValve;
+            Buffer.BlockCopy(p, 0, message64.content, 0, 58);
+
+            Buffer.BlockCopy(GetFullBufferCommandArrayBytes(message64), 0, buffer, 0, 64);
             return buffer;
 
         }
@@ -197,9 +207,9 @@ namespace MaintenanceToolProtocol
         }
         public Byte[] GetSingleTaskCommandArrayBytes(SingleTaskMessage pm)
         {
-          //  var size = Marshal.SizeOf(singleTaskMessage);
+       
             Byte[] locabBuffer = new Byte[sizeStruct];
-          //  locabBuffer.Initialize();
+   
 
             singleTaskMessage = pm;
             IntPtr pnt = Marshal.AllocHGlobal(sizeStruct);
@@ -210,14 +220,33 @@ namespace MaintenanceToolProtocol
                 // Copy the struct to unmanaged memory.
                 Marshal.StructureToPtr(singleTaskMessage, pnt, false);
 
-                // Create another point.
-                //  SingleTaskCommand anotherOrder;
-
-                // Set this Point to the value of the
-                // Point in unmanaged memory.
-                // anotherOrder = (SingleTaskCommand)Marshal.PtrToStructure(pnt, typeof(SingleTaskCommand));
+          
 
                 Marshal.Copy(pnt, locabBuffer, 0, sizeStruct);
+            }
+            finally
+            {
+                // Free the unmanaged memory.
+                Marshal.FreeHGlobal(pnt);
+            }
+            return locabBuffer;
+
+        }
+        private Byte[] GetFullBufferCommandArrayBytes(Full64BufferMessage pm)
+        {
+            Byte[] locabBuffer = new Byte[64];
+            message64 = pm;
+            IntPtr pnt = Marshal.AllocHGlobal(64);
+
+            try
+            {
+
+                // Copy the struct to unmanaged memory.
+                Marshal.StructureToPtr(message64, pnt, false);
+
+           
+
+                Marshal.Copy(pnt, locabBuffer, 0, 64);
             }
             finally
             {

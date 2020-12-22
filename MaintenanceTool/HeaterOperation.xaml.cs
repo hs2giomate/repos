@@ -50,7 +50,7 @@ namespace MaintenanceToolECSBOX
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
         public Byte RelaysStatus = 0xff;
-        public ObservableCollection<ToggleSwitch> listOfToggles;
+        private ObservableCollection<ToggleSwitch> listOfToggles;
         public ObservableCollection<TextBlock> listOfTextBlocks;
         public ObservableCollection<Border> listOfBorders;
         public ObservableCollection<Windows.UI.Xaml.Shapes.Ellipse> listOfEllipses;
@@ -105,7 +105,7 @@ namespace MaintenanceToolECSBOX
                 listOfLightAnimations.Add( listOfEllipses[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
             }
             listOfDarkAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
-             listOfLightAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+            listOfLightAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
             listOfDarkAnimations[4].Completed += FaultDarkAnimation_Completed;
             listOfLightAnimations[4].Completed += FaultLighAnimation_Completed;
             for (int i = 0; i < 5; i++)

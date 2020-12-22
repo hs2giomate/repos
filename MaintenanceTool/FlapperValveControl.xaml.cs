@@ -37,6 +37,7 @@ namespace MaintenanceToolECSBOX
     {
         private static FlapperValveControl handler;
         private MainPage rootPage = MainPage.Current;
+        private  const int number_flappers= 2;
 
         // Track Read Operation
         private CancellationTokenSource ReadCancellationTokenSource, WriteCancellationTokenSource;
@@ -47,55 +48,151 @@ namespace MaintenanceToolECSBOX
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
         private Object WriteCancelLock = new Object();
-        private Boolean IsWriteTaskPending,manipulating;
+        private Boolean IsWriteTaskPending;
+        private Boolean[] manipulating;
         DataWriter DataWriteObject = null;
         private Boolean IsNavigatedAway;
         private static Byte[] received, toSend;
-        private static Byte currentPosition, lastPosition, lastCommand, commandValve, lastSetpoint, currentSetpoint;
+        private static Byte[] currentPosition, lastPosition, lastCommand, commandValve, lastSetpoint, currentSetpoint;
         private SingleTaskMessage fansCommand;
         private static System.Timers.Timer refreshValueTimer = null;
         private int sizeofStruct;
         private uint readBufferLength;
         private UInt32 magicHeader;
         private static AnimationSet NBC_Mode_Dark,NBC_Mode_Light;
-        private bool nbcMode=false;
+        private bool[] nbcMode;
         private MinimunFreshAir minimunValues;
         private Byte minimunAirPosition,lastMinimum;
         private const Byte minimunFailValue = 20;
+        private ObservableCollection<Microsoft.Toolkit.Uwp.UI.Controls.RadialGauge> listOfDials;
+        private ObservableCollection<ToggleSwitch> listOfToggles;
+        private ObservableCollection<AnimationSet> listOfDarkAnimations, listOfLightAnimations;
+        private ObservableCollection<TextBlock> listOfTextBlocks;
+        private ObservableCollection<Border> listOfBorders;
         public FlapperValveControl()
         {
             this.InitializeComponent();
             handler = this;
             sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
             toSend = new byte[sizeofStruct];
+            nbcMode = new bool[number_flappers];
+            manipulating = new Boolean[number_flappers];
+            currentPosition = new Byte[number_flappers];
+            lastPosition = new Byte[number_flappers];
+            lastCommand = new Byte[number_flappers];
+            commandValve = new Byte[number_flappers];
+            lastSetpoint = new Byte[number_flappers];
+            currentSetpoint= new Byte[number_flappers];
             readBufferLength = 64;
             received = new byte[readBufferLength];
-            position.IsInteractive = false;
-            position.Tapped += Position_Tapped;
-            position.ManipulationStarted += Position_ManipulationStarted;
-            EnableValve.ManipulationStarted += EnableValve_ManipulationStarted;
-            EnableValve.ManipulationCompleted += EnableValve_ManipulationCompleted;
-            position.Opacity = 0.2;
-          ///  NBC_Mode_Dark = new AnimationSet(position);
-            NBC_Mode_Dark = position.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine);
-         //   NBC_Mode_Light = new AnimationSet(position);
-            NBC_Mode_Light = position.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
-            NBC_Mode_Dark.Completed += NBC_Mode_Dark_Completed;
-            NBC_Mode_Light.Completed += NBC_Mode_Light_Completed;
+            listOfDials = new ObservableCollection<Microsoft.Toolkit.Uwp.UI.Controls.RadialGauge>();
+          
+            listOfDials.Add(position);
+            listOfDials.Add(position2);
+            listOfDials.Add(MinimumPositionGauge);
+            listOfDials.Add(MinimumPositionGauge2);
+            listOfToggles = new ObservableCollection<ToggleSwitch>();
+            listOfToggles.Add(EnableValve);
+            listOfToggles.Add(EnableValve1);
+            listOfTextBlocks = new ObservableCollection<TextBlock>();
+            listOfTextBlocks.Add(AngleFlapper);
+            listOfTextBlocks.Add(PressedLabel1);
+            listOfTextBlocks.Add(PressedLabel2);
+            listOfTextBlocks.Add(PressedLabel3);
+            listOfTextBlocks.Add(AngleFlapper1);
+            listOfTextBlocks.Add(PressedLabel4);
+            listOfTextBlocks.Add(PressedLabel5);
+            listOfTextBlocks.Add(PressedLabel6);
+            listOfBorders = new ObservableCollection<Border>();
+            listOfBorders.Add(LimitSwitchBorder1);
+            listOfBorders.Add(LimitSwitchBorder2);
+            listOfBorders.Add(LimitSwitchBorder3);
+            listOfBorders.Add(LimitSwitchBorder4);
+            listOfBorders.Add(LimitSwitchBorder5);
+            listOfBorders.Add(LimitSwitchBorder6);
+            listOfDials[0].Tapped += Position_Tapped;
+            listOfDials[0].ManipulationStarted += Position_ManipulationStarted;
+            listOfDials[1].ManipulationStarted += FlapperValveControl_ManipulationStarted;
+            listOfToggles[0].ManipulationStarted += EnableValve_ManipulationStarted;
+            listOfToggles[0].ManipulationCompleted += EnableValve_ManipulationCompleted;
+            listOfToggles[1].ManipulationStarted += FlapperValveControl_ManipulationStarted1;
+            listOfToggles[1].ManipulationCompleted += FlapperValveControl_ManipulationCompleted;
+           
+            listOfDarkAnimations = new ObservableCollection<AnimationSet>();
+            listOfLightAnimations = new ObservableCollection<AnimationSet>();
+            for (int i = 0; i < number_flappers; i++)
+            {
+                nbcMode[i] = false;
+                manipulating[i] = false;
+                listOfDials[i].IsInteractive = false;
+                listOfDials[i].Opacity = 0.2;
+                listOfDarkAnimations.Add(listOfDials[i].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+                listOfLightAnimations.Add(listOfDials[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+
+            }
+
+            listOfDarkAnimations[0].Completed += NBC_Mode_Dark_Completed;
+            listOfLightAnimations[0].Completed += NBC_Mode_Light_Completed;
+            listOfDarkAnimations[1].Completed += FlapperValveControl_Completed;
+            listOfLightAnimations[1].Completed += FlapperValveControl_Completed1;
             minimunValues = new MinimunFreshAir();
             minimunAirPosition = minimunFailValue;
     
         }
 
-        private void NBC_Mode_Light_Completed(object sender, AnimationSetCompletedEventArgs e)
+        private void FlapperValveControl_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            if (nbcMode)
+            manipulating[1] = false;
+            // throw new NotImplementedException();
+        }
+
+        private void FlapperValveControl_ManipulationStarted1(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            manipulating[1] = true;
+            // throw new NotImplementedException();
+        }
+
+        private void FlapperValveControl_Completed1(object sender, AnimationSetCompletedEventArgs e)
+        {
+            if (nbcMode[1])
             {
-                NBC_Mode_Dark.StartAsync();
+                listOfDarkAnimations[1].StartAsync();
             }
             else
             {
-                NBC_Mode_Dark.Stop();
+                listOfDarkAnimations[1].Stop();
+            }
+            //throw new NotImplementedException();
+        }
+
+        private void FlapperValveControl_Completed(object sender, AnimationSetCompletedEventArgs e)
+        {
+            if (nbcMode[1])
+            {
+                listOfLightAnimations[1].StartAsync();
+            }
+            else
+            {
+                listOfLightAnimations[1].Stop();
+            }
+            //  throw new NotImplementedException();
+        }
+
+        private void FlapperValveControl_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            manipulating[1] = true;
+            // throw new NotImplementedException();
+        }
+
+        private void NBC_Mode_Light_Completed(object sender, AnimationSetCompletedEventArgs e)
+        {
+            if (nbcMode[0])
+            {
+                listOfDarkAnimations[0].StartAsync();
+            }
+            else
+            {
+                listOfDarkAnimations[0].Stop();
             }
 
             //throw new NotImplementedException();
@@ -103,13 +200,13 @@ namespace MaintenanceToolECSBOX
 
         private void NBC_Mode_Dark_Completed(object sender, AnimationSetCompletedEventArgs e)
         {
-            if (nbcMode)
+            if (nbcMode[0])
             {
-                NBC_Mode_Light.StartAsync();
+                listOfLightAnimations[0].StartAsync();
             }
             else
             {
-                NBC_Mode_Light.Stop();
+                listOfLightAnimations[0].Stop();
             }
             // throw new NotImplementedException();
             
@@ -117,19 +214,19 @@ namespace MaintenanceToolECSBOX
 
         private void EnableValve_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            manipulating = false;
+            manipulating[0] = false;
            // throw new NotImplementedException();
         }
 
         private void EnableValve_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
-            manipulating = true;
+            manipulating[0] = true;
            // throw new NotImplementedException();
         }
 
         private void Position_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
-            manipulating = true;
+            manipulating[0] = true;
             //throw new NotImplementedException();
         }
 
@@ -141,7 +238,7 @@ namespace MaintenanceToolECSBOX
            // throw new NotImplementedException();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs eventArgs)
+        protected override  void OnNavigatedTo(NavigationEventArgs eventArgs)
         {
 
             IsNavigatedAway = false;
@@ -189,26 +286,31 @@ namespace MaintenanceToolECSBOX
         private async Task UpdateMinimunValues()
         {
             await minimunValues.GetminimunValidAirPosition();
-           
+            int j ;
             minimunAirPosition = (byte)(minimunValues.minimunValid);
-         
-            if (minimunAirPosition < minimunFailValue)
+            for (int i = 0; i < number_flappers; i++)
             {
-                MinimumPositionGauge.MinAngle = 90 - minimunFailValue * 90 / 255;
-                MinimumPositionGauge.Minimum = 90 - minimunFailValue * 90 / 255;
-
-            }
-            else
-            {
-                if (minimunAirPosition != lastMinimum)
+                j = i + 2;
+                if (minimunAirPosition < minimunFailValue)
                 {
-                    lastMinimum = minimunAirPosition;
-                    MinimumPositionGauge.MinAngle = 90 - minimunAirPosition * 90 / 255;
-                    MinimumPositionGauge.Minimum = 90 - minimunAirPosition * 90 / 255;
-                    MinimumPositionGauge.Value = 90 - minimunAirPosition * 90 / 255;
+                    listOfDials[j].MinAngle = 90 - minimunFailValue * 90 / 255;
+                    listOfDials[j].Minimum = 90 - minimunFailValue * 90 / 255;
+
                 }
-                
+                else
+                {
+                    if (minimunAirPosition != lastMinimum)
+                    {
+                        lastMinimum = minimunAirPosition;
+                        listOfDials[j].MinAngle = 90 - minimunAirPosition * 90 / 255;
+                        listOfDials[j].Minimum = 90 - minimunAirPosition * 90 / 255;
+                        listOfDials[j].Value = 90 - minimunAirPosition * 90 / 255;
+                    }
+
+                }
             }
+         
+           
         }
         public void Dispose()
         {
@@ -316,32 +418,30 @@ namespace MaintenanceToolECSBOX
 
         private async void position_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            await WriteSetpointValue();
-            manipulating = false;
+            await WriteSetpointValue(0);
+            manipulating[0] = false;
         }
 
-        private async Task WriteSetpointValue()
+        private async Task WriteSetpointValue(int valve_id)
         {
-            if ((commandValve & 0x01)>0)
+            if ((commandValve[valve_id] & 0x01)>0)
             {
-                lastSetpoint = currentSetpoint;
-                currentSetpoint = (byte)(position.Value * 255 / 90);
+                lastSetpoint[valve_id] = currentSetpoint[valve_id];
+                currentSetpoint[valve_id] = (byte)(listOfDials[valve_id].Value * 255 / 90);
                // position.Value = lastPosition;
-                if (currentPosition != currentSetpoint)
+                if (currentPosition[valve_id] != currentSetpoint[valve_id])
                 {
-                   
-
-                    position.IsInteractive = false;
-                    await WriteAsyncValveData();
+                    listOfDials[valve_id].IsInteractive = false;
+                    await WriteAsyncValveData(valve_id);
                //     await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
                 //       new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
-                    position.IsInteractive = true;
+                    listOfDials[valve_id].IsInteractive = true;
                 }
             }
             
 
         }
-        private async Task WriteAsyncValveData()
+        private async Task WriteAsyncValveData(int valve_id)
         {
 
             if (IsPerformingRead())
@@ -358,20 +458,19 @@ namespace MaintenanceToolECSBOX
                     // update the button states until after the write completes.
                     IsWriteTaskPending = true;
                     DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    toSend = new byte[sizeofStruct];
                     toSend.Initialize();
                     //   UpdateWriteButtonStates();
-                    if (commandValve != lastCommand)
+                    if (commandValve[valve_id] != lastCommand[valve_id])
                     {
                         Protocol.Message.CreateCommandFlapperValveMessage(commandValve).CopyTo(toSend, 0);
-                        lastCommand=commandValve ;
+                        lastCommand[valve_id]=commandValve[valve_id] ;
                     }
-                    else if(EnableValve.IsOn)
+                    else if(listOfToggles[valve_id].IsOn)
                     {
-                        if (currentSetpoint != currentPosition)
+                        if (currentSetpoint[valve_id] != currentPosition[valve_id])
                         {
                             Protocol.Message.CreateSetpointtFlapperValveMessage(currentSetpoint).CopyTo(toSend, 0);
-                            currentSetpoint = lastSetpoint;
+                            currentSetpoint[valve_id] = lastSetpoint[valve_id];
                         }
                     }
 
@@ -428,25 +527,29 @@ namespace MaintenanceToolECSBOX
         }
         public async void UpdateDataPosition()
         {
-            if (!manipulating)
+            for (int i = 0; i < number_flappers; i++)
             {
-                if (EnableValve.IsOn)
+                if (!manipulating[i])
                 {
-                    // position.IsInteractive = false;
-                }
-                await RequestPositionValve();
-                await ReadValveData();
-                //  EnableValve.IsEnabled = true;
-                if (EnableValve.IsOn)
-                {
-                    //  position.IsInteractive = true;
-                }
+                    if (listOfToggles[i].IsOn)
+                    {
+                        // position.IsInteractive = false;
+                    }
+                    await RequestPositionValve();
+                    await ReadValveData();
+                    //  EnableValve.IsEnabled = true;
+                    if (listOfToggles[i].IsOn)
+                    {
+                        //  position.IsInteractive = true;
+                    }
 
-                await UpdateMinimunValues();
-                GetLastPosition();
+                    await UpdateMinimunValues();
+                    GetLastPosition();
+                }
             }
+     
             
-            // EnableValve.IsEnabled = false;
+           
 
 
 
@@ -500,6 +603,39 @@ namespace MaintenanceToolECSBOX
                 Utilities.NotifyDeviceNotConnected();
             }
         }
+
+        private async void  position2_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            await WriteSetpointValue(1);
+            manipulating[1] = false;
+        }
+
+        private async void EnableValve1_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastCommand[1] = commandValve[1];
+            if (EnableValve.IsOn)
+            {
+
+                commandValve[1] = (Byte)(lastCommand[1] | 0x01);
+
+            }
+            else
+            {
+
+                commandValve[1] = (Byte)(lastCommand[1] & 0xfe);
+
+            }
+            if (commandValve[1] != lastCommand[1])
+            {
+                //  EnableValve.IsEnabled = false;
+                await WriteAsyncValveData(1);
+                //    await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+                //     new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
+                //  EnableValve.IsEnabled = true;
+
+            }
+        }
+
         private async Task SendRequestPositionAsync(CancellationToken cancellationToken)
         {
 
@@ -571,23 +707,23 @@ namespace MaintenanceToolECSBOX
 
         private async void EnableValve_Toggled(object sender, RoutedEventArgs e)
         {
-            lastCommand = commandValve;
+            lastCommand[0] = commandValve[0];
             if (EnableValve.IsOn)
             {
                 
-                commandValve = (Byte)(lastCommand | 0x01);
+                commandValve[0] = (Byte)(lastCommand[0] | 0x01);
               
             }
             else
             {
                
-                commandValve = (Byte)(lastCommand & 0xfe);
+                commandValve[0] = (Byte)(lastCommand[0] & 0xfe);
               
             }
-            if (commandValve != lastCommand)
+            if (commandValve[0] != lastCommand[0])
             {
               //  EnableValve.IsEnabled = false;
-                await WriteAsyncValveData();
+                await WriteAsyncValveData(0);
             //    await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
              //     new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
               //  EnableValve.IsEnabled = true;
@@ -627,63 +763,67 @@ namespace MaintenanceToolECSBOX
         }
         private void GetLastPosition()
         {
-
-            if (magicHeader.Equals(Commands.reverseMagic))
+            int k;
+            for (int i = 0; i < number_flappers; i++)
             {
-
-        
-                lastPosition = currentPosition;
-                currentPosition = received[20];
-                position.Value = currentPosition * 90 / 255;
-                AngleFlapper.Text = (90-currentPosition*90/255).ToString("N0"); 
-                LimitSwitchBorder1.Visibility = received[8]>0? Visibility.Visible: Visibility.Collapsed;
-                LimitSwitchBorder2.Visibility = received[9] > 0 ? Visibility.Visible : Visibility.Collapsed;
-                LimitSwitchBorder3.Visibility = received[10] > 0 ? Visibility.Visible : Visibility.Collapsed;
-                PressedLabel1.Visibility= received[8] < 1 ? Visibility.Visible : Visibility.Collapsed;
-                if (received[24]>0)
+                if (magicHeader.Equals(Commands.reverseMagic))
                 {
-                    position.IsInteractive = false;
-                    if (!nbcMode)
+                    lastPosition[i] = currentPosition[i];
+                    currentPosition[i] = received[20+5*i];
+                    listOfDials[i].Value = currentPosition[i] * 90 / 255;
+                    listOfTextBlocks[i*3].Text = (90 - currentPosition[i]* 90 / 255).ToString("N0");
+                    k = 0;
+                    for (int j = 3*i; j < listOfBorders.Count-3*(1-i); j++)
                     {
-                        NBC_Mode_Dark.StartAsync();
+                        listOfBorders[j].Visibility = received[8+k+(5*i)] > 0 ? Visibility.Visible : Visibility.Collapsed;
+                        listOfTextBlocks[j+1] .Visibility = received[8 + k +( 5 * i)] < 1 ? Visibility.Visible : Visibility.Collapsed;
+                        k++;
                     }
-                    nbcMode = true;
-
-                    
-                   // EnableValve.IsOn = false;
-                    EnableValve.IsEnabled = false;
-
-                    
-                }
-                else
-                {
-                    nbcMode = false;
-                    if (!EnableValve.IsEnabled)
+                    if (received[24+5*i] > 0)
                     {
-                        EnableValve.IsEnabled = true;
-                    }
-                    if (received[23] > 0)
-                    {
-                        position.Opacity = received[22] > 0 ? 0.4 : 1;
-                        position.IsInteractive = true;
-                        //  position.AllowDrop = true;
+                        listOfDials[i].IsInteractive = false;
+                        if (!nbcMode[i])
+                        {
+                            NBC_Mode_Dark.StartAsync();
+                        }
+                        nbcMode[i] = true;
+
+
+                        // EnableValve.IsOn = false;
+                        listOfToggles[i].IsEnabled = false;
+
+
                     }
                     else
                     {
-                        position.Opacity = 0.4;
-                        position.IsInteractive = false;
-                        //    position.AllowDrop = false;
-                        if (EnableValve.IsOn)
+                        nbcMode[i] = false;
+                        if (!listOfToggles[i].IsEnabled)
                         {
-                            EnableValve.IsOn = false;
+                            listOfToggles[i].IsEnabled = true;
                         }
+                        if (received[23+5*i] > 0)
+                        {
+                            listOfDials[i].Opacity = received[22] > 0 ? 0.4 : 1;
+                            listOfDials[i].IsInteractive = true;
+                            //  position.AllowDrop = true;
+                        }
+                        else
+                        {
+                            listOfDials[i].Opacity = 0.4;
+                            listOfDials[i].IsInteractive = false;
+                            //    position.AllowDrop = false;
+                            if (listOfToggles[i].IsOn)
+                            {
+                                listOfToggles[i].IsOn = false;
+                            }
 
+                        }
                     }
-                }
-                
-                
 
+                }
             }
+
+           
         }
 
         private void CancelAllIoTasks()
