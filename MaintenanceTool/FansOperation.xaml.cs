@@ -225,6 +225,7 @@ namespace MaintenanceToolECSBOX
 
             if (magicHeader.Equals(Commands.reverseMagic))
             {
+
                 SetPointFan1.Value = received[12]*14000/255;
                                 
                 if ((received[6] & 0x07) > 0)
