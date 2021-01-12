@@ -319,28 +319,34 @@ namespace MaintenanceToolECSBOX
             {
                 CancelReadTask();
             }
-            SetEnalbeWriteRead(false);
+            SetEnalbleWriteRead(false);
             if (EventHandlerForDevice.Current.IsDeviceConnected)
             {
-                SetEnalbeWriteRead(false);
+                SetEnalbleWriteRead(false);
                 try
                 {
                     rootPage.NotifyUser("Writing  Offset...", NotifyType.StatusMessage);
 
                     // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
                     // update the button states until after the write completes.
-                    IsWriteTaskPending = true;
-                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    //UpdateWriteButtonStates();
+                   
                     parameters.minimumPosition = minimumAir;
                     parameters.minimumStandAlonePosition = standAloneMinimumAir;
 
                     toSend.Initialize();
 
                     ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);
+                    IsWriteTaskPending = true;
+                    using (DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream))
+                    {
+                        await WriteAsync(WriteCancellationTokenSource.Token);
+                    }
+                   
+                    //UpdateWriteButtonStates();
+                    
 
 
-                    await WriteAsync(WriteCancellationTokenSource.Token);
+                    
                 }
                 catch (OperationCanceledException /*exception*/)
                 {
@@ -359,7 +365,7 @@ namespace MaintenanceToolECSBOX
 
                    // UpdateWriteButtonStates();
                 }
-                SetEnalbeWriteRead(true);
+                SetEnalbleWriteRead(true);
             }
             else
             {
@@ -377,45 +383,58 @@ namespace MaintenanceToolECSBOX
         }
         private async Task QueryParametersValues()
         {
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            if (IsPerformingWrite())
             {
-                try
-                {
-                    rootPage.NotifyUser(" Writing  Command...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
-                    // update the button states until after the write completes.
-                    IsWriteTaskPending = true;
-                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                //    UpdateWriteButtonStates();
-                    // await SendMagic(WriteCancellationTokenSource.Token);
-                    await SendReadParametersCommand(WriteCancellationTokenSource.Token);
-
-
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyWriteTaskCanceled();
-                //    Debug.WriteLine("WriteOperation cancelled");
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                  //  Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsWriteTaskPending = false;
-                    DataWriteObject.DetachStream();
-                    DataWriteObject = null;
-
-                   // UpdateWriteButtonStates();
-                }
+                rootPage.NotifyUser(" already writting to memory...", NotifyType.StatusMessage);
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
+                {
+                    try
+                    {
+                        rootPage.NotifyUser(" asking minimum air positions...", NotifyType.StatusMessage);
+
+                        // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
+                        // update the button states until after the write completes.
+                        IsWriteTaskPending = true;
+                        DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                        
+                            await SendReadParametersCommand(WriteCancellationTokenSource.Token);
+                        
+                        
+                        //    UpdateWriteButtonStates();
+                        // await SendMagic(WriteCancellationTokenSource.Token);
+                        
+
+
+                    }
+                    catch (OperationCanceledException /*exception*/)
+                    {
+                        NotifyWriteTaskCanceled();
+                        //    Debug.WriteLine("WriteOperation cancelled");
+                    }
+                    catch (Exception exception)
+                    {
+                        MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                        //  Debug.WriteLine(exception.Message.ToString());
+                    }
+                    finally
+                    {
+                        IsWriteTaskPending = false;
+                        DataWriteObject.DetachStream();
+                        DataWriteObject = null;
+                        rootPage.NotifyUser("Write succesfully ", NotifyType.StatusMessage);
+
+                        // UpdateWriteButtonStates();
+                    }
+                }
+                else
+                {
+                    Utilities.NotifyDeviceNotConnected();
+                }
             }
+            
         }
         private void UpdateReadButtonStates()
         {
@@ -497,7 +516,9 @@ namespace MaintenanceToolECSBOX
         public async Task<Byte> GetminimunValidAirPosition()
         {
             ResetReadCancellationTokenSource();
+          //  IsReadTaskPending = false;
             ResetWriteCancellationTokenSource();
+            IsWriteTaskPending = false;
             await GetStoredOffsetValue();
             DecodeInputValues();
             
@@ -652,18 +673,18 @@ namespace MaintenanceToolECSBOX
             // Hook the cancellation callback (called whenever Task.cancel is called)
             WriteCancellationTokenSource.Token.Register(() => NotifyWriteCancelingTask());
         }
-        private void SetEnalbeWriteRead(bool enabled)
+        private void SetEnalbleWriteRead(bool enabled)
         {
             WriteOffsetButton.IsEnabled = enabled;
             ReadOffsetButton.IsEnabled = enabled;
         }
         private async Task ReadStoredValues()
         {
-            SetEnalbeWriteRead(false);
+            SetEnalbleWriteRead(false);
             await GetStoredOffsetValue();
             DecodeInputValues();
             UpdateAllToggleBits();
-            SetEnalbeWriteRead(true);
+            SetEnalbleWriteRead(true);
         }
 
         private async  void ReadOffsetButton_Click(object sender, RoutedEventArgs e)
@@ -672,44 +693,59 @@ namespace MaintenanceToolECSBOX
         }
         private async Task ReadOffsetValue()
         {
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            if (IsPerformingWrite())
             {
-                try
-                {
-                    rootPage.NotifyUser("Reading Parameters...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
-                    // update the button states until after the read completes.
-                    IsReadTaskPending = true;
-                    DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
-                  //  UpdateReadButtonStates();
-
-                    await ReadAsync(ReadCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyReadTaskCanceled();
-                    Debug.WriteLine("ReadOperation cancelled");
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsReadTaskPending = false;
-                    DataReaderObject.DetachStream();
-                    DataReaderObject = null;
-
-                  //  UpdateReadButtonStates();
-                    // UpdateAllToggleBits();
-                }
+                rootPage.NotifyUser("busy on writting memory", NotifyType.StatusMessage);
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (IsPerformingRead())
+                {
+                    rootPage.NotifyUser("already reading", NotifyType.StatusMessage);
+                }
+                else
+                {
+                    if (EventHandlerForDevice.Current.IsDeviceConnected)
+                    {
+                        try
+                        {
+                            rootPage.NotifyUser("Reading Parameters...", NotifyType.StatusMessage);
+
+                            // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
+                            // update the button states until after the read completes.
+                            IsReadTaskPending = true;
+                            DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
+                            //  UpdateReadButtonStates();
+
+                            await ReadAsync(ReadCancellationTokenSource.Token);
+                        }
+                        catch (OperationCanceledException /*exception*/)
+                        {
+                            NotifyReadTaskCanceled();
+                            Debug.WriteLine("Read parameters Operation cancelled");
+                        }
+                        catch (Exception exception)
+                        {
+                            MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                            Debug.WriteLine(exception.Message.ToString());
+                        }
+                        finally
+                        {
+                            IsReadTaskPending = false;
+                            DataReaderObject.DetachStream();
+                            DataReaderObject = null;
+
+                            //  UpdateReadButtonStates();
+                            // UpdateAllToggleBits();
+                        }
+                    }
+                    else
+                    {
+                        Utilities.NotifyDeviceNotConnected();
+                    }
+                }
             }
+            
 
         }
 

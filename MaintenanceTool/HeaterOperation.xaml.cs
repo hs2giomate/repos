@@ -69,6 +69,7 @@ namespace MaintenanceToolECSBOX
         private int sizeofStruct;
         private UInt32 magicHeader = 0;
         private bool readingStatus=false;
+        private const int UPDATING_TIME = 3000;
         public HeaterOperation()
         {
             this.InitializeComponent();
@@ -150,7 +151,7 @@ namespace MaintenanceToolECSBOX
         {
             // Create a timer and set a two second interval.
             aTimer = new System.Timers.Timer();
-            aTimer.Interval = 3000;
+            aTimer.Interval = UPDATING_TIME;
 
             // Hook up the Elapsed event for the timer. 
             aTimer.Elapsed += OnTimedEvent;
@@ -401,7 +402,7 @@ namespace MaintenanceToolECSBOX
                 }
 
                 UInt32 bytesWritten = await storeAsyncTask;
-                rootPage.NotifyUser("Write completed - " + bytesWritten.ToString() + " bytes written", NotifyType.StatusMessage);
+                rootPage.NotifyUser("Write completed - ", NotifyType.StatusMessage);
             }
             else
             {
@@ -447,26 +448,7 @@ namespace MaintenanceToolECSBOX
         {
             return (IsWriteTaskPending);
         }
-        private async void HeaterEnable_Toggled(object sender, RoutedEventArgs e)
-        {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay1EnableToggle.IsOn)
-            {
-                
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x01);
-            }
-            else
-            {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfe);
-            }
-            if (heaterRelaysCommand != lastRelaysCommand)
-            {
-                await WriteAsyncHeatersEnables();
-            }
-          //  UpdateRelayStatus();
-           
-
-        }
+     
         private async Task WriteAsyncHeatersEnables()
         {
             
@@ -502,9 +484,10 @@ namespace MaintenanceToolECSBOX
                         IsWriteTaskPending = false;
                         DataWriteObject.DetachStream();
                         DataWriteObject = null;
+                        rootPage.NotifyUser("Heater Setting completed - ", NotifyType.StatusMessage);
 
-                        //  UpdateWriteButtonStates();
-                    }
+                    //  UpdateWriteButtonStates();
+                }
                 }
                 else
                 {

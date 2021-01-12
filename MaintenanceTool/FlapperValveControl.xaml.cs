@@ -38,6 +38,7 @@ namespace MaintenanceToolECSBOX
         private static FlapperValveControl handler;
         private MainPage rootPage = MainPage.Current;
         private  const int number_flappers= 2;
+        private const double CALLING_INTERVAL=2000;
 
         // Track Read Operation
         private CancellationTokenSource ReadCancellationTokenSource, WriteCancellationTokenSource;
@@ -62,18 +63,20 @@ namespace MaintenanceToolECSBOX
         private static AnimationSet NBC_Mode_Dark,NBC_Mode_Light;
         private bool[] nbcMode;
         private MinimunFreshAir minimunValues;
-        private Byte minimunAirPosition,lastMinimum;
+        private Byte minimunAirPosition,lastMinimum,last_read_minimum;
         private const Byte minimunFailValue = 20;
         private ObservableCollection<Microsoft.Toolkit.Uwp.UI.Controls.RadialGauge> listOfDials;
         private ObservableCollection<ToggleSwitch> listOfToggles;
         private ObservableCollection<AnimationSet> listOfDarkAnimations, listOfLightAnimations;
         private ObservableCollection<TextBlock> listOfTextBlocks;
         private ObservableCollection<Border> listOfBorders;
+        private bool required_feedback;
+        private const int DATA_OFFSET=14;
         public FlapperValveControl()
         {
             this.InitializeComponent();
             handler = this;
-            sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
+            sizeofStruct = 64;
             toSend = new byte[sizeofStruct];
             nbcMode = new bool[number_flappers];
             manipulating = new Boolean[number_flappers];
@@ -110,7 +113,7 @@ namespace MaintenanceToolECSBOX
             listOfBorders.Add(LimitSwitchBorder4);
             listOfBorders.Add(LimitSwitchBorder5);
             listOfBorders.Add(LimitSwitchBorder6);
-            listOfDials[0].Tapped += Position_Tapped;
+           // listOfDials[0].Tapped += Position_Tapped;
             listOfDials[0].ManipulationStarted += Position_ManipulationStarted;
             listOfDials[1].ManipulationStarted += FlapperValveControl_ManipulationStarted;
             listOfToggles[0].ManipulationStarted += EnableValve_ManipulationStarted;
@@ -124,7 +127,11 @@ namespace MaintenanceToolECSBOX
             {
                 nbcMode[i] = false;
                 manipulating[i] = false;
-                listOfDials[i].IsInteractive = false;
+                  listOfDials[i].IsInteractive = false;
+                // listOfDials[i].CanDrag = true;
+                //   listOfDials[i].AllowDrop=true;
+                listOfDials[i].IsHoldingEnabled=true;
+                listOfDials[i].IsTapEnabled = false;
                 listOfDials[i].Opacity = 0.2;
                 listOfDarkAnimations.Add(listOfDials[i].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
                 listOfLightAnimations.Add(listOfDials[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
@@ -149,6 +156,11 @@ namespace MaintenanceToolECSBOX
         private void FlapperValveControl_ManipulationStarted1(object sender, ManipulationStartedRoutedEventArgs e)
         {
             manipulating[1] = true;
+            if (IsPerformingRead())
+            {
+                CancelReadTask();
+                // while (IsPerformingRead()) ;
+            }
             // throw new NotImplementedException();
         }
 
@@ -181,6 +193,11 @@ namespace MaintenanceToolECSBOX
         private void FlapperValveControl_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
             manipulating[1] = true;
+            if (IsPerformingRead())
+            {
+                CancelReadTask();
+                // while (IsPerformingRead()) ;
+            }
             // throw new NotImplementedException();
         }
 
@@ -221,12 +238,22 @@ namespace MaintenanceToolECSBOX
         private void EnableValve_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
             manipulating[0] = true;
-           // throw new NotImplementedException();
+            if (IsPerformingRead())
+            {
+                CancelReadTask();
+                // while (IsPerformingRead()) ;
+            }
+            // throw new NotImplementedException();
         }
 
         private void Position_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
         {
             manipulating[0] = true;
+            if (IsPerformingRead())
+            {
+                CancelReadTask();
+                // while (IsPerformingRead()) ;
+            }
             //throw new NotImplementedException();
         }
 
@@ -285,10 +312,24 @@ namespace MaintenanceToolECSBOX
         }
         private async Task UpdateMinimunValues()
         {
-            await minimunValues.GetminimunValidAirPosition();
-            int j ;
-            minimunAirPosition = (byte)(minimunValues.minimunValid);
-            for (int i = 0; i < number_flappers; i++)
+            try
+            {
+               // await minimunValues.GetminimunValidAirPosition();
+                last_read_minimum = minimunAirPosition;
+               // minimunAirPosition = (byte)(minimunValues.minimunValid);
+                minimunAirPosition = 16;
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                minimunAirPosition = last_read_minimum;
+                //  throw;
+            }
+
+            
+           int j ;
+           for (int i = 0; i < number_flappers; i++)
             {
                 j = i + 2;
                 if (minimunAirPosition < minimunFailValue)
@@ -330,7 +371,7 @@ namespace MaintenanceToolECSBOX
         {
             // Create a timer and set a two second interval.
             refreshValueTimer = new System.Timers.Timer();
-            refreshValueTimer.Interval = 3000;
+            refreshValueTimer.Interval = CALLING_INTERVAL;
 
             // Hook up the Elapsed event for the timer. 
             refreshValueTimer.Elapsed += OnTimedEvent;
@@ -432,7 +473,7 @@ namespace MaintenanceToolECSBOX
                 if (currentPosition[valve_id] != currentSetpoint[valve_id])
                 {
                     listOfDials[valve_id].IsInteractive = false;
-                    await WriteAsyncValveData(valve_id);
+                    await WriteValveData(valve_id);
                //     await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
                 //       new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
                     listOfDials[valve_id].IsInteractive = true;
@@ -441,13 +482,21 @@ namespace MaintenanceToolECSBOX
             
 
         }
-        private async Task WriteAsyncValveData(int valve_id)
+        private async Task WriteValveData(int valve_id)
         {
 
             if (IsPerformingRead())
             {
                 CancelReadTask();
+                rootPage.NotifyUser("Cancelling reading task...", NotifyType.StatusMessage);
             }
+          
+            if (IsPerformingWrite())
+            {
+                //  CancelWriteTask();
+                rootPage.NotifyUser("cancelling already writing...", NotifyType.StatusMessage);
+            }
+            
             if (EventHandlerForDevice.Current.IsDeviceConnected)
             {
                 try
@@ -463,9 +512,9 @@ namespace MaintenanceToolECSBOX
                     if (commandValve[valve_id] != lastCommand[valve_id])
                     {
                         Protocol.Message.CreateCommandFlapperValveMessage(commandValve).CopyTo(toSend, 0);
-                        lastCommand[valve_id]=commandValve[valve_id] ;
+                        lastCommand[valve_id] = commandValve[valve_id];
                     }
-                    else if(listOfToggles[valve_id].IsOn)
+                    else if (listOfToggles[valve_id].IsOn)
                     {
                         if (currentSetpoint[valve_id] != currentPosition[valve_id])
                         {
@@ -489,7 +538,16 @@ namespace MaintenanceToolECSBOX
                 finally
                 {
                     IsWriteTaskPending = false;
-                    DataWriteObject.DetachStream();
+                    try
+                    {
+                        DataWriteObject.DetachStream();
+                    }
+                    catch (Exception)
+                    {
+                        rootPage.NotifyUser("DataWriter detach failed...", NotifyType.StatusMessage);
+                        //  throw;
+                    }
+                   
                     DataWriteObject = null;
 
                     //  UpdateWriteButtonStates();
@@ -499,6 +557,8 @@ namespace MaintenanceToolECSBOX
             {
                 Utilities.NotifyDeviceNotConnected();
             }
+         
+            
 
         }
         private async Task WriteAsync(CancellationToken cancellationToken)
@@ -527,26 +587,20 @@ namespace MaintenanceToolECSBOX
         }
         public async void UpdateDataPosition()
         {
-            for (int i = 0; i < number_flappers; i++)
-            {
-                if (!manipulating[i])
+          //  for (int i = 0; i < number_flappers; i++)
+          //  {
+                if (!(manipulating[0]|(manipulating[1])))
                 {
-                    if (listOfToggles[i].IsOn)
-                    {
-                        // position.IsInteractive = false;
-                    }
-                    await RequestPositionValve();
+             
+                    await RequestValveData();
                     await ReadValveData();
                     //  EnableValve.IsEnabled = true;
-                    if (listOfToggles[i].IsOn)
-                    {
-                        //  position.IsInteractive = true;
-                    }
+         
 
                     await UpdateMinimunValues();
                     GetLastPosition();
                 }
-            }
+          //  }
      
             
            
@@ -558,50 +612,80 @@ namespace MaintenanceToolECSBOX
         {
             return (IsReadTaskPending);
         }
-        private async Task RequestPositionValve()
+        private Boolean IsPerformingWrite()
+        {
+            return (IsWriteTaskPending);
+        }
+        private async Task RequestValveData()
         {
             if (IsPerformingRead())
             {
                 CancelReadTask();
-               // while (IsPerformingRead()) ;
-            }
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
-            {
-                try
-                {
-                    rootPage.NotifyUser("Reading Position...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
-                    // update the button states until after the write completes.
-                    IsWriteTaskPending = true;
-                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    Protocol.Message.CreateValvePositionRequestMessage().CopyTo(toSend, 0);
-                    //UpdateWriteButtonStates();
-
-                    await SendRequestPositionAsync(WriteCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyWriteTaskCanceled();
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsWriteTaskPending = false;
-                    DataWriteObject.DetachStream();
-                    DataWriteObject = null;
-
-                    // UpdateWriteButtonStates();
-                }
+                // while (IsPerformingRead()) ;
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (IsPerformingWrite())
+                {
+                   // CancelWriteTask();
+                }
+                else
+                {
+                    if (EventHandlerForDevice.Current.IsDeviceConnected)
+                    {
+                        try
+                        {
+                            rootPage.NotifyUser("Reading Position...", NotifyType.StatusMessage);
+
+                            // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
+                            // update the button states until after the write completes.
+                            Protocol.Message.CreateValvePositionRequestMessage().CopyTo(toSend, 0);
+                            IsWriteTaskPending = true;
+                            DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                            
+                                await SendRequestPositionAsync(WriteCancellationTokenSource.Token);
+                            
+                           
+                           
+                            //UpdateWriteButtonStates();
+
+                            
+                        }
+                        catch (OperationCanceledException /*exception*/)
+                        {
+                            NotifyWriteTaskCanceled();
+                        }
+                        catch (Exception exception)
+                        {
+                            MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                            Debug.WriteLine(exception.Message.ToString());
+                        }
+                        finally
+                        {
+                            IsWriteTaskPending = false;
+
+                            try
+                            {
+                                DataWriteObject.DetachStream();
+                            }
+                            catch (Exception)
+                            {
+                                rootPage.NotifyUser("DataWriter detach failed...", NotifyType.StatusMessage);
+                                //  throw;
+                            }
+                            DataWriteObject = null;
+
+                            // UpdateWriteButtonStates();
+                        }
+                    }
+                    else
+                    {
+                        Utilities.NotifyDeviceNotConnected();
+                    }
+                }
+                
             }
+           
         }
 
         private async void  position2_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
@@ -628,7 +712,7 @@ namespace MaintenanceToolECSBOX
             if (commandValve[1] != lastCommand[1])
             {
                 //  EnableValve.IsEnabled = false;
-                await WriteAsyncValveData(1);
+                await WriteValveData(1);
                 //    await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
                 //     new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
                 //  EnableValve.IsEnabled = true;
@@ -664,44 +748,93 @@ namespace MaintenanceToolECSBOX
         }
         private async Task ReadValveData()
         {
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            required_feedback = ((commandValve[0] > 0) | (commandValve[1] > 0));
+            if (IsPerformingWrite())
             {
-                try
-                {
-                    rootPage.NotifyUser("Reading Valve Position...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
-                    // update the button states until after the read completes.
-                    IsReadTaskPending = true;
-                    DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
-                    // UpdateReadButtonStates();
-
-                    await ReadPositionAsync(ReadCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyReadTaskCanceled();
-                    Debug.WriteLine("ReadOperation cancelled");
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsReadTaskPending = false;
-                    DataReaderObject.DetachStream();
-                    DataReaderObject = null;
-
-                    // UpdateReadButtonStates();
-                    // UpdateAllToggleBits();
-                }
+                rootPage.NotifyUser("busy on writting data...", NotifyType.StatusMessage);
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (required_feedback)
+                {
+                    if (IsPerformingRead())
+                    {
+                        CancelReadTask();
+                        rootPage.NotifyUser("past read thread cancelled...", NotifyType.StatusMessage);
+                        // while (IsPerformingRead()) ;
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    if (IsPerformingRead())
+                    {
+                        rootPage.NotifyUser("busy on reading data...", NotifyType.StatusMessage);
+                        return;
+                        // CancelReadTask();
+                        // while (IsPerformingRead()) ;
+                    }
+                }
+                            
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
+                {
+                    try
+                    {
+                        rootPage.NotifyUser("Reading Valve Data...", NotifyType.StatusMessage);
+
+                        // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
+                        // update the button states until after the read completes.
+                        IsReadTaskPending = true;
+                        DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
+                        
+                            await ReadDataAsync(ReadCancellationTokenSource.Token);
+                        
+                        // UpdateReadButtonStates();
+
+                       
+                    }
+                    catch (OperationCanceledException /*exception*/)
+                    {
+                        NotifyReadTaskCanceled();
+                        Debug.WriteLine("ReadOperation cancelled");
+                    }
+                    catch (Exception exception)
+                    {
+                        MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                        Debug.WriteLine(exception.Message.ToString());
+                    }
+                    finally
+                    {
+                        IsReadTaskPending = false;
+                        try
+                        {
+                            DataReaderObject.DetachStream();
+                        }
+                        catch (Exception)
+                        {
+                            rootPage.NotifyUser("failed to Detach...", NotifyType.StatusMessage);
+                            //  throw;
+                        }
+                       
+                        DataReaderObject = null;
+                        rootPage.NotifyUser("Valve Data got read...", NotifyType.StatusMessage);
+                        // UpdateReadButtonStates();
+                        // UpdateAllToggleBits();
+                    }
+                }
+                else
+                {
+                    Utilities.NotifyDeviceNotConnected();
+                }
+
+                
             }
+            
+
+           
 
         }
 
@@ -723,7 +856,7 @@ namespace MaintenanceToolECSBOX
             if (commandValve[0] != lastCommand[0])
             {
               //  EnableValve.IsEnabled = false;
-                await WriteAsyncValveData(0);
+                await WriteValveData(0);
             //    await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
              //     new DispatchedHandler(() => { handler.UpdateDataPosition(); }));
               //  EnableValve.IsEnabled = true;
@@ -731,7 +864,7 @@ namespace MaintenanceToolECSBOX
             }
         }
 
-        private async Task ReadPositionAsync(CancellationToken cancellationToken)
+        private async Task ReadDataAsync(CancellationToken cancellationToken)
         {
 
             Task<UInt32> loadAsyncTask;
@@ -755,11 +888,11 @@ namespace MaintenanceToolECSBOX
             {
                 DataReaderObject.ReadBytes(received);
                 magicHeader = BitConverter.ToUInt32(received, 0);
-
+                rootPage.NotifyUser("Flapper Valve data was read", NotifyType.StatusMessage);
 
 
             }
-            rootPage.NotifyUser("Flapper Valve data was read", NotifyType.StatusMessage);
+           
         }
         private void GetLastPosition()
         {
@@ -769,17 +902,17 @@ namespace MaintenanceToolECSBOX
                 if (magicHeader.Equals(Commands.reverseMagic))
                 {
                     lastPosition[i] = currentPosition[i];
-                    currentPosition[i] = received[20+5*i];
+                    currentPosition[i] = received[20+DATA_OFFSET*i];
                     listOfDials[i].Value = currentPosition[i] * 90 / 255;
                     listOfTextBlocks[i*3].Text = (90 - currentPosition[i]* 90 / 255).ToString("N0");
                     k = 0;
                     for (int j = 3*i; j < listOfBorders.Count-3*(1-i); j++)
                     {
-                        listOfBorders[j].Visibility = received[8+k+(5*i)] > 0 ? Visibility.Visible : Visibility.Collapsed;
-                        listOfTextBlocks[j+1] .Visibility = received[8 + k +( 5 * i)] < 1 ? Visibility.Visible : Visibility.Collapsed;
+                        listOfBorders[j].Visibility = received[8+k+(DATA_OFFSET * i)] > 0 ? Visibility.Visible : Visibility.Collapsed;
+                        listOfTextBlocks[j+1] .Visibility = received[8 + k +(DATA_OFFSET * i)] < 1 ? Visibility.Visible : Visibility.Collapsed;
                         k++;
                     }
-                    if (received[24+5*i] > 0)
+                    if (received[24+ DATA_OFFSET * i] > 0)
                     {
                         listOfDials[i].IsInteractive = false;
                         if (!nbcMode[i])
@@ -801,7 +934,7 @@ namespace MaintenanceToolECSBOX
                         {
                             listOfToggles[i].IsEnabled = true;
                         }
-                        if (received[23+5*i] > 0)
+                        if (received[23+ DATA_OFFSET * i] > 0)
                         {
                             listOfDials[i].Opacity = received[22] > 0 ? 0.4 : 1;
                             listOfDials[i].IsInteractive = true;

@@ -23,8 +23,10 @@ namespace MaintenanceToolProtocol
         private static Protocol handler;
         private int sizeStruct;
         private SingleTaskMessage singleTaskMessage;
+        private SingleTaskCommand singleTaskCommand;
         private Full64BufferMessage message64;
         public Byte[] buffer;
+        private Byte[] local_buffer;
         public Protocol()
         {
             handler = this;
@@ -110,6 +112,7 @@ namespace MaintenanceToolProtocol
            // var size = Marshal.SizeOf(singleTaskMessage);
             buffer = new Byte[64];
             buffer.Initialize();
+            
             //  Buffer64BytesHandler datagram = new CommandHeader();
             //    SingleTaskCommand order = datagram.order;
 
@@ -117,13 +120,16 @@ namespace MaintenanceToolProtocol
 
             message64 = Buffer64BytesHandler.Message64;
             message64.header.task= Commands.CommandFlapperValve;
-            Buffer.BlockCopy(p, 0, message64.content, 0,58);
-         //   datagram.order = order;
-       //     SingleTaskMessage m;
-      //      m.header = order;
-        //    m.description = p;
-           
-            Buffer.BlockCopy(GetFullBufferCommandArrayBytes(message64), 0, buffer, 0, 64);
+            local_buffer = new byte[2];
+            local_buffer = p;
+         //   Buffer.BlockCopy(local_buffer, 0, message64.content, 0, 2);
+            //   datagram.order = order;
+            //     SingleTaskMessage m;
+            //      m.header = order;
+            //    m.description = p;
+            var sizeMessage = Marshal.SizeOf(singleTaskCommand);
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(message64.header), 0, buffer, 0,sizeMessage);
+            Buffer.BlockCopy(local_buffer, 0, buffer, sizeMessage, 2);
             return buffer;
 
         }
@@ -139,9 +145,11 @@ namespace MaintenanceToolProtocol
             buffer.Initialize();
             message64 = Buffer64BytesHandler.Message64;
             message64.header.task = Commands.SetPointFlapperValve;
-            Buffer.BlockCopy(p, 0, message64.content, 0, 58);
-
-            Buffer.BlockCopy(GetFullBufferCommandArrayBytes(message64), 0, buffer, 0, 64);
+            local_buffer = new byte[2];
+            local_buffer = p;
+            var sizeMessage = Marshal.SizeOf(singleTaskCommand);
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(message64.header), 0, buffer, 0, sizeMessage);
+            Buffer.BlockCopy(local_buffer, 0, buffer, sizeMessage, 2);
             return buffer;
 
         }
@@ -232,9 +240,35 @@ namespace MaintenanceToolProtocol
             return locabBuffer;
 
         }
+        public Byte[] GetSingleTaskCommandArrayBytes(SingleTaskCommand pm)
+        {
+            int sizeMessage = Marshal.SizeOf(singleTaskCommand);
+            Byte[] localBuffer = new Byte[sizeMessage];
+            singleTaskCommand = pm;
+            IntPtr pnt = Marshal.AllocHGlobal(sizeMessage);
+
+            try
+            {
+
+                // Copy the struct to unmanaged memory.
+                Marshal.StructureToPtr(singleTaskCommand, pnt, false);
+
+
+                Marshal.Copy(pnt, localBuffer, 0, sizeMessage);
+            }
+            finally
+            {
+                // Free the unmanaged memory.
+                Marshal.FreeHGlobal(pnt);
+            }
+            return localBuffer;
+
+        }
         private Byte[] GetFullBufferCommandArrayBytes(Full64BufferMessage pm)
         {
             Byte[] locabBuffer = new Byte[64];
+            message64 = Buffer64BytesHandler.Message64;
+            int sizeMessage = Marshal.SizeOf(message64);
             message64 = pm;
             IntPtr pnt = Marshal.AllocHGlobal(64);
 
