@@ -10,7 +10,7 @@
 
 [assembly: System.Reflection.AssemblyVersionAttribute("7.0.0.0")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("7.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("7.0.0-build.0+ca5220b21e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("7.0.0-build.32+18851069f0")]
 #if NETSTANDARD || NETFRAMEWORK || NETCOREAPP
 [System.CodeDom.Compiler.GeneratedCode("Nerdbank.GitVersioning.Tasks","3.1.91.19327")]
 #endif
@@ -20,13 +20,13 @@
 internal static partial class ThisAssembly {
     internal const string AssemblyVersion = "7.0.0.0";
     internal const string AssemblyFileVersion = "7.0.0";
-    internal const string AssemblyInformationalVersion = "7.0.0-build.0+ca5220b21e";
+    internal const string AssemblyInformationalVersion = "7.0.0-build.32+18851069f0";
     internal const string AssemblyName = "Microsoft.Toolkit.Uwp.UI.Controls";
     internal const string AssemblyTitle = "Microsoft.Toolkit.Uwp.UI.Controls";
     internal const string AssemblyConfiguration = "Release";
-    internal const string GitCommitId = "ca5220b21ebea45f21d320a3d3654f4388f8a11b";
+    internal const string GitCommitId = "18851069f025d48ee4f89b2fdc46720a9eca02f5";
     internal const bool IsPublicRelease = true;
     internal const bool IsPrerelease = true;
-    internal static readonly System.DateTime GitCommitDate = new System.DateTime(637393349210000000L, System.DateTimeKind.Utc);
+    internal static readonly System.DateTime GitCommitDate = new System.DateTime(637460411440000000L, System.DateTimeKind.Utc);
     internal const string RootNamespace = "Microsoft.Toolkit.Uwp.UI.Controls";
 }

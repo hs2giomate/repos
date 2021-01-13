@@ -37,21 +37,24 @@ namespace MaintenanceToolECSBOX
     {
         private static FansOperation handler;
         private MainPage rootPage = MainPage.Current;
-    
+        private const int NUMBER_OF_FANS = 3;
+        private const int UPDATE_TIME = NUMBER_OF_FANS * 1000;
         // Track Read Operation
         private CancellationTokenSource ReadCancellationTokenSource, WriteCancellationTokenSource;
         private Object ReadCancelLock = new Object();
-
+        private uint fan_id;
         private Boolean IsReadTaskPending;
         private Boolean[] isToggleON = new Boolean[3];
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
         private Object WriteCancelLock = new Object();
-        private Boolean IsWriteTaskPending,beingManipulated;
+        private Boolean IsWriteTaskPending,beingManipulated,getting_updated;
         DataWriter DataWriteObject = null;
-        private Boolean IsNavigatedAway,faultMode;
+        private Boolean IsNavigatedAway;
+        private Boolean[] faultMode;
         private static Byte[] received, toSend;
-        private static Byte fanPWMValue,lasPWMValue, lastFansEnabled,fanEnabled;
+        private static Byte[] fanPWMValue,lastPWMValue;
+        private static Byte  lastFansEnabled, fanEnabled;
         private SingleTaskMessage fansCommand;
         private static System.Timers.Timer refreshValueTimer = null;
         private int sizeofStruct;
@@ -59,15 +62,35 @@ namespace MaintenanceToolECSBOX
         private UInt32 magicHeader;
         private static AnimationSet Fault_Dark, Fault_Light;
         private bool updatingdata = false;
+        private ObservableCollection<Microsoft.Toolkit.Uwp.UI.Controls.RadialGauge> listOfDials;
+        private ObservableCollection<ToggleSwitch> listOfToggles;
         public FansOperation()
         {
             this.InitializeComponent();
             handler = this;
-            sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
-            SetPointFan1.ManipulationCompleted += SetPointFan1_ManipulationCompleted;
-            SetPointFan1.ManipulationStarted += SetPointFan1_ManipulationStarted;
-            SetPointFan1.Tapped += SetPointFan1_Tapped1;
+            sizeofStruct = 64;
+            listOfDials = new ObservableCollection<Microsoft.Toolkit.Uwp.UI.Controls.RadialGauge>();
+            listOfDials.Add(SetPointFan1);
+            listOfDials.Add(SetPointFan2);
+            listOfDials.Add(SetPointFan3);
+            listOfToggles = new ObservableCollection<ToggleSwitch>();
+            listOfToggles.Add(EnableFan1);
+            listOfToggles.Add(EnableFan2);
+            listOfToggles.Add(EnableFan3);
+
+            listOfDials[0].ManipulationCompleted += SetPointFan1_ManipulationCompleted;
+            listOfDials[0].ManipulationStarted += SetPointFan1_ManipulationStarted;
+            listOfDials[0].Tapped += SetPointFan1_Tapped1;
+            listOfDials[1].ManipulationCompleted += FansOperation_ManipulationCompleted;
+            listOfDials[1].ManipulationStarted += FansOperation_ManipulationStarted;
+            listOfDials[1].Tapped += FansOperation_Tapped;
+            listOfDials[2].ManipulationCompleted += FansOperation_ManipulationCompleted1; ;
+            listOfDials[2].ManipulationStarted += FansOperation_ManipulationStarted1; ;
+            listOfDials[2].Tapped += FansOperation_Tapped1; ;
             toSend = new byte[sizeofStruct];
+            fanPWMValue = new byte[NUMBER_OF_FANS];
+            lastPWMValue = new byte[NUMBER_OF_FANS];
+            faultMode= new Boolean[NUMBER_OF_FANS];
             readBufferLength = 64;
             received = new byte[readBufferLength];
             Fault_Dark = SetPointFan1.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine);
@@ -77,19 +100,63 @@ namespace MaintenanceToolECSBOX
             Fault_Light.Completed += Fault_Light_Completed;
         }
 
+        private async void FansOperation_Tapped1(object sender, TappedRoutedEventArgs e)
+        {
+            if (!updatingdata)
+            {
+                await WritePWMValue(2);
+            }
+            //throw new NotImplementedException();
+        }
+
+        private void FansOperation_ManipulationStarted1(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            beingManipulated = true;
+            // throw new NotImplementedException();
+        }
+
+        private async void FansOperation_ManipulationCompleted1(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            await WritePWMValue(2);
+            beingManipulated = false;
+            // throw new NotImplementedException();
+        }
+
+        private async void FansOperation_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (!updatingdata)
+            {
+                await WritePWMValue(1);
+            }
+            //  throw new NotImplementedException();
+        }
+
+        private void FansOperation_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            beingManipulated = true;
+            // throw new NotImplementedException();
+        }
+
+        private async  void FansOperation_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+            await WritePWMValue(1);
+            beingManipulated = false;
+            // throw new NotImplementedException();
+        }
+
         private async void SetPointFan1_Tapped1(object sender, TappedRoutedEventArgs e)
         {
             //  throw new NotImplementedException();
             if (!updatingdata)
             {
-                await WritePWMValue();
+                await WritePWMValue(0);
             }
            
         }
 
         private void Fault_Light_Completed(object sender, AnimationSetCompletedEventArgs e)
         {
-            if (faultMode)
+            if (faultMode[0])
             {
                 Fault_Dark.StartAsync();
             }
@@ -102,7 +169,7 @@ namespace MaintenanceToolECSBOX
 
         private void Fault_Dark_Completed(object sender, AnimationSetCompletedEventArgs e)
         {
-            if (faultMode)
+            if (faultMode[0])
             {
                 Fault_Light.StartAsync();
             }
@@ -180,44 +247,62 @@ namespace MaintenanceToolECSBOX
         }
         private async Task ReadFansData()
         {
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            if (IsPerformingWrite())
             {
-                try
-                {
-                    rootPage.NotifyUser("Reading Fans Status...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
-                    // update the button states until after the read completes.
-                    IsReadTaskPending = true;
-                    DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
-                    // UpdateReadButtonStates();
-
-                    await ReadDataAsync(ReadCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyReadTaskCanceled();
-                    Debug.WriteLine("ReadOperation cancelled");
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsReadTaskPending = false;
-                    DataReaderObject.DetachStream();
-                    DataReaderObject = null;
-
-                    // UpdateReadButtonStates();
-                    // UpdateAllToggleBits();
-                }
+                rootPage.NotifyUser("busy on setting fans...", NotifyType.StatusMessage);
+                return;
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (IsPerformingRead())
+                {
+                    rootPage.NotifyUser("waiting for status...", NotifyType.StatusMessage);
+                    return;
+                }
+                else
+                {
+                    if (EventHandlerForDevice.Current.IsDeviceConnected)
+                    {
+                        try
+                        {
+                            rootPage.NotifyUser("Reading Fans Status...", NotifyType.StatusMessage);
+
+                            // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
+                            // update the button states until after the read completes.
+                            IsReadTaskPending = true;
+                            DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
+                            // UpdateReadButtonStates();
+
+                            await ReadDataAsync(ReadCancellationTokenSource.Token);
+                        }
+                        catch (OperationCanceledException /*exception*/)
+                        {
+                            NotifyReadTaskCanceled();
+                            Debug.WriteLine("ReadOperation cancelled");
+                        }
+                        catch (Exception exception)
+                        {
+                            MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                            Debug.WriteLine(exception.Message.ToString());
+                        }
+                        finally
+                        {
+                            IsReadTaskPending = false;
+                            DataReaderObject.DetachStream();
+                            DataReaderObject = null;
+                            rootPage.NotifyUser("Status read completed...", NotifyType.StatusMessage);
+                            // UpdateReadButtonStates();
+                            // UpdateAllToggleBits();
+                        }
+                    }
+                    else
+                    {
+                        Utilities.NotifyDeviceNotConnected();
+                    }
+                }
             }
+      
+            
 
         }
         private void UpdateFansView()
@@ -225,44 +310,61 @@ namespace MaintenanceToolECSBOX
 
             if (magicHeader.Equals(Commands.reverseMagic))
             {
+                getting_updated = true;
+                for (int i = 0; i < NUMBER_OF_FANS; i++)
+                {
+                    listOfDials[i].Value = received[10+i] * 14000 / 255;
 
-                SetPointFan1.Value = received[12]*14000/255;
-                                
-                if ((received[6] & 0x07) > 0)
-                {
-                    EnableFan1.IsOn = false;
-                    SetPointFan1.Opacity = 0.4;
-              
-                }
-                else
-                {
-                    EnableFan1.IsOn = true;
-                    SetPointFan1.Opacity = 1;
-                                       
-                }
-
-                if (((received[6] & 0x70)==0x70)&((received[7] & 0x33)==0x33)&((received[7]&0x44)>0))
-                {
-                    if (faultMode)
+                    if ((received[6] & (0x01<<i)) > 0)
                     {
-                        faultMode = false;
-                        
+                        listOfToggles[i].IsOn = false;
+                        listOfDials[i].Opacity = 0.4;
+
+                    }
+                    else
+                    {
+                        listOfToggles[i].IsOn = true;
+                        listOfDials[i].Opacity = 1;
+
+                    }
+                    if (i<2)
+                    {
+                        Set_fault_mode(received[7], i);
+                    }
+                    else
+                    {
+                        Set_fault_mode(received[6], i - 1);
                     }
                     
                 }
-                else
-                {
-                    if (!faultMode)
-                    {
-                        faultMode = true;
 
-                        Fault_Dark.StartAsync();
-                    }
+                getting_updated = false;
+               
+
+
+
+
+            }
+        }
+        private void Set_fault_mode(Byte register,int index)
+        {
+            if ((register & (0x07 << (4 * index))) < 7)
+            {
+                if (faultMode[index])
+                {
+                    faultMode[index] = false;
+
                 }
 
+            }
+            else
+            {
+                if (!faultMode[index])
+                {
+                    faultMode[index] = true;
 
-
-
+                    Fault_Dark.StartAsync();
+                }
             }
         }
         private async Task ReadDataAsync(CancellationToken cancellationToken)
@@ -297,48 +399,57 @@ namespace MaintenanceToolECSBOX
         }
         private async Task RequestStatus()
         {
-            if (IsPerformingRead())
+            if (IsPerformingWrite())
             {
-                CancelReadTask();
-                // while (IsPerformingRead()) ;
-            }
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
-            {
-                try
-                {
-                    rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
-                    // update the button states until after the write completes.
-                    IsWriteTaskPending = true;
-                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    Protocol.Message.CreateFansStatusRequestMessage().CopyTo(toSend, 0);
-                    //UpdateWriteButtonStates();
-
-                    await SendRequestStatusAsync(WriteCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyWriteTaskCanceled();
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsWriteTaskPending = false;
-                    DataWriteObject.DetachStream();
-                    DataWriteObject = null;
-
-                    // UpdateWriteButtonStates();
-                }
+                rootPage.NotifyUser("busy setting fans...", NotifyType.StatusMessage);
+                return;
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (IsPerformingRead())
+                {
+                    CancelReadTask();
+                    // while (IsPerformingRead()) ;
+                }
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
+                {
+                    try
+                    {
+                        rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
+
+                        // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
+                        // update the button states until after the write completes.
+                        IsWriteTaskPending = true;
+                        DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                        Protocol.Message.CreateFansStatusRequestMessage().CopyTo(toSend, 0);
+                        //UpdateWriteButtonStates();
+
+                        await SendRequestStatusAsync(WriteCancellationTokenSource.Token);
+                    }
+                    catch (OperationCanceledException /*exception*/)
+                    {
+                        NotifyWriteTaskCanceled();
+                    }
+                    catch (Exception exception)
+                    {
+                        MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                        Debug.WriteLine(exception.Message.ToString());
+                    }
+                    finally
+                    {
+                        IsWriteTaskPending = false;
+                        DataWriteObject.DetachStream();
+                        DataWriteObject = null;
+
+                        // UpdateWriteButtonStates();
+                    }
+                }
+                else
+                {
+                    Utilities.NotifyDeviceNotConnected();
+                }
             }
+            
         }
         private async Task SendRequestStatusAsync(CancellationToken cancellationToken)
         {
@@ -395,7 +506,7 @@ namespace MaintenanceToolECSBOX
         {
             // Create a timer and set a two second interval.
             refreshValueTimer = new System.Timers.Timer();
-            refreshValueTimer.Interval = 2000;
+            refreshValueTimer.Interval = UPDATE_TIME;
 
             // Hook up the Elapsed event for the timer. 
             refreshValueTimer.Elapsed += OnTimedEvent;
@@ -413,11 +524,17 @@ namespace MaintenanceToolECSBOX
             // Debug.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
             //  MaintenanceToolHandler.Current.SendAliveMessage();
 
-          //  await handler.UpdateDataRelayStatus();
-           await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-            new DispatchedHandler(() => { handler.UpdateFanStatus(); }));
+            //  await handler.UpdateDataRelayStatus();
+            if (handler.IsPerformingWrite())
+            {
 
-                    refreshValueTimer.Start();
+            }
+            else
+            {
+                await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+                            new DispatchedHandler(() => { handler.UpdateFanStatus(); }));
+            }
+            refreshValueTimer.Start();
         }
         private void CancelWriteTask()
         {
@@ -482,48 +599,117 @@ namespace MaintenanceToolECSBOX
 
         private async void EnableFan1_Toggled(object sender, RoutedEventArgs e)
         {
-            lastFansEnabled = fanEnabled;
-            if (EnableFan1.IsOn)
+            if (getting_updated)
             {
-                SetPointFan1.Opacity = 1;
-                fanEnabled = (Byte)(lastFansEnabled | 0x07);
-
 
             }
             else
             {
-                SetPointFan1.Opacity = 0.4;
-                fanEnabled = (Byte)(lastFansEnabled & 0xf8);
-            }
-            if (fanEnabled!=lastFansEnabled)
-            {
-                await WriteAsyncFan();
+                lastFansEnabled = fanEnabled;
+                if (EnableFan1.IsOn)
+                {
+                    SetPointFan1.Opacity = 1;
+                    fanEnabled = (Byte)(lastFansEnabled | 0x01);
+
+
+                }
+                else
+                {
+                    SetPointFan1.Opacity = 0.4;
+                    fanEnabled = (Byte)(lastFansEnabled & 0xfe);
+                }
+                if (fanEnabled != lastFansEnabled)
+                {
+                    await WriteAsyncFan(0);
+                }
             }
             
+            
         }
+
+        private async void EnableFan2_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (getting_updated)
+            {
+
+            }
+            else
+            {
+                lastFansEnabled = fanEnabled;
+                if (EnableFan1.IsOn)
+                {
+                    SetPointFan1.Opacity = 1;
+                    fanEnabled = (Byte)(lastFansEnabled | 0x02);
+
+
+                }
+                else
+                {
+                    SetPointFan1.Opacity = 0.4;
+                    fanEnabled = (Byte)(lastFansEnabled & 0xfd);
+                }
+                if (fanEnabled != lastFansEnabled)
+                {
+                    await WriteAsyncFan(1);
+                }
+            }
+        }
+
+        private async void EnableFan3_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (getting_updated)
+            {
+
+            }
+            else
+            {
+                lastFansEnabled = fanEnabled;
+                if (EnableFan1.IsOn)
+                {
+                    SetPointFan1.Opacity = 1;
+                    fanEnabled = (Byte)(lastFansEnabled | 0x04);
+
+
+                }
+                else
+                {
+                    SetPointFan1.Opacity = 0.4;
+                    fanEnabled = (Byte)(lastFansEnabled & 0xfb);
+                }
+                if (fanEnabled != lastFansEnabled)
+                {
+                    await WriteAsyncFan(2);
+                }
+            }
+        }
+
         private Boolean IsPerformingRead()
         {
             return (IsReadTaskPending);
         }
+        private Boolean IsPerformingWrite()
+        {
+            return (IsWriteTaskPending);
+        }
 
         private async void SetPointFan1_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
         {
-            await WritePWMValue();
+            await WritePWMValue(0);
             beingManipulated = false;
         }
-        private async Task WritePWMValue()
+        private async Task WritePWMValue(int id)
         {
-            lasPWMValue = fanPWMValue;
-            fanPWMValue = (byte)(SetPointFan1.Value*255/14000);
-            if (fanPWMValue != lasPWMValue)
+            lastPWMValue[id] = fanPWMValue[id];
+            fanPWMValue[id] = (byte)(listOfDials[id].Value*255/14000);
+            if (fanPWMValue[id] != lastPWMValue[id])
             {
-                await WriteAsyncFan();
+                await WriteAsyncFan(id);
             }
         }
 
        
 
-        private async Task WriteAsyncFan()
+        private async Task WriteAsyncFan(int id)
         {
 
             if (IsPerformingRead())
@@ -534,15 +720,13 @@ namespace MaintenanceToolECSBOX
             {
                 try
                 {
-                    rootPage.NotifyUser("Starting Fan...", NotifyType.StatusMessage);
+                    rootPage.NotifyUser("Setting Fan: "+(id+1).ToString() , NotifyType.StatusMessage);
 
                     // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
                     // update the button states until after the write completes.
-                    IsWriteTaskPending = true;
-                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    toSend = new byte[sizeofStruct];
-                    toSend.Initialize();
-                    //   UpdateWriteButtonStates();
+                   
+                   
+                     //   UpdateWriteButtonStates();
                     if (fanEnabled!=lastFansEnabled)
                     {
                         Protocol.Message.CreateEnableFansMessage(fanEnabled).CopyTo(toSend, 0);
@@ -550,13 +734,14 @@ namespace MaintenanceToolECSBOX
                     }
                     else
                     {
-                        if (fanPWMValue != lasPWMValue)
+                        if (fanPWMValue[id] != lastPWMValue[id])
                         {
                             Protocol.Message.CreateSetpointFansMessage(fanPWMValue).CopyTo(toSend, 0);
-                            lasPWMValue = fanPWMValue;
+                            lastPWMValue = fanPWMValue;
                         }
                     }
-                
+                    IsWriteTaskPending = true;
+                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
                     await WriteFansEnablesAsync(WriteCancellationTokenSource.Token);
 
                 }
@@ -574,6 +759,7 @@ namespace MaintenanceToolECSBOX
                     IsWriteTaskPending = false;
                     DataWriteObject.DetachStream();
                     DataWriteObject = null;
+                    rootPage.NotifyUser("Setting fan "+(id+1).ToString()+" completed ", NotifyType.StatusMessage);
 
                     //  UpdateWriteButtonStates();
                 }
@@ -588,24 +774,21 @@ namespace MaintenanceToolECSBOX
         {
 
             Task<UInt32> storeAsyncTask;
-
-               
-
-                DataWriteObject.WriteBytes(toSend);
+            DataWriteObject.WriteBytes(toSend);
 
 
-                // Don't start any IO if we canceled the task
-                lock (WriteCancelLock)
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
+            // Don't start any IO if we canceled the task
+            lock (WriteCancelLock)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
 
-                    // Cancellation Token will be used so we can stop the task operation explicitly
-                    // The completion function should still be called so that we can properly handle a canceled task
-                    storeAsyncTask = DataWriteObject.StoreAsync().AsTask(cancellationToken);
-                }
+                // Cancellation Token will be used so we can stop the task operation explicitly
+                // The completion function should still be called so that we can properly handle a canceled task
+                storeAsyncTask = DataWriteObject.StoreAsync().AsTask(cancellationToken);
+            }
 
-                UInt32 bytesWritten = await storeAsyncTask;
-                rootPage.NotifyUser("Write completed .. " , NotifyType.StatusMessage);
+            UInt32 bytesWritten = await storeAsyncTask;
+            rootPage.NotifyUser("Setting fans .. " , NotifyType.StatusMessage);
       
         }
 

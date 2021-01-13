@@ -70,6 +70,8 @@ namespace MaintenanceToolECSBOX
         private UInt32 magicHeader = 0;
         private bool readingStatus=false;
         private const int UPDATING_TIME = 3000;
+        private const int NUMBER_OF_HEATERS = 2;
+        private bool required_status=false;
         public HeaterOperation()
         {
             this.InitializeComponent();
@@ -100,19 +102,23 @@ namespace MaintenanceToolECSBOX
             listOfEllipses.Add(Relay4FaultSignal);
             listOfDarkAnimations = new ObservableCollection<AnimationSet>();
             listOfLightAnimations = new ObservableCollection<AnimationSet>();
-            for (int i = 0; i < 4; i++)
+            for (int j = 0; j < NUMBER_OF_HEATERS; j++)
             {
-                listOfDarkAnimations.Add( listOfEllipses[i].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
-                listOfLightAnimations.Add( listOfEllipses[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
-            }
-            listOfDarkAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
-            listOfLightAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
-            listOfDarkAnimations[4].Completed += FaultDarkAnimation_Completed;
-            listOfLightAnimations[4].Completed += FaultLighAnimation_Completed;
-            for (int i = 0; i < 5; i++)
-            {
-                blink = listOfDarkAnimations[i].StartAsync();
-            }
+                for (int i = 5*j; i < 4+5*j; i++)
+                {
+                    listOfDarkAnimations.Add(listOfEllipses[i].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+                    listOfLightAnimations.Add(listOfEllipses[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+                }
+                listOfDarkAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+                listOfLightAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+                listOfDarkAnimations[4+5*j].Completed += FaultDarkAnimation_Completed;
+                listOfLightAnimations[4+5*j].Completed += FaultLighAnimation_Completed;
+                for (int i = 5*j; i < 5*(1+j); i++)
+                {
+                    blink = listOfDarkAnimations[i].StartAsync();
+                }
+            }        
+            
         }
         protected  override void OnNavigatedTo(NavigationEventArgs eventArgs)
         {
@@ -254,10 +260,32 @@ namespace MaintenanceToolECSBOX
         }
         private async Task RequestRelayStatus()
         {
-            if (IsPerformingRead())
+            required_status = (heaterRelaysCommand > 0);
+            if (required_status)
             {
-                CancelReadTask();
+ 
+                if (IsPerformingRead())
+                {
+                    CancelReadTask();
+                }
             }
+            else
+            {
+                if (IsPerformingWrite())
+                {
+                    return;
+                }
+                else
+                {
+                    if (IsPerformingRead())
+                    {
+                        CancelReadTask();
+                        return;
+                    }
+                }
+                
+            }
+         
             if (EventHandlerForDevice.Current.IsDeviceConnected)
             {
                 try
@@ -806,6 +834,91 @@ namespace MaintenanceToolECSBOX
                 }
             }
         }
+
+        private async  void Relay1EnableToggle1_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (Relay1EnableToggle.IsOn)
+            {
+
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x10);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xef);
+            }
+            if (!readingStatus)
+            {
+                if (heaterRelaysCommand != lastRelaysCommand)
+                {
+                    await WriteAsyncHeatersEnables();
+                }
+            }
+        }
+
+        private async void Relay2EnableToggle1_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (Relay2EnableToggle.IsOn)
+            {
+
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x20);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xdf);
+            }
+            if (!readingStatus)
+            {
+                if (heaterRelaysCommand != lastRelaysCommand)
+                {
+                    await WriteAsyncHeatersEnables();
+                }
+            }
+        }
+
+        private async void Relay3EnableToggle1_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (Relay3EnableToggle.IsOn)
+            {
+
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x40);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xbf);
+            }
+            if (!readingStatus)
+            {
+                if (heaterRelaysCommand != lastRelaysCommand)
+                {
+                    await WriteAsyncHeatersEnables();
+                }
+            }
+        }
+
+        private async void Relay4EnableToggle1_Toggled(object sender, RoutedEventArgs e)
+        {
+            lastRelaysCommand = heaterRelaysCommand;
+            if (Relay4EnableToggle.IsOn)
+            {
+
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x80);
+            }
+            else
+            {
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0x7f);
+            }
+            if (!readingStatus)
+            {
+                if (heaterRelaysCommand != lastRelaysCommand)
+                {
+                    await WriteAsyncHeatersEnables();
+                }
+            }
+        }
+
         private async void NotifyReadTaskCanceled()
         {
             await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,

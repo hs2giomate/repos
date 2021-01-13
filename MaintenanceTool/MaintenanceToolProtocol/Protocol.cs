@@ -91,6 +91,24 @@ namespace MaintenanceToolProtocol
             return buffer;
 
         }
+        public Byte[] CreateSetpointFansMessage(Byte[] p)
+        {
+            buffer = new Byte[64];
+            buffer.Initialize();
+
+            message64 = Buffer64BytesHandler.Message64;
+            message64.header.task = Commands.SetpointFans;
+            local_buffer = new byte[3];
+            local_buffer = p;
+
+            var sizeMessage = Marshal.SizeOf(singleTaskCommand);
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(message64.header), 0, buffer, 0, sizeMessage);
+            Buffer.BlockCopy(local_buffer, 0, buffer, sizeMessage, 3);
+            return buffer;
+
+          
+
+        }
         public Byte[] CreateEnableFansMessage(Byte p)
         {
             var size = Marshal.SizeOf(singleTaskMessage);
@@ -143,13 +161,11 @@ namespace MaintenanceToolProtocol
 
             buffer = new Byte[64];
             buffer.Initialize();
-            message64 = Buffer64BytesHandler.Message64;
-            message64.header.task = Commands.SetPointFlapperValve;
-            local_buffer = new byte[2];
+            local_buffer = new byte[3];
             local_buffer = p;
             var sizeMessage = Marshal.SizeOf(singleTaskCommand);
             Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(message64.header), 0, buffer, 0, sizeMessage);
-            Buffer.BlockCopy(local_buffer, 0, buffer, sizeMessage, 2);
+            Buffer.BlockCopy(local_buffer, 0, buffer, sizeMessage, 3);
             return buffer;
 
         }

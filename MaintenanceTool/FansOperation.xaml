@@ -28,6 +28,18 @@
                             <ToggleSwitch x:Name="EnableFan1" HorizontalAlignment="Left" VerticalAlignment="Stretch" Toggled="EnableFan1_Toggled" />
                             <my:RadialGauge x:Name="SetPointFan1" NeedleBrush="#FF33D11A" TickBrush="#FFB7B3E2" TrailBrush="#FF1A92BF" Maximum="14000" ScaleBrush="#66175B95" ScaleWidth="29" StepSize="14" Unit="RPM" LargeChange="140" TickSpacing="1400" AllowDrop="True" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="SetPointFan1_ManipulationCompleted"  SmallChange="14" IsDoubleTapEnabled="False" IsRightTapEnabled="False"  />
                         </StackPanel>
+                        <Border x:Name="dummy_border" Width="{Binding ActualHeight, ElementName=Tittel, Mode=OneWay}" />
+                        <StackPanel x:Name="SingleFanStackPanel_Copy" Orientation="Vertical" >
+                            <TextBlock x:Name="FanTitel1" Text="Evaporator Fan 2" TextAlignment="Center" />
+                            <ToggleSwitch x:Name="EnableFan2" HorizontalAlignment="Left" VerticalAlignment="Stretch" Toggled="EnableFan2_Toggled" />
+                            <my:RadialGauge x:Name="SetPointFan2" NeedleBrush="#FF33D11A" TickBrush="#FFB7B3E2" TrailBrush="#FF1A92BF" Maximum="14000" ScaleBrush="#66175B95" ScaleWidth="29" StepSize="14" Unit="RPM" LargeChange="140" TickSpacing="1400" AllowDrop="True" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="SetPointFan1_ManipulationCompleted"  SmallChange="14" IsDoubleTapEnabled="False" IsRightTapEnabled="False"  />
+                        </StackPanel>
+                        <Border x:Name="dummy_border1" Width="{Binding ActualHeight, ElementName=Tittel, Mode=OneWay}" />
+                        <StackPanel x:Name="SingleFanStackPanel_Copy1" Orientation="Vertical" >
+                            <TextBlock x:Name="FanTitel2" Text="Condesator Fan " TextAlignment="Center" />
+                            <ToggleSwitch x:Name="EnableFan3" HorizontalAlignment="Left" VerticalAlignment="Stretch" Toggled="EnableFan3_Toggled" />
+                            <my:RadialGauge x:Name="SetPointFan3" NeedleBrush="#FF33D11A" TickBrush="#FFB7B3E2" TrailBrush="#FF1A92BF" Maximum="14000" ScaleBrush="#66175B95" ScaleWidth="29" StepSize="14" Unit="RPM" LargeChange="140" TickSpacing="1400" AllowDrop="True" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="SetPointFan1_ManipulationCompleted"  SmallChange="14" IsDoubleTapEnabled="False" IsRightTapEnabled="False"  />
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
 

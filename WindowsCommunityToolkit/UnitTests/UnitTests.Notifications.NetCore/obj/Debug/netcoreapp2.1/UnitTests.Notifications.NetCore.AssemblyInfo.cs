@@ -11,7 +11,6 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyMetadataAttribute("CommitHash", "5c9b173559adb21f3b17a59ffd37acadd6d443f0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Microsoft.Toolkit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("(c) .NET Foundation and Contributors.  All rights reserved.")]
