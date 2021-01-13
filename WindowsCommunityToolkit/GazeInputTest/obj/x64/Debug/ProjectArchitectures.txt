@@ -1,2 +1,0 @@
-C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\GazeInputTest\GazeInputTest.csproj;x64
-C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\Microsoft.Toolkit.Uwp.Input.GazeInteraction\Microsoft.Toolkit.Uwp.Input.GazeInteraction.csproj;neutral

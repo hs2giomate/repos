@@ -1,2 +1,0 @@
-#pragma warning disable  
-﻿ 

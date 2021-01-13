@@ -1,1 +1,0 @@
-C:\Users\GMateusDP\source\repos\WindowsCommunityToolkit\UnitTests\UnitTests.Notifications.WinRT\UnitTests.Notifications.WinRT.csproj;x64
