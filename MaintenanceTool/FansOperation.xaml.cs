@@ -43,18 +43,18 @@ namespace MaintenanceToolECSBOX
         private CancellationTokenSource ReadCancellationTokenSource, WriteCancellationTokenSource;
         private Object ReadCancelLock = new Object();
         private uint fan_id;
-        private Boolean IsReadTaskPending;
+        private Boolean IsReadTaskPending,request_started;
         private Boolean[] isToggleON = new Boolean[3];
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
         private Object WriteCancelLock = new Object();
         private Boolean IsWriteTaskPending,beingManipulated,getting_updated;
         DataWriter DataWriteObject = null;
-        private Boolean IsNavigatedAway;
+        private Boolean IsNavigatedAway,toogle_pressed,dial_pressed;
         private Boolean[] faultMode;
         private static Byte[] received, toSend;
-        private static Byte[] fanPWMValue,lastPWMValue;
-        private static Byte  lastFansEnabled, fanEnabled;
+        private static Byte[] fanPWMValue,lastPWMValue,display_pwm_value;
+        private static Byte  lastFansEnabled, fans_enabled,fans_display;
         private SingleTaskMessage fansCommand;
         private static System.Timers.Timer refreshValueTimer = null;
         private int sizeofStruct;
@@ -91,6 +91,7 @@ namespace MaintenanceToolECSBOX
             fanPWMValue = new byte[NUMBER_OF_FANS];
             lastPWMValue = new byte[NUMBER_OF_FANS];
             faultMode= new Boolean[NUMBER_OF_FANS];
+            display_pwm_value= new byte[NUMBER_OF_FANS];
             readBufferLength = 64;
             received = new byte[readBufferLength];
             Fault_Dark = SetPointFan1.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine);
@@ -228,15 +229,23 @@ namespace MaintenanceToolECSBOX
             if (!beingManipulated)
             {
                 updatingdata = true;
-                SetPointFan1.IsEnabled = false;
+         
+               
                 await RequestStatus();
                 await ReadFansData();
                 //  EnableValve.IsEnabled = true;
-             
 
-             
+                for (int i = 0; i < NUMBER_OF_FANS; i++)
+                {
+                    listOfDials[i].IsEnabled = false;
+                }
+
                 UpdateFansView();
-                SetPointFan1.IsEnabled = true;
+                Get_Fans_Display();
+                for (int i = 0; i < NUMBER_OF_FANS; i++)
+                {
+                    listOfDials[i].IsEnabled = true;
+                }
                 updatingdata = false;
             }
 
@@ -244,6 +253,20 @@ namespace MaintenanceToolECSBOX
 
 
 
+        }
+        private Byte Get_Fans_Display()
+        {
+            fans_display = 0;
+            for (int i = 0; i < NUMBER_OF_FANS; i++)
+            {
+                if (listOfToggles[i].IsOn)
+                {
+                    fans_display |= (byte)(0x01 << i);
+                }
+
+            }
+            return fans_display;
+            
         }
         private async Task ReadFansData()
         {
@@ -307,23 +330,37 @@ namespace MaintenanceToolECSBOX
         }
         private void UpdateFansView()
         {
-
+            int k;
             if (magicHeader.Equals(Commands.reverseMagic))
             {
                 getting_updated = true;
                 for (int i = 0; i < NUMBER_OF_FANS; i++)
                 {
+                    listOfToggles[i].IsEnabled = false;
                     listOfDials[i].Value = received[10+i] * 14000 / 255;
-
-                    if ((received[6] & (0x01<<i)) > 0)
+                    lastPWMValue[i] = received[10 + i];
+                    k = ((1 + i) % 3);
+                    if (((received[6]&0x07) & (0x01<<k)) > 0)
                     {
-                        listOfToggles[i].IsOn = false;
+                        if (listOfToggles[i].IsOn)
+                        {
+                            listOfToggles[i].IsOn = false;
+                        }
+                        
                         listOfDials[i].Opacity = 0.4;
 
                     }
                     else
                     {
-                        listOfToggles[i].IsOn = true;
+                        if (listOfToggles[i].IsOn)
+                        {
+
+                        }
+                        else
+                        {
+                            listOfToggles[i].IsOn = true;
+                        }
+                        
                         listOfDials[i].Opacity = 1;
 
                     }
@@ -335,7 +372,8 @@ namespace MaintenanceToolECSBOX
                     {
                         Set_fault_mode(received[6], i - 1);
                     }
-                    
+                    listOfToggles[i].IsEnabled = true;
+
                 }
 
                 getting_updated = false;
@@ -350,20 +388,31 @@ namespace MaintenanceToolECSBOX
         {
             if ((register & (0x07 << (4 * index))) < 7)
             {
-                if (faultMode[index])
-                {
-                    faultMode[index] = false;
-
-                }
-
-            }
-            else
-            {
                 if (!faultMode[index])
                 {
                     faultMode[index] = true;
 
                     Fault_Dark.StartAsync();
+                }
+                else
+                {
+                 //   faultMode[index] = false;
+                 //   Fault_Dark.Stop();
+                }
+
+            }
+            else
+            {
+               
+                if (faultMode[index])
+                {
+                    faultMode[index] = false;
+                    Fault_Dark.Stop();
+                }
+                else
+                {
+                  //  faultMode[index] = true;
+                 //   Fault_Dark.StartAsync();
                 }
             }
         }
@@ -439,7 +488,7 @@ namespace MaintenanceToolECSBOX
                     {
                         IsWriteTaskPending = false;
                         DataWriteObject.DetachStream();
-                        DataWriteObject = null;
+                        DataWriteObject.Dispose();
 
                         // UpdateWriteButtonStates();
                     }
@@ -605,22 +654,24 @@ namespace MaintenanceToolECSBOX
             }
             else
             {
-                lastFansEnabled = fanEnabled;
-                if (EnableFan1.IsOn)
+                lastFansEnabled = fans_enabled;
+                if (listOfToggles[0].IsOn)
                 {
-                    SetPointFan1.Opacity = 1;
-                    fanEnabled = (Byte)(lastFansEnabled | 0x01);
+                    listOfDials[0].Opacity = 1;
+                    fans_enabled = (Byte)(lastFansEnabled | 0x01);
 
 
                 }
                 else
                 {
-                    SetPointFan1.Opacity = 0.4;
-                    fanEnabled = (Byte)(lastFansEnabled & 0xfe);
+                    listOfDials[0].Opacity = 0.4;
+                    fans_enabled = (Byte)(lastFansEnabled & 0xfe);
                 }
-                if (fanEnabled != lastFansEnabled)
+                if ((fans_enabled != lastFansEnabled) | (fans_display != fans_enabled))
                 {
+                    toogle_pressed = true;
                     await WriteAsyncFan(0);
+                    toogle_pressed = false;
                 }
             }
             
@@ -635,22 +686,24 @@ namespace MaintenanceToolECSBOX
             }
             else
             {
-                lastFansEnabled = fanEnabled;
-                if (EnableFan1.IsOn)
+                lastFansEnabled = fans_enabled;
+                if (listOfToggles[1].IsOn)
                 {
-                    SetPointFan1.Opacity = 1;
-                    fanEnabled = (Byte)(lastFansEnabled | 0x02);
+                    listOfDials[1].Opacity = 1;
+                    fans_enabled = (Byte)(lastFansEnabled | 0x02);
 
 
                 }
                 else
                 {
-                    SetPointFan1.Opacity = 0.4;
-                    fanEnabled = (Byte)(lastFansEnabled & 0xfd);
+                    listOfDials[1].Opacity = 0.4;
+                    fans_enabled = (Byte)(lastFansEnabled & 0xfd);
                 }
-                if (fanEnabled != lastFansEnabled)
+                if ((fans_enabled != lastFansEnabled) | (fans_display != fans_enabled))
                 {
+                    toogle_pressed = true;
                     await WriteAsyncFan(1);
+                    toogle_pressed = false;
                 }
             }
         }
@@ -663,22 +716,24 @@ namespace MaintenanceToolECSBOX
             }
             else
             {
-                lastFansEnabled = fanEnabled;
-                if (EnableFan1.IsOn)
+                lastFansEnabled = fans_enabled;
+                if (listOfToggles[2].IsOn)
                 {
-                    SetPointFan1.Opacity = 1;
-                    fanEnabled = (Byte)(lastFansEnabled | 0x04);
+                    listOfDials[2].Opacity = 1;
+                    fans_enabled = (Byte)(lastFansEnabled | 0x04);
 
 
                 }
                 else
                 {
-                    SetPointFan1.Opacity = 0.4;
-                    fanEnabled = (Byte)(lastFansEnabled & 0xfb);
+                    listOfDials[2].Opacity = 0.4;
+                    fans_enabled = (Byte)(lastFansEnabled & 0xfb);
                 }
-                if (fanEnabled != lastFansEnabled)
+                if ((fans_enabled != lastFansEnabled)|(fans_display!= fans_enabled))
                 {
+                    toogle_pressed = true;
                     await WriteAsyncFan(2);
+                    toogle_pressed = false;
                 }
             }
         }
@@ -699,12 +754,20 @@ namespace MaintenanceToolECSBOX
         }
         private async Task WritePWMValue(int id)
         {
-            lastPWMValue[id] = fanPWMValue[id];
-            fanPWMValue[id] = (byte)(listOfDials[id].Value*255/14000);
-            if (fanPWMValue[id] != lastPWMValue[id])
+            //  lastPWMValue[id] = fanPWMValue[id];
+            if (IsPerformingWrite())
             {
-                await WriteAsyncFan(id);
+
             }
+            else
+            {
+                fanPWMValue[id] = (byte)(listOfDials[id].Value * 255 / 14000);
+                if (fanPWMValue[id] != lastPWMValue[id])
+                {
+                    await WriteAsyncFan(id);
+                }
+            }
+           
         }
 
        
@@ -712,62 +775,71 @@ namespace MaintenanceToolECSBOX
         private async Task WriteAsyncFan(int id)
         {
 
-            if (IsPerformingRead())
+           
+            if (IsPerformingWrite())
             {
-                CancelReadTask();
-            }
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
-            {
-                try
-                {
-                    rootPage.NotifyUser("Setting Fan: "+(id+1).ToString() , NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
-                    // update the button states until after the write completes.
-                   
-                   
-                     //   UpdateWriteButtonStates();
-                    if (fanEnabled!=lastFansEnabled)
-                    {
-                        Protocol.Message.CreateEnableFansMessage(fanEnabled).CopyTo(toSend, 0);
-                        lastFansEnabled = fanEnabled;
-                    }
-                    else
-                    {
-                        if (fanPWMValue[id] != lastPWMValue[id])
-                        {
-                            Protocol.Message.CreateSetpointFansMessage(fanPWMValue).CopyTo(toSend, 0);
-                            lastPWMValue = fanPWMValue;
-                        }
-                    }
-                    IsWriteTaskPending = true;
-                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    await WriteFansEnablesAsync(WriteCancellationTokenSource.Token);
-
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyWriteTaskCanceled();
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsWriteTaskPending = false;
-                    DataWriteObject.DetachStream();
-                    DataWriteObject = null;
-                    rootPage.NotifyUser("Setting fan "+(id+1).ToString()+" completed ", NotifyType.StatusMessage);
-
-                    //  UpdateWriteButtonStates();
-                }
+                rootPage.NotifyUser("already writting", NotifyType.StatusMessage);
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (IsPerformingRead())
+                {
+                    CancelReadTask();
+                }
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
+                {
+                    try
+                    {
+                        rootPage.NotifyUser("Setting Fan: " + (id + 1).ToString(), NotifyType.StatusMessage);
+
+                        // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
+                        // update the button states until after the write completes.
+
+
+                        //   UpdateWriteButtonStates();
+                        if (toogle_pressed)
+                        {
+                            Protocol.Message.CreateEnableFansMessage(fans_enabled).CopyTo(toSend, 0);
+                            lastFansEnabled = fans_enabled;
+                        }
+                        else
+                        {
+                            if (fanPWMValue[id] != lastPWMValue[id])
+                            {
+                                Protocol.Message.CreateSetpointFansMessage(fanPWMValue).CopyTo(toSend, 0);
+                                // lastPWMValue = fanPWMValue;
+                            }
+                        }
+                        IsWriteTaskPending = true;
+                        DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                        await WriteFansEnablesAsync(WriteCancellationTokenSource.Token);
+
+                    }
+                    catch (OperationCanceledException /*exception*/)
+                    {
+                        NotifyWriteTaskCanceled();
+                    }
+                    catch (Exception exception)
+                    {
+                        MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                        Debug.WriteLine(exception.Message.ToString());
+                    }
+                    finally
+                    {
+                        IsWriteTaskPending = false;
+                        DataWriteObject.DetachStream();
+                        DataWriteObject.Dispose();
+                        rootPage.NotifyUser("Setting fan " + (id + 1).ToString() + " completed ", NotifyType.StatusMessage);
+
+                        //  UpdateWriteButtonStates();
+                    }
+                }
+                else
+                {
+                    Utilities.NotifyDeviceNotConnected();
+                }
             }
+            
 
         }
         private async Task WriteFansEnablesAsync(CancellationToken cancellationToken)
