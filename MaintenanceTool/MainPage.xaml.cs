@@ -116,6 +116,9 @@ namespace MaintenanceToolECSBOX
                 case NotifyType.ErrorMessage:
                     StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Red);
                     break;
+                case NotifyType.WarningMessage:
+                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Yellow);
+                    break;
             }
 
             StatusBlock.Text = strMessage;
@@ -159,6 +162,7 @@ namespace MaintenanceToolECSBOX
     public enum NotifyType
     {
         StatusMessage,
+        WarningMessage,
         ErrorMessage
     };
 }

@@ -156,16 +156,18 @@ namespace MaintenanceToolProtocol
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
-        public Byte[] CreateSetpointtFlapperValveMessage(Byte[] p)
+        public Byte[] CreateSetpointFlapperValveMessage(Byte[] p)
         {
 
             buffer = new Byte[64];
             buffer.Initialize();
-            local_buffer = new byte[3];
+            message64 = Buffer64BytesHandler.Message64;
+            message64.header.task = Commands.SetPointFlapperValve;
+            local_buffer = new byte[2];
             local_buffer = p;
             var sizeMessage = Marshal.SizeOf(singleTaskCommand);
             Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(message64.header), 0, buffer, 0, sizeMessage);
-            Buffer.BlockCopy(local_buffer, 0, buffer, sizeMessage, 3);
+            Buffer.BlockCopy(local_buffer, 0, buffer, sizeMessage, 2);
             return buffer;
 
         }

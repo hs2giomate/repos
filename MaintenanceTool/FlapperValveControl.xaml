@@ -163,8 +163,8 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock x:Name="Tremperaturelabel3" Text="Minimun Fresh Air" TextAlignment="Left" Grid.ColumnSpan="1" FontSize="14" />
                                                 <TextBlock x:Name="switchNumber3" Text="    3    " TextAlignment="Center" FontSize="14" Grid.Column="1"  />
-                                                <TextBlock x:Name="PressedLabel3" Text="   Pressed   " TextAlignment="Center" FontSize="14" Grid.Column="2"  />
-                                                <TextBlock x:Name="dummy2" Text="123456789" TextAlignment="Center" FontSize="14" Grid.Column="3" Opacity="0" AllowDrop="True"  />
+                                                <TextBlock x:Name="PressedLabel3" Text="   Pressed   " TextAlignment="Center" FontSize="14" Grid.Column="2" Canvas.ZIndex="1"  />
+                                                <TextBlock x:Name="dummy2" Text="123456789" TextAlignment="Center" FontSize="14" Grid.Column="3" Opacity="0" AllowDrop="True" Canvas.ZIndex="1"  />
                                                 <Border x:Name="LimitSwitchBorder3" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="{Binding ActualWidth, ElementName=switchNumber1, Mode=OneWay}" />
 
 

@@ -45,7 +45,7 @@ namespace MaintenanceToolECSBOX
 
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
-        private Boolean IsWriteTaskPending;
+        private Boolean IsWriteTaskPending,request_sucess,read_request_succes;
         DataWriter DataWriteObject = null;
         private Boolean IsNavigatedAway;
         private static Byte[] received, toSend;
@@ -337,10 +337,10 @@ namespace MaintenanceToolECSBOX
 
                     ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);
                     IsWriteTaskPending = true;
-                    using (DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream))
-                    {
+                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                    
                         await WriteAsync(WriteCancellationTokenSource.Token);
-                    }
+                    
                    
                     //UpdateWriteButtonStates();
                     
@@ -351,17 +351,28 @@ namespace MaintenanceToolECSBOX
                 catch (OperationCanceledException /*exception*/)
                 {
                     NotifyWriteTaskCanceled();
+                    IsWriteTaskPending = false;
                 }
                 catch (Exception exception)
                 {
                     MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
                     Debug.WriteLine(exception.Message.ToString());
+                    IsWriteTaskPending = false;
                 }
                 finally
                 {
                     IsWriteTaskPending = false;
-                    DataWriteObject.DetachStream();
-                    DataWriteObject = null;
+                    try
+                    {
+                        DataWriteObject.DetachStream();
+                    }
+                    catch (Exception ex)
+                    {
+                        rootPage.NotifyUser(ex.Message.ToString(), NotifyType.ErrorMessage);
+                        //  throw;
+                    }
+                   
+                    DataWriteObject.Dispose();
 
                    // UpdateWriteButtonStates();
                 }
@@ -375,10 +386,16 @@ namespace MaintenanceToolECSBOX
 
         private async Task GetStoredOffsetValue()
         {
+            request_sucess = false;
             Task query = QueryParametersValues();
             await query;
-            Task ro = ReadOffsetValue();
-            await ro;
+            if (request_sucess)
+            {
+                read_request_succes = false;
+                Task ro = ReadOffsetValue();
+                await ro;
+            }
+          
 
         }
         private async Task QueryParametersValues()
@@ -422,10 +439,19 @@ namespace MaintenanceToolECSBOX
                     finally
                     {
                         IsWriteTaskPending = false;
-                        DataWriteObject.DetachStream();
-                        DataWriteObject = null;
+                        try
+                        {
+                            DataWriteObject.DetachStream();
+                        }
+                        catch (Exception ex)
+                        {
+                            rootPage.NotifyUser(ex.Message.ToString(), NotifyType.ErrorMessage);
+                            // throw;
+                        }
+                       
+                        DataWriteObject.Dispose();
                         rootPage.NotifyUser("Write succesfully ", NotifyType.StatusMessage);
-
+                        request_sucess = true;
                         // UpdateWriteButtonStates();
                     }
                 }
@@ -500,6 +526,7 @@ namespace MaintenanceToolECSBOX
                 DataReaderObject.ReadBytes(received);
                 magicHeader = BitConverter.ToUInt32(received, 0);
                 rootPage.NotifyUser("Minimun Air values were read ", NotifyType.StatusMessage);
+                read_request_succes = true;
 
             }
            
@@ -520,9 +547,18 @@ namespace MaintenanceToolECSBOX
             ResetWriteCancellationTokenSource();
             IsWriteTaskPending = false;
             await GetStoredOffsetValue();
-            DecodeInputValues();
+            if (read_request_succes)
+            {
+                DecodeInputValues();
+                return minimunValid;
+            }
+            else
+            {
+                return 0xff;
+            }
             
-            return minimunValid;
+            
+            
 
         }
 
@@ -732,9 +768,18 @@ namespace MaintenanceToolECSBOX
                         finally
                         {
                             IsReadTaskPending = false;
-                            DataReaderObject.DetachStream();
-                            DataReaderObject = null;
+                            try
+                            {
+                                DataReaderObject.DetachStream();
+                            }
+                            catch (Exception e)
+                            {
+                                rootPage.NotifyUser(e.Message.ToString(), NotifyType.ErrorMessage);
+                                //throw;
+                            }
 
+                            DataReaderObject.Dispose();
+                            
                             //  UpdateReadButtonStates();
                             // UpdateAllToggleBits();
                         }

@@ -43,7 +43,7 @@ namespace MaintenanceToolECSBOX
         private CancellationTokenSource ReadCancellationTokenSource, WriteCancellationTokenSource;
         private Object ReadCancelLock = new Object();
         private uint fan_id;
-        private Boolean IsReadTaskPending,request_started;
+        private Boolean IsReadTaskPending,request_succes, read_request_succes;
         private Boolean[] isToggleON = new Boolean[3];
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
@@ -229,24 +229,33 @@ namespace MaintenanceToolECSBOX
             if (!beingManipulated)
             {
                 updatingdata = true;
-         
-               
+
+                request_succes = false;
                 await RequestStatus();
-                await ReadFansData();
+                if (request_succes)
+                {
+                    read_request_succes = false;
+                    await ReadFansData();
+                    if (read_request_succes)
+                    {
+                        for (int i = 0; i < NUMBER_OF_FANS; i++)
+                        {
+                            listOfDials[i].IsEnabled = false;
+                        }
+
+                        UpdateFansView();
+                        Get_Fans_Display();
+                        for (int i = 0; i < NUMBER_OF_FANS; i++)
+                        {
+                            listOfDials[i].IsEnabled = true;
+                        }
+                        updatingdata = false;
+                    }
+                }
+               
                 //  EnableValve.IsEnabled = true;
 
-                for (int i = 0; i < NUMBER_OF_FANS; i++)
-                {
-                    listOfDials[i].IsEnabled = false;
-                }
-
-                UpdateFansView();
-                Get_Fans_Display();
-                for (int i = 0; i < NUMBER_OF_FANS; i++)
-                {
-                    listOfDials[i].IsEnabled = true;
-                }
-                updatingdata = false;
+                
             }
 
             // EnableValve.IsEnabled = false;
@@ -440,6 +449,7 @@ namespace MaintenanceToolECSBOX
             {
                 DataReaderObject.ReadBytes(received);
                 magicHeader = BitConverter.ToUInt32(received, 0);
+                read_request_succes = true;
 
 
 
@@ -522,6 +532,10 @@ namespace MaintenanceToolECSBOX
             }
 
             UInt32 bytesWritten = await storeAsyncTask;
+            if (bytesWritten>0)
+            {
+                request_succes = true;
+            }
             rootPage.NotifyUser("Request Completed  ", NotifyType.StatusMessage);
 
 
@@ -785,6 +799,7 @@ namespace MaintenanceToolECSBOX
                 if (IsPerformingRead())
                 {
                     CancelReadTask();
+                    rootPage.NotifyUser("Cancelling read: " , NotifyType.WarningMessage);
                 }
                 if (EventHandlerForDevice.Current.IsDeviceConnected)
                 {
