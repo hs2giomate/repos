@@ -41,25 +41,27 @@ namespace MaintenanceToolECSBOX
     {
         private MainPage rootPage = MainPage.Current;
         private static HeaterOperation handler;
+        private const int NUMBER_OF_HEATERS = 2;
+        private const int NUMBER_OF_RELAYS = 4;
         // Track Read Operation
         private CancellationTokenSource ReadCancellationTokenSource;
         private Object ReadCancelLock = new Object();
 
         private Boolean IsReadTaskPending;
-        private Boolean[] isToggleON=new Boolean[4];
+        private Boolean[] isToggleON=new Boolean[NUMBER_OF_HEATERS* NUMBER_OF_RELAYS];
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
-        public Byte RelaysStatus = 0xff;
+        private Byte[] relays_status;
         private ObservableCollection<ToggleSwitch> listOfToggles;
         public ObservableCollection<TextBlock> listOfTextBlocks;
         public ObservableCollection<Border> listOfBorders;
-        public ObservableCollection<Windows.UI.Xaml.Shapes.Ellipse> listOfEllipses;
+        public ObservableCollection<Windows.UI.Xaml.Shapes.Ellipse> listOfEllipses,listOfOvertemperatures;
         public ObservableCollection<AnimationSet> listOfDarkAnimations,listOfLightAnimations;
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
-        private Boolean IsWriteTaskPending;
+        private Boolean IsWriteTaskPending,request_sucess,read_request_success;
         DataWriter DataWriteObject = null;
-        private Boolean IsNavigatedAway;
+        private Boolean IsNavigatedAway,updating_toogles_view;
         private static Byte[] received, toSend;
         private static Byte heaterRelaysCommand,lastRelaysCommand;
         private uint readBufferLength;
@@ -68,9 +70,9 @@ namespace MaintenanceToolECSBOX
         private static System.Timers.Timer aTimer = null;
         private int sizeofStruct;
         private UInt32 magicHeader = 0;
-        private bool readingStatus=false;
+        private bool updatingStatus=false;
         private const int UPDATING_TIME = 3000;
-        private const int NUMBER_OF_HEATERS = 2;
+        
         private bool required_status=false;
         public HeaterOperation()
         {
@@ -78,6 +80,7 @@ namespace MaintenanceToolECSBOX
             handler = this;
             readBufferLength = 64;
             received = new byte[readBufferLength];
+            relays_status = new Byte[NUMBER_OF_HEATERS];
             heaterRelaysCommand = 0;
             sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
             listOfToggles=new ObservableCollection<ToggleSwitch>();
@@ -85,40 +88,66 @@ namespace MaintenanceToolECSBOX
             listOfToggles.Add(Relay2EnableToggle);
             listOfToggles.Add(Relay3EnableToggle);
             listOfToggles.Add(Relay4EnableToggle);
+            listOfToggles.Add(Relay1EnableToggle1);
+            listOfToggles.Add(Relay2EnableToggle1);
+            listOfToggles.Add(Relay3EnableToggle1);
+            listOfToggles.Add(Relay4EnableToggle1);
             listOfTextBlocks = new ObservableCollection<TextBlock>();
             listOfTextBlocks.Add(Relay1StatusText);
             listOfTextBlocks.Add(Relay2StatusText);
             listOfTextBlocks.Add(Relay3StatusText);
             listOfTextBlocks.Add(Relay4StatusText);
-            listOfBorders= new ObservableCollection<Border>();
+            listOfTextBlocks.Add(OvertemperautureText);
+            listOfTextBlocks.Add(Relay1StatusText1);
+            listOfTextBlocks.Add(Relay2StatusText1);
+            listOfTextBlocks.Add(Relay3StatusText1);
+            listOfTextBlocks.Add(Relay4StatusText1);
+            listOfTextBlocks.Add(OvertemperautureText1);
+            listOfBorders = new ObservableCollection<Border>();
             listOfBorders.Add(Relay1StatusBorder);
             listOfBorders.Add(Relay2StatusBorder);
             listOfBorders.Add(Relay3StatusBorder);
             listOfBorders.Add(Relay4StatusBorder);
+            listOfBorders.Add(Relay1StatusBorder1);
+            listOfBorders.Add(Relay2StatusBorder1);
+            listOfBorders.Add(Relay3StatusBorder1);
+            listOfBorders.Add(Relay4StatusBorder1);
             listOfEllipses = new ObservableCollection<Ellipse>();
             listOfEllipses.Add(Relay1FaultSignal);
             listOfEllipses.Add(Relay2FaultSignal);
             listOfEllipses.Add(Relay3FaultSignal);
             listOfEllipses.Add(Relay4FaultSignal);
+            listOfEllipses.Add(OverTemperatureFaultSignal);
+            listOfEllipses.Add(Relay1FaultSignal1);
+            listOfEllipses.Add(Relay2FaultSignal1);
+            listOfEllipses.Add(Relay3FaultSignal1);
+            listOfEllipses.Add(Relay4FaultSignal1);
+                     
+            listOfEllipses.Add(OverTemperatureFaultSignal1);
             listOfDarkAnimations = new ObservableCollection<AnimationSet>();
             listOfLightAnimations = new ObservableCollection<AnimationSet>();
             for (int j = 0; j < NUMBER_OF_HEATERS; j++)
             {
-                for (int i = 5*j; i < 4+5*j; i++)
+                for (int i = 5*j; i < 5*(1+j); i++)
                 {
                     listOfDarkAnimations.Add(listOfEllipses[i].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
                     listOfLightAnimations.Add(listOfEllipses[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
                 }
-                listOfDarkAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
-                listOfLightAnimations.Add(OverTemperatureFaultSignal.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
-                listOfDarkAnimations[4+5*j].Completed += FaultDarkAnimation_Completed;
-                listOfLightAnimations[4+5*j].Completed += FaultLighAnimation_Completed;
-                for (int i = 5*j; i < 5*(1+j); i++)
-                {
-                    blink = listOfDarkAnimations[i].StartAsync();
-                }
-            }        
-            
+              //  listOfDarkAnimations.Add(listOfOvertemperatures[j].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+              //  listOfLightAnimations.Add(listOfOvertemperatures[j].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
+              
+             
+               
+
+            }
+            listOfDarkAnimations[listOfDarkAnimations.Count].Completed += FaultDarkAnimation_Completed;
+            listOfLightAnimations[listOfLightAnimations.Count].Completed += FaultLighAnimation_Completed;
+
+            foreach  (AnimationSet an in listOfDarkAnimations) {
+                an.StartAsync();
+            }
+           
+           
         }
         protected  override void OnNavigatedTo(NavigationEventArgs eventArgs)
         {
@@ -173,7 +202,7 @@ namespace MaintenanceToolECSBOX
         }
         private void FaultLighAnimation_Completed(object sender, AnimationSetCompletedEventArgs e)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
               blink=  listOfDarkAnimations[i].StartAsync();
             }
@@ -186,7 +215,7 @@ namespace MaintenanceToolECSBOX
         {
 
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
               blink=  listOfLightAnimations[i].StartAsync();
             }
@@ -217,14 +246,24 @@ namespace MaintenanceToolECSBOX
         }
         public  async void UpdateDataRelayStatus()
         {
-            readingStatus = true;
+            updatingStatus = true;
+            request_sucess = false;
             await RequestRelayStatus();
-            await ReadRelaysStatus();
-            if (magicHeader.Equals(Commands.reverseMagic))
+            if (request_sucess)
             {
-              await  UpdateViewRelayStatus();
+                read_request_success = false;
+                await ReadRelaysStatus();
+                if (read_request_success)
+                {
+                    if (magicHeader.Equals(Commands.reverseMagic))
+                    {
+                        await UpdateViewRelayStatus();
+                    }
+                }
             }
-            readingStatus = false;
+           
+           
+            updatingStatus = false;
         }
 
     
@@ -258,112 +297,138 @@ namespace MaintenanceToolECSBOX
         {
             return (IsReadTaskPending);
         }
+    
         private async Task RequestRelayStatus()
         {
-            required_status = (heaterRelaysCommand > 0);
-            if (required_status)
+            if (IsPerformingWrite())
             {
- 
+                rootPage.NotifyUser("already reading heaters...", NotifyType.WarningMessage);
+            }
+            else
+            {
+                
                 if (IsPerformingRead())
                 {
                     CancelReadTask();
+                    rootPage.NotifyUser("Read task cancelled...", NotifyType.WarningMessage);
+                    required_status = (heaterRelaysCommand > 0);
+                    if (required_status)
+                    {
+
+                       
+                    }
+                    else
+                    {
+                        return;
+                    }
+
                 }
-            }
-            else
-            {
-                if (IsPerformingWrite())
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
                 {
-                    return;
+                    try
+                    {
+                        rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
+
+                        // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
+                        // update the button states until after the write completes.
+                        IsWriteTaskPending = true;
+                        DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                        //UpdateWriteButtonStates();
+
+                        await SendrequestStatusAsync(WriteCancellationTokenSource.Token);
+                    }
+                    catch (OperationCanceledException /*exception*/)
+                    {
+                        NotifyWriteTaskCanceled();
+                    }
+                    catch (Exception exception)
+                    {
+                        MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                        Debug.WriteLine(exception.Message.ToString());
+                    }
+                    finally
+                    {
+                        IsWriteTaskPending = false;
+                        DataWriteObject.DetachStream();
+                        DataWriteObject = null;
+
+                        // UpdateWriteButtonStates();
+                    }
                 }
                 else
                 {
-                    if (IsPerformingRead())
-                    {
-                        CancelReadTask();
-                        return;
-                    }
+                    Utilities.NotifyDeviceNotConnected();
                 }
-                
-            }
-         
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
-            {
-                try
-                {
-                    rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
 
-                    // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
-                    // update the button states until after the write completes.
-                    IsWriteTaskPending = true;
-                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    //UpdateWriteButtonStates();
 
-                    await SendrequestStatusAsync(WriteCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyWriteTaskCanceled();
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsWriteTaskPending = false;
-                    DataWriteObject.DetachStream();
-                    DataWriteObject = null;
 
-                   // UpdateWriteButtonStates();
-                }
             }
-            else
-            {
-                Utilities.NotifyDeviceNotConnected();
-            }
+           
         }
 
         private async Task ReadRelaysStatus()
         {
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            if (IsPerformingWrite())
             {
-                try
-                {
-                    rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
-                    // update the button states until after the read completes.
-                    IsReadTaskPending = true;
-                    DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
-                   // UpdateReadButtonStates();
-
-                    await ReadStatusAsync(ReadCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyReadTaskCanceled();
-                    Debug.WriteLine("ReadOperation cancelled");
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsReadTaskPending = false;
-                    DataReaderObject.DetachStream();
-                    DataReaderObject = null;
-
-                   // UpdateReadButtonStates();
-                    // UpdateAllToggleBits();
-                }
+                rootPage.NotifyUser("busy on writting data...", NotifyType.StatusMessage);
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (IsPerformingRead())
+                {
+                    CancelReadTask();
+                    rootPage.NotifyUser("Cancelling reading task...", NotifyType.WarningMessage);
+                    required_status = (heaterRelaysCommand > 0);
+                    if (required_status)
+                    {
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
+                {
+                    try
+                    {
+                        rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
+
+                        // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
+                        // update the button states until after the read completes.
+                        IsReadTaskPending = true;
+                        DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
+                        // UpdateReadButtonStates();
+
+                        await ReadStatusAsync(ReadCancellationTokenSource.Token);
+                    }
+                    catch (OperationCanceledException /*exception*/)
+                    {
+                        NotifyReadTaskCanceled();
+                        Debug.WriteLine("ReadOperation cancelled");
+                    }
+                    catch (Exception exception)
+                    {
+                        MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                        Debug.WriteLine(exception.Message.ToString());
+                    }
+                    finally
+                    {
+                        IsReadTaskPending = false;
+                        DataReaderObject.DetachStream();
+                        DataReaderObject = null;
+
+                        // UpdateReadButtonStates();
+                        // UpdateAllToggleBits();
+                    }
+                }
+                else
+                {
+                    Utilities.NotifyDeviceNotConnected();
+                }
             }
+           
 
         }
         private async Task ReadStatusAsync(CancellationToken cancellationToken)
@@ -392,6 +457,7 @@ namespace MaintenanceToolECSBOX
 
                 DataReaderObject.ReadBytes(received);
                 magicHeader = BitConverter.ToUInt32(received, 0);
+                read_request_success = true;
 
                          
 
@@ -468,6 +534,10 @@ namespace MaintenanceToolECSBOX
                 }
 
                 UInt32 bytesWritten = await storeAsyncTask;
+                if (bytesWritten>0)
+                {
+                   request_sucess = true;
+                }
                 rootPage.NotifyUser("Request Completed - " + bytesWritten.ToString() + " bytes written", NotifyType.StatusMessage);
     
 
@@ -525,122 +595,144 @@ namespace MaintenanceToolECSBOX
         }
         private async Task UpdateViewRelayStatus()
         {
-            if (magicHeader.Equals(Commands.reverseMagic))
+            if (IsPerformingWrite())
             {
 
-                //   ParametersStruct receivedParameters = new ParametersStruct();
-                //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
-                RelaysStatus = received[6];
-                await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-               new DispatchedHandler(async () => {
-                       UpdateToggles();
-                   await   UpdateFaultStatusSignal();
-                      UpdateRelayStatusText();
-               }));
             }
+            else {
+               
+
+                    //   ParametersStruct receivedParameters = new ParametersStruct();
+                    //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
+                    
+                    await rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
+                   new DispatchedHandler(async () => {
+                       await Update_Heaters_View();
+                   }));
+               
+            }
+           
          
+        }
+        private async Task Update_Heaters_View()
+        {
+            UpdateToggles();
+            await UpdateFaultStatusSignal();
+            UpdateRelayStatusText();
         }
         private  void UpdateRelayStatusText()
         {
-            
-            if ((RelaysStatus & (Byte)(0x01)) == 0)
+            for (int j = 0; j < NUMBER_OF_HEATERS; j++)
             {
-                OvertemperautureText.Text = "Fault";
-                for (int i = 0; i < 4; i++)
+                relays_status[j] = received[7+j*2];
+                if ((relays_status[j] & (Byte)(0x01)) == 0)
                 {
-                    listOfTextBlocks[i].Text = "Off";
-                }
-            }
-            else
-            {
-
-                OvertemperautureText.Text = "OK";
-                for (int i = 0; i < 4; i++)
-                {
-                    if ((RelaysStatus & (Byte)(0x10 >> i)) == 0)
+                    listOfTextBlocks[4+5*j].Text = "Fault";
+                    for (int i = 5*j; i < 4+5*j; i++)
                     {
-                        listOfTextBlocks[i].Text = "Fault";
+                        listOfTextBlocks[i].Text = "Off";
                     }
-                    else
-                    {
+                }
+                else
+                {
 
-                        if (isToggleON[i])
+                    listOfTextBlocks[4+5*j].Text = "OK";
+                    for (int i = 4*j; i < 4*(1+j); i++)
+                    {
+                        if ((relays_status[j] & (Byte)(0x10 >> i)) == 0)
                         {
-                            listOfTextBlocks[i].Text = "Heating";
+                            listOfTextBlocks[i+j].Text = "Fault";
                         }
                         else
                         {
-                            listOfTextBlocks[i].Text = "Off";
-                        }
-                    }
 
+                            if (listOfToggles[i].IsOn)
+                            {
+                                listOfTextBlocks[i].Text = "Heating";
+                            }
+                            else
+                            {
+                                listOfTextBlocks[i].Text = "Off";
+                            }
+                        }
+
+                    }
                 }
             }
+
+           
 
 
         }
         private   void UpdateToggles()
         {
-            
-                   for (int i = 0; i < 4; i++)
-                   {
-                       if ((received[7]&(0x01<<i))>0)
-                       {
-                           listOfToggles[i].IsOn=false;
-                       }
-                       else
-                       {
-                           listOfToggles[i].IsOn = true;
-                       }
-                       isToggleON[i] = listOfToggles[i].IsOn;
-                   }
+            updating_toogles_view = true;
+            for (int j = 0; j < NUMBER_OF_HEATERS; j++)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if ((received[6+2*j] & (0x01 << i)) > 0)
+                    {
+                        listOfToggles[i].IsOn = false;
+                    }
+                    else
+                    {
+                        listOfToggles[i].IsOn = true;
+                    }
+                    isToggleON[i] = listOfToggles[i].IsOn;
+                }
+            }
+               
+            updating_toogles_view = false;
               
         }
         private async Task UpdateFaultStatusSignal()
         {
-            
-            if ((RelaysStatus & (Byte)(0x01)) == 0)
+            for (int j = 0; j < NUMBER_OF_HEATERS; j++)
             {
-                OverTemperatureFaultSignal.Visibility = Visibility.Visible;
-                for (int i = 0; i < 4; i++)
+                if ((received[7+2*j] & (Byte)(0x01)) == 0)
                 {
-                    listOfBorders[i].Visibility = Visibility.Collapsed;
-                }
-            }
-            else
-            {
-
-                OverTemperatureFaultSignal.Visibility = Visibility.Collapsed;
-                for (int i = 0; i < 4; i++)
-                {
-                    if ((RelaysStatus & (Byte)(0x10 >> i)) == 0)
+                    listOfEllipses[4+5*j].Visibility = Visibility.Visible;
+                    for (int i = 5*j; i < 4+5*j; i++)
                     {
-                        listOfBorders[i].Visibility = Visibility.Collapsed;
-                        listOfEllipses[i].Visibility = Visibility.Visible;
-                        //  blink = faultDarkAnimation.StartAsync();
+                        listOfBorders[i+4*j].Visibility = Visibility.Collapsed;
                     }
-                    else
+                }
+                else
+                {
+
+                    listOfEllipses[4+5*j].Visibility = Visibility.Collapsed;
+                    for (int i = j; i < 4+5*j; i++)
                     {
-                        //  await StopFadingRelay1();
-                        if (blink != null)
+                        if ((relays_status[j] & (Byte)(0x10 >> i)) == 0)
                         {
-                            await blink;
-                        }
-
-
-                        if (isToggleON[i])
-                        {
-                            listOfBorders[i].Visibility = Visibility.Visible;
-                            listOfEllipses[i].Visibility = Visibility.Collapsed;
+                            listOfBorders[i].Visibility = Visibility.Collapsed;
+                            listOfEllipses[i].Visibility = Visibility.Visible;
+                            //  blink = faultDarkAnimation.StartAsync();
                         }
                         else
                         {
-                            listOfBorders[i].Visibility = Visibility.Collapsed;
-                            listOfEllipses[i].Visibility = Visibility.Collapsed;
+                            //  await StopFadingRelay1();
+                            if (blink != null)
+                            {
+                                await blink;
+                            }
 
+
+                            if (listOfToggles[i+4*j].IsOn)
+                            {
+                                listOfBorders[i+4*j].Visibility = Visibility.Visible;
+                                listOfEllipses[i+5*j].Visibility = Visibility.Collapsed;
+                            }
+                            else
+                            {
+                                listOfBorders[i+4*j].Visibility = Visibility.Collapsed;
+                                listOfEllipses[i+5*j].Visibility = Visibility.Collapsed;
+
+                            }
                         }
-                    }
 
+                    }
                 }
             }
 
@@ -733,89 +825,25 @@ namespace MaintenanceToolECSBOX
 
         private  async void Relay1EnableToggle_Toggled(object sender, RoutedEventArgs e)
         {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay1EnableToggle.IsOn)
-            {
-
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x01);
-            }
-            else
-            {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfe);
-            }
-            if (!readingStatus)
-            {
-                if (heaterRelaysCommand != lastRelaysCommand)
-                {
-                    await WriteAsyncHeatersEnables();
-                }
-            }
+          await   Handle_Toogles(0);
            
         }
 
         private async void Relay2Enable1Toggle_Toggled(object sender, RoutedEventArgs e)
         {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay2EnableToggle.IsOn)
-            {
-
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x02);
-            }
-            else
-            {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfd);
-            }
-            if (!readingStatus)
-            {
-                if (heaterRelaysCommand != lastRelaysCommand)
-                {
-                    await WriteAsyncHeatersEnables();
-                }
-            }
+            await Handle_Toogles(1);
         }
 
 
 
         private async void Relay3HeaterEnable_Toggled(object sender, RoutedEventArgs e)
         {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay3EnableToggle.IsOn)
-            {
-
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x04);
-            }
-            else
-            {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xfb);
-            }
-            if (!readingStatus)
-            {
-                if (heaterRelaysCommand != lastRelaysCommand)
-                {
-                    await WriteAsyncHeatersEnables();
-                }
-            }
+            await Handle_Toogles(2);
         }
 
         private async void Relay4Enable1Toggle_Toggled(object sender, RoutedEventArgs e)
         {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay4EnableToggle.IsOn)
-            {
-
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x08);
-            }
-            else
-            {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xf7);
-            }
-            if (!readingStatus)
-            {
-                if (heaterRelaysCommand != lastRelaysCommand)
-                {
-                    await WriteAsyncHeatersEnables();
-                }
-            }
+            await Handle_Toogles(3);
         }
 
         private void CancelWriteTask()
@@ -835,88 +863,53 @@ namespace MaintenanceToolECSBOX
             }
         }
 
-        private async  void Relay1EnableToggle1_Toggled(object sender, RoutedEventArgs e)
+        private async Task Handle_Toogles(int i)
         {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay1EnableToggle.IsOn)
+            if (!updating_toogles_view)
+            {
+                lastRelaysCommand = heaterRelaysCommand;
+            }
+
+            if (listOfToggles[i].IsOn)
             {
 
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x10);
+                heaterRelaysCommand = (Byte)(lastRelaysCommand | (0x01<<i));
             }
             else
             {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xef);
+                heaterRelaysCommand = (Byte)(lastRelaysCommand & (~(0x01<<i)));
             }
-            if (!readingStatus)
+            if (!updatingStatus)
             {
                 if (heaterRelaysCommand != lastRelaysCommand)
                 {
-                    await WriteAsyncHeatersEnables();
+                    if (!updating_toogles_view)
+                    {
+                        await WriteAsyncHeatersEnables();
+                    }
+
                 }
             }
+        }
+
+        private async  void Relay1EnableToggle1_Toggled(object sender, RoutedEventArgs e)
+        {
+            await Handle_Toogles(4);
         }
 
         private async void Relay2EnableToggle1_Toggled(object sender, RoutedEventArgs e)
         {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay2EnableToggle.IsOn)
-            {
-
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x20);
-            }
-            else
-            {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xdf);
-            }
-            if (!readingStatus)
-            {
-                if (heaterRelaysCommand != lastRelaysCommand)
-                {
-                    await WriteAsyncHeatersEnables();
-                }
-            }
+            await Handle_Toogles(5);
         }
 
         private async void Relay3EnableToggle1_Toggled(object sender, RoutedEventArgs e)
         {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay3EnableToggle.IsOn)
-            {
-
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x40);
-            }
-            else
-            {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0xbf);
-            }
-            if (!readingStatus)
-            {
-                if (heaterRelaysCommand != lastRelaysCommand)
-                {
-                    await WriteAsyncHeatersEnables();
-                }
-            }
+            await Handle_Toogles(6);
         }
 
         private async void Relay4EnableToggle1_Toggled(object sender, RoutedEventArgs e)
         {
-            lastRelaysCommand = heaterRelaysCommand;
-            if (Relay4EnableToggle.IsOn)
-            {
-
-                heaterRelaysCommand = (Byte)(lastRelaysCommand | 0x80);
-            }
-            else
-            {
-                heaterRelaysCommand = (Byte)(lastRelaysCommand & 0x7f);
-            }
-            if (!readingStatus)
-            {
-                if (heaterRelaysCommand != lastRelaysCommand)
-                {
-                    await WriteAsyncHeatersEnables();
-                }
-            }
+            await Handle_Toogles(7);
         }
 
         private async void NotifyReadTaskCanceled()
