@@ -9,7 +9,7 @@
   <Identity
     Name="944f0614-2e21-4e92-98ff-79ab315cc298"
     Publisher="CN=GMateusDP"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="944f0614-2e21-4e92-98ff-79ab315cc298" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

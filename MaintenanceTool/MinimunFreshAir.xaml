@@ -368,7 +368,7 @@
                             </StackPanel>
                         </StackPanel>
                         <!--       Stand Alone -->
-                        <StackPanel x:Name="StandAlonePanel" Orientation="Vertical">
+                        <StackPanel x:Name="StandAlonePanel" Orientation="Vertical" Margin="0,20,0,0">
                             <StackPanel x:Name="StackOffsetValue1" Orientation="Horizontal" Margin="10,10,0,0" Grid.Row="1">
                                 <TextBlock x:Name="textMinimumfreshAirValue1" Text="Minimum Fresh Air Selectred  : " FontSize="16"/>
                                 <TextBlock x:Name="OffsetValueText1" Text=" Not Set" FontSize="16" TextAlignment="Center"  />

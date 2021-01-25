@@ -71,9 +71,9 @@ namespace MaintenanceToolECSBOX
         private int sizeofStruct;
         private UInt32 magicHeader = 0;
         private bool updatingStatus=false;
-        private const int UPDATING_TIME = 3000;
-        
+        private const int UPDATING_TIME = 1000;
         private bool required_status=false;
+
         public HeaterOperation()
         {
             this.InitializeComponent();
@@ -140,8 +140,8 @@ namespace MaintenanceToolECSBOX
                
 
             }
-            listOfDarkAnimations[listOfDarkAnimations.Count].Completed += FaultDarkAnimation_Completed;
-            listOfLightAnimations[listOfLightAnimations.Count].Completed += FaultLighAnimation_Completed;
+            listOfDarkAnimations[listOfDarkAnimations.Count-1].Completed += FaultDarkAnimation_Completed;
+            listOfLightAnimations[listOfLightAnimations.Count-1].Completed += FaultLighAnimation_Completed;
 
             foreach  (AnimationSet an in listOfDarkAnimations) {
                 an.StartAsync();
@@ -224,23 +224,20 @@ namespace MaintenanceToolECSBOX
         }
         private static async void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            // Debug.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
-            //  MaintenanceToolHandler.Current.SendAliveMessage();
-           
-           
-           
+            if (handler.IsPerformingWrite())
+            {
 
-                //   ParametersStruct receivedParameters = new ParametersStruct();
-                //   UserParameters p = receivedParameters.ConvertBytesParameters(received);
-               
-                //  Debug.WriteLine(string.Concat("Status received: ", RelaysStatus.ToString()));
-                //  ReadOffsetValueText.Text = String.Concat(ConvertOffsetToAngle(Offset).ToString("N0"), " °");
+            }
+            else
+            {
                 await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
-              new DispatchedHandler(() => {
-                  handler.UpdateDataRelayStatus();
-                  }));
+                             new DispatchedHandler(() => {
+                                 handler.UpdateDataRelayStatus();
+                             }));
 
-            
+            }
+
+
 
             aTimer.Start();
         }
@@ -327,7 +324,7 @@ namespace MaintenanceToolECSBOX
                 {
                     try
                     {
-                        rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
+                        rootPage.NotifyUser("Sendin request to Heaters...", NotifyType.StatusMessage);
 
                         // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
                         // update the button states until after the write completes.
@@ -349,8 +346,17 @@ namespace MaintenanceToolECSBOX
                     finally
                     {
                         IsWriteTaskPending = false;
-                        DataWriteObject.DetachStream();
-                        DataWriteObject = null;
+                        try
+                        {
+                            DataWriteObject.DetachStream();
+                        }
+                        catch (Exception e)
+                        {
+                            rootPage.NotifyUser(e.Message.ToString(), NotifyType.ErrorMessage);
+                            // throw;
+                        }
+                       
+                        DataWriteObject.Dispose();
 
                         // UpdateWriteButtonStates();
                     }
@@ -393,7 +399,7 @@ namespace MaintenanceToolECSBOX
                 {
                     try
                     {
-                        rootPage.NotifyUser("Reading Status...", NotifyType.StatusMessage);
+                        rootPage.NotifyUser("Reading Heater Status...", NotifyType.StatusMessage);
 
                         // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
                         // update the button states until after the read completes.
@@ -406,7 +412,7 @@ namespace MaintenanceToolECSBOX
                     catch (OperationCanceledException /*exception*/)
                     {
                         NotifyReadTaskCanceled();
-                        Debug.WriteLine("ReadOperation cancelled");
+                       // Debug.WriteLine("ReadOperation cancelled");
                     }
                     catch (Exception exception)
                     {
@@ -416,8 +422,17 @@ namespace MaintenanceToolECSBOX
                     finally
                     {
                         IsReadTaskPending = false;
-                        DataReaderObject.DetachStream();
-                        DataReaderObject = null;
+                        try
+                        {
+                            DataReaderObject.DetachStream();
+                        }
+                        catch (Exception e)
+                        {
+                            rootPage.NotifyUser(e.Message.ToString(), NotifyType.ErrorMessage);
+                            // throw;
+                        }
+                       
+                        DataReaderObject.Dispose();
 
                         // UpdateReadButtonStates();
                         // UpdateAllToggleBits();
@@ -478,9 +493,6 @@ namespace MaintenanceToolECSBOX
                 toSend.Initialize();
                 Protocol.Message.CreateEnableHeatersMessage(heaterRelaysCommand).CopyTo(toSend, 0);
 
-           //     ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);
-
-          //      Byte[] toSend2 = Encoding.ASCII.GetBytes("abcd<Gf");
 
                 DataWriteObject.WriteBytes(toSend);
 
@@ -624,7 +636,7 @@ namespace MaintenanceToolECSBOX
         {
             for (int j = 0; j < NUMBER_OF_HEATERS; j++)
             {
-                relays_status[j] = received[7+j*2];
+                relays_status[j] = received[6+j*2];
                 if ((relays_status[j] & (Byte)(0x01)) == 0)
                 {
                     listOfTextBlocks[4+5*j].Text = "Fault";
@@ -639,7 +651,7 @@ namespace MaintenanceToolECSBOX
                     listOfTextBlocks[4+5*j].Text = "OK";
                     for (int i = 4*j; i < 4*(1+j); i++)
                     {
-                        if ((relays_status[j] & (Byte)(0x10 >> i)) == 0)
+                        if ((relays_status[j] & (Byte)(0x10 >> (i-4*j))) == 0)
                         {
                             listOfTextBlocks[i+j].Text = "Fault";
                         }
@@ -648,11 +660,11 @@ namespace MaintenanceToolECSBOX
 
                             if (listOfToggles[i].IsOn)
                             {
-                                listOfTextBlocks[i].Text = "Heating";
+                                listOfTextBlocks[i+j].Text = "Heating";
                             }
                             else
                             {
-                                listOfTextBlocks[i].Text = "Off";
+                                listOfTextBlocks[i+j].Text = "Off";
                             }
                         }
 
@@ -671,13 +683,13 @@ namespace MaintenanceToolECSBOX
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    if ((received[6+2*j] & (0x01 << i)) > 0)
+                    if ((received[7+2*j] & (0x01 << i)) > 0)
                     {
-                        listOfToggles[i].IsOn = false;
+                        listOfToggles[i+4*j].IsOn = false;
                     }
                     else
                     {
-                        listOfToggles[i].IsOn = true;
+                        listOfToggles[i+4*j].IsOn = true;
                     }
                     isToggleON[i] = listOfToggles[i].IsOn;
                 }
@@ -690,24 +702,24 @@ namespace MaintenanceToolECSBOX
         {
             for (int j = 0; j < NUMBER_OF_HEATERS; j++)
             {
-                if ((received[7+2*j] & (Byte)(0x01)) == 0)
+                if ((received[6+2*j] & (Byte)(0x01)) == 0)
                 {
                     listOfEllipses[4+5*j].Visibility = Visibility.Visible;
-                    for (int i = 5*j; i < 4+5*j; i++)
+                    for (int i = 4*j; i < 4*(j+1); i++)
                     {
-                        listOfBorders[i+4*j].Visibility = Visibility.Collapsed;
+                        listOfBorders[i].Visibility = Visibility.Collapsed;
                     }
                 }
                 else
                 {
 
                     listOfEllipses[4+5*j].Visibility = Visibility.Collapsed;
-                    for (int i = j; i < 4+5*j; i++)
+                    for (int i = 4*j; i < 4*(j+1); i++)
                     {
-                        if ((relays_status[j] & (Byte)(0x10 >> i)) == 0)
+                        if ((received[6 + 2 * j] & (Byte)(0x10 >> (i-4*j))) == 0)
                         {
                             listOfBorders[i].Visibility = Visibility.Collapsed;
-                            listOfEllipses[i].Visibility = Visibility.Visible;
+                            listOfEllipses[i+j].Visibility = Visibility.Visible;
                             //  blink = faultDarkAnimation.StartAsync();
                         }
                         else
@@ -719,15 +731,15 @@ namespace MaintenanceToolECSBOX
                             }
 
 
-                            if (listOfToggles[i+4*j].IsOn)
+                            if (listOfToggles[i].IsOn)
                             {
-                                listOfBorders[i+4*j].Visibility = Visibility.Visible;
-                                listOfEllipses[i+5*j].Visibility = Visibility.Collapsed;
+                                listOfBorders[i].Visibility = Visibility.Visible;
+                                listOfEllipses[i+j].Visibility = Visibility.Collapsed;
                             }
                             else
                             {
-                                listOfBorders[i+4*j].Visibility = Visibility.Collapsed;
-                                listOfEllipses[i+5*j].Visibility = Visibility.Collapsed;
+                                listOfBorders[i].Visibility = Visibility.Collapsed;
+                                listOfEllipses[i+j].Visibility = Visibility.Collapsed;
 
                             }
                         }

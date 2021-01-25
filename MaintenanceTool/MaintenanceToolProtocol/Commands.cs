@@ -79,6 +79,11 @@ namespace MaintenanceToolProtocol
         public const char CommandFlapperValve = 'O';
         public const char SetPointFlapperValve = 'P';
         public const char ReadFansStatus = 'Q';
+        public const char ReadStatusScavenge = 'R';
+        public const char EnableScavenge = 'S';
+        public const char ReadStatusCompressor = 'T';
+        public const char EnableCompressor = 'U';
+        public const char SetpointCompressor = 'V';
         public const char Command = '>';
         public const char KeepConnected= '=';
         public const UInt32 Magic = 0x64636261;

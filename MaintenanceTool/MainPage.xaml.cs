@@ -117,7 +117,7 @@ namespace MaintenanceToolECSBOX
                     StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Red);
                     break;
                 case NotifyType.WarningMessage:
-                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.Yellow);
+                    StatusBorder.Background = new SolidColorBrush(Windows.UI.Colors.DarkOrange);
                     break;
             }
 

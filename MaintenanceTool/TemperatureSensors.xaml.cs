@@ -40,7 +40,7 @@ namespace MaintenanceToolECSBOX
         private CancellationTokenSource ReadCancellationTokenSource, WriteCancellationTokenSource;
         private Object ReadCancelLock = new Object();
 
-        private Boolean IsReadTaskPending;
+        private Boolean IsReadTaskPending,request_succes, read_request_succes;
         private Boolean[] isToggleON = new Boolean[3];
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
@@ -156,9 +156,19 @@ namespace MaintenanceToolECSBOX
         }
         public async void UpdateDataTemperatureValues()
         {
+            request_succes= false;
             await RequestTemperatureValues();
-            await ReadTemperaturesValues();
-             FillFloatArray();
+            if (request_succes)
+            {
+                read_request_succes = false;
+                await ReadTemperaturesValues();
+                if (read_request_succes)
+                {
+                    FillFloatArray();
+                }
+            }
+          
+             
 
 
         }
@@ -168,47 +178,69 @@ namespace MaintenanceToolECSBOX
         }
         private async Task RequestTemperatureValues()
         {
-            if (IsPerformingRead())
+            if (IsPerformingWrite())
             {
-                CancelReadTask();
-            }
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
-            {
-                try
-                {
-                    rootPage.NotifyUser("Reading Temperatures...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
-                    // update the button states until after the write completes.
-                    IsWriteTaskPending = true;
-                    DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
-                    Protocol.Message.CreateTemperatureRequestMessage().CopyTo(toSend, 0);
-                    //UpdateWriteButtonStates();
-
-                    await SendrequestTemperaturesAsync(WriteCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyWriteTaskCanceled();
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsWriteTaskPending = false;
-                    DataWriteObject.DetachStream();
-                    DataWriteObject = null;
-
-                    // UpdateWriteButtonStates();
-                }
+                rootPage.NotifyUser("already reading heaters...", NotifyType.WarningMessage);
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (IsPerformingRead())
+                {
+                      CancelReadTask();
+                    rootPage.NotifyUser("Cancelling reading task...", NotifyType.WarningMessage);
+                }
+                
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
+                {
+                    try
+                    {
+                        rootPage.NotifyUser("Reading Temperatures...", NotifyType.StatusMessage);
+
+                        // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
+                        // update the button states until after the write completes.
+                        IsWriteTaskPending = true;
+                        DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
+                        Protocol.Message.CreateTemperatureRequestMessage().CopyTo(toSend, 0);
+                        //UpdateWriteButtonStates();
+
+                        await SendrequestTemperaturesAsync(WriteCancellationTokenSource.Token);
+                    }
+                    catch (OperationCanceledException /*exception*/)
+                    {
+                        NotifyWriteTaskCanceled();
+                    }
+                    catch (Exception exception)
+                    {
+                        MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                        //  Debug.WriteLine(exception.Message.ToString());
+                    }
+                    finally
+                    {
+                        IsWriteTaskPending = false;
+                        try
+                        {
+                            DataWriteObject.DetachStream();
+                        }
+                        catch (Exception e)
+                        {
+                            rootPage.NotifyUser(e.Message.ToString(), NotifyType.ErrorMessage);
+                            // throw;
+                        }
+
+                        DataWriteObject.Dispose();
+
+                        // UpdateWriteButtonStates();
+                    }
+                }
+                else
+                {
+                    Utilities.NotifyDeviceNotConnected();
+                }
+                
             }
+
+            
+           
         }
         private async Task SendrequestTemperaturesAsync(CancellationToken cancellationToken)
         {
@@ -231,51 +263,79 @@ namespace MaintenanceToolECSBOX
             }
 
             UInt32 bytesWritten = await storeAsyncTask;
+            if (bytesWritten>0)
+            {
+                request_succes = true;
+            }
             rootPage.NotifyUser("Request Completed  " , NotifyType.StatusMessage);
 
 
         }
         private async Task ReadTemperaturesValues()
         {
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            if (IsPerformingWrite())
             {
-                try
-                {
-                    rootPage.NotifyUser("Reading Temperatures...", NotifyType.StatusMessage);
-
-                    // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
-                    // update the button states until after the read completes.
-                    IsReadTaskPending = true;
-                    DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
-                    // UpdateReadButtonStates();
-
-                    await ReaTemperaturesAsync(ReadCancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException /*exception*/)
-                {
-                    NotifyReadTaskCanceled();
-                    Debug.WriteLine("ReadOperation cancelled");
-                }
-                catch (Exception exception)
-                {
-                    MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
-                    Debug.WriteLine(exception.Message.ToString());
-                }
-                finally
-                {
-                    IsReadTaskPending = false;
-                    DataReaderObject.DetachStream();
-                    DataReaderObject = null;
-
-                    // UpdateReadButtonStates();
-                    // UpdateAllToggleBits();
-                }
+                rootPage.NotifyUser("busy on writting data...", NotifyType.StatusMessage);
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
-            }
+                if (IsPerformingRead())
+                {
 
+                    rootPage.NotifyUser("on reading...", NotifyType.WarningMessage);
+                }
+                else
+                {
+                    if (EventHandlerForDevice.Current.IsDeviceConnected)
+                    {
+                        try
+                        {
+                            rootPage.NotifyUser("Reading Temperatures...", NotifyType.StatusMessage);
+
+                            // We need to set this to true so that the buttons can be updated to disable the read button. We will not be able to
+                            // update the button states until after the read completes.
+                            IsReadTaskPending = true;
+                            DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
+                            // UpdateReadButtonStates();
+
+                            await ReaTemperaturesAsync(ReadCancellationTokenSource.Token);
+                        }
+                        catch (OperationCanceledException /*exception*/)
+                        {
+                            NotifyReadTaskCanceled();
+                            Debug.WriteLine("ReadOperation cancelled");
+                        }
+                        catch (Exception exception)
+                        {
+                            MainPage.Current.NotifyUser(exception.Message.ToString(), NotifyType.ErrorMessage);
+                            Debug.WriteLine(exception.Message.ToString());
+                        }
+                        finally
+                        {
+                            IsReadTaskPending = false;
+                            try
+                            {
+                                DataReaderObject.DetachStream();
+                            }
+                            catch (Exception e)
+                            {
+                                rootPage.NotifyUser(e.Message.ToString(), NotifyType.ErrorMessage);
+                                // throw;
+                            }
+
+                            DataReaderObject.Dispose();
+
+                            // UpdateReadButtonStates();
+                            // UpdateAllToggleBits();
+                        }
+                    }
+                    else
+                    {
+                        Utilities.NotifyDeviceNotConnected();
+                    }
+                }
+
+            }
         }
 
         private async Task ReaTemperaturesAsync(CancellationToken cancellationToken)
@@ -302,6 +362,7 @@ namespace MaintenanceToolECSBOX
             {
                 DataReaderObject.ReadBytes(received);
                 magicHeader = BitConverter.ToUInt32(received, 0);
+                read_request_succes = true;
                     
 
 
@@ -359,10 +420,17 @@ namespace MaintenanceToolECSBOX
         {
             // Debug.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
             //  MaintenanceToolHandler.Current.SendAliveMessage();
+            if (handler.IsPerformingWrite())
+            {
 
-        
+            }
+            else
+            {
                 await handler.rootPage.Dispatcher.RunAsync(CoreDispatcherPriority.High,
                  new DispatchedHandler(() => { handler.UpdateDataTemperatureValues(); }));
+            }
+        
+                
             refreshValueTimer.Start();
         }
         private async void NotifyReadCancelingTask()
@@ -382,7 +450,10 @@ namespace MaintenanceToolECSBOX
                     }
                 }));
         }
-
+        private Boolean IsPerformingWrite()
+        {
+            return (IsWriteTaskPending);
+        }
         private async void NotifyWriteCancelingTask()
         {
             // Setting the dispatcher priority to high allows the UI to handle disabling of all the buttons

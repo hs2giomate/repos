@@ -16,7 +16,15 @@ namespace MaintenanceToolProtocol
         public SingleTaskCommand header;
         public Byte description;
     }
-   
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct CompressorCompleteMessage
+    {
+
+        public Byte relay;
+        public UInt16 speed;
+        public Byte pressure;
+    }
+
 
     public class Protocol
     {
@@ -66,6 +74,22 @@ namespace MaintenanceToolProtocol
             CommandHeader datagram = new CommandHeader();
             SingleTaskCommand order = datagram.order;
             order.task = Commands.EnableHeaters;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = p;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, size);
+            return buffer;
+
+        }
+        public Byte[] CreateEnableScavengeMessage(Byte p)
+        {
+            var size = Marshal.SizeOf(singleTaskMessage);
+            buffer = new Byte[size];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.EnableScavenge;
             datagram.order = order;
             SingleTaskMessage m;
             m.header = order;
@@ -171,12 +195,57 @@ namespace MaintenanceToolProtocol
             return buffer;
 
         }
+        public Byte[] CreateCompressorMessage(Byte[] p)
+        {
+
+            buffer = new Byte[64];
+            buffer.Initialize();
+            message64 = Buffer64BytesHandler.Message64;
+            message64.header.task = Commands.EnableCompressor;
+            local_buffer = new byte[4];
+            local_buffer = p;
+            var sizeMessage = Marshal.SizeOf(singleTaskCommand);
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(message64.header), 0, buffer, 0, sizeMessage);
+            Buffer.BlockCopy(local_buffer, 0, buffer, sizeMessage, 4);
+            return buffer;
+
+        }
         public Byte[] CreateHeatersStatusRequestMessage()
         {           
             buffer = new Byte[sizeStruct];
             CommandHeader datagram = new CommandHeader();
             SingleTaskCommand order = datagram.order;
             order.task = Commands.ReadStatusHeaters;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = 0;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, sizeStruct);
+            return buffer;
+
+        }
+        public Byte[] CreateScavengeStatusRequestMessage()
+        {
+            buffer = new Byte[sizeStruct];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.ReadStatusScavenge;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = 0;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, sizeStruct);
+            return buffer;
+
+        }
+        public Byte[] CreateCompressorStatusRequestMessage()
+        {
+            buffer = new Byte[sizeStruct];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.ReadStatusCompressor;
             datagram.order = order;
             SingleTaskMessage m;
             m.header = order;

@@ -718,9 +718,19 @@ namespace MaintenanceToolECSBOX
         {
             SetEnalbleWriteRead(false);
             await GetStoredOffsetValue();
-            DecodeInputValues();
-            UpdateAllToggleBits();
-            SetEnalbleWriteRead(true);
+            if (read_request_succes)
+            {
+                DecodeInputValues();
+                UpdateAllToggleBits();
+                Update_Stored_values();
+                SetEnalbleWriteRead(true);
+            }
+       
+        }
+        private void Update_Stored_values()
+        {
+            ReadOffsetValueText.Text = minimumAir.ToString();
+            ReadOffsetValueText1.Text = standAloneMinimumAir.ToString();
         }
 
         private async  void ReadOffsetButton_Click(object sender, RoutedEventArgs e)

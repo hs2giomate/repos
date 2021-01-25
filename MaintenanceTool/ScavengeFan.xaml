@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="MaintenanceToolECSBOX.ScavengeFan"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MaintenanceToolECSBOX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="0,0,0,10">
+                <TextBlock x:Name="Tittel" Text="Scavenge Fan Operation" TextWrapping="Wrap" Width="441" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center" FontSize="32"/>
+            </StackPanel>
+
+
+            <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100">
+                <!-- Place scenario content here -->
+
+                <StackPanel x:Name="SingleHeaterOperationPanel" Margin="0,20,0,0">
+                    <StackPanel x:Name="EnableHeaterStack" Orientation="Vertical" >
+                        <TextBlock x:Name="TittelScavenge" Text="Scavenge fan" TextWrapping="Wrap" Width="441" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center" FontSize="20"/>
+                        <StackPanel x:Name="SingleRelayStackPanel" Orientation="Vertical" Margin="0,10,0,0" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="FanName" Text="Relay Enable" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
+                                <ToggleSwitch x:Name="EnableToggle" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="EnableToggle_Toggled"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+                                <TextBlock x:Name="Relay1StatusText" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
+                                <Border x:Name="RelayStatusBorder" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
+                                <Ellipse x:Name="Relay1FaultSignal" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel x:Name="SingleRelayStackPanel_Copy3" Orientation="Vertical" Margin="0,10,0,0" >
+                            <Grid Margin="0,10,0,10" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="Tempfault" Text=" Tempearture Fault" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
+                                <TextBlock x:Name="OvertemperautureText" Grid.Column="1" Grid.ColumnSpan="2" Text="Disabled" />
+
+                                <Ellipse x:Name="OverTemperatureFaultSignal" Fill="#FFE80E0E" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel x:Name="SingleRelayStackPanel_Copy4" Orientation="Vertical" >
+                            <Grid Margin="0,10,0,10" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="SPDFault" Text=" Low Speed Fault" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
+                                <TextBlock x:Name="LowSpeedText" Grid.Column="1" Grid.ColumnSpan="2" Text="Disabled" />
+
+                                <Ellipse x:Name="LowSpeedFaultSignal" Fill="#FFE80E0E" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock x:Name="Blank" Text="Dummy Tittel" TextWrapping="Wrap" Width="441" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center" FontSize="32" Visibility="Collapsed" Height="{Binding ActualHeight, ElementName=Tittel, Mode=OneWay}"/>
+                   
+                </StackPanel>
+
+            </ScrollViewer>
+
+            <!-- Status Block for providing messages to the user.  Use the
+             NotifyUser() method to populate the message -->
+            <TextBlock x:Name="StatusBlock" Grid.Row="2" Margin="12, 10, 12, 10" Visibility="Collapsed"/>
+        </Grid>
+    </Grid>
+</Page>
