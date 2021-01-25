@@ -326,8 +326,6 @@ namespace MaintenanceToolECSBOX
                 try
                 {
                     rootPage.NotifyUser("Setting Compressor...", NotifyType.StatusMessage);
-                    
-                   
                     byte_message[0] = relaysCommand;
                     byte_message[1] =(byte) (speedValue>>8);
                     byte_message[2] = (byte)speedValue;
