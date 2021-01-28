@@ -84,6 +84,7 @@ namespace MaintenanceToolProtocol
         public const char ReadStatusCompressor = 'T';
         public const char EnableCompressor = 'U';
         public const char SetpointCompressor = 'V';
+        public const char ReadDataLog = 'W';
         public const char Command = '>';
         public const char KeepConnected= '=';
         public const UInt32 Magic = 0x64636261;

@@ -16,69 +16,75 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <StackPanel Margin="0,0,0,10">
-                <TextBlock x:Name="Tittel" Text="Compressor Operation" TextWrapping="Wrap" Width="441" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center"/>
+            <StackPanel x:Name="StackTittel" Margin="0,0,0,10">
+                <TextBlock x:Name="Tittel" Text="Compressor Operation" TextWrapping="Wrap" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center"/>
             </StackPanel>
             <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100">
                 <!-- Place scenario content here -->
 
                 <StackPanel x:Name="CompressorPanel" Margin="0,20,0,0">
                     <StackPanel x:Name="FansOperationStack" Orientation="Horizontal" >
-                        <StackPanel x:Name="MotorStackPanel" Orientation="Vertical" Margin="0,10,0,0" >
+                        <StackPanel x:Name="MotorStackPanel" Orientation="Vertical" Margin="0,10,0,0" Width="320" >
                             <TextBlock x:Name="FanTitel" Text="Motor" TextAlignment="Center" />
-                            <StackPanel Margin="0,5,0,0" >
+                            <StackPanel x:Name="stackPanel" Margin="0,5,0,0" >
                                 <StackPanel x:Name="SwitchStackPanel" Orientation="Vertical" Margin="0,10,0,0" >
                                     <Grid >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition Width="4*"/>
                                             <ColumnDefinition Width="2*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock x:Name="Relay1Name" Text="Enable" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
-                                        <ToggleSwitch x:Name="EnableToogle1" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="EnableToogle1_Toggled"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
-                                        <TextBlock x:Name="StatusText1" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
-                                        <Border x:Name="StatusBorder1" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
-                                        <Ellipse x:Name="FaultSignal1" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                                        <TextBlock x:Name="dummy_text" Text="123456" Visibility="Collapsed" Grid.Column="1" />
+                                        <ToggleSwitch x:Name="EnableToogle1" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="EnableToogle1_Toggled"  Grid.Column="2" HorizontalContentAlignment="Center"/>
+                                        <TextBlock x:Name="StatusText1" Grid.Column="3" Text="Disabled" />
+                                        <Border x:Name="StatusBorder1" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="100"/>
+                                        <Ellipse x:Name="FaultSignal1" Fill="#FFE80E0E" Grid.Column="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel x:Name="SwitchStackPanel_Copy" Orientation="Vertical" >
                                     <Grid >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition Width="4*"/>
                                             <ColumnDefinition Width="2*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock x:Name="Relay1Name1" Text="Relay" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
-                                        <ToggleSwitch x:Name="EnableToogle2" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="EnableToogle2_Toggled"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
-                                        <TextBlock x:Name="StatusText2" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
-                                        <Border x:Name="StatusBorder2" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
-                                        <Ellipse x:Name="FaultSignal2" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                                        <TextBlock x:Name="dummy_text2" Text="123456" Visibility="Collapsed" Grid.Column="1" />
+                                        <ToggleSwitch x:Name="EnableToogle2" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="EnableToogle2_Toggled"  Grid.Column="2" HorizontalContentAlignment="Center"/>
+                                        <TextBlock x:Name="StatusText2" Grid.Column="3" Text="Disabled" />
+                                        <Border x:Name="StatusBorder2" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="100"/>
+                                        <Ellipse x:Name="FaultSignal2" Fill="#FFE80E0E" Grid.Column="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
                                     </Grid>
                                 </StackPanel>
                                 <StackPanel x:Name="SwitchStackPanel_Copy1" Orientation="Vertical" >
                                     <Grid >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="2*"/>
-                                            <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition Width="4*"/>
                                             <ColumnDefinition Width="2*"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock x:Name="Relay1Name2" Text="Cluth" FontSize="16" IsHitTestVisible="False" TextAlignment="Center" />
-                                        <ToggleSwitch x:Name="EnableToogle3" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="EnableToogle3_Toggled"  Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
-                                        <TextBlock x:Name="StatusText3" Grid.Column="2" Grid.ColumnSpan="3" Text="Disabled" />
-                                        <Border x:Name="StatusBorder3" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="3" Background="#FF1DCB2C" Width="100" Grid.ColumnSpan="3"/>
-                                        <Ellipse x:Name="FaultSignal3" Fill="#FFE80E0E" Grid.Column="3" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
+                                        <TextBlock x:Name="dummy_text3" Text="123456" Visibility="Collapsed" Grid.Column="1" />
+                                        <ToggleSwitch x:Name="EnableToogle3" Header="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Toggled="EnableToogle3_Toggled"  Grid.Column="2" HorizontalContentAlignment="Center"/>
+                                        <TextBlock x:Name="StatusText3" Grid.Column="3" Text="Disabled" />
+                                        <Border x:Name="StatusBorder3" BorderThickness="1" BorderBrush="#FF150303" Grid.Column="4" Background="#FF1DCB2C" Width="100"/>
+                                        <Ellipse x:Name="FaultSignal3" Fill="#FFE80E0E" Grid.Column="4" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Visibility="Visible" Width="100" />
                                     </Grid>
                                 </StackPanel>
                             </StackPanel>
-                        
+
                             <my:RadialGauge x:Name="Speed" NeedleBrush="#FF33D11A" TickBrush="#FFB7B3E2" TrailBrush="#FF1A92BF" Maximum="14000" ScaleBrush="#66175B95" ScaleWidth="29" StepSize="14" Unit="RPM" LargeChange="140" TickSpacing="1400" AllowDrop="True" ManipulationMode="System" IsInteractive="True" ManipulationCompleted="Speed_ManipulationCompleted" ManipulationStarted="Speed_ManipulationStarted"  SmallChange="14" IsDoubleTapEnabled="False" IsRightTapEnabled="False"  />
                             <StackPanel x:Name="panel_switches" Margin="0,10,0,0" >
-                    
-                           
-                                
+
+
+
                                 <StackPanel x:Name="fault1_Copy2" Orientation="Horizontal" Canvas.ZIndex="1" >
                                     <StackPanel >
                                         <Grid>
@@ -106,9 +112,27 @@
 
                         </StackPanel>
                         <Border x:Name="dummy_border" Width="{Binding ActualHeight, ElementName=Tittel, Mode=OneWay}" />
-                        <Slider x:Name="MotorTemperature" Orientation="Vertical" BackgroundSizing="OuterBorderEdge" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" Value="22" AllowDrop="True" />
-                      
-                        <Border x:Name="dummy_border1" Width="{Binding ActualHeight, ElementName=Tittel, Mode=OneWay}" />
+                        <StackPanel x:Name="TemperatureStack" >
+
+                            <TextBlock x:Name="textBlock" Text="Temperatures" Height="{Binding ActualHeight, ElementName=stackPanel, Mode=OneWay}" IsHitTestVisible="False" TextAlignment="Center" HorizontalAlignment="Stretch" />
+                            <StackPanel x:Name="TemperatuteSlider" Orientation="Horizontal"  >
+                                <StackPanel Orientation="Horizontal" >
+                                    <StackPanel >
+
+                                        <TextBlock Text="Motor" />
+                                        <Slider x:Name="MotorTemperature" Orientation="Vertical" BackgroundSizing="OuterBorderEdge" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" Value="22" AllowDrop="True" Grid.Row="1" IsTextScaleFactorEnabled="False" Height="{Binding ActualHeight, ElementName=Speed, Mode=OneWay}" Foreground="#FFFF0101" />
+                                        <TextBlock x:Name="MotorTempText" Text="Motor" />
+                                    </StackPanel>
+                                    <Border x:Name="dummy_border1" Width="{Binding ActualHeight, ElementName=Tittel, Mode=OneWay}" />
+                                    <StackPanel >
+                                        <TextBlock Text="Condenser" LineStackingStrategy="MaxHeight" />
+                                        <Slider x:Name="Coolant" Orientation="Vertical" BackgroundSizing="OuterBorderEdge" IsTapEnabled="False" IsRightTapEnabled="False" IsHoldingEnabled="False" IsDoubleTapEnabled="False" Value="22" AllowDrop="True" Height="{Binding ActualHeight, ElementName=Speed, Mode=OneWay}" VerticalAlignment="Stretch" Foreground="#FF0701FE" />
+                                        <TextBlock x:Name="CoolantTempText" Text="Motor" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
 

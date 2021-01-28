@@ -24,6 +24,12 @@ namespace MaintenanceToolProtocol
         public UInt16 speed;
         public Byte pressure;
     }
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct DataLogAddressMessage
+    {
+        public SingleTaskCommand header;
+        public UInt32 address;
+    }
 
 
     public class Protocol
@@ -35,6 +41,7 @@ namespace MaintenanceToolProtocol
         private Full64BufferMessage message64;
         public Byte[] buffer;
         private Byte[] local_buffer;
+        private DataLogAddressMessage dataLogAddress;
         public Protocol()
         {
             handler = this;
@@ -255,6 +262,37 @@ namespace MaintenanceToolProtocol
             return buffer;
 
         }
+        public Byte[] CreateDataLogRequestMessage()
+        {
+            buffer = new Byte[sizeStruct];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.ReadDataLog;
+            datagram.order = order;
+            SingleTaskMessage m;
+            m.header = order;
+            m.description = 0;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetSingleTaskCommandArrayBytes(m), 0, buffer, 0, sizeStruct);
+            return buffer;
+
+        }
+        public Byte[] CreateDataLogRequestMessage(UInt32 address)
+        {
+            var size = Marshal.SizeOf(dataLogAddress);
+            buffer = new Byte[size];
+            CommandHeader datagram = new CommandHeader();
+            SingleTaskCommand order = datagram.order;
+            order.task = Commands.ReadDataLog;
+            datagram.order = order;
+            DataLogAddressMessage m;
+            m.header = order;
+            m.address = address;
+            buffer.Initialize();
+            Buffer.BlockCopy(GetDataLogAddressArrayBytes(m), 0, buffer, 0, size);
+            return buffer;
+
+        }
         public Byte[] CreateTemperatureRequestMessage()
         {
             buffer = new Byte[sizeStruct];
@@ -318,6 +356,33 @@ namespace MaintenanceToolProtocol
           
 
                 Marshal.Copy(pnt, locabBuffer, 0, sizeStruct);
+            }
+            finally
+            {
+                // Free the unmanaged memory.
+                Marshal.FreeHGlobal(pnt);
+            }
+            return locabBuffer;
+
+        }
+        public Byte[] GetDataLogAddressArrayBytes(DataLogAddressMessage pm)
+        {
+            var size = Marshal.SizeOf(dataLogAddress);
+            Byte[] locabBuffer = new Byte[size];
+
+
+            dataLogAddress= pm;
+            IntPtr pnt = Marshal.AllocHGlobal(size);
+
+            try
+            {
+
+                // Copy the struct to unmanaged memory.
+                Marshal.StructureToPtr(dataLogAddress, pnt, false);
+
+
+
+                Marshal.Copy(pnt, locabBuffer, 0, size);
             }
             finally
             {

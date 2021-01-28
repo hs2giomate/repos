@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj": {}
+    "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj": {
+    "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj",
+        "projectUniqueName": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj",
         "projectName": "Excel.Interop",
-        "projectPath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj",
+        "projectPath": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj",
         "packagesPath": "C:\\Users\\GMateusDP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\obj\\",
+        "outputPath": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\Excel.Interop\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

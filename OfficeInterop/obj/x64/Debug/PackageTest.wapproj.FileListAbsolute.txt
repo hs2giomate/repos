@@ -276,3 +276,6 @@ C:\Users\GMateusDP\Source\Repos\OfficeInterop\bin\x64\Debug\Excel.Interop\Micros
 C:\Users\GMateusDP\Source\Repos\OfficeInterop\bin\x64\Debug\Excel.Interop\Excel.Interop.exe
 C:\Users\GMateusDP\Source\Repos\OfficeInterop\bin\x64\Debug\Excel.Interop\Excel.Interop.exe.config
 C:\Users\GMateusDP\Source\Repos\OfficeInterop\bin\x64\Debug\Excel.Interop\Excel.Interop.pdb
+C:\Users\GMateusDP\source\repos\OfficeInterop\bin\x64\Debug\System.Core.dll
+C:\Users\GMateusDP\source\repos\OfficeInterop\bin\x64\Debug\System.Core.xml
+C:\Users\GMateusDP\source\repos\OfficeInterop\obj\x64\Debug\PackageTest.wapproj.CopyComplete

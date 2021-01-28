@@ -54,12 +54,14 @@ namespace MaintenanceToolECSBOX
         private Byte relays_status;
         private ObservableCollection<ToggleSwitch> listOfToggles;
         public ObservableCollection<TextBlock> listOfTextBlocks;
-        public ObservableCollection<Border> listOfBorders;
+        private ObservableCollection<Border> listOfBorders;
+        private ObservableCollection<Slider> listOfSliders;
         public ObservableCollection<Windows.UI.Xaml.Shapes.Ellipse> listOfEllipses, listOfOvertemperatures;
         public ObservableCollection<AnimationSet> listOfDarkAnimations, listOfLightAnimations;
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
         private Boolean IsWriteTaskPending, request_sucess, read_request_success;
+        private static Byte[] floatArray = new Byte[4];
         DataWriter DataWriteObject = null;
         private Boolean IsNavigatedAway, updating_toogles_view,toogle_pressed ;
         private static Boolean manipulating;
@@ -69,7 +71,10 @@ namespace MaintenanceToolECSBOX
         private uint readBufferLength;
         private Task blink;
         private CompressorCompleteMessage message;
-        
+        private static AnimationSet Fault_Dark, Fault_Light;
+        private float[] temperatureValues = new float[2];
+        private float lastTemperatureValue, currentTemperatureValue;
+
 
         private static System.Timers.Timer aTimer = null;
 
@@ -101,11 +106,16 @@ namespace MaintenanceToolECSBOX
             listOfTextBlocks.Add(StatusText2);
             listOfTextBlocks.Add(StatusText3);
             listOfTextBlocks.Add(StatusLabel4);
+            listOfTextBlocks.Add(MotorTempText);
+            listOfTextBlocks.Add(CoolantTempText);
             listOfEllipses = new ObservableCollection<Ellipse>();
             listOfEllipses.Add(FaultSignal1);
             listOfEllipses.Add(FaultSignal2);
             listOfEllipses.Add(FaultSignal3);
             listOfEllipses.Add(ExternFaultSignal);
+            listOfSliders = new ObservableCollection<Slider>();
+            listOfSliders.Add(MotorTemperature);
+            listOfSliders.Add(Coolant);
             listOfDarkAnimations = new ObservableCollection<AnimationSet>();
             listOfLightAnimations = new ObservableCollection<AnimationSet>();
             for (int i = 0; i < NUMBER_OF_FAULTS; i++)
@@ -127,6 +137,8 @@ namespace MaintenanceToolECSBOX
             }
             Speed.ManipulationStarted += EnableToggle_ManipulationStarted;
             Speed.ManipulationCompleted += EnableToggle_ManipulationCompleted;
+            Fault_Dark = Speed.Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine);
+            Fault_Light = Speed.Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine);
 
         }
 
@@ -328,7 +340,7 @@ namespace MaintenanceToolECSBOX
                     rootPage.NotifyUser("Setting Compressor...", NotifyType.StatusMessage);
                     byte_message[0] = relaysCommand;
                     byte_message[1] =(byte) (speedValue>>8);
-                    byte_message[2] = (byte)speedValue;
+                    byte_message[2] = (byte)(speedValue&0x00ff);
                     toSend = new byte[64];
                     Protocol.Message.CreateCompressorMessage(byte_message).CopyTo(toSend, 0);
                         //lastCommand = relaysCommand;
@@ -504,7 +516,7 @@ namespace MaintenanceToolECSBOX
                 {
                     if (magicHeader.Equals(Commands.reverseMagic))
                     {
-                        await UpdateViewRelayStatus();
+                        await UpdateViewCompressorStatus();
                     }
                 }
             }
@@ -762,7 +774,7 @@ namespace MaintenanceToolECSBOX
             }
             rootPage.NotifyUser("Read Compresor Status completed ", NotifyType.StatusMessage);
         }
-        private async Task UpdateViewRelayStatus()
+        private async Task UpdateViewCompressorStatus()
         {
             if (IsPerformingWrite())
             {
@@ -789,8 +801,46 @@ namespace MaintenanceToolECSBOX
             UpdateToggles();
             await UpdateFaultStatusSignal();
             UpdateComporessorSpeed();
-
+            UpdateTemperatures();
         }
+
+        private void UpdateTemperatures()
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                System.Buffer.BlockCopy(received, 10 + ((4 * j) ), floatArray, 0, 4);
+                lastTemperatureValue = temperatureValues[j];
+                currentTemperatureValue = BitConverter.ToSingle(floatArray, 0);
+                if (lastTemperatureValue != currentTemperatureValue)
+                {
+                    temperatureValues[j] = currentTemperatureValue;
+                    listOfSliders[j].Value = currentTemperatureValue;
+                    UpdateValueTemperatureText(j);
+                }
+
+            }
+        }
+        private void UpdateValueTemperatureText( int sensor)
+        {
+            int index = (4 + sensor);
+            listOfTextBlocks[index].Text = currentTemperatureValue.ToString("F1");
+            if ((currentTemperatureValue < -20) | (currentTemperatureValue > 200))
+            {
+                listOfTextBlocks[index].Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+            }
+            else
+            {
+                if (currentTemperatureValue > 0)
+                {
+                    listOfTextBlocks[index].Foreground = new SolidColorBrush(Windows.UI.Colors.Green);
+                }
+                else
+                {
+                    listOfTextBlocks[index].Foreground = new SolidColorBrush(Windows.UI.Colors.Blue);
+                }
+            }
+        }
+
         private void UpdateToggles()
         {
             updating_toogles_view = true;
@@ -799,10 +849,20 @@ namespace MaintenanceToolECSBOX
                 if ((received[6] & (0x01<<i)) > 0)
                 {
                     listOfToggles[i].IsOn = true;
+                    if (i==0)
+                    {
+                        Speed.Opacity = 1;
+                    }
+                   
                 }
                 else
                 {
                     listOfToggles[i].IsOn = false;
+                    if (i==0)
+                    {
+                        Speed.Opacity = 0.4;
+                    }
+                    
                     
                 }
             }
@@ -820,8 +880,8 @@ namespace MaintenanceToolECSBOX
             if (magicHeader.Equals(Commands.reverseMagic))
             {
               
-                    Speed.Value = (received[7]*256+ received[8]) * 14000 / (256*256 -1);
-                    lastSpeedValue = (UInt16)(received[7] * 256 + received[8]);
+                    Speed.Value = (received[8]*256+ received[7]) * 14000 / (256*256 -1);
+                    lastSpeedValue = (UInt16)(received[8] * 256 + received[7]);
                     
 
             }

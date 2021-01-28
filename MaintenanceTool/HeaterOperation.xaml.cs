@@ -237,9 +237,12 @@ namespace MaintenanceToolECSBOX
 
             }
 
+            if (aTimer!=null)
+            {
+                aTimer.Start();
+            }
 
-
-            aTimer.Start();
+            
         }
         public  async void UpdateDataRelayStatus()
         {

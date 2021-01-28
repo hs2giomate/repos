@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bKfM+r59zBkymP4cCc8wLxqUGOWUAZbUaf9rvq+gG/lLBzpHy447mg1XoPmNdLz8o4HU4Fue/uL/zeGxxczqSA==",
+  "dgSpecHash": "nzPm2Dp6FoiHVQgU8EtwNooOsh3cWfqjRwSG6/RDbZnFKvnLtd2gq8zaON1ll9OjE4ZSpM/r2Tgj7PcGXOQucQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj",
+  "projectFilePath": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\Excel.Interop\\Excel.Interop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\GMateusDP\\.nuget\\packages\\microsoft.windows.sdk.contracts\\10.0.17134.1000-preview\\microsoft.windows.sdk.contracts.10.0.17134.1000-preview.nupkg.sha512",
     "C:\\Users\\GMateusDP\\.nuget\\packages\\system.runtime.windowsruntime\\4.6.0-preview4.19212.13\\system.runtime.windowsruntime.4.6.0-preview4.19212.13.nupkg.sha512",

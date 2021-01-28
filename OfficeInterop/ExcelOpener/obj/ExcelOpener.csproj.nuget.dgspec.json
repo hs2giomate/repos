@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj": {}
+    "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj": {
+    "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj",
+        "projectUniqueName": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj",
         "projectName": "ExcelOpener",
-        "projectPath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj",
+        "projectPath": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj",
         "packagesPath": "C:\\Users\\GMateusDP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\ExcelOpener\\obj\\",
+        "outputPath": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\ExcelOpener\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [

@@ -3790,7 +3790,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.1.0": {
-      "sha512": "GmkKfoyerqmsHMn7OZj0AKpcBabD+GaafqphvX2Mw406IwiJRy1pKcKqdCfKJfYmkRyJ6+e+RaUylgdJoDa1jQ==",
+      "sha512": "ok+RPAtESz/9MUXeIEz6Lv5XAGQsaNmEYXMsgVALj4D7kqC8gveKWXWXbufLySR2fWrwZf8smyN5RmHu0e4BHA==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.1.0",
       "files": [
@@ -3807,7 +3807,7 @@
       ]
     },
     "Microsoft.NETCore.UniversalWindowsPlatform/6.2.10": {
-      "sha512": "ROxFw/6HrgkUQKna0NAPWfmnuHpp/5JFB+lvTG47ELXiYjYpBfEKCGXax8kh/KKzP6uLDn4M3zJUUXC6Bst1+Q==",
+      "sha512": "YfQmR0oyJ9wO3a6uB9yutc3Vpt4ouaZ5cfnjcVi5ONLpSCBNyUHgcF4X9sflb1gQiXl1jT6aU2+VAkvQIRiSGQ==",
       "type": "package",
       "path": "microsoft.netcore.universalwindowsplatform/6.2.10",
       "files": [
@@ -8158,11 +8158,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj",
+      "projectUniqueName": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj",
       "projectName": "ExcelOpener",
-      "projectPath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj",
+      "projectPath": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\ExcelOpener\\ExcelOpener.csproj",
       "packagesPath": "C:\\Users\\GMateusDP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\GMateusDP\\Source\\Repos\\OfficeInterop\\ExcelOpener\\obj\\",
+      "outputPath": "C:\\Users\\GMateusDP\\source\\repos\\OfficeInterop\\ExcelOpener\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

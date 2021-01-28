@@ -23,11 +23,13 @@
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
-    <AppInstallerUri>S:\VisualStudio\Maintenance\ECS_BOX</AppInstallerUri>
+    <AppInstallerUri>\\pdm15\Software\240_Secan_ECS\Maintenance</AppInstallerUri>
     <HoursBetweenUpdateChecks>168</HoursBetweenUpdateChecks>
     <PackageCertificateThumbprint>E3178EF65ABD97B5AD3AC8D31577924C5A4BF5E2</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxPackageDir>\\pdm15\Software\SDrive\VisualStudio\Maintenance\ECS_BOX\</AppxPackageDir>
+    <PackageCertificateKeyFile>
+    </PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>

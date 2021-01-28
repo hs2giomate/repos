@@ -86,5 +86,3 @@ C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\obj\x64\Debug\qualifie
 C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\obj\x64\Debug\ProjectArchitectures.txt
 C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\obj\x64\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885274160000000.json
-C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\obj\x64\Debug\ExcelOpener.csprojAssemblyReference.cache
-C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\obj\x64\Debug\.winmd_cache\$Microsoft.UI.Xaml.Markup.winmd_636885238160000000.json

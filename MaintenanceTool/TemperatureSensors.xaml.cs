@@ -298,7 +298,7 @@ namespace MaintenanceToolECSBOX
                             DataReaderObject = new DataReader(EventHandlerForDevice.Current.Device.InputStream);
                             // UpdateReadButtonStates();
 
-                            await ReaTemperaturesAsync(ReadCancellationTokenSource.Token);
+                            await ReadTemperaturesAsync(ReadCancellationTokenSource.Token);
                         }
                         catch (OperationCanceledException /*exception*/)
                         {
@@ -338,7 +338,7 @@ namespace MaintenanceToolECSBOX
             }
         }
 
-        private async Task ReaTemperaturesAsync(CancellationToken cancellationToken)
+        private async Task ReadTemperaturesAsync(CancellationToken cancellationToken)
         {
 
             Task<UInt32> loadAsyncTask;

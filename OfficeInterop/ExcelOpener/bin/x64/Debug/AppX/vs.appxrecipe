@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>1260HS2</Machine>
+    <Machine>1255SJLAPTOP</Machine>
     <WindowsUser>GMateusDP</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>1f379a5c-e627-4f06-8aec-bcfa91cfb3dd</PackageIdentityName>
     <PackageIdentityPublisher>CN=GMateusDP</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\obj\x64\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\obj\x64\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>A14BA048C25D8286B54FEFFF7BA7C6857B2870E96D208A7B614F91A830F3EF4D</RegisteredManifestChecksum>
+    <LayoutDir>C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\bin\x64\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>63CCAB39A609683B78D10A566307F6C931F709E1729FCB5BD411C0C538A35561</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>1f379a5c-e627-4f06-8aec-bcfa91cfb3dd_1.0.0.0_x64__48p2bphdg4ayy</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>1f379a5c-e627-4f06-8aec-bcfa91cfb3dd_48p2bphdg4ayy!App</RegisteredUserModeAppID>
     <RegisteredPackageID>1f379a5c-e627-4f06-8aec-bcfa91cfb3dd</RegisteredPackageID>
@@ -27,16 +27,16 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\bin\x64\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-29T11:27:06.722</Modified>
+      <Modified>2021-01-25T07:01:36.425</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\bin\x64\Debug\ExcelOpener.exe">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\bin\x64\Debug\ExcelOpener.exe">
       <PackagePath>entrypoint\ExcelOpener.exe</PackagePath>
-      <Modified>2020-09-29T11:27:06.277</Modified>
+      <Modified>2021-01-25T07:01:35.273</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -44,69 +44,69 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
-      <Modified>2019-03-18T16:36:56.000</Modified>
+      <Modified>2019-03-18T17:36:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2020-09-29T10:36:39.547</Modified>
+      <Modified>2020-10-26T08:21:04.098</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2020-09-29T10:36:39.534</Modified>
+      <Modified>2020-10-26T08:21:04.078</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-29T10:36:39.535</Modified>
+      <Modified>2020-10-26T08:21:04.080</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-29T10:36:39.536</Modified>
+      <Modified>2020-10-26T08:21:04.082</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-29T10:36:39.537</Modified>
+      <Modified>2020-10-26T08:21:04.083</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-29T10:36:39.538</Modified>
+      <Modified>2020-10-26T08:21:04.085</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-29T10:36:39.539</Modified>
+      <Modified>2020-10-26T08:21:04.087</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-29T10:36:39.540</Modified>
+      <Modified>2020-10-26T08:21:04.088</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\bin\x64\Debug\ExcelOpener.xr.xml">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\bin\x64\Debug\ExcelOpener.xr.xml">
       <PackagePath>ExcelOpener.xr.xml</PackagePath>
-      <Modified>2020-09-29T10:36:39.655</Modified>
+      <Modified>2020-10-26T08:21:04.267</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\bin\x64\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-09-29T11:22:26.638</Modified>
+      <Modified>2021-01-25T07:01:31.970</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\bin\x64\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-09-29T11:22:26.639</Modified>
+      <Modified>2021-01-25T07:01:31.970</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
-      <Modified>2019-03-18T15:33:42.000</Modified>
+      <Modified>2019-03-18T16:33:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\bin\x64\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-09-29T11:22:28.017</Modified>
+      <Modified>2021-01-25T07:01:16.698</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\Source\Repos\OfficeInterop\ExcelOpener\bin\x64\Debug\Core\ExcelOpener.exe">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\OfficeInterop\ExcelOpener\bin\x64\Debug\Core\ExcelOpener.exe">
       <PackagePath>ExcelOpener.exe</PackagePath>
-      <Modified>2020-09-29T11:27:06.715</Modified>
+      <Modified>2021-01-25T07:01:36.412</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
