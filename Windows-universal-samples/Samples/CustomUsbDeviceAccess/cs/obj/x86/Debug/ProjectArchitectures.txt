@@ -1,0 +1,2 @@
+C:\Users\GMateusDP\Source\Repos\Windows-universal-samples\Samples\CustomUsbDeviceAccess\cs\BackgroundTask\BackgroundTask.csproj;x86
+C:\Users\GMateusDP\Source\Repos\Windows-universal-samples\Samples\CustomUsbDeviceAccess\cs\CustomUsbDeviceAccess.csproj;x86

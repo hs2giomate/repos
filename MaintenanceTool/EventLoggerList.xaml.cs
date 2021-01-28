@@ -222,13 +222,13 @@ namespace MaintenanceToolECSBOX
                     if (block_address_read==current_memory_address)
                     {
                         ucontroller_timestamp= BitConverter.ToUInt32(received, 10);
-                        on_received_host_timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds;
+                        on_received_host_timestamp = (UInt32)DateTimeOffset.Now.ToUnixTimeMilliseconds();
                         read_request_success = false;
                         await ReadBlockData();
                         if (read_request_success)
                         {
-                           
-                           DecodeMessages()
+
+                            DecodeMessages();
                             SetStopButtonStates(true);
                         }
 
@@ -779,7 +779,7 @@ namespace MaintenanceToolECSBOX
         private void AddDataLogItemToEnd(DataLogItem dli)
         {
             eventValue = new EventItemValues(dli.message);
-            eventValue.CreateTimeStamp(dli)
+            eventValue.CreateTimeStamp(dli);
          
             listOfMessages.Add(eventValue);
 

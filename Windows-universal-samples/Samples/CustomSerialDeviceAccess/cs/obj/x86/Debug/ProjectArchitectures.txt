@@ -1,0 +1,1 @@
+C:\Users\GMateusDP\Source\Repos\Windows-universal-samples\Samples\CustomSerialDeviceAccess\cs\CustomSerialDeviceAccess.csproj;x86
