@@ -91,7 +91,7 @@ namespace MaintenanceToolECSBOX
         private DataLogAddressMessage dataLogMessage;
         private int datalog_size;
         private UInt32 current_memory_address,ucontroller_timestamp, host_timestamp,on_received_host_timestamp,adjusted_timestamp,offset_timestamp;
-        private int start_index, current_index, end_line_index,next_index;
+        private uint start_index, current_index, end_line_index,next_index;
         private    EventLoggerManagment.DataLogItem data_log_item;
         private string single_message;
         public EventLoggerList()
@@ -99,6 +99,7 @@ namespace MaintenanceToolECSBOX
 
             this.InitializeComponent();
             handler = this;
+            start_index = 0;
             sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
             received = new byte[ReadBufferLength];
             block_received = new byte[memory_block_size];
@@ -146,6 +147,11 @@ namespace MaintenanceToolECSBOX
             {
                 WriteCancellationTokenSource.Dispose();
                 WriteCancellationTokenSource = null;
+            }
+            if (aTimer != null)
+            {
+                aTimer.Stop();
+                aTimer.Dispose();
             }
         }
         /// <summary>
@@ -222,7 +228,8 @@ namespace MaintenanceToolECSBOX
                     if (block_address_read==current_memory_address)
                     {
                         ucontroller_timestamp= BitConverter.ToUInt32(received, 10);
-                        on_received_host_timestamp = (UInt32)DateTimeOffset.Now.ToUnixTimeMilliseconds();
+                        on_received_host_timestamp = (UInt32)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                        offset_timestamp = on_received_host_timestamp - ucontroller_timestamp;
                         read_request_success = false;
                         await ReadBlockData();
                         if (read_request_success)
@@ -734,36 +741,62 @@ namespace MaintenanceToolECSBOX
             {
                 null_counter = 0;
                 current_index = 0;
-                while (null_counter < 1)
+                while ((null_counter < 1)&(current_index<memory_block_size))
                 {
                     data_log_item.timestamp = DecodeTimestamp(current_index);
                     next_index = FindEndLine(current_index);
-                    single_message= System.Text.Encoding.UTF8.GetString(block_received,current_index,next_index-current_index);
-                    if (single_message!=string.Empty)
+                    if (next_index<= memory_block_size)
                     {
-                        data_log_item.message = single_message;
-                        AddDataLogItemToEnd(data_log_item);
+                        current_index += 4;
+                        if (current_index<next_index)
+                        {
+                            single_message = System.Text.Encoding.UTF8.GetString(block_received, (int)current_index, (int)next_index - (int)current_index);
+                            if (single_message != string.Empty)
+                            {
+                                null_counter = 0;
+                                data_log_item.message = single_message;
+                                AddDataLogItemToEnd(data_log_item);
+                                if (next_index + 1 < memory_block_size)
+                                {
+                                    current_index = next_index + 1;
+                                }
+                                else
+                                {
+                                    null_counter++;
+                                }
 
+                            }
+                            else
+                            {
+                                null_counter++;
+                            }
+                        }
+                        else
+                        {
+                            null_counter++;
+                        }
+                       
                     }
                     else
                     {
                         null_counter++;
                     }
+                    
                 }
             }
         }
-        private int FindEndLine(int si)
+        private uint FindEndLine(uint si)
         {
 
-           end_line_index= Array.FindIndex<Byte>(block_received, si, x => x == 0x0a);
+           end_line_index=(uint) Array.FindIndex<Byte>(block_received, (int)si, x => x == 0x0a);
             return end_line_index;
         }
-        private UInt32 DecodeTimestamp(int index)
+        private UInt32 DecodeTimestamp(uint index)
         {
 
-            offset_timestamp = on_received_host_timestamp - ucontroller_timestamp;
+            
 
-            adjusted_timestamp = BitConverter.ToUInt32(received, index) + offset_timestamp;
+            adjusted_timestamp = BitConverter.ToUInt32(block_received, (int)index) + offset_timestamp;
 
             return  adjusted_timestamp;
         }
@@ -796,40 +829,41 @@ namespace MaintenanceToolECSBOX
             }
         }
 
-        private async void StopReading_Click(object sender, RoutedEventArgs e)
+        private  void StopReading_Click(object sender, RoutedEventArgs e)
         {
-      
-            if (EventHandlerForDevice.Current.IsDeviceConnected)
+            if (updatingLogger)
             {
-                if (onCycling==true)
-                {
-                    StopReading.Content = start;
-                    StatusEventLogger.Text = stopped;
-                    
-                    if (IsPerformingRead())
-                    {
-                        CancelReadTask();
-                        onCycling = false;
-                    }
-                    UpdateExportExcelButton(true);
-                }
-                else
-                {
-                    UpdateExportExcelButton(false);
-                    StopReading.Content = stop;
-                    StatusEventLogger.Text = reading;
-                    if (ExportExcel.IsEnabled==false)
-                    {
-                        await CyclicReading();
-                    }
-                }
 
-              
             }
             else
             {
-                Utilities.NotifyDeviceNotConnected();
+                if (EventHandlerForDevice.Current.IsDeviceConnected)
+                {
+                    if (StopReading.Content.Equals(stop))
+                    {
+                        StopReading.Content = start;
+                        StatusEventLogger.Text = stopped;
+
+                  
+                        UpdateExportExcelButton(true);
+                    }
+                    else
+                    {
+                        UpdateExportExcelButton(false);
+                        StopReading.Content = stop;
+                        StatusEventLogger.Text = reading;
+           
+                    }
+
+
+                }
+                else
+                {
+                    Utilities.NotifyDeviceNotConnected();
+                }
             }
+      
+            
         }
 
         async private Task StartReading()
@@ -941,7 +975,7 @@ namespace MaintenanceToolECSBOX
 
                 for (int i = 0; i < listOfMessages.Count; i++)
                 {
-                    table.Add("DateTime" + i.ToString(), listOfMessages[i].Datetime);
+                    table.Add("DateTime" + i.ToString(), listOfMessages[i].Datetime_String);
                     table.Add("Event" + i.ToString(), listOfMessages[i].EventName);
                     table.Add("Description" + i.ToString(), listOfMessages[i].Description);
 

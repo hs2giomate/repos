@@ -25,7 +25,7 @@
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <AppInstallerUri>\\pdm15\Software\240_Secan_ECS\Maintenance</AppInstallerUri>
     <HoursBetweenUpdateChecks>168</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint>4B404758DFD8A7C8FFFC709E3783A1483CE1A7F5</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>506090FF3F5572FA7919E73F72F498BB764C8693</PackageCertificateThumbprint>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxPackageDir>\\pdm15\Software\SDrive\VisualStudio\Maintenance\ECS_BOX\</AppxPackageDir>
     <PackageCertificateKeyFile>MaintenanceToolECSBOX_TemporaryKey.pfx</PackageCertificateKeyFile>

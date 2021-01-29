@@ -18,13 +18,14 @@ namespace EventLoggerManagment
     }
     public class EventItemValues
     {
-        public string Datetime { get; set; }
+        public string Datetime_String { get; set; }
         public string EventName { get; set; }
         public string Description { get; set; }
         private static int EventNumber = 0;
+        private string[] cuttings;
         public EventItemValues(string m)
         {
-            Datetime = DateTime.Now.ToString();
+            Datetime_String = DateTime.Now.ToString();
             EventName = m;
             Description = EventNumber.ToString();
             EventNumber++;
@@ -34,7 +35,9 @@ namespace EventLoggerManagment
         public void CreateTimeStamp(DataLogItem dli)
         {
 
-            Datetime = DateTime.FromFileTimeUtc(dli.timestamp).ToString();
+            Datetime_String = DateTimeOffset.FromUnixTimeSeconds(dli.timestamp).ToString();
+            cuttings = Datetime_String.Split("+");
+            Datetime_String = cuttings[0];
             EventName = dli.message;
             Description = EventNumber.ToString();
             EventNumber++;

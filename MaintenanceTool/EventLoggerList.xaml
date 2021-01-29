@@ -24,12 +24,12 @@
             </StackPanel>
 
 
-            <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100">
+            <ScrollViewer x:Name="ReadWriteScollViewer" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,30">
                 <!-- Place scenario content here -->
 
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="10,0,10,0" >
-                        <Grid x:Name="GridOperationButtons" Width="{Binding ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}"  >
+                    <StackPanel x:Name="ButtonsStackPanel" Orientation="Horizontal" Margin="10,0,10,0" >
+                        <Grid x:Name="GridOperationButtons" Width="{Binding ActualWidth, ElementName=ButtonsStackPanel, Mode=OneWay}"  >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="3*"/>
@@ -45,7 +45,7 @@
                         <Grid x:Name="GridEvenntListHeaders"  Margin="10" BorderBrush="White" BorderThickness="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
 
@@ -53,7 +53,7 @@
                             <TextBlock x:Name="EventCodeTittel" Text="EVENT" TextAlignment="Center" FontSize="16" Margin="10" Grid.Column="1"  />
                             <TextBlock x:Name="EventDescriptionTittel" Text="DESCRIPTION" TextAlignment="Center" FontSize="16" Margin="10" Grid.Column="2" Grid.ColumnSpan="2"  />
                         </Grid>
-                        <ListView x:Name="BottomUpList" Margin="10" BorderBrush="White" BorderThickness="2" ItemsSource="{x:Bind listOfMessages}" ItemClick="BottomUpList_ItemClick" VerticalAlignment="Bottom" Height="{Binding ColumnDefinitions[2].ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}">
+                        <ListView x:Name="BottomUpList" Margin="10,5,10,10" BorderBrush="White" BorderThickness="2" ItemsSource="{x:Bind listOfMessages}" ItemClick="BottomUpList_ItemClick" VerticalAlignment="Stretch">
                             <ListView.ItemTemplate >
                                 <DataTemplate x:Name="EventDataRowTemplate2" x:DataType="data:EventItemValues">
                                     <Grid x:Name="GridEvenntListHeadersTemplate"  Margin="2">
@@ -63,7 +63,7 @@
                                             <ColumnDefinition Width="2*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock x:Name="DateTimeText"  TextAlignment="Center" FontSize="16" Margin="10" Width="{Binding ColumnDefinitions[0].ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}" Text="{x:Bind Datetime }" />
+                                        <TextBlock x:Name="DateTimeText"  TextAlignment="Center" FontSize="16" Margin="10" Width="{Binding ColumnDefinitions[0].ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}" Text="{x:Bind Datetime_String }" />
                                         <TextBlock x:Name="EventCode" TextAlignment="Center" FontSize="16" Margin="10" Width="{Binding ColumnDefinitions[1].ActualWidth, ElementName=GridEvenntListHeaders, Mode=OneWay}" Grid.Column="1" Text="{x:Bind EventName}" />
                                         <TextBlock x:Name="EventDescription" TextAlignment="Right" FontSize="16" Margin="10" Grid.Column="2" Grid.ColumnSpan="2" Text="{x:Bind Description}"  />
                                     </Grid>
