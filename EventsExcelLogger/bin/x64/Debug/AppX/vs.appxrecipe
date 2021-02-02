@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>1260HS2</Machine>
+    <Machine>1255SJLAPTOP</Machine>
     <WindowsUser>GMateusDP</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -20,7 +20,7 @@
     <WindowsSdkPath>
     </WindowsSdkPath>
     <LayoutDir>C:\Users\GMateusDP\source\repos\EventsExcelLogger\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>BDD0683211D375A0FB81C61F44CD103BB0E75005BCFDA4383406CE0D33D7FC39</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>5912E5149A3F4DB273A75FA7D530A9F2906E57613FAB66BA3D21B29C7C1E37D7</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>66ce5294-2662-435b-b0df-a256831da1cf_1.0.0.0_x64__48p2bphdg4ayy</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>66ce5294-2662-435b-b0df-a256831da1cf_48p2bphdg4ayy!App</RegisteredUserModeAppID>
     <RegisteredPackageID>66ce5294-2662-435b-b0df-a256831da1cf</RegisteredPackageID>
@@ -31,587 +31,679 @@
     <AppXManifest Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\bin\x64\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-10-02T11:19:23.620</Modified>
+      <Modified>2021-02-02T16:40:37.543</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll">
+      <PackagePath>System.Core.dll</PackagePath>
+      <Modified>2020-01-27T10:04:32.286</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\SplashScreen.scale-200.png">
       <PackagePath>Images\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-01T06:52:27.729</Modified>
+      <Modified>2020-10-26T08:21:02.010</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\LockScreenLogo.scale-200.png">
       <PackagePath>Images\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2020-09-01T06:52:27.722</Modified>
+      <Modified>2020-10-26T08:21:02.008</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\Square150x150Logo.scale-200.png">
       <PackagePath>Images\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-01T06:52:27.734</Modified>
+      <Modified>2020-10-26T08:21:02.011</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\Square44x44Logo.scale-200.png">
       <PackagePath>Images\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-01T06:52:27.739</Modified>
+      <Modified>2020-10-26T08:21:02.013</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Images\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-01T06:52:27.744</Modified>
+      <Modified>2020-10-26T08:21:02.014</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\StoreLogo.png">
       <PackagePath>Images\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-01T06:52:27.749</Modified>
+      <Modified>2020-10-26T08:21:02.016</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\Wide310x150Logo.scale-200.png">
       <PackagePath>Images\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-09-01T06:52:27.760</Modified>
+      <Modified>2020-10-26T08:21:02.017</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\EventsExcelLogger\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-10-02T07:51:21.873</Modified>
+      <Modified>2021-02-02T16:03:58.692</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\Microsoft.Win32.Primitives.dll">
       <PackagePath>Excel.Interop\Microsoft.Win32.Primitives.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.409</Modified>
+      <Modified>2021-01-13T10:39:06.492</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\netstandard.dll">
       <PackagePath>Excel.Interop\netstandard.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.454</Modified>
+      <Modified>2021-01-13T10:39:06.585</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.AppContext.dll">
       <PackagePath>Excel.Interop\System.AppContext.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.472</Modified>
+      <Modified>2021-01-13T10:39:06.632</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Collections.Concurrent.dll">
       <PackagePath>Excel.Interop\System.Collections.Concurrent.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.490</Modified>
+      <Modified>2021-01-13T10:39:06.682</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Collections.dll">
       <PackagePath>Excel.Interop\System.Collections.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.507</Modified>
+      <Modified>2021-01-13T10:39:06.729</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Collections.NonGeneric.dll">
       <PackagePath>Excel.Interop\System.Collections.NonGeneric.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.524</Modified>
+      <Modified>2021-01-13T10:39:06.773</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Collections.Specialized.dll">
       <PackagePath>Excel.Interop\System.Collections.Specialized.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.541</Modified>
+      <Modified>2021-01-13T10:39:06.819</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ComponentModel.dll">
       <PackagePath>Excel.Interop\System.ComponentModel.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.558</Modified>
+      <Modified>2021-01-13T10:39:06.863</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ComponentModel.EventBasedAsync.dll">
       <PackagePath>Excel.Interop\System.ComponentModel.EventBasedAsync.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.577</Modified>
+      <Modified>2021-01-13T10:39:06.908</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ComponentModel.Primitives.dll">
       <PackagePath>Excel.Interop\System.ComponentModel.Primitives.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.592</Modified>
+      <Modified>2021-01-13T10:39:06.950</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ComponentModel.TypeConverter.dll">
       <PackagePath>Excel.Interop\System.ComponentModel.TypeConverter.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.609</Modified>
+      <Modified>2021-01-13T10:39:06.996</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Console.dll">
       <PackagePath>Excel.Interop\System.Console.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.625</Modified>
+      <Modified>2021-01-13T10:39:07.040</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Data.Common.dll">
       <PackagePath>Excel.Interop\System.Data.Common.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.642</Modified>
+      <Modified>2021-01-13T10:39:07.091</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Contracts.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.Contracts.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.666</Modified>
+      <Modified>2021-01-13T10:39:07.153</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Debug.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.Debug.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.726</Modified>
+      <Modified>2021-01-13T10:39:07.203</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.FileVersionInfo.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.FileVersionInfo.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.749</Modified>
+      <Modified>2021-01-13T10:39:07.245</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Process.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.Process.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.772</Modified>
+      <Modified>2021-01-13T10:39:07.288</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.StackTrace.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.StackTrace.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.789</Modified>
+      <Modified>2021-01-13T10:39:07.338</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.TextWriterTraceListener.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.TextWriterTraceListener.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.805</Modified>
+      <Modified>2021-01-13T10:39:07.380</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Tools.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.Tools.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.821</Modified>
+      <Modified>2021-01-13T10:39:07.427</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.TraceSource.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.TraceSource.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.838</Modified>
+      <Modified>2021-01-13T10:39:07.479</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Tracing.dll">
       <PackagePath>Excel.Interop\System.Diagnostics.Tracing.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.863</Modified>
+      <Modified>2021-01-13T10:39:07.523</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Drawing.Primitives.dll">
       <PackagePath>Excel.Interop\System.Drawing.Primitives.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.881</Modified>
+      <Modified>2021-01-13T10:39:07.570</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Dynamic.Runtime.dll">
       <PackagePath>Excel.Interop\System.Dynamic.Runtime.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.898</Modified>
+      <Modified>2021-01-13T10:39:07.623</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Globalization.Calendars.dll">
       <PackagePath>Excel.Interop\System.Globalization.Calendars.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.915</Modified>
+      <Modified>2021-01-13T10:39:07.675</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Globalization.dll">
       <PackagePath>Excel.Interop\System.Globalization.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.932</Modified>
+      <Modified>2021-01-13T10:39:07.720</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Globalization.Extensions.dll">
       <PackagePath>Excel.Interop\System.Globalization.Extensions.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.948</Modified>
+      <Modified>2021-01-13T10:39:07.765</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.Compression.dll">
       <PackagePath>Excel.Interop\System.IO.Compression.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.966</Modified>
+      <Modified>2021-01-13T10:39:07.813</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.Compression.ZipFile.dll">
       <PackagePath>Excel.Interop\System.IO.Compression.ZipFile.dll</PackagePath>
-      <Modified>2020-09-24T13:57:56.989</Modified>
+      <Modified>2021-01-13T10:39:07.930</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.dll">
       <PackagePath>Excel.Interop\System.IO.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.025</Modified>
+      <Modified>2021-01-13T10:39:07.977</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.FileSystem.dll">
       <PackagePath>Excel.Interop\System.IO.FileSystem.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.044</Modified>
+      <Modified>2021-01-13T10:39:08.020</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.FileSystem.DriveInfo.dll">
       <PackagePath>Excel.Interop\System.IO.FileSystem.DriveInfo.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.062</Modified>
+      <Modified>2021-01-13T10:39:08.064</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.FileSystem.Primitives.dll">
       <PackagePath>Excel.Interop\System.IO.FileSystem.Primitives.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.124</Modified>
+      <Modified>2021-01-13T10:39:08.108</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.FileSystem.Watcher.dll">
       <PackagePath>Excel.Interop\System.IO.FileSystem.Watcher.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.145</Modified>
+      <Modified>2021-01-13T10:39:08.153</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.IsolatedStorage.dll">
       <PackagePath>Excel.Interop\System.IO.IsolatedStorage.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.161</Modified>
+      <Modified>2021-01-13T10:39:08.195</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.MemoryMappedFiles.dll">
       <PackagePath>Excel.Interop\System.IO.MemoryMappedFiles.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.179</Modified>
+      <Modified>2021-01-13T10:39:08.399</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.Pipes.dll">
       <PackagePath>Excel.Interop\System.IO.Pipes.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.196</Modified>
+      <Modified>2021-01-13T10:39:08.448</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.UnmanagedMemoryStream.dll">
       <PackagePath>Excel.Interop\System.IO.UnmanagedMemoryStream.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.212</Modified>
+      <Modified>2021-01-13T10:39:08.487</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Linq.dll">
       <PackagePath>Excel.Interop\System.Linq.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.231</Modified>
+      <Modified>2021-01-13T10:39:08.530</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Linq.Expressions.dll">
       <PackagePath>Excel.Interop\System.Linq.Expressions.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.248</Modified>
+      <Modified>2021-01-13T10:39:08.572</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Linq.Parallel.dll">
       <PackagePath>Excel.Interop\System.Linq.Parallel.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.264</Modified>
+      <Modified>2021-01-13T10:39:08.622</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Linq.Queryable.dll">
       <PackagePath>Excel.Interop\System.Linq.Queryable.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.281</Modified>
+      <Modified>2021-01-13T10:39:08.672</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Http.dll">
       <PackagePath>Excel.Interop\System.Net.Http.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.301</Modified>
+      <Modified>2021-01-13T10:39:08.725</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.NameResolution.dll">
       <PackagePath>Excel.Interop\System.Net.NameResolution.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.328</Modified>
+      <Modified>2021-01-13T10:39:08.802</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.NetworkInformation.dll">
       <PackagePath>Excel.Interop\System.Net.NetworkInformation.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.379</Modified>
+      <Modified>2021-01-13T10:39:08.847</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Ping.dll">
       <PackagePath>Excel.Interop\System.Net.Ping.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.396</Modified>
+      <Modified>2021-01-13T10:39:08.891</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Primitives.dll">
       <PackagePath>Excel.Interop\System.Net.Primitives.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.413</Modified>
+      <Modified>2021-01-13T10:39:08.935</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Requests.dll">
       <PackagePath>Excel.Interop\System.Net.Requests.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.430</Modified>
+      <Modified>2021-01-13T10:39:08.981</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Security.dll">
       <PackagePath>Excel.Interop\System.Net.Security.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.446</Modified>
+      <Modified>2021-01-13T10:39:09.024</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Sockets.dll">
       <PackagePath>Excel.Interop\System.Net.Sockets.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.535</Modified>
+      <Modified>2021-01-13T10:39:09.074</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.WebHeaderCollection.dll">
       <PackagePath>Excel.Interop\System.Net.WebHeaderCollection.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.569</Modified>
+      <Modified>2021-01-13T10:39:09.119</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.WebSockets.Client.dll">
       <PackagePath>Excel.Interop\System.Net.WebSockets.Client.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.587</Modified>
+      <Modified>2021-01-13T10:39:09.162</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.WebSockets.dll">
       <PackagePath>Excel.Interop\System.Net.WebSockets.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.603</Modified>
+      <Modified>2021-01-13T10:39:09.207</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ObjectModel.dll">
       <PackagePath>Excel.Interop\System.ObjectModel.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.620</Modified>
+      <Modified>2021-01-13T10:39:09.248</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Reflection.dll">
       <PackagePath>Excel.Interop\System.Reflection.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.636</Modified>
+      <Modified>2021-01-13T10:39:09.290</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Reflection.Extensions.dll">
       <PackagePath>Excel.Interop\System.Reflection.Extensions.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.652</Modified>
+      <Modified>2021-01-13T10:39:09.337</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Reflection.Primitives.dll">
       <PackagePath>Excel.Interop\System.Reflection.Primitives.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.668</Modified>
+      <Modified>2021-01-13T10:39:09.378</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Resources.Reader.dll">
       <PackagePath>Excel.Interop\System.Resources.Reader.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.685</Modified>
+      <Modified>2021-01-13T10:39:09.423</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Resources.ResourceManager.dll">
       <PackagePath>Excel.Interop\System.Resources.ResourceManager.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.711</Modified>
+      <Modified>2021-01-13T10:39:09.473</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Resources.Writer.dll">
       <PackagePath>Excel.Interop\System.Resources.Writer.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.729</Modified>
+      <Modified>2021-01-13T10:39:09.517</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.CompilerServices.VisualC.dll">
       <PackagePath>Excel.Interop\System.Runtime.CompilerServices.VisualC.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.771</Modified>
+      <Modified>2021-01-13T10:39:09.567</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.dll">
       <PackagePath>Excel.Interop\System.Runtime.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.787</Modified>
+      <Modified>2021-01-13T10:39:09.617</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Extensions.dll">
       <PackagePath>Excel.Interop\System.Runtime.Extensions.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.805</Modified>
+      <Modified>2021-01-13T10:39:09.666</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Handles.dll">
       <PackagePath>Excel.Interop\System.Runtime.Handles.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.821</Modified>
+      <Modified>2021-01-13T10:39:09.719</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.InteropServices.dll">
       <PackagePath>Excel.Interop\System.Runtime.InteropServices.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.838</Modified>
+      <Modified>2021-01-13T10:39:09.770</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.InteropServices.RuntimeInformation.dll">
       <PackagePath>Excel.Interop\System.Runtime.InteropServices.RuntimeInformation.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.856</Modified>
+      <Modified>2021-01-13T10:39:09.822</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Numerics.dll">
       <PackagePath>Excel.Interop\System.Runtime.Numerics.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.874</Modified>
+      <Modified>2021-01-13T10:39:09.875</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Serialization.Formatters.dll">
       <PackagePath>Excel.Interop\System.Runtime.Serialization.Formatters.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.890</Modified>
+      <Modified>2021-01-13T10:39:09.921</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Serialization.Json.dll">
       <PackagePath>Excel.Interop\System.Runtime.Serialization.Json.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.907</Modified>
+      <Modified>2021-01-13T10:39:09.963</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Serialization.Primitives.dll">
       <PackagePath>Excel.Interop\System.Runtime.Serialization.Primitives.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.923</Modified>
+      <Modified>2021-01-13T10:39:10.015</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Serialization.Xml.dll">
       <PackagePath>Excel.Interop\System.Runtime.Serialization.Xml.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.939</Modified>
+      <Modified>2021-01-13T10:39:10.060</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Claims.dll">
       <PackagePath>Excel.Interop\System.Security.Claims.dll</PackagePath>
-      <Modified>2020-09-24T13:57:57.955</Modified>
+      <Modified>2021-01-13T10:39:10.106</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.Algorithms.dll">
       <PackagePath>Excel.Interop\System.Security.Cryptography.Algorithms.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.000</Modified>
+      <Modified>2021-01-13T10:39:10.156</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.Csp.dll">
       <PackagePath>Excel.Interop\System.Security.Cryptography.Csp.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.018</Modified>
+      <Modified>2021-01-13T10:39:10.202</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.Encoding.dll">
       <PackagePath>Excel.Interop\System.Security.Cryptography.Encoding.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.035</Modified>
+      <Modified>2021-01-13T10:39:10.246</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.Primitives.dll">
       <PackagePath>Excel.Interop\System.Security.Cryptography.Primitives.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.051</Modified>
+      <Modified>2021-01-13T10:39:10.287</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.X509Certificates.dll">
       <PackagePath>Excel.Interop\System.Security.Cryptography.X509Certificates.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.067</Modified>
+      <Modified>2021-01-13T10:39:10.325</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Principal.dll">
       <PackagePath>Excel.Interop\System.Security.Principal.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.085</Modified>
+      <Modified>2021-01-13T10:39:10.364</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.SecureString.dll">
       <PackagePath>Excel.Interop\System.Security.SecureString.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.102</Modified>
+      <Modified>2021-01-13T10:39:10.404</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Text.Encoding.dll">
       <PackagePath>Excel.Interop\System.Text.Encoding.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.119</Modified>
+      <Modified>2021-01-13T10:39:10.443</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Text.Encoding.Extensions.dll">
       <PackagePath>Excel.Interop\System.Text.Encoding.Extensions.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.136</Modified>
+      <Modified>2021-01-13T10:39:10.483</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Text.RegularExpressions.dll">
       <PackagePath>Excel.Interop\System.Text.RegularExpressions.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.152</Modified>
+      <Modified>2021-01-13T10:39:10.527</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.dll">
       <PackagePath>Excel.Interop\System.Threading.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.169</Modified>
+      <Modified>2021-01-13T10:39:10.567</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Overlapped.dll">
       <PackagePath>Excel.Interop\System.Threading.Overlapped.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.186</Modified>
+      <Modified>2021-01-13T10:39:10.602</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Tasks.dll">
       <PackagePath>Excel.Interop\System.Threading.Tasks.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.205</Modified>
+      <Modified>2021-01-13T10:39:10.654</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Tasks.Parallel.dll">
       <PackagePath>Excel.Interop\System.Threading.Tasks.Parallel.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.221</Modified>
+      <Modified>2021-01-13T10:39:10.695</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Thread.dll">
       <PackagePath>Excel.Interop\System.Threading.Thread.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.245</Modified>
+      <Modified>2021-01-13T10:39:10.747</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.ThreadPool.dll">
       <PackagePath>Excel.Interop\System.Threading.ThreadPool.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.261</Modified>
+      <Modified>2021-01-13T10:39:10.785</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Timer.dll">
       <PackagePath>Excel.Interop\System.Threading.Timer.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.278</Modified>
+      <Modified>2021-01-13T10:39:10.825</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ValueTuple.dll">
       <PackagePath>Excel.Interop\System.ValueTuple.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.294</Modified>
+      <Modified>2021-01-13T10:39:10.865</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.ReaderWriter.dll">
       <PackagePath>Excel.Interop\System.Xml.ReaderWriter.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.314</Modified>
+      <Modified>2021-01-13T10:39:10.912</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XDocument.dll">
       <PackagePath>Excel.Interop\System.Xml.XDocument.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.331</Modified>
+      <Modified>2021-01-13T10:39:10.959</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XmlDocument.dll">
       <PackagePath>Excel.Interop\System.Xml.XmlDocument.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.348</Modified>
+      <Modified>2021-01-13T10:39:11.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XmlSerializer.dll">
       <PackagePath>Excel.Interop\System.Xml.XmlSerializer.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.365</Modified>
+      <Modified>2021-01-13T10:39:11.041</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XPath.dll">
       <PackagePath>Excel.Interop\System.Xml.XPath.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.381</Modified>
+      <Modified>2021-01-13T10:39:11.079</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XPath.XDocument.dll">
       <PackagePath>Excel.Interop\System.Xml.XPath.XDocument.dll</PackagePath>
-      <Modified>2020-09-24T13:57:58.398</Modified>
+      <Modified>2021-01-13T10:39:11.117</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\Microsoft.Office.Interop.Excel.dll">
       <PackagePath>Excel.Interop\Microsoft.Office.Interop.Excel.dll</PackagePath>
-      <Modified>2020-09-29T10:36:39.363</Modified>
+      <Modified>2020-10-26T08:21:02.806</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\Debug\Excel.Interop.exe">
       <PackagePath>Excel.Interop\Excel.Interop.exe</PackagePath>
-      <Modified>2020-10-02T11:19:07.586</Modified>
+      <Modified>2021-02-02T16:40:11.787</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\Debug\Excel.Interop.exe.config">
       <PackagePath>Excel.Interop\Excel.Interop.exe.config</PackagePath>
-      <Modified>2020-10-02T07:50:34.217</Modified>
+      <Modified>2021-02-02T16:02:47.543</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MaintenanceToolECSBOX.exe">
       <PackagePath>entrypoint\MaintenanceToolECSBOX.exe</PackagePath>
-      <Modified>2020-10-02T11:19:18.765</Modified>
+      <Modified>2021-02-02T16:40:26.440</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll">
+      <PackagePath>ColorCode.Core.dll</PackagePath>
+      <Modified>2020-05-18T22:12:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\colorcode.uwp\2.0.6\lib\uap10.0\ColorCode.UWP.dll">
+      <PackagePath>ColorCode.UWP.dll</PackagePath>
+      <Modified>2020-05-18T22:13:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.dll">
+      <PackagePath>Microsoft.Toolkit.dll</PackagePath>
+      <Modified>2020-08-12T20:29:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.parsers\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.Parsers.dll">
+      <PackagePath>Microsoft.Toolkit.Parsers.dll</PackagePath>
+      <Modified>2020-08-12T20:29:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.dll</PackagePath>
+      <Modified>2020-08-12T20:29:36.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.dll</PackagePath>
+      <Modified>2020-08-12T20:30:04.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.animations\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Animations.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Animations.dll</PackagePath>
+      <Modified>2020-08-12T20:30:06.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.controls\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.dll</PackagePath>
+      <Modified>2020-08-12T20:30:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.1\lib\uap10.0\Microsoft.Xaml.Interactions.dll">
+      <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
+      <Modified>2019-04-26T23:06:58.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.1\lib\uap10.0\Microsoft.Xaml.Interactivity.dll">
+      <PackagePath>Microsoft.Xaml.Interactivity.dll</PackagePath>
+      <Modified>2019-04-26T23:06:08.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\newtonsoft.json\10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2017-06-18T11:57:10.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2020-02-27T17:17:32.000</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.3\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+      <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
+      <Modified>2020-02-19T09:05:16.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\win2d.uwp\1.25.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
+      <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
+      <Modified>2020-04-02T17:46:32.000</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\EventLoggerManagment\bin\x64\Debug\EventLoggerManagment.dll">
       <PackagePath>EventLoggerManagment.dll</PackagePath>
-      <Modified>2020-10-02T07:50:34.141</Modified>
+      <Modified>2021-02-02T16:02:48.735</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\bin\x64\Debug\MaintenanceToolProtocol.dll">
       <PackagePath>MaintenanceToolProtocol.dll</PackagePath>
-      <Modified>2020-10-02T07:50:34.149</Modified>
+      <Modified>2021-02-02T16:02:48.736</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\ParameterTransferProtocol\bin\x64\Debug\ParameterTransferProtocol.dll">
       <PackagePath>ParameterTransferProtocol.dll</PackagePath>
-      <Modified>2020-10-02T07:50:37.069</Modified>
+      <Modified>2021-02-02T16:02:53.072</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\win2d.uwp\1.25.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
+      <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
+      <Modified>2020-04-02T17:44:36.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd">
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
-      <Modified>2019-03-18T16:36:56.000</Modified>
+      <Modified>2019-03-18T17:36:56.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.controls\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml</PackagePath>
+      <Modified>2020-08-12T20:07:10.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\microsoft-sdk.png">
       <PackagePath>Assets\microsoft-sdk.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.426</Modified>
+      <Modified>2020-10-26T08:21:02.756</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\placeholder-sdk.png">
       <PackagePath>Assets\placeholder-sdk.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.429</Modified>
+      <Modified>2020-10-26T08:21:02.758</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\placeholder.png">
       <PackagePath>Assets\placeholder.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.430</Modified>
+      <Modified>2020-10-26T08:21:02.760</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\smalltile-sdk.png">
       <PackagePath>Assets\smalltile-sdk.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.434</Modified>
+      <Modified>2020-10-26T08:21:02.761</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\splash-sdk.png">
       <PackagePath>Assets\splash-sdk.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.437</Modified>
+      <Modified>2020-10-26T08:21:02.762</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Square310x310Logo.png">
       <PackagePath>Assets\Square310x310Logo.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.409</Modified>
+      <Modified>2020-10-26T08:21:02.750</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\squaretile-sdk.png">
       <PackagePath>Assets\squaretile-sdk.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.440</Modified>
+      <Modified>2020-10-26T08:21:02.764</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\storelogo-sdk.png">
       <PackagePath>Assets\storelogo-sdk.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.443</Modified>
+      <Modified>2020-10-26T08:21:02.765</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\tile-sdk.png">
       <PackagePath>Assets\tile-sdk.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.447</Modified>
+      <Modified>2020-10-26T08:21:02.772</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\windows-sdk.png">
       <PackagePath>Assets\windows-sdk.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.448</Modified>
+      <Modified>2020-10-26T08:21:02.776</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.402</Modified>
+      <Modified>2020-10-26T08:21:02.745</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.405</Modified>
+      <Modified>2020-10-26T08:21:02.747</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.406</Modified>
+      <Modified>2020-10-26T08:21:02.749</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.412</Modified>
+      <Modified>2020-10-26T08:21:02.751</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.416</Modified>
+      <Modified>2020-10-26T08:21:02.752</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.419</Modified>
+      <Modified>2020-10-26T08:21:02.754</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
-      <Modified>2020-09-28T06:46:12.422</Modified>
+      <Modified>2020-10-26T08:21:02.755</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2020-09-28T06:46:12.527</Modified>
+      <Modified>2020-10-26T08:21:02.850</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MaintenanceToolECSBOX.xr.xml">
       <PackagePath>MaintenanceToolECSBOX.xr.xml</PackagePath>
-      <Modified>2020-10-02T09:36:50.522</Modified>
+      <Modified>2021-02-02T09:39:19.506</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.635</Modified>
+      <Modified>2021-02-02T16:03:36.615</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Compresor.xbf">
+      <PackagePath>Compresor.xbf</PackagePath>
+      <Modified>2021-02-02T16:03:36.456</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\EventLoggerList.xbf">
       <PackagePath>EventLoggerList.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.600</Modified>
+      <Modified>2021-02-02T16:03:36.462</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\FansOperation.xbf">
+      <PackagePath>FansOperation.xbf</PackagePath>
+      <Modified>2021-02-02T16:03:36.616</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\FlapperValveControl.xbf">
+      <PackagePath>FlapperValveControl.xbf</PackagePath>
+      <Modified>2021-02-02T16:03:36.485</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\FlapperValveOffset.xbf">
       <PackagePath>FlapperValveOffset.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.621</Modified>
+      <Modified>2021-02-02T16:03:36.513</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\HeaterOperation.xbf">
+      <PackagePath>HeaterOperation.xbf</PackagePath>
+      <Modified>2021-02-02T16:03:36.528</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.624</Modified>
+      <Modified>2021-02-02T16:03:36.532</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MinimunFreshAir.xbf">
+      <PackagePath>MinimunFreshAir.xbf</PackagePath>
+      <Modified>2021-02-02T16:03:36.578</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\ScavengeFan.xbf">
+      <PackagePath>ScavengeFan.xbf</PackagePath>
+      <Modified>2021-02-02T16:03:36.582</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario1_ConnectDisconnect.xbf">
       <PackagePath>Scenario1_ConnectDisconnect.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.637</Modified>
+      <Modified>2021-02-02T16:03:36.619</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario2_ConfigureDevice.xbf">
       <PackagePath>Scenario2_ConfigureDevice.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.629</Modified>
+      <Modified>2021-02-02T16:03:36.591</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario3_ReadWrite.xbf">
       <PackagePath>Scenario3_ReadWrite.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.634</Modified>
+      <Modified>2021-02-02T16:03:36.597</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario4_Events.xbf">
       <PackagePath>Scenario4_Events.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.637</Modified>
+      <Modified>2021-02-02T16:03:36.621</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Styles\Styles.xbf">
       <PackagePath>Styles\Styles.xbf</PackagePath>
-      <Modified>2020-10-02T11:19:14.597</Modified>
+      <Modified>2021-02-02T16:03:36.443</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\TemperatureSensors.xbf">
+      <PackagePath>TemperatureSensors.xbf</PackagePath>
+      <Modified>2021-02-02T16:03:36.613</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
-      <Modified>2019-03-18T15:33:42.000</Modified>
+      <Modified>2019-03-18T16:33:42.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Core\MaintenanceToolECSBOX.exe">
       <PackagePath>MaintenanceToolECSBOX.exe</PackagePath>
-      <Modified>2020-10-02T11:19:20.520</Modified>
+      <Modified>2021-02-02T16:40:31.352</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

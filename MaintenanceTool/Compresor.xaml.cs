@@ -44,6 +44,7 @@ namespace MaintenanceToolECSBOX
         private static Compresor handler;
         private const int NUMBER_OF_FAULTS = 4;
         private const int NUMBER_OF_RELAYS = 3;
+        private const int NUMBER_OF_SWITCHES = 2;
         // Track Read Operation
         private CancellationTokenSource ReadCancellationTokenSource;
         private Object ReadCancelLock = new Object();
@@ -108,23 +109,27 @@ namespace MaintenanceToolECSBOX
             listOfTextBlocks.Add(StatusLabel4);
             listOfTextBlocks.Add(MotorTempText);
             listOfTextBlocks.Add(CoolantTempText);
+            listOfTextBlocks.Add(PressureHighText);
+            listOfTextBlocks.Add(PressureLowText);
             listOfEllipses = new ObservableCollection<Ellipse>();
             listOfEllipses.Add(FaultSignal1);
             listOfEllipses.Add(FaultSignal2);
             listOfEllipses.Add(FaultSignal3);
             listOfEllipses.Add(ExternFaultSignal);
+            listOfEllipses.Add(PressureHighSignal);
+            listOfEllipses.Add(PressureLowSignal);
             listOfSliders = new ObservableCollection<Slider>();
             listOfSliders.Add(MotorTemperature);
             listOfSliders.Add(Coolant);
             listOfDarkAnimations = new ObservableCollection<AnimationSet>();
             listOfLightAnimations = new ObservableCollection<AnimationSet>();
-            for (int i = 0; i < NUMBER_OF_FAULTS; i++)
+            for (int i = 0; i < (NUMBER_OF_FAULTS+NUMBER_OF_SWITCHES); i++)
             {
                 listOfDarkAnimations.Add(listOfEllipses[i].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
                 listOfLightAnimations.Add(listOfEllipses[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
             }
-            listOfDarkAnimations[listOfDarkAnimations.Count - 1].Completed += Fault_DarkAnimation_Completed; ;
-            listOfLightAnimations[listOfLightAnimations.Count - 1].Completed += FaultLigthAnimation_Completed; ; ;
+            listOfDarkAnimations[listOfDarkAnimations.Count - 1].Completed += Fault_DarkAnimation_Completed; 
+            listOfLightAnimations[listOfLightAnimations.Count - 1].Completed += FaultLigthAnimation_Completed; 
 
             foreach (AnimationSet an in listOfDarkAnimations)
             {
@@ -896,6 +901,7 @@ namespace MaintenanceToolECSBOX
         }
         private async Task UpdateFaultStatusSignal()
         {
+            int k;
             for (int i = 0; i < NUMBER_OF_RELAYS; i++)
             {
                 if ((received[6] & (Byte)((0x20<<i))) == 0)
@@ -929,16 +935,46 @@ namespace MaintenanceToolECSBOX
 
                 }
             }
-            if ((received[6] & (Byte)((0x10 ))) == 0)
+            for (int i = 0; i < NUMBER_OF_SWITCHES; i++)
             {
-                listOfEllipses[3].Visibility= Visibility.Visible;
-                UpdateRelayStatusText(3, "Fault");
+                k = 4 + i;
+                if ((received[9] & (Byte)((0x08 >> i))) >0)
+                {
+                    listOfEllipses[k].Visibility = Visibility.Visible;
+                   
+                    UpdateRelayStatusText(k+2, "Fault");
+                    if (blink != null)
+                    {
+                        await blink;
+                    }
+                }
+                else
+                {
+
+                    listOfEllipses[k].Visibility = Visibility.Collapsed;
+                    UpdateRelayStatusText(k+2, "OK");
+
+                }
+            }
+            if (listOfToggles[0].IsOn)
+            {
+                if ((received[6] & (Byte)((0x10))) == 0)
+                {
+                    listOfEllipses[3].Visibility = Visibility.Visible;
+                    UpdateRelayStatusText(3, "Fault");
+                }
+                else
+                {
+                    listOfEllipses[3].Visibility = Visibility.Collapsed;
+                    UpdateRelayStatusText(3, "OK");
+                }
             }
             else
             {
                 listOfEllipses[3].Visibility = Visibility.Collapsed;
-                UpdateRelayStatusText(3, "OK");
+                UpdateRelayStatusText(3, "   ");
             }
+            
 
 
 

@@ -1,3 +1,4 @@
+C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll
 C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\SplashScreen.scale-200.png
 C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\LockScreenLogo.scale-200.png
 C:\Users\GMateusDP\source\repos\EventsExcelLogger\Images\Square150x150Logo.scale-200.png
@@ -109,13 +110,38 @@ C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\Debug\Excel.In
 C:\Users\GMateusDP\source\repos\MaintenanceTool\EventLoggerManagment\bin\x64\Debug\EventLoggerManagment.pdb
 C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\bin\x64\Debug\MaintenanceToolProtocol.pdb
 C:\Users\GMateusDP\source\repos\MaintenanceTool\ParameterTransferProtocol\bin\x64\Debug\ParameterTransferProtocol.pdb
+C:\Users\GMateusDP\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.pdb
+C:\Users\GMateusDP\.nuget\packages\colorcode.uwp\2.0.6\lib\uap10.0\ColorCode.UWP.pdb
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.pdb
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.parsers\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.Parsers.pdb
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.pdb
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.pdb
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.animations\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Animations.pdb
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.controls\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls.pdb
+C:\Users\GMateusDP\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.1\lib\uap10.0\Microsoft.Xaml.Interactions.pdb
+C:\Users\GMateusDP\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.1\lib\uap10.0\Microsoft.Xaml.Interactivity.pdb
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MaintenanceToolECSBOX.pdb
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MaintenanceToolECSBOX.exe
+C:\Users\GMateusDP\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll
+C:\Users\GMateusDP\.nuget\packages\colorcode.uwp\2.0.6\lib\uap10.0\ColorCode.UWP.dll
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.dll
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.parsers\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.Parsers.dll
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.dll
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.dll
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.animations\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Animations.dll
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.controls\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls.dll
+C:\Users\GMateusDP\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.1\lib\uap10.0\Microsoft.Xaml.Interactions.dll
+C:\Users\GMateusDP\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.1\lib\uap10.0\Microsoft.Xaml.Interactivity.dll
+C:\Users\GMateusDP\.nuget\packages\newtonsoft.json\10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll
 C:\Program Files (x86)\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll
+C:\Users\GMateusDP\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.3\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\GMateusDP\.nuget\packages\win2d.uwp\1.25.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll
 C:\Users\GMateusDP\source\repos\MaintenanceTool\EventLoggerManagment\bin\x64\Debug\EventLoggerManagment.dll
 C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\bin\x64\Debug\MaintenanceToolProtocol.dll
 C:\Users\GMateusDP\source\repos\MaintenanceTool\ParameterTransferProtocol\bin\x64\Debug\ParameterTransferProtocol.dll
+C:\Users\GMateusDP\.nuget\packages\win2d.uwp\1.25.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd
 C:\Program Files (x86)\Windows Kits\10\bin\10.0.18362.0\XamlCompiler\Microsoft.UI.Xaml.Markup.winmd
+C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.controls\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml
 C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\microsoft-sdk.png
 C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\placeholder-sdk.png
 C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\placeholder.png
@@ -136,13 +162,20 @@ C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Wide310x150Logo.scale-200
 C:\Users\GMateusDP\source\repos\MaintenanceTool\Properties\Default.rd.xml
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MaintenanceToolECSBOX.xr.xml
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\App.xbf
+C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Compresor.xbf
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\EventLoggerList.xbf
+C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\FansOperation.xbf
+C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\FlapperValveControl.xbf
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\FlapperValveOffset.xbf
+C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\HeaterOperation.xbf
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MainPage.xbf
+C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MinimunFreshAir.xbf
+C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\ScavengeFan.xbf
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario1_ConnectDisconnect.xbf
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario2_ConfigureDevice.xbf
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario3_ReadWrite.xbf
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Scenario4_Events.xbf
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Styles\Styles.xbf
+C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\TemperatureSensors.xbf
 C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd
 C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\Core\MaintenanceToolECSBOX.exe

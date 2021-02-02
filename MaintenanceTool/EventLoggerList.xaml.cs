@@ -54,7 +54,7 @@ namespace MaintenanceToolECSBOX
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
         private int null_counter = 0;
-        
+        private static bool is_deleting=false;
 
         // Track Write Operation
          private Boolean IsWriteTaskPending, request_sucess, read_request_success,block_read;
@@ -94,6 +94,7 @@ namespace MaintenanceToolECSBOX
         private uint start_index, current_index, end_line_index,next_index;
         private    EventLoggerManagment.DataLogItem data_log_item;
         private string single_message;
+        private static bool timer_disposed;
         public EventLoggerList()
         {
 
@@ -109,8 +110,17 @@ namespace MaintenanceToolECSBOX
             App.AppServiceConnected += MainPage_AppServiceConnected;
             datalog_size= Marshal.SizeOf(dataLogMessage);
             current_memory_address = start_memory_address;
+         //  aTimer.Disposed += ATimer_Disposed;
+            timer_disposed = false;
 
         }
+
+        private void ATimer_Disposed(object sender, EventArgs e)
+        {
+            timer_disposed = true;
+            //throw new NotImplementedException();
+        }
+
         private async void MainPage_AppServiceConnected(object sender, EventArgs e)
         {
             // send the ValueSet to the fulltrust process
@@ -167,7 +177,7 @@ namespace MaintenanceToolECSBOX
             IsNavigatedAway = false;
             if (EventHandlerForDevice.Current.Device == null)
             {
-                ReadWriteScollViewer.Visibility = Visibility.Collapsed;
+                //ReadWriteScollViewer.Visibility = Visibility.Collapsed;
                 MainPage.Current.NotifyUser("Device is not connected", NotifyType.ErrorMessage);
             }
             else
@@ -212,54 +222,103 @@ namespace MaintenanceToolECSBOX
         }
         public async void UpdateLogData()
         {
-            updatingLogger = true;
-            SetStopButtonStates(false);
-            request_sucess = false;
-            await RequestLogData();
-            if (request_sucess)
+            if (!is_deleting)
             {
-                got_termination_bytes = false;
-                on_reading_state = true;
-            
-                read_request_success = false;
-                await ReadLogData();
-                if (read_request_success)
+                updatingLogger = true;
+                SetButtonStates(false);
+                request_sucess = false;
+                await RequestLogData();
+                if (request_sucess)
                 {
-                    if (block_address_read==current_memory_address)
+                    got_termination_bytes = false;
+                    on_reading_state = true;
+
+                    read_request_success = false;
+                    await ReadLogData();
+                    if (read_request_success)
                     {
-                        ucontroller_timestamp= BitConverter.ToUInt32(received, 10);
+                        ucontroller_timestamp = BitConverter.ToUInt32(received, 10);
                         on_received_host_timestamp = (UInt32)DateTimeOffset.UtcNow.ToUnixTimeSeconds();
                         offset_timestamp = on_received_host_timestamp - ucontroller_timestamp;
-                        read_request_success = false;
-                        await ReadBlockData();
-                        if (read_request_success)
+                        if (block_address_read == current_memory_address)
                         {
 
-                            DecodeMessages();
-                            SetStopButtonStates(true);
+                            memory_block_size = 4 * 1024;
+                            block_received = new byte[memory_block_size];
+
+                            read_request_success = false;
+                            await ReadBlockData();
+                            if (read_request_success)
+                            {
+
+                                DecodeMessages();
+                                SetButtonStates(true);
+                            }
+
                         }
+                        else
+                        {
+                            if ((((UInt16)(block_address_read>>16))&(0xaaaa))>0)
+                            {
+                                memory_block_size = (uint)((block_address_read&0xffff));
+                                block_received = new byte[memory_block_size];
+                                read_request_success = false;
+                                await ReadBlockData();
+                                if (read_request_success)
+                                {
+
+                                    DecodeMessages();
+                                    SetButtonStates(true);
+                                }
+                            }
+                        }
+
+
+
+
+                    }
+                    else
+                    {
 
                     }
 
-                   
-               
+                    on_reading_state = false;
+
+                }
+
+                SetButtonStates(true);
+                updatingLogger = false;
+            }
+            
+        }
+        private  bool SetButtonStates( bool st)
+        {
+            StopReading.IsEnabled = st;
+           
+            if (st)
+            {
+                if (StopReading.Content.Equals(start))
+                {
+                    DeleteItem.IsEnabled = st;
+                    DeleteAll.IsEnabled = st;
+                    ExportExcel.IsEnabled = st;
                 }
                 else
                 {
-                    
+                    DeleteItem.IsEnabled = false;
+                    DeleteAll.IsEnabled = false;
+                    ExportExcel.IsEnabled = false;
                 }
-            
-                on_reading_state = false;
-                
-            }
 
-            SetStopButtonStates(true);
-            updatingLogger = false;
-        }
-        private  bool SetStopButtonStates( bool st)
-        {
-            StopReading.IsEnabled = st;
-            ExportExcel.IsEnabled = st;
+
+            }
+            else
+            {
+                DeleteItem.IsEnabled = st;
+                DeleteAll.IsEnabled = st;
+                ExportExcel.IsEnabled = st;
+            }
+      
             return st;
 
         } 
@@ -291,8 +350,11 @@ namespace MaintenanceToolECSBOX
                 }
                 
             }
-
-            aTimer.Start();
+            if (!timer_disposed)
+            {
+                aTimer.Start();
+            }
+          
 
 
 
@@ -644,7 +706,15 @@ namespace MaintenanceToolECSBOX
                     }
                     else
                     {
-                        current_memory_address += memory_block_size;
+                        if (bytesRead>=4*1024)
+                        {
+                            current_memory_address += memory_block_size;
+                        }
+                        else
+                        {
+
+                        }
+                      
                     }
                  
                 }
@@ -671,8 +741,10 @@ namespace MaintenanceToolECSBOX
             {
                 aTimer.Stop();
                 aTimer.Dispose();
+                timer_disposed = true;
             }
             CancelAllIoTasks();
+            listOfMessages.Clear();
         }
         private async Task CyclicReading()
         {
@@ -844,17 +916,18 @@ namespace MaintenanceToolECSBOX
                         StopReading.Content = start;
                         StatusEventLogger.Text = stopped;
 
-                  
-                        UpdateExportExcelButton(true);
+                       
+                       // UpdateExportExcelButton(true);
                     }
                     else
                     {
-                        UpdateExportExcelButton(false);
+                        
+                       // UpdateExportExcelButton(false);
                         StopReading.Content = stop;
                         StatusEventLogger.Text = reading;
            
                     }
-
+                    SetButtonStates(true);
 
                 }
                 else
@@ -937,6 +1010,16 @@ namespace MaintenanceToolECSBOX
             }
             rootPage.NotifyUser("Read completed - " + bytesRead.ToString() + " bytes were read", NotifyType.StatusMessage);
         }
+
+        private void DeleteAll_Click(object sender, RoutedEventArgs e)
+        {
+            is_deleting = true;
+           
+                listOfMessages.Clear();
+  
+            is_deleting = false;
+        }
+
         private void UpdateReadButtonStates()
         {
             if (IsPerformingRead())
@@ -968,6 +1051,7 @@ namespace MaintenanceToolECSBOX
             }
             else
             {
+
                 table = new ValueSet();
                 table.Add("REQUEST", "CreateSpreadsheet");
 
@@ -1000,10 +1084,13 @@ namespace MaintenanceToolECSBOX
         {
             if (BottomUpList.SelectedItems.Count > 0)
             {
+                is_deleting = true;
                 DeleteSelectedItem();
+                is_deleting = false;
             }
 
         }
+ 
         private void UpdateDeleteItemButtom()
         {
             DeleteItem.IsEnabled = BottomUpList.SelectedItems.Count > 0;

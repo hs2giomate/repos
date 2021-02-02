@@ -56,7 +56,7 @@ namespace MaintenanceToolECSBOX
         private static Byte[] received, toSend,last_minimum_air;
         private static Byte[] currentPosition, lastPosition, lastCommand, commandValve, lastSetpoint, currentSetpoint;
         private SingleTaskMessage fansCommand;
-        private static System.Timers.Timer refreshValueTimer = null;
+        private static System.Timers.Timer flapperValveTimer = null;
         private int sizeofStruct;
         private uint readBufferLength;
         private UInt32 magicHeader;
@@ -73,6 +73,7 @@ namespace MaintenanceToolECSBOX
         private bool required_feedback;
         private const int DATA_OFFSET=21;
         private byte result_minimum;
+        private static bool timer_disposed;
         
         public FlapperValveControl()
         {
@@ -149,6 +150,7 @@ namespace MaintenanceToolECSBOX
             listOfLightAnimations[1].Completed += FlapperValveLigthAnimation_Completed1;
             minimunValues = new MinimunFreshAir();
             minimunAirPosition = minimunFailValue;
+            timer_disposed = false;
     
         }
 
@@ -318,10 +320,11 @@ namespace MaintenanceToolECSBOX
         protected override void OnNavigatedFrom(NavigationEventArgs eventArgs)
         {
             IsNavigatedAway = true;
-            if (refreshValueTimer != null)
+            if (flapperValveTimer != null)
             {
-                refreshValueTimer.Stop();
-                refreshValueTimer.Dispose();
+                flapperValveTimer.Stop();
+                flapperValveTimer.Dispose();
+                timer_disposed = true;
             }
             CancelAllIoTasks();
         }
@@ -392,21 +395,27 @@ namespace MaintenanceToolECSBOX
                 WriteCancellationTokenSource.Dispose();
                 WriteCancellationTokenSource = null;
             }
+            if (flapperValveTimer != null)
+            {
+                flapperValveTimer.Stop();
+                flapperValveTimer.Dispose();
+            }
         }
         public void StartStatusCheckTimer()
         {
             // Create a timer and set a two second interval.
-            refreshValueTimer = new System.Timers.Timer();
-            refreshValueTimer.Interval = CALLING_INTERVAL;
+            flapperValveTimer = new System.Timers.Timer();
+            flapperValveTimer.Interval = CALLING_INTERVAL;
 
             // Hook up the Elapsed event for the timer. 
-            refreshValueTimer.Elapsed += OnTimedEvent;
+            flapperValveTimer.Elapsed += OnTimedEvent;
 
             // Have the timer fire repeated events (true is the default)
-            refreshValueTimer.AutoReset = false;
+            flapperValveTimer.AutoReset = false;
 
             // Start the timer
-            refreshValueTimer.Enabled = true;
+            flapperValveTimer.Enabled = true;
+            timer_disposed = false;
 
 
         }
@@ -425,9 +434,12 @@ namespace MaintenanceToolECSBOX
                  handler.UpdateValvesData();
              }));
             }
-
+            if (!timer_disposed)
+            {
+                flapperValveTimer.Start();
+            }
             
-            refreshValueTimer.Start();
+            
         }
         private async void NotifyReadCancelingTask()
         {

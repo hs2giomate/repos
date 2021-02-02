@@ -67,12 +67,14 @@ namespace MaintenanceToolECSBOX
         private uint readBufferLength;
         private Task blink;
         private SingleTaskMessage heatersCommand;
-        private static System.Timers.Timer aTimer = null;
+        private static System.Timers.Timer heaterTimer = null;
         private int sizeofStruct;
         private UInt32 magicHeader = 0;
         private bool updatingStatus=false;
         private const int UPDATING_TIME = 1000;
         private bool required_status=false;
+        private static bool timer_disposed;
+
 
         public HeaterOperation()
         {
@@ -185,17 +187,18 @@ namespace MaintenanceToolECSBOX
         public void StartStatusCheckTimer()
         {
             // Create a timer and set a two second interval.
-            aTimer = new System.Timers.Timer();
-            aTimer.Interval = UPDATING_TIME;
+            heaterTimer = new System.Timers.Timer();
+            heaterTimer.Interval = UPDATING_TIME;
 
             // Hook up the Elapsed event for the timer. 
-            aTimer.Elapsed += OnTimedEvent;
+            heaterTimer.Elapsed += OnTimedEvent;
 
             // Have the timer fire repeated events (true is the default)
-            aTimer.AutoReset = false;
+            heaterTimer.AutoReset = false;
 
             // Start the timer
-            aTimer.Enabled = true;
+            heaterTimer.Enabled = true;
+            timer_disposed = false;
            
 
 
@@ -237,9 +240,9 @@ namespace MaintenanceToolECSBOX
 
             }
 
-            if (aTimer!=null)
+            if (heaterTimer!=null)
             {
-                aTimer.Start();
+                heaterTimer.Start();
             }
 
             
@@ -281,15 +284,22 @@ namespace MaintenanceToolECSBOX
                 WriteCancellationTokenSource.Dispose();
                 WriteCancellationTokenSource = null;
             }
+            if ((heaterTimer != null)&(!timer_disposed))
+            {
+                heaterTimer.Stop();
+                heaterTimer.Dispose();
+                timer_disposed = true;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs eventArgs)
         {
             IsNavigatedAway = true;
-            if (aTimer != null)
+            if (heaterTimer != null)
             {
-                    aTimer.Stop();
-                     aTimer.Dispose();
+                    heaterTimer.Stop();
+                     heaterTimer.Dispose();
+                timer_disposed = true;
             }
             CancelAllIoTasks();
         }

@@ -216,6 +216,11 @@ namespace MaintenanceToolECSBOX
                 WriteCancellationTokenSource.Dispose();
                 WriteCancellationTokenSource = null;
             }
+            if (aTimer != null)
+            {
+                aTimer.Stop();
+                aTimer.Dispose();
+            }
         }
         protected override void OnNavigatedFrom(NavigationEventArgs eventArgs)
         {
