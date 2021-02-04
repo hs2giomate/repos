@@ -280,6 +280,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Event_Dispatcher\Event_Dispatcher.csproj">
+      <Project>{2da99c12-45dd-4462-aea1-7db4ecc7cbc9}</Project>
+      <Name>Event_Dispatcher</Name>
+    </ProjectReference>
     <ProjectReference Include="EventLoggerManagment\EventLoggerManagment.csproj">
       <Project>{504526de-28bb-4933-872e-b6aeac08df08}</Project>
       <Name>EventLoggerManagment</Name>

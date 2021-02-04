@@ -42,7 +42,7 @@ namespace MaintenanceToolECSBOX
     {
         private MainPage rootPage = MainPage.Current;
         private static Compresor handler;
-        private const int NUMBER_OF_FAULTS = 4;
+        private const int NUMBER_OF_FAULTS = 5;
         private const int NUMBER_OF_RELAYS = 3;
         private const int NUMBER_OF_SWITCHES = 2;
         // Track Read Operation
@@ -75,6 +75,9 @@ namespace MaintenanceToolECSBOX
         private static AnimationSet Fault_Dark, Fault_Light;
         private float[] temperatureValues = new float[2];
         private float lastTemperatureValue, currentTemperatureValue;
+        private UInt16 error_flags;
+        private Int16 IQFilter, IDFilter;
+        private static bool timer_disposed=false;
 
 
         private static System.Timers.Timer aTimer = null;
@@ -86,12 +89,14 @@ namespace MaintenanceToolECSBOX
         private bool updatingStatus = false;
         private const int UPDATING_TIME = 1000;
         private bool required_status = false;
+        private UInt16[] compressor_intern_temperatures;
         public Compresor()
         {
             this.InitializeComponent();
             handler = this;
             readBufferLength = 64;
             received = new Byte[readBufferLength];
+            compressor_intern_temperatures = new UInt16[3];
             sizeofStruct = Marshal.SizeOf(typeof(SingleTaskMessage));
             byte_message= new Byte[Marshal.SizeOf(typeof(CompressorCompleteMessage))];
             listOfToggles = new ObservableCollection<ToggleSwitch>();
@@ -107,20 +112,30 @@ namespace MaintenanceToolECSBOX
             listOfTextBlocks.Add(StatusText2);
             listOfTextBlocks.Add(StatusText3);
             listOfTextBlocks.Add(StatusLabel4);
+            listOfTextBlocks.Add(ErrorFlagsLabel);
             listOfTextBlocks.Add(MotorTempText);
             listOfTextBlocks.Add(CoolantTempText);
             listOfTextBlocks.Add(PressureHighText);
             listOfTextBlocks.Add(PressureLowText);
+            listOfTextBlocks.Add(IQCurrentText);
+            listOfTextBlocks.Add(IDCurrentText);
+            listOfTextBlocks.Add(MotorText);
+            listOfTextBlocks.Add(ControllerText);
+            listOfTextBlocks.Add(CPUText);
             listOfEllipses = new ObservableCollection<Ellipse>();
             listOfEllipses.Add(FaultSignal1);
             listOfEllipses.Add(FaultSignal2);
             listOfEllipses.Add(FaultSignal3);
             listOfEllipses.Add(ExternFaultSignal);
+            listOfEllipses.Add(ErrorFlagsFaultSignal);
             listOfEllipses.Add(PressureHighSignal);
             listOfEllipses.Add(PressureLowSignal);
             listOfSliders = new ObservableCollection<Slider>();
             listOfSliders.Add(MotorTemperature);
             listOfSliders.Add(Coolant);
+            listOfSliders.Add(MotorSlider);
+            listOfSliders.Add(ControllerSlider);
+            listOfSliders.Add(CPUSlider);
             listOfDarkAnimations = new ObservableCollection<AnimationSet>();
             listOfLightAnimations = new ObservableCollection<AnimationSet>();
             for (int i = 0; i < (NUMBER_OF_FAULTS+NUMBER_OF_SWITCHES); i++)
@@ -196,9 +211,12 @@ namespace MaintenanceToolECSBOX
             }
 
 
+            if (!timer_disposed)
+            {
+                aTimer.Start();
+            }
 
-
-            aTimer.Start();
+          
         }
         public void Dispose()
         {
@@ -241,6 +259,7 @@ namespace MaintenanceToolECSBOX
                 ResetWriteCancellationTokenSource();
                 magicHeader = 0;
                 UpdateDataRelayStatus();
+                timer_disposed = false;
                 StartStatusCheckTimer();
 
                 // InitialOffsetRead();
@@ -255,6 +274,7 @@ namespace MaintenanceToolECSBOX
             {
                 aTimer.Stop();
                 aTimer.Dispose();
+                timer_disposed = true;
             }
             CancelAllIoTasks();
         }
@@ -516,7 +536,7 @@ namespace MaintenanceToolECSBOX
             if (request_sucess)
             {
                 read_request_success = false;
-                await ReadRelaysStatus();
+                await ReadCompressorData();
                 if (read_request_success)
                 {
                     if (magicHeader.Equals(Commands.reverseMagic))
@@ -660,7 +680,7 @@ namespace MaintenanceToolECSBOX
             }
             else
             {
-                speedValue = (UInt16)(Speed.Value * (256*256-1) / 14000);
+                speedValue = (UInt16)(Speed.Value );
                 if (speedValue != lastSpeedValue)
                 {
                     await WriteAsyncCompressor();
@@ -674,7 +694,7 @@ namespace MaintenanceToolECSBOX
             manipulating = true;
         }
 
-        private async Task ReadRelaysStatus()
+        private async Task ReadCompressorData()
         {
             if (IsPerformingWrite())
             {
@@ -807,27 +827,50 @@ namespace MaintenanceToolECSBOX
             await UpdateFaultStatusSignal();
             UpdateComporessorSpeed();
             UpdateTemperatures();
+            UpdateFilterCurrents();
+
+        }
+        private void UpdateFilterCurrents()
+        {
+            
+            IQFilter =(Int16)( received[12] + received[13] * 256);
+            IQCurrentText.Text = ((float)(IQFilter/10)).ToString("F1");
+            IDFilter = (Int16)(received[14] + received[15] * 256);
+            IDCurrentText.Text = ((float)(IDFilter/10)).ToString("F1");
+
+
         }
 
         private void UpdateTemperatures()
         {
+            int k;
             for (int j = 0; j < 2; j++)
             {
-                System.Buffer.BlockCopy(received, 10 + ((4 * j) ), floatArray, 0, 4);
+                System.Buffer.BlockCopy(received, 22 + ((4 * j) ), floatArray, 0, 4);
                 lastTemperatureValue = temperatureValues[j];
                 currentTemperatureValue = BitConverter.ToSingle(floatArray, 0);
                 if (lastTemperatureValue != currentTemperatureValue)
                 {
                     temperatureValues[j] = currentTemperatureValue;
                     listOfSliders[j].Value = currentTemperatureValue;
-                    UpdateValueTemperatureText(j);
+                    UpdateValueTemperatureText(5+j);
                 }
+
+            }
+            for (int j = 0; j < 3; j++)
+            {
+                compressor_intern_temperatures[j] = (UInt16)(received[16 + 2*j] + received[17 + 2*j] * 256);
+                
+                currentTemperatureValue = ((float)(compressor_intern_temperatures[j]))/10;
+                listOfSliders[j + 2].Value = currentTemperatureValue;
+                UpdateValueTemperatureText(11+j);
+                
 
             }
         }
         private void UpdateValueTemperatureText( int sensor)
         {
-            int index = (4 + sensor);
+            int index = (0 + sensor);
             listOfTextBlocks[index].Text = currentTemperatureValue.ToString("F1");
             if ((currentTemperatureValue < -20) | (currentTemperatureValue > 200))
             {
@@ -885,7 +928,7 @@ namespace MaintenanceToolECSBOX
             if (magicHeader.Equals(Commands.reverseMagic))
             {
               
-                    Speed.Value = (received[8]*256+ received[7]) * 14000 / (256*256 -1);
+                    Speed.Value = (received[8]*256+ received[7]) ;
                     lastSpeedValue = (UInt16)(received[8] * 256 + received[7]);
                     
 
@@ -937,7 +980,7 @@ namespace MaintenanceToolECSBOX
             }
             for (int i = 0; i < NUMBER_OF_SWITCHES; i++)
             {
-                k = 4 + i;
+                k = 5 + i;
                 if ((received[9] & (Byte)((0x08 >> i))) >0)
                 {
                     listOfEllipses[k].Visibility = Visibility.Visible;
@@ -974,7 +1017,18 @@ namespace MaintenanceToolECSBOX
                 listOfEllipses[3].Visibility = Visibility.Collapsed;
                 UpdateRelayStatusText(3, "   ");
             }
-            
+            if ((received[10]| received[11]) > 0)
+            {
+                listOfEllipses[4].Visibility = Visibility.Visible;
+                error_flags = (UInt16)(received[10] * 256 + received[11]);
+                UpdateRelayStatusText(4, string.Concat("0x", error_flags.ToString("X4")));
+            }
+            else
+            {
+                listOfEllipses[4].Visibility = Visibility.Collapsed;
+                UpdateRelayStatusText(4, "OK");
+            }
+
 
 
 

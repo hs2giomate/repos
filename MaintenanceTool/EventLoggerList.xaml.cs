@@ -25,6 +25,7 @@ using Windows.Foundation.Metadata;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 using MaintenanceToolProtocol;
+using Event_Dispatcher;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -828,6 +829,16 @@ namespace MaintenanceToolECSBOX
                                 null_counter = 0;
                                 data_log_item.message = single_message;
                                 AddDataLogItemToEnd(data_log_item);
+                                try
+                                {
+                                    PostCustomContent.PostMan.SendEvent(data_log_item);
+                                }
+                                catch (Exception)
+                                {
+
+                                   // throw;
+                                }
+
                                 if (next_index + 1 < memory_block_size)
                                 {
                                     current_index = next_index + 1;
