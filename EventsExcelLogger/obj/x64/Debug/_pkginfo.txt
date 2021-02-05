@@ -1,1 +1,1 @@
-\\pdm15\Software\240_Secan_ECS\Maintenance\EventsExcelLogger_1.0.0.0_Debug_Test\EventsExcelLogger_1.0.0.0_x64_Debug.msixbundle
+\\pdm15\Software\240_Secan_ECS\Maintenance\EventsExcelLogger_1.0.2.0_Debug_Test\EventsExcelLogger_1.0.2.0_x64_Debug.msixbundle

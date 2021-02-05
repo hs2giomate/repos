@@ -8,8 +8,8 @@ using System.Runtime.InteropServices;
 namespace MaintenanceToolProtocol
 {
     
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public unsafe struct Full64BufferMessage
+   // [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public  class Full64BufferMessage
     {
         public SingleTaskCommand header;
         public  Byte[] content;
@@ -25,6 +25,7 @@ namespace MaintenanceToolProtocol
         {
             handler = this;
             commandHeader = new CommandHeader();
+            message64 = new Full64BufferMessage();
             message64.header = commandHeader.order;
             remainingSize=64- Marshal.SizeOf(message64.header);
             message64.content = new Byte[remainingSize];

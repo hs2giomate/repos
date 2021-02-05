@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>1255SJLAPTOP</Machine>
+    <WindowsUser>GMateusDP</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>hs2_labor|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>70df823b-8a39-4420-9c18-5439af1284bc</PackageIdentityName>
+    <PackageIdentityPublisher>CN=GMateusDP</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\GMateusDP\source\repos\ECS_BOX_APP\obj\x64\hs2_labor\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>
+    </WindowsSdkPath>
+    <LayoutDir>C:\Users\GMateusDP\source\repos\ECS_BOX_APP\bin\x64\hs2_labor\AppX</LayoutDir>
+    <RegisteredManifestChecksum>53E1D3BBEA0C5394FE82C53D928033B95C1C3526BAF3E85043BCF299E2A4EDD3</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>70df823b-8a39-4420-9c18-5439af1284bc_1.0.2.0_x64__48p2bphdg4ayy</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>70df823b-8a39-4420-9c18-5439af1284bc_48p2bphdg4ayy!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>70df823b-8a39-4420-9c18-5439af1284bc</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=GMateusDP</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.2.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\bin\x64\hs2_labor\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2021-02-04T17:21:33.182</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Reference Assemblies\Microsoft\Framework\v3.5\System.Core.dll">
+      <PackagePath>System.Core.dll</PackagePath>
+      <Modified>2020-01-27T10:04:32.286</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\Images\SplashScreen.scale-200.png">
+      <PackagePath>Images\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2021-01-13T10:52:51.665</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\Images\LockScreenLogo.scale-200.png">
+      <PackagePath>Images\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2021-01-13T10:52:51.652</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\Images\Square150x150Logo.scale-200.png">
+      <PackagePath>Images\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2021-01-13T10:52:51.671</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\Images\Square44x44Logo.scale-200.png">
+      <PackagePath>Images\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2021-01-13T10:52:51.677</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\Images\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Images\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2021-01-13T10:52:51.683</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\Images\StoreLogo.png">
+      <PackagePath>Images\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2021-01-13T10:52:51.690</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\Images\Wide310x150Logo.scale-200.png">
+      <PackagePath>Images\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2021-01-13T10:52:51.704</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\ECS_BOX_APP\bin\x64\hs2_labor\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2021-02-04T17:21:31.904</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\Microsoft.Win32.Primitives.dll">
+      <PackagePath>Excel.Interop\Microsoft.Win32.Primitives.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.492</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\netstandard.dll">
+      <PackagePath>Excel.Interop\netstandard.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.585</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.AppContext.dll">
+      <PackagePath>Excel.Interop\System.AppContext.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.632</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Collections.Concurrent.dll">
+      <PackagePath>Excel.Interop\System.Collections.Concurrent.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.682</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Collections.dll">
+      <PackagePath>Excel.Interop\System.Collections.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.729</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Collections.NonGeneric.dll">
+      <PackagePath>Excel.Interop\System.Collections.NonGeneric.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.773</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Collections.Specialized.dll">
+      <PackagePath>Excel.Interop\System.Collections.Specialized.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.819</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ComponentModel.dll">
+      <PackagePath>Excel.Interop\System.ComponentModel.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.863</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ComponentModel.EventBasedAsync.dll">
+      <PackagePath>Excel.Interop\System.ComponentModel.EventBasedAsync.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.908</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ComponentModel.Primitives.dll">
+      <PackagePath>Excel.Interop\System.ComponentModel.Primitives.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.950</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ComponentModel.TypeConverter.dll">
+      <PackagePath>Excel.Interop\System.ComponentModel.TypeConverter.dll</PackagePath>
+      <Modified>2021-01-13T10:39:06.996</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Console.dll">
+      <PackagePath>Excel.Interop\System.Console.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.040</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Data.Common.dll">
+      <PackagePath>Excel.Interop\System.Data.Common.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.091</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Contracts.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.Contracts.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.153</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Debug.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.Debug.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.203</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.FileVersionInfo.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.FileVersionInfo.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.245</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Process.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.Process.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.288</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.StackTrace.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.StackTrace.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.338</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.TextWriterTraceListener.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.TextWriterTraceListener.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.380</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Tools.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.Tools.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.427</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.TraceSource.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.TraceSource.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.479</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Diagnostics.Tracing.dll">
+      <PackagePath>Excel.Interop\System.Diagnostics.Tracing.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.523</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Drawing.Primitives.dll">
+      <PackagePath>Excel.Interop\System.Drawing.Primitives.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.570</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Dynamic.Runtime.dll">
+      <PackagePath>Excel.Interop\System.Dynamic.Runtime.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.623</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Globalization.Calendars.dll">
+      <PackagePath>Excel.Interop\System.Globalization.Calendars.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.675</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Globalization.dll">
+      <PackagePath>Excel.Interop\System.Globalization.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.720</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Globalization.Extensions.dll">
+      <PackagePath>Excel.Interop\System.Globalization.Extensions.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.765</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.Compression.dll">
+      <PackagePath>Excel.Interop\System.IO.Compression.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.813</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.Compression.ZipFile.dll">
+      <PackagePath>Excel.Interop\System.IO.Compression.ZipFile.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.930</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.dll">
+      <PackagePath>Excel.Interop\System.IO.dll</PackagePath>
+      <Modified>2021-01-13T10:39:07.977</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.FileSystem.dll">
+      <PackagePath>Excel.Interop\System.IO.FileSystem.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.020</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.FileSystem.DriveInfo.dll">
+      <PackagePath>Excel.Interop\System.IO.FileSystem.DriveInfo.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.064</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.FileSystem.Primitives.dll">
+      <PackagePath>Excel.Interop\System.IO.FileSystem.Primitives.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.108</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.FileSystem.Watcher.dll">
+      <PackagePath>Excel.Interop\System.IO.FileSystem.Watcher.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.153</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.IsolatedStorage.dll">
+      <PackagePath>Excel.Interop\System.IO.IsolatedStorage.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.195</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.MemoryMappedFiles.dll">
+      <PackagePath>Excel.Interop\System.IO.MemoryMappedFiles.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.399</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.Pipes.dll">
+      <PackagePath>Excel.Interop\System.IO.Pipes.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.448</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.IO.UnmanagedMemoryStream.dll">
+      <PackagePath>Excel.Interop\System.IO.UnmanagedMemoryStream.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.487</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Linq.dll">
+      <PackagePath>Excel.Interop\System.Linq.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.530</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Linq.Expressions.dll">
+      <PackagePath>Excel.Interop\System.Linq.Expressions.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.572</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Linq.Parallel.dll">
+      <PackagePath>Excel.Interop\System.Linq.Parallel.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.622</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Linq.Queryable.dll">
+      <PackagePath>Excel.Interop\System.Linq.Queryable.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.672</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Http.dll">
+      <PackagePath>Excel.Interop\System.Net.Http.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.725</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.NameResolution.dll">
+      <PackagePath>Excel.Interop\System.Net.NameResolution.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.802</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.NetworkInformation.dll">
+      <PackagePath>Excel.Interop\System.Net.NetworkInformation.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.847</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Ping.dll">
+      <PackagePath>Excel.Interop\System.Net.Ping.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.891</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Primitives.dll">
+      <PackagePath>Excel.Interop\System.Net.Primitives.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.935</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Requests.dll">
+      <PackagePath>Excel.Interop\System.Net.Requests.dll</PackagePath>
+      <Modified>2021-01-13T10:39:08.981</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Security.dll">
+      <PackagePath>Excel.Interop\System.Net.Security.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.024</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.Sockets.dll">
+      <PackagePath>Excel.Interop\System.Net.Sockets.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.074</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.WebHeaderCollection.dll">
+      <PackagePath>Excel.Interop\System.Net.WebHeaderCollection.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.119</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.WebSockets.Client.dll">
+      <PackagePath>Excel.Interop\System.Net.WebSockets.Client.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.162</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Net.WebSockets.dll">
+      <PackagePath>Excel.Interop\System.Net.WebSockets.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.207</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ObjectModel.dll">
+      <PackagePath>Excel.Interop\System.ObjectModel.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.248</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Reflection.dll">
+      <PackagePath>Excel.Interop\System.Reflection.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.290</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Reflection.Extensions.dll">
+      <PackagePath>Excel.Interop\System.Reflection.Extensions.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.337</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Reflection.Primitives.dll">
+      <PackagePath>Excel.Interop\System.Reflection.Primitives.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.378</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Resources.Reader.dll">
+      <PackagePath>Excel.Interop\System.Resources.Reader.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.423</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Resources.ResourceManager.dll">
+      <PackagePath>Excel.Interop\System.Resources.ResourceManager.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.473</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Resources.Writer.dll">
+      <PackagePath>Excel.Interop\System.Resources.Writer.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.517</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.CompilerServices.VisualC.dll">
+      <PackagePath>Excel.Interop\System.Runtime.CompilerServices.VisualC.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.567</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.dll">
+      <PackagePath>Excel.Interop\System.Runtime.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.617</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Extensions.dll">
+      <PackagePath>Excel.Interop\System.Runtime.Extensions.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.666</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Handles.dll">
+      <PackagePath>Excel.Interop\System.Runtime.Handles.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.719</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.InteropServices.dll">
+      <PackagePath>Excel.Interop\System.Runtime.InteropServices.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.770</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.InteropServices.RuntimeInformation.dll">
+      <PackagePath>Excel.Interop\System.Runtime.InteropServices.RuntimeInformation.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.822</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Numerics.dll">
+      <PackagePath>Excel.Interop\System.Runtime.Numerics.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.875</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Serialization.Formatters.dll">
+      <PackagePath>Excel.Interop\System.Runtime.Serialization.Formatters.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.921</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Serialization.Json.dll">
+      <PackagePath>Excel.Interop\System.Runtime.Serialization.Json.dll</PackagePath>
+      <Modified>2021-01-13T10:39:09.963</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Serialization.Primitives.dll">
+      <PackagePath>Excel.Interop\System.Runtime.Serialization.Primitives.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.015</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Runtime.Serialization.Xml.dll">
+      <PackagePath>Excel.Interop\System.Runtime.Serialization.Xml.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.060</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Claims.dll">
+      <PackagePath>Excel.Interop\System.Security.Claims.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.106</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.Algorithms.dll">
+      <PackagePath>Excel.Interop\System.Security.Cryptography.Algorithms.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.156</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.Csp.dll">
+      <PackagePath>Excel.Interop\System.Security.Cryptography.Csp.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.202</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.Encoding.dll">
+      <PackagePath>Excel.Interop\System.Security.Cryptography.Encoding.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.246</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.Primitives.dll">
+      <PackagePath>Excel.Interop\System.Security.Cryptography.Primitives.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.287</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Cryptography.X509Certificates.dll">
+      <PackagePath>Excel.Interop\System.Security.Cryptography.X509Certificates.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.325</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.Principal.dll">
+      <PackagePath>Excel.Interop\System.Security.Principal.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.364</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Security.SecureString.dll">
+      <PackagePath>Excel.Interop\System.Security.SecureString.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.404</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Text.Encoding.dll">
+      <PackagePath>Excel.Interop\System.Text.Encoding.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.443</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Text.Encoding.Extensions.dll">
+      <PackagePath>Excel.Interop\System.Text.Encoding.Extensions.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.483</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Text.RegularExpressions.dll">
+      <PackagePath>Excel.Interop\System.Text.RegularExpressions.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.527</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.dll">
+      <PackagePath>Excel.Interop\System.Threading.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.567</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Overlapped.dll">
+      <PackagePath>Excel.Interop\System.Threading.Overlapped.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.602</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Tasks.dll">
+      <PackagePath>Excel.Interop\System.Threading.Tasks.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.654</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Tasks.Parallel.dll">
+      <PackagePath>Excel.Interop\System.Threading.Tasks.Parallel.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.695</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Thread.dll">
+      <PackagePath>Excel.Interop\System.Threading.Thread.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.747</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.ThreadPool.dll">
+      <PackagePath>Excel.Interop\System.Threading.ThreadPool.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.785</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Threading.Timer.dll">
+      <PackagePath>Excel.Interop\System.Threading.Timer.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.825</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.ValueTuple.dll">
+      <PackagePath>Excel.Interop\System.ValueTuple.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.865</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.ReaderWriter.dll">
+      <PackagePath>Excel.Interop\System.Xml.ReaderWriter.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.912</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XDocument.dll">
+      <PackagePath>Excel.Interop\System.Xml.XDocument.dll</PackagePath>
+      <Modified>2021-01-13T10:39:10.959</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XmlDocument.dll">
+      <PackagePath>Excel.Interop\System.Xml.XmlDocument.dll</PackagePath>
+      <Modified>2021-01-13T10:39:11.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XmlSerializer.dll">
+      <PackagePath>Excel.Interop\System.Xml.XmlSerializer.dll</PackagePath>
+      <Modified>2021-01-13T10:39:11.041</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XPath.dll">
+      <PackagePath>Excel.Interop\System.Xml.XPath.dll</PackagePath>
+      <Modified>2021-01-13T10:39:11.079</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\Microsoft.NET.Build.Extensions\net461\lib\System.Xml.XPath.XDocument.dll">
+      <PackagePath>Excel.Interop\System.Xml.XPath.XDocument.dll</PackagePath>
+      <Modified>2021-01-13T10:39:11.117</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\Microsoft.Office.Interop.Excel.dll">
+      <PackagePath>Excel.Interop\Microsoft.Office.Interop.Excel.dll</PackagePath>
+      <Modified>2020-10-26T08:21:02.806</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\x64\hs2_labor\Excel.Interop.exe">
+      <PackagePath>Excel.Interop\Excel.Interop.exe</PackagePath>
+      <Modified>2021-02-04T17:21:00.902</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\x64\hs2_labor\Excel.Interop.exe.config">
+      <PackagePath>Excel.Interop\Excel.Interop.exe.config</PackagePath>
+      <Modified>2021-02-04T16:57:11.127</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\hs2_labor\MaintenanceToolECSBOX.exe">
+      <PackagePath>entrypoint\MaintenanceToolECSBOX.exe</PackagePath>
+      <Modified>2021-02-04T17:21:19.449</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\colorcode.core\2.0.6\lib\netstandard1.4\ColorCode.Core.dll">
+      <PackagePath>ColorCode.Core.dll</PackagePath>
+      <Modified>2020-05-18T22:12:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\colorcode.uwp\2.0.6\lib\uap10.0\ColorCode.UWP.dll">
+      <PackagePath>ColorCode.UWP.dll</PackagePath>
+      <Modified>2020-05-18T22:13:00.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.dll">
+      <PackagePath>Microsoft.Toolkit.dll</PackagePath>
+      <Modified>2020-08-12T20:29:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.parsers\6.1.1\lib\netstandard2.0\Microsoft.Toolkit.Parsers.dll">
+      <PackagePath>Microsoft.Toolkit.Parsers.dll</PackagePath>
+      <Modified>2020-08-12T20:29:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.dll</PackagePath>
+      <Modified>2020-08-12T20:29:36.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.dll</PackagePath>
+      <Modified>2020-08-12T20:30:04.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.animations\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Animations.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Animations.dll</PackagePath>
+      <Modified>2020-08-12T20:30:06.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.controls\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls.dll">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls.dll</PackagePath>
+      <Modified>2020-08-12T20:30:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.1\lib\uap10.0\Microsoft.Xaml.Interactions.dll">
+      <PackagePath>Microsoft.Xaml.Interactions.dll</PackagePath>
+      <Modified>2019-04-26T23:06:58.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.xaml.behaviors.uwp.managed\2.0.1\lib\uap10.0\Microsoft.Xaml.Interactivity.dll">
+      <PackagePath>Microsoft.Xaml.Interactivity.dll</PackagePath>
+      <Modified>2019-04-26T23:06:08.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\newtonsoft.json\10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2017-06-18T11:57:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
+      <PackagePath>System.Runtime.dll</PackagePath>
+      <Modified>2020-02-27T17:17:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.3\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+      <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
+      <Modified>2020-02-19T09:05:16.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\win2d.uwp\1.25.0\runtimes\win10-x64\native\Microsoft.Graphics.Canvas.dll">
+      <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
+      <Modified>2020-04-02T17:46:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\EventLoggerManagment\bin\x64\hs2_labor\EventLoggerManagment.dll">
+      <PackagePath>EventLoggerManagment.dll</PackagePath>
+      <Modified>2021-02-04T16:57:08.415</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\Event_Dispatcher\bin\x64\hs2_labor\Event_Dispatcher.dll">
+      <PackagePath>Event_Dispatcher.dll</PackagePath>
+      <Modified>2021-02-04T16:57:11.142</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\bin\x64\hs2_labor\MaintenanceToolProtocol.dll">
+      <PackagePath>MaintenanceToolProtocol.dll</PackagePath>
+      <Modified>2021-02-04T16:57:08.645</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\ParameterTransferProtocol\bin\x64\hs2_labor\ParameterTransferProtocol.dll">
+      <PackagePath>ParameterTransferProtocol.dll</PackagePath>
+      <Modified>2021-02-04T16:57:11.081</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\win2d.uwp\1.25.0\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
+      <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
+      <Modified>2020-04-02T17:44:36.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\.nuget\packages\microsoft.toolkit.uwp.ui.controls\6.1.1\lib\uap10.0.16299\Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml">
+      <PackagePath>Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml</PackagePath>
+      <Modified>2020-08-12T20:07:10.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\microsoft-sdk.png">
+      <PackagePath>Assets\microsoft-sdk.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.756</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\placeholder-sdk.png">
+      <PackagePath>Assets\placeholder-sdk.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.758</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\placeholder.png">
+      <PackagePath>Assets\placeholder.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.760</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\smalltile-sdk.png">
+      <PackagePath>Assets\smalltile-sdk.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.761</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\splash-sdk.png">
+      <PackagePath>Assets\splash-sdk.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.762</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Square310x310Logo.png">
+      <PackagePath>Assets\Square310x310Logo.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.750</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\squaretile-sdk.png">
+      <PackagePath>Assets\squaretile-sdk.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.764</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\storelogo-sdk.png">
+      <PackagePath>Assets\storelogo-sdk.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.765</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\tile-sdk.png">
+      <PackagePath>Assets\tile-sdk.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.772</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\windows-sdk.png">
+      <PackagePath>Assets\windows-sdk.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.776</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.745</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.747</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.749</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.751</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.752</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.754</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <Modified>2020-10-26T08:21:02.755</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+      <Modified>2020-10-26T08:21:02.850</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\hs2_labor\MaintenanceToolECSBOX.xr.xml">
+      <PackagePath>MaintenanceToolECSBOX.xr.xml</PackagePath>
+      <Modified>2021-02-04T16:47:50.971</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
+      <PackagePath>WinMetadata\Windows.winmd</PackagePath>
+      <Modified>2019-03-18T16:33:42.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\hs2_labor\Core\MaintenanceToolECSBOX.exe">
+      <PackagePath>MaintenanceToolECSBOX.exe</PackagePath>
+      <Modified>2021-02-04T17:21:25.465</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+      <Name>Microsoft.NET.CoreRuntime.2.2</Name>
+      <Version>2.2.27902.3</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.27902.3, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+      <Name>Microsoft.NET.CoreRuntime.2.2</Name>
+      <Version>2.2.27902.3</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.27902.3, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+      <Name>Microsoft.NET.CoreRuntime.2.2</Name>
+      <Version>2.2.27902.3</Version>
+      <Architecture>arm</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.27902.3, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+      <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
+      <Version>2.2.28529.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.28529.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+      <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
+      <Version>2.2.28529.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.28529.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+      <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
+      <Version>2.2.28529.0</Version>
+      <Architecture>arm</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.28529.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\ARM\Microsoft.VCLibs.ARM.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>ARM64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\ARM64\Microsoft.VCLibs.ARM64.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x64\Microsoft.VCLibs.x64.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x86\Microsoft.VCLibs.x86.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+      <Name>Microsoft.NET.CoreRuntime.2.2</Name>
+      <Version>2.2.27902.3</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.27902.3, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+      <Name>Microsoft.NET.CoreRuntime.2.2</Name>
+      <Version>2.2.27902.3</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.27902.3, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
+      <Name>Microsoft.NET.CoreRuntime.2.2</Name>
+      <Version>2.2.27902.3</Version>
+      <Architecture>arm</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.2.2, MinVersion = 2.2.27902.3, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+      <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
+      <Version>2.2.28529.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.28529.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+      <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
+      <Version>2.2.28529.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.28529.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx">
+      <Name>Microsoft.NET.CoreFramework.Debug.2.2</Name>
+      <Version>2.2.28529.0</Version>
+      <Architecture>arm</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreFramework.Debug.2.2, MinVersion = 2.2.28529.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreFramework.Debug.2.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

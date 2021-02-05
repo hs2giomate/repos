@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-de"
+"ResourceDimensions"		"language-de-de"
+
+[Files]
+"C:\Users\GMateusDP\source\repos\ECS_BOX_APP\obj\x64\hs2_labor\split.language-de.pri"			"resources.pri"

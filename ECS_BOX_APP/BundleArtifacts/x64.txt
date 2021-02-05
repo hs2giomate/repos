@@ -1,0 +1,2 @@
+MainPackage=C:\Users\GMateusDP\source\repos\ECS_BOX_APP\bin\x64\hs2_labor\ECS_BOX_APP_1.0.5.0_x64_hs2_labor.msix
+SymbolPackage=C:\Users\GMateusDP\source\repos\ECS_BOX_APP\obj\x64\hs2_labor\Symbols\ECS_BOX_APP_1.0.5.0_x64_hs2_labor.appxsym

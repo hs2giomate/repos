@@ -1,0 +1,2 @@
+obj\x64\hs2_labor\filemap.pri
+obj\x64\hs2_labor\filemap.map.txt

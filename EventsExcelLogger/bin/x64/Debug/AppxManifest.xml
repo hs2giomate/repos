@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="66ce5294-2662-435b-b0df-a256831da1cf" Publisher="CN=GMateusDP" Version="1.0.0.0" ProcessorArchitecture="x64" />
+  <Identity Name="66ce5294-2662-435b-b0df-a256831da1cf" Publisher="CN=GMateusDP" Version="1.0.2.0" ProcessorArchitecture="x64" />
   <Properties>
     <DisplayName>EventsExcelLogger</DisplayName>
     <PublisherDisplayName>GMateusDP</PublisherDisplayName>

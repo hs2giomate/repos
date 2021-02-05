@@ -114,10 +114,10 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Opacity" />
       <RootProperty Name="AllowDrop" />
+      <RootProperty Name="Width" />
       <RootProperty Name="LineStackingStrategy" />
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="Style" />
-      <RootProperty Name="Width" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="VerticalAlignment" />

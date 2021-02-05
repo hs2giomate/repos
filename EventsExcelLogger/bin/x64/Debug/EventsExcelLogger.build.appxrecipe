@@ -349,10 +349,10 @@
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\Microsoft.Office.Interop.Excel.dll">
       <PackagePath>Excel.Interop\Microsoft.Office.Interop.Excel.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\Debug\Excel.Interop.exe">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\x64\Debug\Excel.Interop.exe">
       <PackagePath>Excel.Interop\Excel.Interop.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\Debug\Excel.Interop.exe.config">
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\Excel.Interop\bin\x64\Debug\Excel.Interop.exe.config">
       <PackagePath>Excel.Interop\Excel.Interop.exe.config</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\bin\x64\Debug\MaintenanceToolECSBOX.exe">
@@ -402,6 +402,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\EventLoggerManagment\bin\x64\Debug\EventLoggerManagment.dll">
       <PackagePath>EventLoggerManagment.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\Event_Dispatcher\bin\x64\Debug\Event_Dispatcher.dll">
+      <PackagePath>Event_Dispatcher.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\bin\x64\Debug\MaintenanceToolProtocol.dll">
       <PackagePath>MaintenanceToolProtocol.dll</PackagePath>

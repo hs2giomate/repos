@@ -829,6 +829,8 @@ namespace MaintenanceToolECSBOX
                                 null_counter = 0;
                                 data_log_item.message = single_message;
                                 AddDataLogItemToEnd(data_log_item);
+#if EVENT_DISPATCHER 
+
                                 try
                                 {
                                     PostCustomContent.PostMan.SendEvent(data_log_item);
@@ -838,7 +840,7 @@ namespace MaintenanceToolECSBOX
 
                                    // throw;
                                 }
-
+#endif
                                 if (next_index + 1 < memory_block_size)
                                 {
                                     current_index = next_index + 1;

@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="001cb378-94c2-4313-a6b4-dd89884507b6" version="1.0" primary="true">
+		<Qualifiers>
+			<AlternateForm>UNPLATED</AlternateForm>
+			<Language>EN-US</Language>
+			<Scale>200</Scale>
+			<TargetSize>24</TargetSize>
+		</Qualifiers>
+		<ResourceMapSubtree name="Files">
+			<NamedResource name="App.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/App.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Compresor.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Compresor.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="EventLoggerList.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/EventLoggerList.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="FansOperation.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/FansOperation.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="FlapperValveControl.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/FlapperValveControl.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="FlapperValveOffset.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/FlapperValveOffset.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="HeaterOperation.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/HeaterOperation.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="MainPage.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/MainPage.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="MaintenanceToolECSBOX.xr.xml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/MaintenanceToolECSBOX.xr.xml">
+				<Candidate type="Path">
+					<Value>MaintenanceToolECSBOX.xr.xml</Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="MinimunFreshAir.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/MinimunFreshAir.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="ScavengeFan.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/ScavengeFan.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Scenario1_ConnectDisconnect.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Scenario1_ConnectDisconnect.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Scenario2_ConfigureDevice.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Scenario2_ConfigureDevice.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Scenario3_ReadWrite.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Scenario3_ReadWrite.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="Scenario4_Events.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Scenario4_Events.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<NamedResource name="TemperatureSensors.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/TemperatureSensors.xbf">
+				<Candidate type="EmbeddedData">
+					<Base64Value>[Embedded Binary Data]</Base64Value>
+				</Candidate>
+			</NamedResource>
+			<ResourceMapSubtree name="Assets">
+				<NamedResource name="LockScreenLogo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/LockScreenLogo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\LockScreenLogo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="microsoft-sdk.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/microsoft-sdk.png">
+					<Candidate type="Path">
+						<Value>Assets\microsoft-sdk.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="placeholder-sdk.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/placeholder-sdk.png">
+					<Candidate type="Path">
+						<Value>Assets\placeholder-sdk.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="placeholder.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/placeholder.png">
+					<Candidate type="Path">
+						<Value>Assets\placeholder.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="smalltile-sdk.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/smalltile-sdk.png">
+					<Candidate type="Path">
+						<Value>Assets\smalltile-sdk.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="splash-sdk.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/splash-sdk.png">
+					<Candidate type="Path">
+						<Value>Assets\splash-sdk.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SplashScreen.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/SplashScreen.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\SplashScreen.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square150x150Logo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/Square150x150Logo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Square150x150Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square310x310Logo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/Square310x310Logo.png">
+					<Candidate type="Path">
+						<Value>Assets\Square310x310Logo.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square44x44Logo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/Square44x44Logo.png">
+					<Candidate qualifiers="TargetSize-24, AlternateForm-UNPLATED" type="Path">
+						<Value>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</Value>
+					</Candidate>
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Square44x44Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="squaretile-sdk.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/squaretile-sdk.png">
+					<Candidate type="Path">
+						<Value>Assets\squaretile-sdk.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="storelogo-sdk.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/storelogo-sdk.png">
+					<Candidate type="Path">
+						<Value>Assets\storelogo-sdk.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="StoreLogo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/StoreLogo.png">
+					<Candidate type="Path">
+						<Value>Assets\StoreLogo.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="tile-sdk.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/tile-sdk.png">
+					<Candidate type="Path">
+						<Value>Assets\tile-sdk.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Wide310x150Logo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/Wide310x150Logo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Assets\Wide310x150Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="windows-sdk.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Assets/windows-sdk.png">
+					<Candidate type="Path">
+						<Value>Assets\windows-sdk.png</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Images">
+				<NamedResource name="LockScreenLogo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Images/LockScreenLogo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Images\LockScreenLogo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="SplashScreen.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Images/SplashScreen.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Images\SplashScreen.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square150x150Logo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Images/Square150x150Logo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Images\Square150x150Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Square44x44Logo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Images/Square44x44Logo.png">
+					<Candidate qualifiers="TargetSize-24, AlternateForm-UNPLATED" type="Path">
+						<Value>Images\Square44x44Logo.targetsize-24_altform-unplated.png</Value>
+					</Candidate>
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Images\Square44x44Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="StoreLogo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Images/StoreLogo.png">
+					<Candidate type="Path">
+						<Value>Images\StoreLogo.png</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="Wide310x150Logo.png" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Images/Wide310x150Logo.png">
+					<Candidate qualifiers="Scale-200" isDefault="true" type="Path">
+						<Value>Images\Wide310x150Logo.scale-200.png</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls">
+				<NamedResource name="Microsoft.Toolkit.Uwp.UI.Controls.xr.xml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Microsoft.Toolkit.Uwp.UI.Controls.xr.xml">
+					<Candidate type="Path">
+						<Value>Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="BladeView">
+					<NamedResource name="BladeView.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/BladeView/BladeView.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\BladeView\BladeView.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="BladeView.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/BladeView/BladeView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="CameraPreview">
+					<NamedResource name="CameraPreview.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/CameraPreview/CameraPreview.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\CameraPreview\CameraPreview.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="CameraPreview.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/CameraPreview/CameraPreview.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Carousel">
+					<NamedResource name="Carousel.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Carousel/Carousel.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\Carousel\Carousel.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Carousel.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Carousel/Carousel.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="DropShadowPanel">
+					<NamedResource name="DropShadowPanel.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/DropShadowPanel/DropShadowPanel.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\DropShadowPanel\DropShadowPanel.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="DropShadowPanel.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/DropShadowPanel/DropShadowPanel.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Expander">
+					<NamedResource name="Expander.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Expander/Expander.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\Expander\Expander.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Expander.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Expander/Expander.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Eyedropper">
+					<NamedResource name="Eyedropper.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Eyedropper/Eyedropper.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\Eyedropper\Eyedropper.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Eyedropper.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Eyedropper/Eyedropper.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="EyedropperToolButton.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Eyedropper/EyedropperToolButton.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\Eyedropper\EyedropperToolButton.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="EyedropperToolButton.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Eyedropper/EyedropperToolButton.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="GridSplitter">
+					<NamedResource name="GridSplitter.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/GridSplitter/GridSplitter.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\GridSplitter\GridSplitter.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="GridSplitter.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/GridSplitter/GridSplitter.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="HeaderedContentControl">
+					<NamedResource name="HeaderedContentControl.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedContentControl/HeaderedContentControl.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\HeaderedContentControl\HeaderedContentControl.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="HeaderedContentControl.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedContentControl/HeaderedContentControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="HeaderedItemsControl">
+					<NamedResource name="HeaderedItemsControl.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedItemsControl/HeaderedItemsControl.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\HeaderedItemsControl\HeaderedItemsControl.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="HeaderedItemsControl.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedItemsControl/HeaderedItemsControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="HeaderedTextBlock">
+					<NamedResource name="HeaderedTextBlock.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedTextBlock/HeaderedTextBlock.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\HeaderedTextBlock\HeaderedTextBlock.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="HeaderedTextBlock.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/HeaderedTextBlock/HeaderedTextBlock.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="ImageCropper">
+					<NamedResource name="ImageCropper.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageCropper/ImageCropper.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\ImageCropper\ImageCropper.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ImageCropper.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageCropper/ImageCropper.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ImageCropperThumb.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageCropper/ImageCropperThumb.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\ImageCropper\ImageCropperThumb.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ImageCropperThumb.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageCropper/ImageCropperThumb.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="ImageEx">
+					<NamedResource name="ImageEx.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageEx/ImageEx.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\ImageEx\ImageEx.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ImageEx.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/ImageEx/ImageEx.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="InAppNotification">
+					<NamedResource name="InAppNotification.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/InAppNotification.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\InAppNotification\InAppNotification.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="InAppNotification.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/InAppNotification.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<ResourceMapSubtree name="Styles">
+						<NamedResource name="MSEdgeNotificationStyle.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/Styles/MSEdgeNotificationStyle.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Uwp.UI.Controls\InAppNotification\Styles\MSEdgeNotificationStyle.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="MSEdgeNotificationStyle.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/Styles/MSEdgeNotificationStyle.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="VSCodeNotificationStyle.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/Styles/VSCodeNotificationStyle.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Uwp.UI.Controls\InAppNotification\Styles\VSCodeNotificationStyle.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="VSCodeNotificationStyle.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/InAppNotification/Styles/VSCodeNotificationStyle.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="InfiniteCanvas">
+					<NamedResource name="InfiniteCanvas.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/InfiniteCanvas/InfiniteCanvas.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\InfiniteCanvas\InfiniteCanvas.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="InfiniteCanvas.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/InfiniteCanvas/InfiniteCanvas.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="LayoutTransformControl">
+					<NamedResource name="LayoutTransformControl.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/LayoutTransformControl/LayoutTransformControl.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\LayoutTransformControl\LayoutTransformControl.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="LayoutTransformControl.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/LayoutTransformControl/LayoutTransformControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Loading">
+					<NamedResource name="Loading.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Loading/Loading.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\Loading\Loading.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Loading.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Loading/Loading.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="MarkdownTextBlock">
+					<NamedResource name="MarkdownTextBlock.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/MarkdownTextBlock/MarkdownTextBlock.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\MarkdownTextBlock\MarkdownTextBlock.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="MarkdownTextBlock.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/MarkdownTextBlock/MarkdownTextBlock.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="MasterDetailsView">
+					<NamedResource name="MasterDetailsView.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/MasterDetailsView/MasterDetailsView.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\MasterDetailsView\MasterDetailsView.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="MasterDetailsView.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/MasterDetailsView/MasterDetailsView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Menu">
+					<NamedResource name="Menu.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Menu/Menu.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\Menu\Menu.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Menu.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Menu/Menu.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="OrbitView">
+					<NamedResource name="OrbitView.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/OrbitView/OrbitView.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\OrbitView\OrbitView.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="OrbitView.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/OrbitView/OrbitView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RadialGauge">
+					<NamedResource name="RadialGauge.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RadialGauge/RadialGauge.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\RadialGauge\RadialGauge.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="RadialGauge.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RadialGauge/RadialGauge.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RadialProgressBar">
+					<NamedResource name="RadialProgressBar.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RadialProgressBar/RadialProgressBar.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\RadialProgressBar\RadialProgressBar.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="RadialProgressBar.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RadialProgressBar/RadialProgressBar.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RangeSelector">
+					<NamedResource name="RangeSelector.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RangeSelector/RangeSelector.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\RangeSelector\RangeSelector.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="RangeSelector.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RangeSelector/RangeSelector.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RemoteDevicePicker">
+					<NamedResource name="RemoteDevicePicker.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RemoteDevicePicker/RemoteDevicePicker.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\RemoteDevicePicker\RemoteDevicePicker.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="RemoteDevicePicker.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RemoteDevicePicker/RemoteDevicePicker.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="RotatorTile">
+					<NamedResource name="RotatorTile.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RotatorTile/RotatorTile.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\RotatorTile\RotatorTile.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="RotatorTile.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/RotatorTile/RotatorTile.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="ScrollHeader">
+					<NamedResource name="ScrollHeader.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/ScrollHeader/ScrollHeader.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\ScrollHeader\ScrollHeader.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="ScrollHeader.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/ScrollHeader/ScrollHeader.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="TabView">
+					<NamedResource name="TabView.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TabView/TabView.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\TabView\TabView.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TabView.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TabView/TabView.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="TextToolbar">
+					<NamedResource name="TextToolbar.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/TextToolbar.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\TextToolbar\TextToolbar.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TextToolbar.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/TextToolbar.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<ResourceMapSubtree name="Symbols">
+						<NamedResource name="Symbols.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/Symbols/Symbols.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Uwp.UI.Controls\TextToolbar\Symbols\Symbols.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="Symbols.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/Symbols/Symbols.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="ToolbarItems">
+						<NamedResource name="ToolbarButton.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/ToolbarItems/ToolbarButton.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Uwp.UI.Controls\TextToolbar\ToolbarItems\ToolbarButton.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="ToolbarButton.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/ToolbarItems/ToolbarButton.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="ToolbarSeparator.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/ToolbarItems/ToolbarSeparator.xaml">
+							<Candidate type="Path">
+								<Value>Microsoft.Toolkit.Uwp.UI.Controls\TextToolbar\ToolbarItems\ToolbarSeparator.xaml</Value>
+							</Candidate>
+						</NamedResource>
+						<NamedResource name="ToolbarSeparator.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TextToolbar/ToolbarItems/ToolbarSeparator.xbf">
+							<Candidate type="EmbeddedData">
+								<Base64Value>[Embedded Binary Data]</Base64Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Themes/Generic.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\Themes\Generic.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Generic.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="TileControl">
+					<NamedResource name="TileControl.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TileControl/TileControl.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\TileControl\TileControl.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TileControl.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TileControl/TileControl.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="TokenizingTextBox">
+					<NamedResource name="TokenizingTextBox.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TokenizingTextBox/TokenizingTextBox.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\TokenizingTextBox\TokenizingTextBox.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TokenizingTextBox.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TokenizingTextBox/TokenizingTextBox.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TokenizingTextBoxItem.AutoSuggestBox.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TokenizingTextBox/TokenizingTextBoxItem.AutoSuggestBox.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\TokenizingTextBox\TokenizingTextBoxItem.AutoSuggestBox.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TokenizingTextBoxItem.AutoSuggestBox.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TokenizingTextBox/TokenizingTextBoxItem.AutoSuggestBox.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TokenizingTextBoxItem.Token.xaml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TokenizingTextBox/TokenizingTextBoxItem.Token.xaml">
+						<Candidate type="Path">
+							<Value>Microsoft.Toolkit.Uwp.UI.Controls\TokenizingTextBox\TokenizingTextBoxItem.Token.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="TokenizingTextBoxItem.Token.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Microsoft.Toolkit.Uwp.UI.Controls/TokenizingTextBox/TokenizingTextBoxItem.Token.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Properties">
+				<NamedResource name="Default.rd.xml" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Properties/Default.rd.xml">
+					<Candidate type="Path">
+						<Value>Properties\Default.rd.xml</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Styles">
+				<NamedResource name="Styles.xbf" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/Styles/Styles.xbf">
+					<Candidate type="EmbeddedData">
+						<Base64Value>[Embedded Binary Data]</Base64Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="WinMetadata">
+				<NamedResource name="Windows.winmd" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Files/WinMetadata/Windows.winmd">
+					<Candidate type="Path">
+						<Value>WinMetadata\Windows.winmd</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Microsoft.Toolkit.Uwp.UI.Controls">
+			<ResourceMapSubtree name="Resources">
+				<NamedResource name="TextToolbarStrings_BoldLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_BoldLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Bold</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_CancelLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_CancelLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cancel</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_CodeLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_CodeLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Code</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_CreateLinkLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_CreateLinkLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Create Link</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_EmptyTextLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_EmptyTextLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Empty Text</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_HeaderLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_HeaderLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Header</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_ItalicsLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_ItalicsLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Italics</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_LabelLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_LabelLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Label</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_LinkInvalidLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_LinkInvalidLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Link Invalid</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_LinkLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_LinkLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Link</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_ListLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_ListLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>List</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_OkLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_OkLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Ok</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_OrderedListLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_OrderedListLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Ordered List</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_QuoteLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_QuoteLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Quote</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_RelativeLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_RelativeLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Relative</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_StrikethroughLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_StrikethroughLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Strikethrough</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_UnderlineLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_UnderlineLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Underline</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_UrlLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_UrlLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Url</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="TextToolbarStrings_WarningLabel" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/TextToolbarStrings_WarningLabel">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Warning</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WindowsCommunityToolkit_BladeView_ExpandButton_Collapsed" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_BladeView_ExpandButton_Collapsed">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Collapse Blade</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WindowsCommunityToolkit_BladeView_ExpandButton_Expanded" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_BladeView_ExpandButton_Expanded">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Expand Blade</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WindowsCommunityToolkit_GridSplitter_AutomationName" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_GridSplitter_AutomationName">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>GridSpliter</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WindowsCommunityToolkit_InAppNotification_Events_NewNotificationMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_InAppNotification_Events_NewNotificationMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>New notification</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WindowsCommunityToolkit_InAppNotification_NameProperty" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_InAppNotification_NameProperty">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Notification</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WindowsCommunityToolkit_TokenizingTextBoxItem_MenuFlyout_Remove" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_TokenizingTextBoxItem_MenuFlyout_Remove">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Remove</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="WindowsCommunityToolkit_TokenizingTextBox_MenuFlyout_SelectAll" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_TokenizingTextBox_MenuFlyout_SelectAll">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Select All</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="WindowsCommunityToolkit_TabView_CloseButton">
+					<ResourceMapSubtree name="[using:Windows.UI.Xaml.Automation]AutomationProperties">
+						<NamedResource name="Name" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_TabView_CloseButton/[using:Windows.UI.Xaml.Automation]AutomationProperties/Name">
+							<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+								<Value>Close tab</Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+					<ResourceMapSubtree name="[using:Windows.UI.Xaml.Controls]ToolTipService">
+						<NamedResource name="ToolTip" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Toolkit.Uwp.UI.Controls/Resources/WindowsCommunityToolkit_TabView_CloseButton/[using:Windows.UI.Xaml.Controls]ToolTipService/ToolTip">
+							<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+								<Value>Close tab</Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Microsoft.Xaml.Interactions">
+			<ResourceMapSubtree name="Strings">
+				<NamedResource name="CallMethodActionValidMethodNotFoundExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/CallMethodActionValidMethodNotFoundExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cannot find method named {0} on object of type {1} that matches the expected signature.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="CannotAttachBehaviorMultipleTimesExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/CannotAttachBehaviorMultipleTimesExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>An instance of a behavior cannot be attached to more than one object at a time.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="CannotFindEventNameExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/CannotFindEventNameExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cannot find an event named {0} on type {1}.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ChangePropertyActionCannotFindPropertyNameExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/ChangePropertyActionCannotFindPropertyNameExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cannot find a property named {0} on type {1}.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ChangePropertyActionCannotSetValueExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/ChangePropertyActionCannotSetValueExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cannot assign value of type {0} to property {1} of type {2}. The {1} property can be assigned only values of type {2}.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="ChangePropertyActionPropertyIsReadOnlyExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/ChangePropertyActionPropertyIsReadOnlyExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Property {0} defined by type {1} does not expose a set method and therefore cannot be modified.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="EventNotSupportedExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/EventNotSupportedExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Event {0} is not supported. Consider implementing a custom IBehavior to respond to this event.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="GoToStateActionTargetHasNoStateGroups" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/GoToStateActionTargetHasNoStateGroups">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Target {0} does not define any VisualStateGroups.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="InvalidLeftOperand" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/InvalidLeftOperand">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Binding property of type {0} cannot be used with operator {1}.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="InvalidOperands" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/InvalidOperands">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Binding property of type {0} and Value property of type {1} cannot be used with operator {2}.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="InvalidRightOperand" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactions/Strings/InvalidRightOperand">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Value property of type {0} cannot be used with operator {1}.</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+		<ResourceMapSubtree name="Microsoft.Xaml.Interactivity">
+			<ResourceMapSubtree name="Strings">
+				<NamedResource name="CannotAttachBehaviorMultipleTimesExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactivity/Strings/CannotAttachBehaviorMultipleTimesExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>An instance of a behavior cannot be attached to more than one object at a time.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="DuplicateBehaviorInCollectionExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactivity/Strings/DuplicateBehaviorInCollectionExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Cannot add an instance of a behavior to a BehaviorCollection more than once.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="InvalidAssociatedObjectExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactivity/Strings/InvalidAssociatedObjectExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>AssociatedObject is of type {0} but should be of type {1}.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="NonActionAddedToActionCollectionExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactivity/Strings/NonActionAddedToActionCollectionExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Only IAction types are supported in an ActionCollection.</Value>
+					</Candidate>
+				</NamedResource>
+				<NamedResource name="NonBehaviorAddedToBehaviorCollectionExceptionMessage" uri="ms-resource://001cb378-94c2-4313-a6b4-dd89884507b6/Microsoft.Xaml.Interactivity/Strings/NonBehaviorAddedToBehaviorCollectionExceptionMessage">
+					<Candidate qualifiers="Language-EN-US" isDefault="true" type="String">
+						<Value>Only IBehavior types are supported in a BehaviorCollection.</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

@@ -1,0 +1,1 @@
+\\pdm15\Software\240_Secan_ECS\Maintenance\ECS_BOX_APP_1.0.0.0_Test\ECS_BOX_APP_1.0.0.0_x64.msixbundle

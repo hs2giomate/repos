@@ -1,0 +1,8 @@
+C:\Users\GMateusDP\source\repos\ECS_BOX_APP\ECS_BOX_APP.wapproj;x64
+C:\Users\GMateusDP\source\repos\Event_Dispatcher\Event_Dispatcher.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\EventLoggerManagment\EventLoggerManagment.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\EventLoggerManagment\EventLoggerManagment.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolECSBOX.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\MaintenanceToolProtocol.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\MaintenanceToolProtocol\MaintenanceToolProtocol.csproj;x64
+C:\Users\GMateusDP\source\repos\MaintenanceTool\ParameterTransferProtocol\ParameterTransferProtocol.csproj;x64

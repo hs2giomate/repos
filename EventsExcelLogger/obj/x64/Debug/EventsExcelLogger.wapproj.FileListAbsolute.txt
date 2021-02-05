@@ -205,3 +205,6 @@ C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\Microsoft.Toolki
 C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\Microsoft.Toolkit.Uwp.UI.Controls.pri.xml
 C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\Microsoft.Xaml.Interactions.pri.xml
 C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\Microsoft.Xaml.Interactivity.pri.xml
+C:\Users\GMateusDP\source\repos\EventsExcelLogger\bin\x64\Debug\Event_Dispatcher.pdb
+C:\Users\GMateusDP\source\repos\EventsExcelLogger\bin\x64\Debug\Event_Dispatcher.dll
+C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\Event_Dispatcher.pri.xml

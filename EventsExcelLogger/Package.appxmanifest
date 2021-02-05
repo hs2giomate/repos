@@ -10,7 +10,7 @@
   <Identity
     Name="66ce5294-2662-435b-b0df-a256831da1cf"
     Publisher="CN=GMateusDP"
-    Version="1.0.0.0" />
+    Version="1.0.2.0" />
 
   <Properties>
     <DisplayName>EventsExcelLogger</DisplayName>

@@ -148,6 +148,7 @@
 "C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\PackageLayout\Excel.Interop\Excel.Interop.exe"			"Excel.Interop\Excel.Interop.exe"
 "C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\PackageLayout\EventLoggerManagment.dll"			"EventLoggerManagment.dll"
 "C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\PackageLayout\EventLoggerList.xbf"			"EventLoggerList.xbf"
+"C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\PackageLayout\Event_Dispatcher.dll"			"Event_Dispatcher.dll"
 "C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\PackageLayout\entrypoint\MaintenanceToolECSBOX.exe"			"entrypoint\MaintenanceToolECSBOX.exe"
 "C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\PackageLayout\Compresor.xbf"			"Compresor.xbf"
 "C:\Users\GMateusDP\source\repos\EventsExcelLogger\obj\x64\Debug\PackageLayout\ColorCode.UWP.dll"			"ColorCode.UWP.dll"

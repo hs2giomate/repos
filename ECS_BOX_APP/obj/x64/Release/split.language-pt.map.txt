@@ -1,0 +1,6 @@
+﻿[ResourceMetadata]
+"ResourceId"			"split.language-pt"
+"ResourceDimensions"		"language-pt-br"
+
+[Files]
+"C:\Users\GMateusDP\source\repos\ECS_BOX_APP\obj\x64\Release\split.language-pt.pri"			"resources.pri"

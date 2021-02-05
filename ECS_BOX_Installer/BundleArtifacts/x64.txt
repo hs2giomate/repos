@@ -1,0 +1,2 @@
+MainPackage=C:\Users\GMateusDP\source\repos\ECS_BOX_Installer\bin\x64\Release\ECS_BOX_Installer_1.0.3.0_x64.msix
+SymbolPackage=C:\Users\GMateusDP\source\repos\ECS_BOX_Installer\obj\x64\Release\Symbols\ECS_BOX_Installer_1.0.3.0_x64.appxsym

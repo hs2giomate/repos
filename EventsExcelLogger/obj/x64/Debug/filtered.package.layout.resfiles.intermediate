@@ -20,6 +20,7 @@ ColorCode.Core.dll
 ColorCode.UWP.dll
 Compresor.xbf
 entrypoint\MaintenanceToolECSBOX.exe
+Event_Dispatcher.dll
 EventLoggerList.xbf
 EventLoggerManagment.dll
 Excel.Interop\Excel.Interop.exe
