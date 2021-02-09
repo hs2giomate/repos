@@ -61,9 +61,9 @@ namespace MaintenanceToolECSBOX
         private uint readBufferLength;
         private UInt32 magicHeader;
         private static AnimationSet NBC_Mode_Dark,NBC_Mode_Light;
-        private bool[] nbcMode;
+        private bool[] nbcMode,stand_alone;
         private MinimunFreshAir minimunValues;
-        private Byte minimunAirPosition,last_read_minimum;
+        private Byte[] minimunAirPosition,last_read_minimum;
         private const Byte minimunFailValue = 20;
         private ObservableCollection<Microsoft.Toolkit.Uwp.UI.Controls.RadialGauge> listOfDials;
         private ObservableCollection<ToggleSwitch> listOfToggles;
@@ -71,9 +71,10 @@ namespace MaintenanceToolECSBOX
         private ObservableCollection<TextBlock> listOfTextBlocks;
         private ObservableCollection<Border> listOfBorders;
         private bool required_feedback;
-        private const int DATA_OFFSET=21;
-        private byte result_minimum;
+        private const int DATA_OFFSET=22;
+        private Byte result_minimum;
         private static bool timer_disposed;
+        private UInt16 error_code;
         
         public FlapperValveControl()
         {
@@ -82,6 +83,7 @@ namespace MaintenanceToolECSBOX
             sizeofStruct = 64;
             toSend = new byte[sizeofStruct];
             nbcMode = new bool[NUMBER_VALVES];
+            stand_alone = new bool[NUMBER_VALVES];
             manipulating = new Boolean[NUMBER_VALVES];
             currentPosition = new Byte[NUMBER_VALVES];
             lastPosition = new Byte[NUMBER_VALVES];
@@ -90,6 +92,8 @@ namespace MaintenanceToolECSBOX
             lastSetpoint = new Byte[NUMBER_VALVES];
             currentSetpoint= new Byte[NUMBER_VALVES];
             last_minimum_air = new Byte[NUMBER_VALVES];
+            last_read_minimum= new Byte[NUMBER_VALVES];
+            minimunAirPosition= new Byte[NUMBER_VALVES];
             readBufferLength = 64;
             received = new byte[readBufferLength];
             listOfDials = new ObservableCollection<Microsoft.Toolkit.Uwp.UI.Controls.RadialGauge>();
@@ -110,6 +114,10 @@ namespace MaintenanceToolECSBOX
             listOfTextBlocks.Add(PressedLabel4);
             listOfTextBlocks.Add(PressedLabel5);
             listOfTextBlocks.Add(PressedLabel6);
+            listOfTextBlocks.Add(MinimunFlapper);
+            listOfTextBlocks.Add(MinimunFlapper1);
+            listOfTextBlocks.Add(StatusValve1);
+            listOfTextBlocks.Add(StatusValve2);
             listOfBorders = new ObservableCollection<Border>();
             listOfBorders.Add(LimitSwitchBorder1);
             listOfBorders.Add(LimitSwitchBorder2);
@@ -141,7 +149,7 @@ namespace MaintenanceToolECSBOX
                 listOfDials[i].Opacity = 0.2;
                 listOfDarkAnimations.Add(listOfDials[i].Fade(value: 0.15f, duration: 1000, delay: 25, easingType: EasingType.Sine));
                 listOfLightAnimations.Add(listOfDials[i].Fade(value: 0.95f, duration: 1000, delay: 25, easingType: EasingType.Sine));
-
+                minimunAirPosition[i] = minimunFailValue;
             }
 
             listOfDarkAnimations[0].Completed += NBC_Mode_Dark_Completed;
@@ -149,7 +157,9 @@ namespace MaintenanceToolECSBOX
             listOfDarkAnimations[1].Completed += FlapperValveDarkAnimation_Completed1;
             listOfLightAnimations[1].Completed += FlapperValveLigthAnimation_Completed1;
             minimunValues = new MinimunFreshAir();
-            minimunAirPosition = minimunFailValue;
+           
+          
+
             timer_disposed = false;
     
         }
@@ -330,21 +340,28 @@ namespace MaintenanceToolECSBOX
         }
         private async Task UpdateMinimunValues()
         {
-            Task<byte> return_byte;
+            Task<Byte> return_bytes;
+            
             try
             {
-                 return_byte= minimunValues.GetminimunValidAirPosition();
-                result_minimum = await return_byte;
-                if (result_minimum==0xff)
+                for (int i = 0; i < NUMBER_VALVES; i++)
                 {
-                    minimunAirPosition = last_read_minimum;
+                    return_bytes = minimunValues.GetminimunValidAirPosition(i);
+                    result_minimum = await return_bytes;
+                    if (result_minimum == 0x00)
+                    {
+
+                        minimunAirPosition[i]=last_read_minimum[i];
+                    }
+                    else
+                    {
+                        last_read_minimum[i]= minimunAirPosition[i];
+
+                        minimunAirPosition[i] = result_minimum;
+                        //  minimunAirPosition = 16;
+                    }
                 }
-                else
-                {
-                    last_read_minimum = minimunAirPosition;
-                    minimunAirPosition = (byte)(minimunValues.minimunValid);
-                  //  minimunAirPosition = 16;
-                }
+                
               
 
             }
@@ -352,7 +369,7 @@ namespace MaintenanceToolECSBOX
             {
                 //Debug.WriteLine(e.Message);
                 rootPage.NotifyUser(e.Message.ToString(), NotifyType.ErrorMessage);
-                minimunAirPosition = last_read_minimum;
+              //  minimunAirPosition = last_read_minimum;
                 //  throw;
             }
 
@@ -361,20 +378,20 @@ namespace MaintenanceToolECSBOX
            for (int i = 0; i < NUMBER_VALVES; i++)
             {
                 j = i + 2;
-                if (minimunAirPosition < minimunFailValue)
+                if (minimunAirPosition[i] < minimunFailValue)
                 {
-                    listOfDials[j].MinAngle = 90 - minimunFailValue * 90 / 255;
-                    listOfDials[j].Minimum = 90 - minimunFailValue * 90 / 255;
+                    listOfDials[j].MinAngle =  minimunFailValue * 90 / 255;
+                    listOfDials[j].Minimum =  minimunFailValue * 90 / 255;
 
                 }
                 else
                 {
-                    if (minimunAirPosition != last_minimum_air[i])
+                    if (minimunAirPosition[i] != last_minimum_air[i])
                     {
-                        last_minimum_air[i] = minimunAirPosition;
-                        listOfDials[j].MinAngle = 90 - minimunAirPosition * 90 / 255;
-                        listOfDials[j].Minimum = 90 - minimunAirPosition * 90 / 255;
-                        listOfDials[j].Value = 90 - minimunAirPosition * 90 / 255;
+                        last_minimum_air[i] = minimunAirPosition[i];
+                        listOfDials[j].MinAngle =  minimunAirPosition[i] * 89 / 255;
+                        listOfDials[j].Minimum =  minimunAirPosition[i] * 89 / 255;
+                        listOfDials[j].Value =  minimunAirPosition[i] * 89 / 255;
                     }
 
                 }
@@ -1044,21 +1061,31 @@ namespace MaintenanceToolECSBOX
                         currentPosition[i] = received[20 + DATA_OFFSET * i];
                         listOfDials[i].IsEnabled = false;
                         listOfDials[i].Value = currentPosition[i] * 90 / 255;
-                        listOfTextBlocks[i * 4].Text = (90 - currentPosition[i] * 90 / 255).ToString("N0");
+                        listOfTextBlocks[i * 4].Text = (currentPosition[i] * 90 / 255).ToString("N0");
                         k = 8;
+                        listOfTextBlocks[k+i].Text = (minimunAirPosition[i] * 90 / 255).ToString("N0");
+
+                      // listOfTextBlocks[k+1].Height=20+(90- minimunAirPosition[i])*180/90;
+                        //  listOfTextBlocks[k + 1].Height = 20 + (90 - minimunAirPosition[i]) * 180 / 90;
+                     //   listOfTextBlocks[k + 1].Text = (Math.Pow(10, float(minimunAirPosition[i])/10)).ToString("N0");
+                  
                         for (int j = 3 * i; j < listOfBorders.Count - 3 * (1 - i); j++)
                         {
                             listOfBorders[j].Visibility = received[k + (DATA_OFFSET * i)] > 0 ? Visibility.Visible : Visibility.Collapsed;
                             listOfTextBlocks[j + (1+i)].Visibility = received[k + (DATA_OFFSET * i)] > 0 ? Visibility.Visible : Visibility.Collapsed;
                             k++;
                         }
-                        if (received[24 + DATA_OFFSET * i] > 0)
+                        k = 10;
+
+                        if (received[24 + DATA_OFFSET * i] > 0)     // is_NBC
                         {
                             listOfDials[i].IsInteractive = false;
                             if (!nbcMode[i])
                             {
                                 listOfDarkAnimations[i].StartAsync();
                                 nbcMode[i] = true;
+                                listOfTextBlocks[10+i].Text = "NBC  MODE";
+
                             }
 
                             // EnableValve.IsOn = false;
@@ -1071,8 +1098,36 @@ namespace MaintenanceToolECSBOX
                             if (nbcMode[i])
                             {
                                 listOfDarkAnimations[i].Stop();
+                                listOfTextBlocks[10 + i].Text = "OK";
                             }
                             nbcMode[i] = false;
+                            if (received[27 + DATA_OFFSET * i] > 0)
+                            {
+                                if (stand_alone[i])
+                                {
+
+                                }
+                                else
+                                {
+                                    listOfDarkAnimations[i].StartAsync();
+                                    stand_alone[i] = true;
+                                    listOfTextBlocks[10 + i].Text = "STAND_ALONE";
+                                }
+                            }
+                            else
+                            {
+                                if (stand_alone[i])
+                                {
+                                    listOfDarkAnimations[i].Stop();
+                                    listOfTextBlocks[10 + i].Text = "OK";
+                                    stand_alone[i] = false;
+                                }
+                                else
+                                {
+
+                                }
+                                
+                            }
                             Update_Dials(i);
 
 
@@ -1085,7 +1140,18 @@ namespace MaintenanceToolECSBOX
                 {
                     Enable_Disable_Controls(false,i);
                     listOfDarkAnimations[i].StartAsync();
-
+                    error_code = 0;
+                    k = 0;
+                    for (int j = 7; j < 19; j++)
+                    {
+                        if (received[j + DATA_OFFSET * i] >0)
+                        {
+                            error_code |= (UInt16)(0x01<<k);
+                        }
+                        k++;
+                    }
+                    
+                    listOfTextBlocks[10 + i].Text = String.Concat( "Fault: ",error_code.ToString("X4"));
                 }
 
                
@@ -1116,7 +1182,26 @@ namespace MaintenanceToolECSBOX
             {
                 if (listOfToggles[id].IsOn)
                 {
-
+                    if (!nbcMode[id])
+                    {
+                        if (received[22 + DATA_OFFSET * id] > 0)
+                        {
+                            listOfTextBlocks[10 + id].Text = "DRIVER ON";
+                        }
+                        else
+                        {
+                            if (stand_alone[id])
+                            {
+                                listOfTextBlocks[10 + id].Text = "STAND ALONE";
+                            }
+                            else
+                            {
+                                listOfTextBlocks[10 + id].Text = "STOPPED";
+                            }
+                            
+                        }
+    
+                    }
                 }
                 else
                 {
@@ -1130,7 +1215,21 @@ namespace MaintenanceToolECSBOX
                 }
                 else
                 {
+                    if (stand_alone[id])
+                    {
+                        listOfTextBlocks[10 + id].Text = "STAND ALONE";
+                    }
+                    else
+                    {
+                        if (!nbcMode[id])
+                        {
+
+                            listOfTextBlocks[10 + id].Text = "DISABLED";
+
+                        }
+                    }
                     
+
                 }
             }
             listOfToggles[id].IsEnabled = true;

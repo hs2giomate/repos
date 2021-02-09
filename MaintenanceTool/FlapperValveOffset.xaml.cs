@@ -51,7 +51,7 @@ namespace MaintenanceToolECSBOX
         public FlapperValveOffset()
         {
             this.InitializeComponent();
-            parameters.minimumPosition = Offset;
+            parameters.minimumPosition0 = Offset;
         }
         public void Dispose()
         {
@@ -476,7 +476,7 @@ namespace MaintenanceToolECSBOX
                 Debug.WriteLine(string.Concat("Bytes received: " , received.ToString()));
                 ParametersStruct receivedParameters = new ParametersStruct();
                 UserParameters p = receivedParameters.ConvertBytesParameters(received);
-                Offset = p.minimumPosition;
+                Offset = p.minimumPosition0;
                 ReadOffsetValueText.Text = String.Concat(ConvertOffsetToAngle(Offset).ToString("N0"), " °");
                 ReadBytesCounter += bytesRead;
                 
@@ -497,7 +497,7 @@ namespace MaintenanceToolECSBOX
             if (Offset>0)
             {
 
-                parameters.minimumPosition = Offset;
+                parameters.minimumPosition0 = Offset;
                 var n = Marshal.SizeOf(typeof(ParametersMessage));
                 toSend = new byte[n];
                 toSend.Initialize();

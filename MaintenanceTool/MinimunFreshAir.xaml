@@ -258,17 +258,25 @@
             </Grid.RowDefinitions>
             <StackPanel x:Name="stackPanelTittel" HorizontalAlignment="Center" Height="88" Margin="0,10,0,0" VerticalAlignment="Top" Width="1280" >
                 <TextBlock x:Name="Tittel" Text="Flapper Valve Minimum Position" TextWrapping="Wrap" Style="{StaticResource SampleHeaderTextStyle}" TextAlignment="Center"/>
+                <StackPanel x:Name="StackButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0,0,0" Padding="10,0,0,0">
+                    <Button x:Name="ReadOffsetButton" Margin="10,1,10,0" Content="READ OFFSET" Click="ReadOffsetButton_Click" VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
+                    <Button x:Name="WriteOffsetButton" Content="WRITE OFFSET" Click="WriteOffsetButton_Click" HorizontalAlignment="Right" VerticalAlignment="Stretch" Margin="10,0,10,0"/>
+                </StackPanel>
             </StackPanel>
 
             <ScrollViewer x:Name="ScrollerToggleBits" Grid.Row="1" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Margin="0,0,0,100" >
                 <StackPanel Orientation="Horizontal" >
-                    <StackPanel >
+                    <StackPanel x:Name="StackValve1" Margin="0,0,10,0" >
                         <StackPanel Orientation="Vertical" Margin="0,10,0,0" Grid.Row="1">
+                            <TextBlock Text="NORMAL" FontSize="16" TextAlignment="Center" />
+                            <StackPanel>
+                               
+                            
                             <StackPanel x:Name="StackOffsetValue" Orientation="Horizontal" Margin="10,10,0,0" Grid.Row="1">
                                 <TextBlock x:Name="textMinimumfreshAirValue" Text="Minimum Fresh Air Selectred  : " FontSize="16"/>
                                 <TextBlock x:Name="OffsetValueText" Text=" Not Set" FontSize="16" TextAlignment="Center"  />
                                 <TextBlock x:Name="dummytext" Text="0123456789" FontSize="16" Opacity="0"/>
-                                <Button x:Name="WriteOffsetButton" Content="WRITE OFFSET" Click="WriteOffsetButton_Click" HorizontalAlignment="Right" VerticalAlignment="Stretch"/>
+                              
                             </StackPanel>
                             <StackPanel x:Name="ToggleButtonsStack" Orientation="Horizontal">
                                 <StackPanel x:Name="ToggleBitGroup8">
@@ -364,10 +372,16 @@
                                 <TextBlock Text="Stored Minimun Fresh Air :" FontSize="16" VerticalAlignment="Bottom" AllowDrop="True" Width="{Binding ActualWidth, ElementName=textMinimumfreshAirValue, Mode=OneWay}" />
                                 <TextBlock x:Name="ReadOffsetValueText" Text=" Not Set" FontSize="16" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=OffsetValueText, Mode=OneWay}"  />
                                 <TextBlock x:Name="dummytext2" Text="0123456789" FontSize="16" Opacity="0" Width="{Binding ActualWidth, ElementName=dummytext, Mode=OneWay}"/>
-                                <Button x:Name="ReadOffsetButton" Margin="10,1,0,0" Content="READ OFFSET" Click="ReadOffsetButton_Click" VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
+                              
                             </StackPanel>
                         </StackPanel>
+                        </StackPanel>
                         <!--       Stand Alone -->
+
+
+                        <StackPanel>
+                            <TextBlock Text="STANDALONE" FontSize="16" TextAlignment="Center" />
+                       
                         <StackPanel x:Name="StandAlonePanel" Orientation="Vertical" Margin="0,20,0,0">
                             <StackPanel x:Name="StackOffsetValue1" Orientation="Horizontal" Margin="10,10,0,0" Grid.Row="1">
                                 <TextBlock x:Name="textMinimumfreshAirValue1" Text="Minimum Fresh Air Selectred  : " FontSize="16"/>
@@ -469,13 +483,240 @@
                                 <TextBlock Text="Stored Minimun Fresh Air :" FontSize="16" VerticalAlignment="Bottom" AllowDrop="True" Width="{Binding ActualWidth, ElementName=textMinimumfreshAirValue, Mode=OneWay}" />
                                 <TextBlock x:Name="ReadOffsetValueText1" Text=" Not Set" FontSize="16" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=OffsetValueText, Mode=OneWay}"  />
                                 <TextBlock x:Name="dummytext3" Text="0123456789" FontSize="16" Opacity="0" Width="{Binding ActualWidth, ElementName=dummytext, Mode=OneWay}"/>
-                                <Button x:Name="ReadOffsetButton1" Margin="10,1,0,0" Content="READ OFFSET" Click="ReadOffsetButton_Click" VerticalAlignment="Stretch" HorizontalAlignment="Right" Opacity="0"/>
+                              
                             </StackPanel>
                         </StackPanel>
-               
-                        
-                        
-                        
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+                    <!--Sconde Flapper Valve-->
+                    
+                    
+                    <StackPanel x:Name="StackValve2" Margin="17,0,0,0" >
+                        <StackPanel Orientation="Vertical" Margin="0,10,0,0" Grid.Row="1">
+                            <TextBlock Text="NORMAL" FontSize="16" TextAlignment="Center" />
+                            <StackPanel>
+
+
+                                <StackPanel x:Name="StackOffsetValue2" Orientation="Horizontal" Margin="10,10,0,0" Grid.Row="1">
+                                    <TextBlock x:Name="textMinimumfreshAirValue2" Text="Minimum Fresh Air Selectred  : " FontSize="16"/>
+                                    <TextBlock x:Name="OffsetValueText2" Text=" Not Set" FontSize="16" TextAlignment="Center"  />
+                                    <TextBlock x:Name="dummytext4" Text="0123456789" FontSize="16" Opacity="0"/>
+
+                                </StackPanel>
+                                <StackPanel x:Name="ToggleButtonsStack2" Orientation="Horizontal">
+                                    <StackPanel x:Name="ToggleBitGroup15">
+                                        <TextBlock x:Name="FVToggleBitValue17" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit17" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit17_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel17" Text="8" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup16">
+                                        <TextBlock x:Name="FVToggleBitValue18" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit18" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit18_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel18" Text="7" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" Margin="0,0,0,-6" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup17">
+                                        <TextBlock x:Name="FVToggleBitValue19" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit19" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit19_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel19" Text="6" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup18">
+                                        <TextBlock x:Name="FVToggleBitValue20" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit20" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit20_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel20" Text="5" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" Margin="0,0,0,-1" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup_Copy2">
+                                        <TextBlock x:Name="FVToggleBitValue21" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit21" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit21_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel21" Text="4" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup19">
+                                        <TextBlock x:Name="FVToggleBitValue22" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit22" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit22_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel22" Text="3" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup20">
+                                        <TextBlock x:Name="FVToggleBitValue23" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit23" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit23_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel23" Text="2" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup21">
+                                        <TextBlock x:Name="FVToggleBitValue24" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit24" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit24_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel24" Text="1" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="StackReadOffset2" Orientation="Horizontal" Grid.Row="1" Margin="10,0,0,0">
+                                    <TextBlock Text="Stored Minimun Fresh Air :" FontSize="16" VerticalAlignment="Bottom" AllowDrop="True" Width="{Binding ActualWidth, ElementName=textMinimumfreshAirValue, Mode=OneWay}" />
+                                    <TextBlock x:Name="ReadOffsetValueText2" Text=" Not Set" FontSize="16" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=OffsetValueText, Mode=OneWay}"  />
+                                    <TextBlock x:Name="dummytext5" Text="0123456789" FontSize="16" Opacity="0" Width="{Binding ActualWidth, ElementName=dummytext, Mode=OneWay}"/>
+
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+
+                        <StackPanel>
+                            <TextBlock Text="STANDALONE" FontSize="16" TextAlignment="Center" />
+
+                            <StackPanel x:Name="StandAlonePanel1" Orientation="Vertical" Margin="0,20,0,0">
+                                <StackPanel x:Name="StackOffsetValue3" Orientation="Horizontal" Margin="10,10,0,0" Grid.Row="1">
+                                    <TextBlock x:Name="textMinimumfreshAirValue3" Text="Minimum Fresh Air Selectred  : " FontSize="16"/>
+                                    <TextBlock x:Name="OffsetValueText3" Text=" Not Set" FontSize="16" TextAlignment="Center"  />
+                                    <TextBlock x:Name="dummytext6" Text="0123456789" FontSize="16" Opacity="0"/>
+                                    <Button x:Name="WriteOffsetButton2" Content="WRITE OFFSET" Click="WriteOffsetButton_Click" HorizontalAlignment="Right" VerticalAlignment="Stretch" Opacity="0"/>
+                                </StackPanel>
+                                <StackPanel x:Name="ToggleButtonsStack3" Orientation="Horizontal">
+                                    <StackPanel x:Name="ToggleBitGroup22">
+                                        <TextBlock x:Name="FVToggleBitValue25" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit25" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit25_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel25" Text="8" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup23">
+                                        <TextBlock x:Name="FVToggleBitValue26" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit26" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit26_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel26" Text="7" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" Margin="0,0,0,-6" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup24">
+                                        <TextBlock x:Name="FVToggleBitValue27" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit27" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit27_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel27" Text="6" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup25">
+                                        <TextBlock x:Name="FVToggleBitValue28" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit28" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit28_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel28" Text="5" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" Margin="0,0,0,-1" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup_Copy3">
+                                        <TextBlock x:Name="FVToggleBitValue29" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit29" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit29_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel29" Text="4" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup26">
+                                        <TextBlock x:Name="FVToggleBitValue30" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit30" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit30_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel30" Text="3" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup27">
+                                        <TextBlock x:Name="FVToggleBitValue31" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit31" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit31_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel31" Text="2" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                    <StackPanel x:Name="ToggleBitGroup28">
+                                        <TextBlock x:Name="FVToggleBitValue32" Text="0" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                        <StackPanel HorizontalAlignment="Stretch" Margin="0,45,0,45" Orientation="Vertical" Height="{Binding ActualWidth, ElementName=FVToggleSwitchBit8, Mode=OneWay}">
+                                            <ToggleSwitch Style="{StaticResource ToggleSwitchStyle1}" x:Name="FVToggleSwitchBit32" OnContent="1" OffContent="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled" RenderTransformOrigin="0.5,0.5" Toggled="FVToggleSwitchBit32_Toggled"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" FontSize="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                                <ToggleSwitch.RenderTransform>
+                                                    <CompositeTransform Rotation="-90.000000000000014" TranslateY="{Binding ActualWidth, ElementName=FVToggleBitValue, Mode=OneWay}"/>
+                                                </ToggleSwitch.RenderTransform>
+                                            </ToggleSwitch>
+                                        </StackPanel>
+                                        <TextBlock x:Name="FVToggleBitLabel32" Text="1" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel x:Name="StackReadOffset3" Orientation="Horizontal" Grid.Row="1" Margin="10,0,0,0">
+                                    <TextBlock Text="Stored Minimun Fresh Air :" FontSize="16" VerticalAlignment="Bottom" AllowDrop="True" Width="{Binding ActualWidth, ElementName=textMinimumfreshAirValue, Mode=OneWay}" />
+                                    <TextBlock x:Name="ReadOffsetValueText3" Text=" Not Set" FontSize="16" VerticalAlignment="Bottom" Width="{Binding ActualWidth, ElementName=OffsetValueText, Mode=OneWay}"  />
+                                    <TextBlock x:Name="dummytext7" Text="0123456789" FontSize="16" Opacity="0" Width="{Binding ActualWidth, ElementName=dummytext, Mode=OneWay}"/>
+                                  
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+
+
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

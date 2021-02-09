@@ -23,9 +23,12 @@ namespace MaintenanceToolECSBOX
         List<Scenario> scenarios = new List<Scenario>
         {
             new Scenario() { Title="Connect/Disconnect", ClassType=typeof(Scenario1_ConnectDisconnect)},
+#if ATP_TEST
+#else
             new Scenario() { Title="Configure Device", ClassType=typeof(Scenario2_ConfigureDevice)},
             new Scenario() { Title="Read/Write", ClassType=typeof(Scenario3_ReadWrite)},
-          //  new Scenario() { Title="USB Serial Events", ClassType=typeof(Scenario4_Events)},
+#endif
+            //  new Scenario() { Title="USB Serial Events", ClassType=typeof(Scenario4_Events)},
             new Scenario() { Title="Minimum Air Positions", ClassType=typeof(MinimunFreshAir)},
             new Scenario() { Title="Flapper Valve Command", ClassType=typeof(FlapperValveControl)},
             new Scenario() { Title="Events Logger", ClassType=typeof(EventLoggerList)},

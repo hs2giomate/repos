@@ -14,8 +14,10 @@ namespace ParameterTransferProtocol
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct UserParameters
     {
-        public Byte minimumPosition;
-        public Byte minimumStandAlonePosition;
+        public Byte minimumPosition0;
+        public Byte minimumPosition1;
+        public Byte minimumStandAlonePosition0;
+        public Byte minimumStandAlonePosition1;
     }
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct ParametersMessage

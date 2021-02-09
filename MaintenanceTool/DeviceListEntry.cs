@@ -64,8 +64,12 @@ namespace MaintenanceToolECSBOX
                 if (DeviceInformation.Name.Contains("ASF"))
                 {
                     ecsBoxDetected = true;
+#if ATP_TEST
+                    return "ECS_BOX";
+#else
                     return "ECS_BOX CDC_Serial_Interface";
-                   
+#endif
+
                 }
                 else
                 {
@@ -84,6 +88,20 @@ namespace MaintenanceToolECSBOX
         {
             device = deviceInformation;
             this.deviceSelector = deviceSelector;
+          //  ecsBoxDetected = Is_ECS_BOX();
+        }
+        public bool Is_ECS_BOX()
+        {
+            if (DeviceInformation.Name.Contains("ASF"))
+            {
+                ecsBoxDetected = true;
+
+            }
+            else
+            {
+                ecsBoxDetected = false;
+            }
+            return ecsBoxDetected;
         }
 
     }

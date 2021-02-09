@@ -364,10 +364,18 @@ namespace MaintenanceToolECSBOX
                 // Create a new element for this device interface, and queue up the query of its
                 // device information
                 match = new DeviceListEntry(deviceInformation, deviceSelector);
-
+#if ATP_TEST1
+               
+                if (match.ecsBoxDetected)
+                {
+                   
+                }
+                listOfDevices.Add(match);
+#else
                 // Add the new element to the end of the list of devices
                 listOfDevices.Add(match);
-               
+#endif
+
             }
         }
 

@@ -41,8 +41,8 @@ namespace MaintenanceToolECSBOX
         private Boolean IsReadTaskPending;
         private uint ReadBytesCounter = 0;
         DataReader DataReaderObject = null;
-        public Byte minimumAir, standAloneMinimumAir,minimunValid;
-
+        public Byte minimumAir0, standAloneMinimumAir0,minimumValid0;
+        public Byte minimumAir1, standAloneMinimumAir1, minimumValid1;
         private CancellationTokenSource WriteCancellationTokenSource;
         private Object WriteCancelLock = new Object();
         private Boolean IsWriteTaskPending,request_sucess,read_request_succes;
@@ -54,14 +54,17 @@ namespace MaintenanceToolECSBOX
         private UInt32 magicHeader;
         private uint readBufferLength = 64;
         private int toSendSize;
+        private bool currentState;
         public MinimunFreshAir()
         {
             this.InitializeComponent();
             handler = this;
-            parameters.minimumPosition = minimumAir;
+  
+            parameters.minimumPosition0 = minimumAir0;
             received = new byte[readBufferLength];
             toSendSize = Marshal.SizeOf(typeof(ParametersMessage));
             toSend = new byte[toSendSize];
+           
         }
         public void Dispose()
         {
@@ -83,7 +86,7 @@ namespace MaintenanceToolECSBOX
             IsNavigatedAway = false;
             if (EventHandlerForDevice.Current.Device == null)
             {
-                ScrollerToggleBits.Visibility = Visibility.Collapsed;
+              //  ScrollerToggleBits.Visibility = Visibility.Collapsed;
                 MainPage.Current.NotifyUser("Device is not connected", NotifyType.ErrorMessage);
             }
             else
@@ -129,40 +132,44 @@ namespace MaintenanceToolECSBOX
         {
             if (FVToggleSwitchBit8.IsOn)
             {
-                minimumAir = (Byte)(minimumAir | 0x80);
+                minimumAir0 = (Byte)(minimumAir0 | 0x80);
                 FVToggleBitValue8.Text = "1";
             }
             else
             {
-                minimumAir = (Byte)(minimumAir & 0x7F);
+                minimumAir0 = (Byte)(minimumAir0 & 0x7F);
                 FVToggleBitValue8.Text = "0";
             }
             UpdateMinimuSetValue();
         }
         private void UpdateFVToggleBit8()
         {
-            bool currentState = (minimumAir & 0x80) > 1;
+             currentState = (minimumAir0 & 0x80) > 1;
             FVToggleSwitchBit8.IsOn = currentState;
+            currentState = (minimumAir1 & 0x80) > 1;
+            FVToggleSwitchBit17.IsOn = currentState;
         }
 
         private void FVToggleBit7_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit7.IsOn)
             {
-                minimumAir = (Byte)(minimumAir | 0x40);
+                minimumAir0 = (Byte)(minimumAir0 | 0x40);
                 FVToggleBitValue7.Text = "1";
             }
             else
             {
-                minimumAir = (Byte)(minimumAir & 0xBF);
+                minimumAir0 = (Byte)(minimumAir0 & 0xBF);
                 FVToggleBitValue7.Text = "0";
             }
             UpdateMinimuSetValue();
         }
         private void UpdateFVToggleBit7()
         {
-            bool currentState = (minimumAir & 0x40) > 1;
+             currentState = (minimumAir0 & 0x40) > 1;
             FVToggleSwitchBit7.IsOn = currentState;
+            currentState = (minimumAir1 & 0x40) > 1;
+            FVToggleSwitchBit18.IsOn = currentState;
         }
 
 
@@ -170,20 +177,22 @@ namespace MaintenanceToolECSBOX
         {
             if (FVToggleSwitchBit6.IsOn)
             {
-                minimumAir = (Byte)(minimumAir | 0x20);
+                minimumAir0= (Byte)(minimumAir0 | 0x20);
                 FVToggleBitValue6.Text = "1";
             }
             else
             {
-                minimumAir = (Byte)(minimumAir & 0xDF);
+                minimumAir0 = (Byte)(minimumAir0 & 0xDF);
                 FVToggleBitValue6.Text = "0";
             }
             UpdateMinimuSetValue();
         }
         private void UpdateFVToggleBit6()
         {
-            bool currentState = (minimumAir & 0x20) > 1;
+             currentState = (minimumAir0 & 0x20) > 1;
             FVToggleSwitchBit6.IsOn = currentState;
+            currentState = (minimumAir1 & 0x20) > 1;
+            FVToggleSwitchBit19.IsOn = currentState;
         }
 
 
@@ -191,98 +200,108 @@ namespace MaintenanceToolECSBOX
         {
             if (FVToggleSwitchBit5.IsOn)
             {
-                minimumAir = (Byte)(minimumAir | 0x10);
+                minimumAir0 = (Byte)(minimumAir0 | 0x10);
                 FVToggleBitValue5.Text = "1";
             }
             else
             {
-                minimumAir = (Byte)(minimumAir & 0xEF);
+                minimumAir0 = (Byte)(minimumAir0 & 0xEF);
                 FVToggleBitValue5.Text = "0";
             }
             UpdateMinimuSetValue();
         }
         private void UpdateFVToggleBit5()
         {
-            bool currentState = (minimumAir & 0x10) > 1;
+             currentState = (minimumAir0 & 0x10) > 1;
             FVToggleSwitchBit5.IsOn = currentState;
+            currentState = (minimumAir1 & 0x10) > 1;
+            FVToggleSwitchBit20.IsOn = currentState;
         }
 
         private void FVToggleBit4_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit4.IsOn)
             {
-                minimumAir = (Byte)(minimumAir | 0x08);
+                minimumAir0 = (Byte)(minimumAir0 | 0x08);
                 FVToggleBitValue4.Text = "1";
             }
             else
             {
-                minimumAir = (Byte)(minimumAir & 0xF7);
+                minimumAir0 = (Byte)(minimumAir0 & 0xF7);
                 FVToggleBitValue4.Text = "0";
             }
             UpdateMinimuSetValue();
         }
         private void UpdateFVToggleBit4()
         {
-            bool currentState = (minimumAir & 0x08) > 1;
+            currentState = (minimumAir0 & 0x08) > 1;
             FVToggleSwitchBit4.IsOn = currentState;
+            currentState = (minimumAir1 & 0x08) > 1;
+            FVToggleSwitchBit21.IsOn = currentState;
         }
         private void FVToggleBit3_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit3.IsOn)
             {
-                minimumAir = (Byte)(minimumAir | 0x04);
+                minimumAir0 = (Byte)(minimumAir0 | 0x04);
                 FVToggleBitValue3.Text = "1";
             }
             else
             {
-                minimumAir = (Byte)(minimumAir & 0xFB);
+                minimumAir0 = (Byte)(minimumAir0 & 0xFB);
                 FVToggleBitValue3.Text = "0";
             }
             UpdateMinimuSetValue();
         }
         private void UpdateFVToggleBit3()
         {
-            bool currentState = (minimumAir & 0x04) > 1;
+             currentState = (minimumAir0 & 0x04) > 1;
             FVToggleSwitchBit3.IsOn = currentState;
+            currentState = (minimumAir1 & 0x04) > 1;
+            FVToggleSwitchBit22.IsOn = currentState;
         }
         private void FVToggleBit2_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit2.IsOn)
             {
-                minimumAir = (Byte)(minimumAir | 0x02);
+                minimumAir0 = (Byte)(minimumAir0 | 0x02);
                 FVToggleBitValue2.Text = "1";
             }
             else
             {
-                minimumAir = (Byte)(minimumAir & 0xFD);
+                minimumAir0 = (Byte)(minimumAir0 & 0xFD);
                 FVToggleBitValue2.Text = "0";
             }
             UpdateMinimuSetValue();
         }
         private void UpdateFVToggleBit2()
         {
-            bool currentState = (minimumAir & 0x02) > 1;
+             currentState = (minimumAir0 & 0x02) > 1;
             FVToggleSwitchBit2.IsOn = currentState;
+            currentState = (minimumAir1 & 0x02) > 1;
+            FVToggleSwitchBit23.IsOn = currentState;
         }
 
         private void FVToggleBit1_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit1.IsOn)
             {
-                minimumAir = (Byte)(minimumAir | 0x01);
+                minimumAir0 = (Byte)(minimumAir0 | 0x01);
                 FVToggleBitValue1.Text = "1";
             }
             else
             {
-                minimumAir = (Byte)(minimumAir & 0xFE);
+                minimumAir0 = (Byte)(minimumAir0 & 0xFE);
                 FVToggleBitValue1.Text = "0";
             }
             UpdateMinimuSetValue();
         }
         private void UpdateFVToggleBit1()
         {
-            bool currentState = (minimumAir & 0x01) > 0;
+             currentState = (minimumAir0 & 0x01) > 0;
             FVToggleSwitchBit1.IsOn = currentState;
+            currentState = (minimumAir1 & 0x01) > 0;
+            FVToggleSwitchBit24.IsOn = currentState;
         }
         private void UpdateAllToggleBits()
         {
@@ -306,12 +325,14 @@ namespace MaintenanceToolECSBOX
         private void UpdateMinimuSetValue()
         {
 
-            OffsetValueText.Text = String.Concat(ConvertOffsetToAngle(minimumAir).ToString("N0"), " °");
+            OffsetValueText.Text = String.Concat(ConvertOffsetToAngle(minimumAir0).ToString("N0"), " °");
+            OffsetValueText2.Text = String.Concat(ConvertOffsetToAngle(minimumAir1).ToString("N0"), " °");
         }
         private void UpdateStandAloneSetValue()
         {
 
-            OffsetValueText1.Text = String.Concat(ConvertOffsetToAngle(standAloneMinimumAir).ToString("N0"), " °");
+            OffsetValueText1.Text = String.Concat(ConvertOffsetToAngle(standAloneMinimumAir0).ToString("N0"), " °");
+            OffsetValueText3.Text = String.Concat(ConvertOffsetToAngle(standAloneMinimumAir1).ToString("N0"), " °");
         }
         private async void WriteOffsetButton_Click(object sender, RoutedEventArgs e)
         {
@@ -330,16 +351,17 @@ namespace MaintenanceToolECSBOX
                     // We need to set this to true so that the buttons can be updated to disable the write button. We will not be able to
                     // update the button states until after the write completes.
                    
-                    parameters.minimumPosition = minimumAir;
-                    parameters.minimumStandAlonePosition = standAloneMinimumAir;
-
-                    toSend.Initialize();
+                    parameters.minimumPosition0 = minimumAir0;
+                    parameters.minimumStandAlonePosition0 = standAloneMinimumAir0;
+                    parameters.minimumPosition1 = minimumAir1;
+                    parameters.minimumStandAlonePosition1 = standAloneMinimumAir1;
+                 
 
                     ParametersProtocol.Current.CreateWriteParametersMessage(parameters).CopyTo(toSend, 0);
                     IsWriteTaskPending = true;
                     DataWriteObject = new DataWriter(EventHandlerForDevice.Current.Device.OutputStream);
                     
-                        await WriteAsync(WriteCancellationTokenSource.Token);
+                    await WriteAsync(WriteCancellationTokenSource.Token);
                     
                    
                     //UpdateWriteButtonStates();
@@ -535,13 +557,17 @@ namespace MaintenanceToolECSBOX
         {
             if (magicHeader.Equals(Commands.reverseMagic))
             {
-                minimumAir = received[6];
-                standAloneMinimumAir = received[7];
-                minimunValid= received[8];
+                minimumAir0 = received[6];
+                standAloneMinimumAir0 = received[8];
+                minimumValid0= received[10];
+                minimumAir1 = received[7];
+                standAloneMinimumAir1 = received[9];
+                minimumValid1 = received[11];
             }
         }
-        public async Task<Byte> GetminimunValidAirPosition()
+        public async Task<Byte> GetminimunValidAirPosition(int i)
         {
+          
             ResetReadCancellationTokenSource();
           //  IsReadTaskPending = false;
             ResetWriteCancellationTokenSource();
@@ -550,11 +576,20 @@ namespace MaintenanceToolECSBOX
             if (read_request_succes)
             {
                 DecodeInputValues();
-                return minimunValid;
+                if (i==0)
+                {
+                    return minimumValid0;
+                }
+                else
+                {
+                    return minimumValid1;
+                }
+               
             }
             else
             {
-                return 0xff;
+              
+                return 0x00;
             }
             
             
@@ -573,7 +608,7 @@ namespace MaintenanceToolECSBOX
 
             Task<UInt32> storeAsyncTask;
 
-            if (minimumAir > 0)
+            if (minimumAir0 > 0)
             {
 
                
@@ -729,8 +764,10 @@ namespace MaintenanceToolECSBOX
         }
         private void Update_Stored_values()
         {
-            ReadOffsetValueText.Text = minimumAir.ToString();
-            ReadOffsetValueText1.Text = standAloneMinimumAir.ToString();
+            ReadOffsetValueText.Text = (minimumAir0*90/255).ToString("N0");
+            ReadOffsetValueText1.Text = (standAloneMinimumAir0 * 90 / 255).ToString("N0");
+            ReadOffsetValueText2.Text = (minimumAir1 * 90 / 255).ToString("N0");
+            ReadOffsetValueText3.Text = (standAloneMinimumAir1 * 90 / 255).ToString("N0");
         }
 
         private async  void ReadOffsetButton_Click(object sender, RoutedEventArgs e)
@@ -808,39 +845,43 @@ namespace MaintenanceToolECSBOX
         {
             if (FVToggleSwitchBit16.IsOn)
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x01);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 | 0x01);
                 FVToggleBitValue16.Text = "1";
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0xFE);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 & 0xFE);
                 FVToggleBitValue16.Text = "0";
             }
             UpdateStandAloneSetValue();
         }
         private void UpdateFVToggleBit16()
         {
-            bool currentState = (standAloneMinimumAir & 0x01) > 0;
+             currentState = (standAloneMinimumAir0 & 0x01) > 0;
             FVToggleSwitchBit16.IsOn = currentState;
+            currentState = (standAloneMinimumAir1 & 0x01) > 0;
+            FVToggleSwitchBit32.IsOn = currentState;
         }
         private void FVToggleSwitchBit15_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit15.IsOn)
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x02);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 | 0x02);
                 FVToggleBitValue15.Text = "1";
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0xFD);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 & 0xFD);
                 FVToggleBitValue15.Text = "0";
             }
             UpdateStandAloneSetValue();
         }
         private void UpdateFVToggleBit15()
         {
-            bool currentState = (standAloneMinimumAir & 0x02) > 1;
+             currentState = (standAloneMinimumAir0 & 0x02) > 1;
             FVToggleSwitchBit15.IsOn = currentState;
+            currentState = (standAloneMinimumAir1 & 0x02) > 1;
+            FVToggleSwitchBit31.IsOn = currentState;
         }
 
 
@@ -848,118 +889,373 @@ namespace MaintenanceToolECSBOX
         {
             if (FVToggleSwitchBit14.IsOn)
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x04);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 | 0x04);
                 FVToggleBitValue14.Text = "1";
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0xFB);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 & 0xFB);
                 FVToggleBitValue14.Text = "0";
             }
             UpdateStandAloneSetValue();
         }
         private void UpdateFVToggleBit14()
         {
-            bool currentState = (standAloneMinimumAir & 0x04) > 1;
+             currentState = (standAloneMinimumAir0 & 0x04) > 1;
             FVToggleSwitchBit14.IsOn = currentState;
+            currentState = (standAloneMinimumAir1 & 0x04) > 1;
+            FVToggleSwitchBit30.IsOn = currentState;
         }
 
         private void FVToggleSwitchBit13_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit13.IsOn)
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x08);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 | 0x08);
                 FVToggleBitValue13.Text = "1";
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0xF7);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 & 0xF7);
                 FVToggleBitValue13.Text = "0";
             }
             UpdateStandAloneSetValue();
         }
         private void UpdateFVToggleBit13()
         {
-            bool currentState = (standAloneMinimumAir & 0x08) > 1;
+             currentState = (standAloneMinimumAir0 & 0x08) > 1;
             FVToggleSwitchBit13.IsOn = currentState;
+            currentState = (standAloneMinimumAir1 & 0x08) > 1;
+            FVToggleSwitchBit29.IsOn = currentState;
         }
 
         private void FVToggleSwitchBit12_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit12.IsOn)
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x10);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 | 0x10);
                 FVToggleBitValue12.Text = "1";
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0xEF);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 & 0xEF);
                 FVToggleBitValue12.Text = "0";
             }
             UpdateStandAloneSetValue();
         }
         private void UpdateFVToggleBit12()
         {
-            bool currentState = (standAloneMinimumAir & 0x10) > 1;
+            currentState = (standAloneMinimumAir0 & 0x10) > 1;
             FVToggleSwitchBit12.IsOn = currentState;
+            currentState = (standAloneMinimumAir1 & 0x10) > 1;
+            FVToggleSwitchBit28.IsOn = currentState;
         }
 
         private void FVToggleSwitchBit11_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit11.IsOn)
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x20);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 | 0x20);
                 FVToggleBitValue11.Text = "1";
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0xDF);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 & 0xDF);
                 FVToggleBitValue11.Text = "0";
             }
             UpdateStandAloneSetValue();
         }
+
+        private void FVToggleSwitchBit24_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit24.IsOn)
+            {
+                minimumAir1 = (Byte)(minimumAir1 | 0x01);
+                FVToggleBitValue24.Text = "1";
+            }
+            else
+            {
+                minimumAir1 = (Byte)(minimumAir1 & 0xFE);
+                FVToggleBitValue24.Text = "0";
+            }
+            UpdateMinimuSetValue();
+
+        }
+
+        private void FVToggleSwitchBit23_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit23.IsOn)
+            {
+                minimumAir1 = (Byte)(minimumAir1 | 0x02);
+                FVToggleBitValue23.Text = "1";
+            }
+            else
+            {
+                minimumAir1 = (Byte)(minimumAir1 & 0xFD);
+                FVToggleBitValue23.Text = "0";
+            }
+            UpdateMinimuSetValue();
+        }
+
+        private void FVToggleSwitchBit22_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit22.IsOn)
+            {
+                minimumAir1 = (Byte)(minimumAir1 | 0x04);
+                FVToggleBitValue22.Text = "1";
+            }
+            else
+            {
+                minimumAir1 = (Byte)(minimumAir1 & 0xFb);
+                FVToggleBitValue22.Text = "0";
+            }
+            UpdateMinimuSetValue();
+        }
+
+        private void FVToggleSwitchBit21_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit21.IsOn)
+            {
+                minimumAir1 = (Byte)(minimumAir1 | 0x08);
+                FVToggleBitValue21.Text = "1";
+            }
+            else
+            {
+                minimumAir1 = (Byte)(minimumAir1 & 0xF7);
+                FVToggleBitValue21.Text = "0";
+            }
+            UpdateMinimuSetValue();
+        }  
+        
+private void FVToggleSwitchBit20_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit20.IsOn)
+            {
+                minimumAir1 = (Byte)(minimumAir1 | 0x10);
+                FVToggleBitValue20.Text = "1";
+            }
+            else
+            {
+                minimumAir1 = (Byte)(minimumAir1 & 0xef);
+                FVToggleBitValue20.Text = "0";
+            }
+            UpdateMinimuSetValue();
+        }
+
+        private void FVToggleSwitchBit19_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit19.IsOn)
+            {
+                minimumAir1 = (Byte)(minimumAir1 | 0x20);
+                FVToggleBitValue19.Text = "1";
+            }
+            else
+            {
+                minimumAir1 = (Byte)(minimumAir1 & 0xbf);
+                FVToggleBitValue19.Text = "0";
+            }
+            UpdateMinimuSetValue();
+        }
+
+        private void FVToggleSwitchBit18_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit18.IsOn)
+            {
+                minimumAir1 = (Byte)(minimumAir1 | 0x40);
+                FVToggleBitValue18.Text = "1";
+            }
+            else
+            {
+                minimumAir1 = (Byte)(minimumAir1 & 0xdf);
+                FVToggleBitValue18.Text = "0";
+            }
+            UpdateMinimuSetValue();
+        }
+
+        private void FVToggleSwitchBit17_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit17.IsOn)
+            {
+                minimumAir1 = (Byte)(minimumAir1 | 0x80);
+                FVToggleBitValue17.Text = "1";
+            }
+            else
+            {
+                minimumAir1 = (Byte)(minimumAir1 & 0x7f);
+                FVToggleBitValue17.Text = "0";
+            }
+            UpdateMinimuSetValue();
+        }
+
+        private void FVToggleSwitchBit32_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit32.IsOn)
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 | 0x01);
+                FVToggleBitValue32.Text = "1";
+            }
+            else
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 & 0xFE);
+                FVToggleBitValue32.Text = "0";
+            }
+            UpdateStandAloneSetValue();
+        }
+
+        private void FVToggleSwitchBit31_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit31.IsOn)
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 | 0x02);
+                FVToggleBitValue31.Text = "1";
+            }
+            else
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 & 0xFd);
+                FVToggleBitValue31.Text = "0";
+            }
+            UpdateStandAloneSetValue();
+        }
+
+        private void FVToggleSwitchBit30_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit30.IsOn)
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 | 0x04);
+                FVToggleBitValue30.Text = "1";
+            }
+            else
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 & 0xFb);
+                FVToggleBitValue30.Text = "0";
+            }
+            UpdateStandAloneSetValue();
+        }
+
+        private void FVToggleSwitchBit29_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit29.IsOn)
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 | 0x08);
+                FVToggleBitValue29.Text = "1";
+            }
+            else
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 & 0xF7);
+                FVToggleBitValue29.Text = "0";
+            }
+            UpdateStandAloneSetValue();
+        }
+
+        private void FVToggleSwitchBit28_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit28.IsOn)
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 | 0x10);
+                FVToggleBitValue28.Text = "1";
+            }
+            else
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 & 0xef);
+                FVToggleBitValue28.Text = "0";
+            }
+            UpdateStandAloneSetValue();
+        }
+
+        private void FVToggleSwitchBit27_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit27.IsOn)
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 | 0x20);
+                FVToggleBitValue27.Text = "1";
+            }
+            else
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 & 0xdf);
+                FVToggleBitValue27.Text = "0";
+            }
+            UpdateStandAloneSetValue();
+        }
+
+        private void FVToggleSwitchBit26_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit32.IsOn)
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 | 0x40);
+                FVToggleBitValue26.Text = "1";
+            }
+            else
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 & 0xbf);
+                FVToggleBitValue26.Text = "0";
+            }
+            UpdateStandAloneSetValue();
+        }
+
+        private void FVToggleSwitchBit25_Toggled(object sender, RoutedEventArgs e)
+        {
+            if (FVToggleSwitchBit25.IsOn)
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 | 0x80);
+                FVToggleBitValue25.Text = "1";
+            }
+            else
+            {
+                standAloneMinimumAir1 = (Byte)(standAloneMinimumAir1 & 0x7f);
+                FVToggleBitValue25.Text = "0";
+            }
+            UpdateStandAloneSetValue();
+        }
+
         private void UpdateFVToggleBit11()
         {
-            bool currentState = (standAloneMinimumAir & 0x20) > 1;
+            currentState = (standAloneMinimumAir0 & 0x20) > 1;
             FVToggleSwitchBit11.IsOn = currentState;
+            currentState = (standAloneMinimumAir1 & 0x20) > 1;
+            FVToggleSwitchBit27.IsOn = currentState;
+
         }
         private void FVToggleSwitchBit10_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit10.IsOn)
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x40);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 | 0x40);
                 FVToggleBitValue10.Text = "1";
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0xBF);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 & 0xBF);
                 FVToggleBitValue10.Text = "0";
             }
             UpdateStandAloneSetValue();
         }
         private void UpdateFVToggleBit10()
         {
-            bool currentState = (standAloneMinimumAir & 0x40) > 1;
+            currentState = (standAloneMinimumAir0 & 0x40) > 1;
             FVToggleSwitchBit10.IsOn = currentState;
+            currentState = (standAloneMinimumAir1 & 0x40) > 1;
+            FVToggleSwitchBit26.IsOn = currentState;
         }
         private void FVToggleSwitchBit9_Toggled(object sender, RoutedEventArgs e)
         {
             if (FVToggleSwitchBit9.IsOn)
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir | 0x80);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 | 0x80);
                 FVToggleBitValue9.Text = "1";
             }
             else
             {
-                standAloneMinimumAir = (Byte)(standAloneMinimumAir & 0x7F);
+                standAloneMinimumAir0 = (Byte)(standAloneMinimumAir0 & 0x7F);
                 FVToggleBitValue9.Text = "0";
             }
             UpdateStandAloneSetValue();
         }
         private void UpdateFVToggleBit9()
         {
-            bool currentState = (standAloneMinimumAir & 0x80) > 1;
+            currentState = (standAloneMinimumAir0 & 0x80) > 1;
             FVToggleSwitchBit9.IsOn = currentState;
+            currentState = (standAloneMinimumAir1 & 0x80) > 1;
+            FVToggleSwitchBit25.IsOn = currentState;
         }
 
         private async void NotifyReadCancelingTask()
